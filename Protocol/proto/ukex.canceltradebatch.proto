@@ -1,0 +1,10 @@
+syntax = "proto2";
+package ukex; 
+message canceltradebatch 
+{ 
+    enum CONST
+    {
+        CMD = 103;
+    }
+    repeated    uint64	ids = 1;
+}

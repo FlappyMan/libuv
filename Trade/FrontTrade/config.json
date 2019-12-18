@@ -1,0 +1,8 @@
+{
+    "ip_for_client":"192.168.1.20",
+    "port_for_client":8080,
+    "ip_for_backtrade":"192.168.1.20",
+    "port_for_backtrade":8081,
+    "connect_key":"123456"
+}
+

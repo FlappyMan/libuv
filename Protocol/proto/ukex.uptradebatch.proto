@@ -1,0 +1,18 @@
+syntax = "proto2";
+package ukex; 
+message uptradebatch 
+{ 
+    enum CONST
+    {
+        CMD = 101;	
+    }
+    required    string  paypassword = 1; 
+    message Trades
+    {
+        required    uint64  marketid = 1;
+        required    uint64  price = 2;
+        required    uint64  num = 3;
+        required    uint32  type = 4;
+    }
+    repeated    Trades  trades = 2;
+}
