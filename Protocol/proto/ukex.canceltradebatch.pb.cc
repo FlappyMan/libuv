@@ -44,11 +44,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ukex_2ecanceltradebatch_2eprot
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::ukex::canceltradebatch, token_),
   PROTOBUF_FIELD_OFFSET(::ukex::canceltradebatch, ids_),
+  0,
   ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 6, sizeof(::ukex::canceltradebatch)},
+  { 0, 7, sizeof(::ukex::canceltradebatch)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -56,9 +58,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ukex_2ecanceltradebatch_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\033ukex.canceltradebatch.proto\022\004ukex\"1\n\020c"
-  "anceltradebatch\022\013\n\003ids\030\001 \003(\004\"\020\n\005CONST\022\007\n"
-  "\003CMD\020g"
+  "\n\033ukex.canceltradebatch.proto\022\004ukex\"@\n\020c"
+  "anceltradebatch\022\r\n\005token\030\001 \002(\t\022\013\n\003ids\030\002 "
+  "\003(\004\"\020\n\005CONST\022\007\n\003CMD\020g"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2ecanceltradebatch_2eproto_deps[1] = {
 };
@@ -68,7 +70,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uke
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ukex_2ecanceltradebatch_2eproto_once;
 static bool descriptor_table_ukex_2ecanceltradebatch_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ukex_2ecanceltradebatch_2eproto = {
-  &descriptor_table_ukex_2ecanceltradebatch_2eproto_initialized, descriptor_table_protodef_ukex_2ecanceltradebatch_2eproto, "ukex.canceltradebatch.proto", 86,
+  &descriptor_table_ukex_2ecanceltradebatch_2eproto_initialized, descriptor_table_protodef_ukex_2ecanceltradebatch_2eproto, "ukex.canceltradebatch.proto", 101,
   &descriptor_table_ukex_2ecanceltradebatch_2eproto_once, descriptor_table_ukex_2ecanceltradebatch_2eproto_sccs, descriptor_table_ukex_2ecanceltradebatch_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_ukex_2ecanceltradebatch_2eproto::offsets,
   file_level_metadata_ukex_2ecanceltradebatch_2eproto, 1, file_level_enum_descriptors_ukex_2ecanceltradebatch_2eproto, file_level_service_descriptors_ukex_2ecanceltradebatch_2eproto,
@@ -104,6 +106,9 @@ void canceltradebatch::InitAsDefaultInstance() {
 class canceltradebatch::_Internal {
  public:
   using HasBits = decltype(std::declval<canceltradebatch>()._has_bits_);
+  static void set_has_token(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 canceltradebatch::canceltradebatch()
@@ -117,10 +122,16 @@ canceltradebatch::canceltradebatch(const canceltradebatch& from)
       _has_bits_(from._has_bits_),
       ids_(from.ids_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_token()) {
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
   // @@protoc_insertion_point(copy_constructor:ukex.canceltradebatch)
 }
 
 void canceltradebatch::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_canceltradebatch_ukex_2ecanceltradebatch_2eproto.base);
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 canceltradebatch::~canceltradebatch() {
@@ -129,6 +140,7 @@ canceltradebatch::~canceltradebatch() {
 }
 
 void canceltradebatch::SharedDtor() {
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void canceltradebatch::SetCachedSize(int size) const {
@@ -147,28 +159,40 @@ void canceltradebatch::Clear() {
   (void) cached_has_bits;
 
   ids_.Clear();
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    token_.ClearNonDefaultToEmptyNoArena();
+  }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
 const char* canceltradebatch::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // repeated uint64 ids = 1;
+      // required string token = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_token(), ptr, ctx, "ukex.canceltradebatch.token");
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated uint64 ids = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           ptr -= 1;
           do {
             ptr += 1;
             _internal_add_ids(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr));
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<8>(ptr));
-        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10) {
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<16>(ptr));
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18) {
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_ids(), ptr, ctx);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -186,6 +210,7 @@ const char* canceltradebatch::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     }  // switch
   }  // while
 success:
+  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -199,10 +224,21 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 ids = 1;
+  cached_has_bits = _has_bits_[0];
+  // required string token = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "ukex.canceltradebatch.token");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_token(), target);
+  }
+
+  // repeated uint64 ids = 2;
   for (int i = 0, n = this->_internal_ids_size(); i < n; i++) {
     stream->EnsureSpace(&target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(1, this->_internal_ids(i), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_ids(i), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -217,11 +253,17 @@ size_t canceltradebatch::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.canceltradebatch)
   size_t total_size = 0;
 
+  // required string token = 1;
+  if (has_token()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint64 ids = 1;
+  // repeated uint64 ids = 2;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       UInt64Size(this->ids_);
@@ -262,6 +304,10 @@ void canceltradebatch::MergeFrom(const canceltradebatch& from) {
   (void) cached_has_bits;
 
   ids_.MergeFrom(from.ids_);
+  if (from._internal_has_token()) {
+    _has_bits_[0] |= 0x00000001u;
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
 }
 
 void canceltradebatch::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -279,6 +325,7 @@ void canceltradebatch::CopyFrom(const canceltradebatch& from) {
 }
 
 bool canceltradebatch::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
   return true;
 }
 
@@ -287,6 +334,8 @@ void canceltradebatch::InternalSwap(canceltradebatch* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   ids_.InternalSwap(&other->ids_);
+  token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata canceltradebatch::GetMetadata() const {

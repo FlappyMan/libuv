@@ -231,6 +231,7 @@ class response :
 
   enum : int {
     kDataFieldNumber = 2,
+    kTokenFieldNumber = 3,
     kStatusFieldNumber = 1,
   };
   // required string data = 2;
@@ -251,6 +252,26 @@ class response :
   const std::string& _internal_data() const;
   void _internal_set_data(const std::string& value);
   std::string* _internal_mutable_data();
+  public:
+
+  // required string token = 3;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
   public:
 
   // required int32 status = 1;
@@ -277,6 +298,7 @@ class response :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   ::PROTOBUF_NAMESPACE_ID::int32 status_;
   friend struct ::TableStruct_ukex_2eresponse_2eproto;
 };
@@ -293,7 +315,7 @@ class response :
 
 // required int32 status = 1;
 inline bool response::_internal_has_status() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
 inline bool response::has_status() const {
@@ -301,7 +323,7 @@ inline bool response::has_status() const {
 }
 inline void response::clear_status() {
   status_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 response::_internal_status() const {
   return status_;
@@ -311,7 +333,7 @@ inline ::PROTOBUF_NAMESPACE_ID::int32 response::status() const {
   return _internal_status();
 }
 inline void response::_internal_set_status(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   status_ = value;
 }
 inline void response::set_status(::PROTOBUF_NAMESPACE_ID::int32 value) {
@@ -388,6 +410,77 @@ inline void response::set_allocated_data(std::string* data) {
   }
   data_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), data);
   // @@protoc_insertion_point(field_set_allocated:ukex.response.data)
+}
+
+// required string token = 3;
+inline bool response::_internal_has_token() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool response::has_token() const {
+  return _internal_has_token();
+}
+inline void response::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& response::token() const {
+  // @@protoc_insertion_point(field_get:ukex.response.token)
+  return _internal_token();
+}
+inline void response::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:ukex.response.token)
+}
+inline std::string* response::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:ukex.response.token)
+  return _internal_mutable_token();
+}
+inline const std::string& response::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void response::_internal_set_token(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void response::set_token(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.response.token)
+}
+inline void response::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.response.token)
+}
+inline void response::set_token(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.response.token)
+}
+inline std::string* response::_internal_mutable_token() {
+  _has_bits_[0] |= 0x00000002u;
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* response::release_token() {
+  // @@protoc_insertion_point(field_release:ukex.response.token)
+  if (!has_token()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void response::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:ukex.response.token)
 }
 
 #ifdef __GNUC__

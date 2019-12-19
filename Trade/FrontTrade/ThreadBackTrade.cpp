@@ -17,7 +17,8 @@ void BackTrade_cbTimer(uv_timer_t* handle)
 void BackTrade_cbReadBuff(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf) 
 {
 	cout<<"[Server] New read buffer"<<endl;
-	buf->base = new char[suggested_size];
+	suggested_size = SIZE_BUFFER_8k;
+	buf->base = g_cache_read.Get(suggested_size);
 	buf->len = suggested_size;
 }
 
@@ -45,22 +46,21 @@ void BackTrade_cbRead(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf)
 	{
 		if (nread != UV_EOF)cout<<"Read error :"<<uv_err_name(nread)<<endl;
 		uv_close((uv_handle_t*) client, BackTrade_cbClosed);
+
+		g_cache_read.Free(buf->base,buf->len);
 		return;
 	}
 	if(nread==0)
 	{
-		delete []buf->base;
+		g_cache_read.Free(buf->base,buf->len);
 		cout<<"read noting"<<endl;
 		return;
 	}
 
-	cout<<"[Server] readed :"<<buf->base<<endl;
+	cout<<"[BackTrade] readed :"<<buf->base<<endl;
 
 	g_srv_backtrade.Read((uv_tcp_t*)client,buf->base, nread);
-
-//	write_req_t *req = new write_req_t;
-//  req->buf = uv_buf_init(buf->base, nread);
-//  uv_write((uv_write_t*) req, client, &req->buf, 1, BackTrade_cbWrited);
+	g_cache_read.Free(buf->base,buf->len);
 }
 
 

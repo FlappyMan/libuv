@@ -232,6 +232,7 @@ class filerequest :
   enum : int {
     kNameFieldNumber = 1,
     kPathFieldNumber = 2,
+    kTokenFieldNumber = 7,
     kSizeFieldNumber = 3,
     kModifytimeFieldNumber = 4,
     kOffsetFieldNumber = 5,
@@ -275,6 +276,26 @@ class filerequest :
   const std::string& _internal_path() const;
   void _internal_set_path(const std::string& value);
   std::string* _internal_mutable_path();
+  public:
+
+  // required string token = 7;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
   public:
 
   // required uint64 size = 3;
@@ -341,6 +362,7 @@ class filerequest :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr path_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   ::PROTOBUF_NAMESPACE_ID::uint64 size_;
   ::PROTOBUF_NAMESPACE_ID::uint64 modifytime_;
   ::PROTOBUF_NAMESPACE_ID::uint64 offset_;
@@ -502,7 +524,7 @@ inline void filerequest::set_allocated_path(std::string* path) {
 
 // required uint64 size = 3;
 inline bool filerequest::_internal_has_size() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool filerequest::has_size() const {
@@ -510,7 +532,7 @@ inline bool filerequest::has_size() const {
 }
 inline void filerequest::clear_size() {
   size_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 filerequest::_internal_size() const {
   return size_;
@@ -520,7 +542,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 filerequest::size() const {
   return _internal_size();
 }
 inline void filerequest::_internal_set_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   size_ = value;
 }
 inline void filerequest::set_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -530,7 +552,7 @@ inline void filerequest::set_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // required uint64 modifytime = 4;
 inline bool filerequest::_internal_has_modifytime() const {
-  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
   return value;
 }
 inline bool filerequest::has_modifytime() const {
@@ -538,7 +560,7 @@ inline bool filerequest::has_modifytime() const {
 }
 inline void filerequest::clear_modifytime() {
   modifytime_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 filerequest::_internal_modifytime() const {
   return modifytime_;
@@ -548,7 +570,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 filerequest::modifytime() const {
   return _internal_modifytime();
 }
 inline void filerequest::_internal_set_modifytime(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
   modifytime_ = value;
 }
 inline void filerequest::set_modifytime(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -558,7 +580,7 @@ inline void filerequest::set_modifytime(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // required uint64 offset = 5;
 inline bool filerequest::_internal_has_offset() const {
-  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
 inline bool filerequest::has_offset() const {
@@ -566,7 +588,7 @@ inline bool filerequest::has_offset() const {
 }
 inline void filerequest::clear_offset() {
   offset_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 filerequest::_internal_offset() const {
   return offset_;
@@ -576,7 +598,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 filerequest::offset() const {
   return _internal_offset();
 }
 inline void filerequest::_internal_set_offset(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
   offset_ = value;
 }
 inline void filerequest::set_offset(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -586,7 +608,7 @@ inline void filerequest::set_offset(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // required uint32 length = 6;
 inline bool filerequest::_internal_has_length() const {
-  bool value = (_has_bits_[0] & 0x00000020u) != 0;
+  bool value = (_has_bits_[0] & 0x00000040u) != 0;
   return value;
 }
 inline bool filerequest::has_length() const {
@@ -594,7 +616,7 @@ inline bool filerequest::has_length() const {
 }
 inline void filerequest::clear_length() {
   length_ = 0u;
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 filerequest::_internal_length() const {
   return length_;
@@ -604,12 +626,83 @@ inline ::PROTOBUF_NAMESPACE_ID::uint32 filerequest::length() const {
   return _internal_length();
 }
 inline void filerequest::_internal_set_length(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
   length_ = value;
 }
 inline void filerequest::set_length(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_length(value);
   // @@protoc_insertion_point(field_set:ukex.filerequest.length)
+}
+
+// required string token = 7;
+inline bool filerequest::_internal_has_token() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool filerequest::has_token() const {
+  return _internal_has_token();
+}
+inline void filerequest::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& filerequest::token() const {
+  // @@protoc_insertion_point(field_get:ukex.filerequest.token)
+  return _internal_token();
+}
+inline void filerequest::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:ukex.filerequest.token)
+}
+inline std::string* filerequest::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:ukex.filerequest.token)
+  return _internal_mutable_token();
+}
+inline const std::string& filerequest::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void filerequest::_internal_set_token(const std::string& value) {
+  _has_bits_[0] |= 0x00000004u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void filerequest::set_token(std::string&& value) {
+  _has_bits_[0] |= 0x00000004u;
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.filerequest.token)
+}
+inline void filerequest::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000004u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.filerequest.token)
+}
+inline void filerequest::set_token(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000004u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.filerequest.token)
+}
+inline std::string* filerequest::_internal_mutable_token() {
+  _has_bits_[0] |= 0x00000004u;
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* filerequest::release_token() {
+  // @@protoc_insertion_point(field_release:ukex.filerequest.token)
+  if (!has_token()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000004u;
+  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void filerequest::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
+    _has_bits_[0] |= 0x00000004u;
+  } else {
+    _has_bits_[0] &= ~0x00000004u;
+  }
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:ukex.filerequest.token)
 }
 
 #ifdef __GNUC__

@@ -27,53 +27,53 @@ int BackTradeSession::Read(char *pBuffer,int iDataLen)
 
 	int ret=0;
 	UProtocolBase *pkg=NULL;
-	if(m_bLogined==false)
-	{
-		ret=ProtocolHead(uiType,uiValueLen,m_buffer.Data(),m_buffer.DataLength());
-		if(ret<=0)return ret;
-		if(uiType!=UPLogin::CMD)return -1;
+	// if(m_bLogined==false)
+	// {
+	// 	ret=ProtocolHead(uiType,uiValueLen,m_buffer.Data(),m_buffer.DataLength());
+	// 	if(ret<=0)return ret;
+	// 	if(uiType!=UPLogin::CMD)return -1;
 
-		UPLogin pkgLogin;
-		ProtoUnpack(pkgLogin,m_buffer.Data(),uiValueLen);
-		m_buffer.RemoveData(uiValueLen);
+	// 	UPLogin pkgLogin;
+	// 	ProtoUnpack(pkgLogin,m_buffer.Data(),uiValueLen);
+	// 	m_buffer.RemoveData(uiValueLen);
 		
-		// 校验身份
-		if(LoginCheck(&pkgLogin)==false)return -1;
-		m_bLogined=true;
+	// 	// 校验身份
+	// 	if(LoginCheck(&pkgLogin)==false)return -1;
+	// 	m_bLogined=true;
 
-		// // 建立要下载的文件列表
-		// BuildLoginSyncReq();
+	// 	// // 建立要下载的文件列表
+	// 	// BuildLoginSyncReq();
 
-		// // 发送第一个下载文件的请求
-		// SendNextSyncReq();
+	// 	// // 发送第一个下载文件的请求
+	// 	// SendNextSyncReq();
 
-		return uiValueLen;
-	}
+	// 	return uiValueLen;
+	// }
 
-	while(m_bSyncFinished==false)
-	{
-		uiType=0;
-		uiValueLen=0;
-		ret=ProtocolHead(uiType,uiValueLen,m_buffer.Data(),m_buffer.DataLength());
-		if(ret<=0)return ret;
+	// while(m_bSyncFinished==false)
+	// {
+	// 	uiType=0;
+	// 	uiValueLen=0;
+	// 	ret=ProtocolHead(uiType,uiValueLen,m_buffer.Data(),m_buffer.DataLength());
+	// 	if(ret<=0)return ret;
 
-		switch (uiType)
-		{
-		case UPFileData::CMD :
-			pkg=new UPFileData;
-			ProtoUnpack(*((UPFileData*)pkg),m_buffer.Data(),uiValueLen);
-			RecvFileData((UPFileData*)pkg);
-			break;
+	// 	switch (uiType)
+	// 	{
+	// 	case UPFileData::CMD :
+	// 		pkg=new UPFileData;
+	// 		ProtoUnpack(*((UPFileData*)pkg),m_buffer.Data(),uiValueLen);
+	// 		RecvFileData((UPFileData*)pkg);
+	// 		break;
 		
-		case UPFileRequest::CMD :
-			pkg=new UPFileRequest;
-			ProtoUnpack(*((UPFileRequest*)pkg),m_buffer.Data(),uiValueLen);
-			RecvFileRequest((UPFileRequest*)pkg);
-			break;
-		}
-		m_buffer.RemoveData(uiValueLen);
-	}
-	if(m_bSyncFinished==false)return ret;
+	// 	case UPFileRequest::CMD :
+	// 		pkg=new UPFileRequest;
+	// 		ProtoUnpack(*((UPFileRequest*)pkg),m_buffer.Data(),uiValueLen);
+	// 		RecvFileRequest((UPFileRequest*)pkg);
+	// 		break;
+	// 	}
+	// 	m_buffer.RemoveData(uiValueLen);
+	// }
+	// if(m_bSyncFinished==false)return ret;
 
 	while(true)
 	{
@@ -119,51 +119,51 @@ bool BackTradeSession::LoginCheck(UPLogin *pLogin)
 	return true;
 }
 
-void BackTradeSession::RecvFileRequest(UPFileRequest *pkg)
-{
+// void BackTradeSession::RecvFileRequest(UPFileRequest *pkg)
+// {
 	
-}
+// }
 
 
-void BackTradeSession::RecvFileData(UPFileData *pkg)
-{
-	// write data to file
+// void BackTradeSession::RecvFileData(UPFileData *pkg)
+// {
+// 	// write data to file
 
 
-	// file recv finished
-	SendNextSyncReq();
+// 	// file recv finished
+// 	SendNextSyncReq();
 	
-}
+// }
 
-void BackTradeSession::SendNextSyncReq()
-{
-	if(m_qSyncFile.size()<=0)
-	{
-		m_bSyncFinished=true;
-		return;
-	}
+// void BackTradeSession::SendNextSyncReq()
+// {
+// 	if(m_qSyncFile.size()<=0)
+// 	{
+// 		m_bSyncFinished=true;
+// 		return;
+// 	}
 
-	// send next send request
-	UPFileRequest *pkg=NULL;
-	UVWriteReq* req=NULL;
-	while(true)
-	{
-		pkg=m_qSyncFile.front();
-		req=g_cache_write_req.Get(SIZE_BUFFER_2k);
-		if(ProtoPack<UPFileRequest>(req->buf.base,req->buf.len,*pkg)<=0)
-		{
-			delete pkg;
-			m_qSyncFile.pop();
+// 	// send next send request
+// 	UPFileRequest *pkg=NULL;
+// 	UVWriteReq* req=NULL;
+// 	while(true)
+// 	{
+// 		pkg=m_qSyncFile.front();
+// 		req=g_cache_write_req.Get(SIZE_BUFFER_2k);
+// 		if(ProtoPack<UPFileRequest>(req->buf.base,req->buf.len,*pkg)<=0)
+// 		{
+// 			delete pkg;
+// 			m_qSyncFile.pop();
 
-			g_cache_write_req.Free(req);
-			continue;
-		}
-		req->pkg=pkg;
+// 			g_cache_write_req.Free(req);
+// 			continue;
+// 		}
+// 		req->pkg=pkg;
 
-		uv_write((uv_write_t*) req, (uv_stream_t*)m_tcp, &req->buf, 1, BackTrade_cbWrited);
-		break;
-	}
-}
+// 		uv_write((uv_write_t*) req, (uv_stream_t*)m_tcp, &req->buf, 1, BackTrade_cbWrited);
+// 		break;
+// 	}
+// }
 
 
 /*

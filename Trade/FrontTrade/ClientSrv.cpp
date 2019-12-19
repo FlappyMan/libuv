@@ -40,10 +40,7 @@ void ClientSrv::PushRequest(BlockQueue<UProtocolBase*> &q)
     //     q.pop();
     // }
     // uv_mutex_unlock(&m_lock);
-    while (q.size() > 0)
-    {
-        m_qReqest.put(q.get());
-    }  
+    m_qReqest.put(q.get());
 }
 
 
@@ -66,7 +63,7 @@ void ClientSrv::OnTimer(time_t tNow)
     while(qReq.size()>0)
     {
         pkg = qReq.get();
-        for(it==m_mSession.begin();it!=m_mSession.end();)
+        for(it=m_mSession.begin();it!=m_mSession.end();it++)
         {
             if (it->second->IsTimeout(tNow))
             {
@@ -76,7 +73,6 @@ void ClientSrv::OnTimer(time_t tNow)
                 continue;
             }
             it->second->SendPkg(pkg);
-            it++;
         }
         delete pkg;
     }

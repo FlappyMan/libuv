@@ -851,6 +851,7 @@ class allmarketinfo :
   enum : int {
     kDataFieldNumber = 2,
     kTypeFieldNumber = 1,
+    kTokenFieldNumber = 5,
     kExchangeFieldNumber = 4,
     kMarketidFieldNumber = 3,
   };
@@ -890,6 +891,26 @@ class allmarketinfo :
   const std::string& _internal_type() const;
   void _internal_set_type(const std::string& value);
   std::string* _internal_mutable_type();
+  public:
+
+  // required string token = 5;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
   public:
 
   // required .ukex.allmarketinfo.Exchange exchange = 4;
@@ -932,6 +953,7 @@ class allmarketinfo :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ukex::allmarketinfo_Data > data_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   ::ukex::allmarketinfo_Exchange* exchange_;
   ::PROTOBUF_NAMESPACE_ID::uint64 marketid_;
   friend struct ::TableStruct_ukex_2eallmarketinfo_2eproto;
@@ -2203,7 +2225,7 @@ allmarketinfo::data() const {
 
 // required uint64 marketid = 3;
 inline bool allmarketinfo::_internal_has_marketid() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool allmarketinfo::has_marketid() const {
@@ -2211,7 +2233,7 @@ inline bool allmarketinfo::has_marketid() const {
 }
 inline void allmarketinfo::clear_marketid() {
   marketid_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 allmarketinfo::_internal_marketid() const {
   return marketid_;
@@ -2221,7 +2243,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 allmarketinfo::marketid() const {
   return _internal_marketid();
 }
 inline void allmarketinfo::_internal_set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   marketid_ = value;
 }
 inline void allmarketinfo::set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -2231,7 +2253,7 @@ inline void allmarketinfo::set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // required .ukex.allmarketinfo.Exchange exchange = 4;
 inline bool allmarketinfo::_internal_has_exchange() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
   PROTOBUF_ASSUME(!value || exchange_ != nullptr);
   return value;
 }
@@ -2240,7 +2262,7 @@ inline bool allmarketinfo::has_exchange() const {
 }
 inline void allmarketinfo::clear_exchange() {
   if (exchange_ != nullptr) exchange_->Clear();
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline const ::ukex::allmarketinfo_Exchange& allmarketinfo::_internal_exchange() const {
   const ::ukex::allmarketinfo_Exchange* p = exchange_;
@@ -2253,13 +2275,13 @@ inline const ::ukex::allmarketinfo_Exchange& allmarketinfo::exchange() const {
 }
 inline ::ukex::allmarketinfo_Exchange* allmarketinfo::release_exchange() {
   // @@protoc_insertion_point(field_release:ukex.allmarketinfo.exchange)
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
   ::ukex::allmarketinfo_Exchange* temp = exchange_;
   exchange_ = nullptr;
   return temp;
 }
 inline ::ukex::allmarketinfo_Exchange* allmarketinfo::_internal_mutable_exchange() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   if (exchange_ == nullptr) {
     auto* p = CreateMaybeMessage<::ukex::allmarketinfo_Exchange>(GetArenaNoVirtual());
     exchange_ = p;
@@ -2281,12 +2303,83 @@ inline void allmarketinfo::set_allocated_exchange(::ukex::allmarketinfo_Exchange
       exchange = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, exchange, submessage_arena);
     }
+    _has_bits_[0] |= 0x00000004u;
+  } else {
+    _has_bits_[0] &= ~0x00000004u;
+  }
+  exchange_ = exchange;
+  // @@protoc_insertion_point(field_set_allocated:ukex.allmarketinfo.exchange)
+}
+
+// required string token = 5;
+inline bool allmarketinfo::_internal_has_token() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool allmarketinfo::has_token() const {
+  return _internal_has_token();
+}
+inline void allmarketinfo::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& allmarketinfo::token() const {
+  // @@protoc_insertion_point(field_get:ukex.allmarketinfo.token)
+  return _internal_token();
+}
+inline void allmarketinfo::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:ukex.allmarketinfo.token)
+}
+inline std::string* allmarketinfo::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:ukex.allmarketinfo.token)
+  return _internal_mutable_token();
+}
+inline const std::string& allmarketinfo::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void allmarketinfo::_internal_set_token(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void allmarketinfo::set_token(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.allmarketinfo.token)
+}
+inline void allmarketinfo::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.allmarketinfo.token)
+}
+inline void allmarketinfo::set_token(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.allmarketinfo.token)
+}
+inline std::string* allmarketinfo::_internal_mutable_token() {
+  _has_bits_[0] |= 0x00000002u;
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* allmarketinfo::release_token() {
+  // @@protoc_insertion_point(field_release:ukex.allmarketinfo.token)
+  if (!has_token()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void allmarketinfo::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
     _has_bits_[0] |= 0x00000002u;
   } else {
     _has_bits_[0] &= ~0x00000002u;
   }
-  exchange_ = exchange;
-  // @@protoc_insertion_point(field_set_allocated:ukex.allmarketinfo.exchange)
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:ukex.allmarketinfo.token)
 }
 
 #ifdef __GNUC__

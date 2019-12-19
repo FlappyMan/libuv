@@ -1,9 +1,12 @@
 
 #include "ClientSrv.h"
 
-ClientSrv::ClientSrv()
+ClientSrv::ClientSrv(int iBufferSize)
 {
 	uv_mutex_init(&m_lock);
+
+	m_iBufferSize=iBufferSize;
+	m_pBuffer=new char[m_iBufferSize];
 }
 
 ClientSrv::~ClientSrv()
@@ -11,13 +14,16 @@ ClientSrv::~ClientSrv()
 
 }
 
-
 void ClientSrv::NewConnection(uv_tcp_t* tcp)
 {
-	ClientSession *p=new ClientSession(tcp);
-	p->Init();
+	ClientSession *p=new ClientSession(tcp,m_pBuffer,m_iBufferSize);
 
 	m_mSession.insert(make_pair(tcp,p));
+}
+
+void ClientSrv::CloseConnection(uv_tcp_t *tcp)
+{
+	m_mSession.erase(tcp);
 }
 
 // return <0: 协议错误，=0:数据包长度不足，>0:已处理掉的数据长度
@@ -55,6 +61,8 @@ void ClientSrv::OnTimer(time_t tNow)
 		pkg=qReq.front();
 		qReq.pop();
 
+		_DispatchPkg(pkg);
+
 		for(it=m_mSession.begin();it!=m_mSession.end();)
 		{
 			if(it->second->IsTimeout(tNow))
@@ -74,3 +82,39 @@ void ClientSrv::OnTimer(time_t tNow)
 	}
 }
 
+
+void ClientSrv::_DispatchPkg(UProtocolBase *pkg)
+{
+	UPAllmarketinfo *pAllMarketInfo=NULL;
+	UPKlinedata *pKline=NULL;
+	UPDepthdata *pDept=NULL;
+	UPHistoricalTransactionData *pHistory=NULL;
+	UPMatchedData *pMatchData=NULL;
+
+	switch (pkg->m_uiType)
+		{
+		case UPAllmarketinfo::CMD :
+			
+			break;
+		
+		case UPKlinedata::CMD :
+			
+			break;
+		
+		case UPDepthdata::CMD :
+			
+			break;
+
+		case UPHistoricalTransactionData::CMD :
+			
+			break;
+
+
+		case UPMatchedData::CMD :
+			
+			break;
+
+		default:
+			break;
+		}
+}

@@ -498,6 +498,7 @@ class klinedata :
   enum : int {
     kDataFieldNumber = 2,
     kTypeFieldNumber = 1,
+    kTokenFieldNumber = 3,
   };
   // repeated .ukex.klinedata.Data data = 2;
   int data_size() const;
@@ -537,15 +538,39 @@ class klinedata :
   std::string* _internal_mutable_type();
   public:
 
+  // required string token = 3;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
+  public:
+
   // @@protoc_insertion_point(class_scope:ukex.klinedata)
  private:
   class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ukex::klinedata_Data > data_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   friend struct ::TableStruct_ukex_2eklinedata_2eproto;
 };
 // ===================================================================
@@ -1097,6 +1122,77 @@ inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ukex::klinedata_Data >
 klinedata::data() const {
   // @@protoc_insertion_point(field_list:ukex.klinedata.data)
   return data_;
+}
+
+// required string token = 3;
+inline bool klinedata::_internal_has_token() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool klinedata::has_token() const {
+  return _internal_has_token();
+}
+inline void klinedata::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& klinedata::token() const {
+  // @@protoc_insertion_point(field_get:ukex.klinedata.token)
+  return _internal_token();
+}
+inline void klinedata::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:ukex.klinedata.token)
+}
+inline std::string* klinedata::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:ukex.klinedata.token)
+  return _internal_mutable_token();
+}
+inline const std::string& klinedata::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void klinedata::_internal_set_token(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void klinedata::set_token(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.klinedata.token)
+}
+inline void klinedata::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.klinedata.token)
+}
+inline void klinedata::set_token(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.klinedata.token)
+}
+inline std::string* klinedata::_internal_mutable_token() {
+  _has_bits_[0] |= 0x00000002u;
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* klinedata::release_token() {
+  // @@protoc_insertion_point(field_release:ukex.klinedata.token)
+  if (!has_token()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void klinedata::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:ukex.klinedata.token)
 }
 
 #ifdef __GNUC__

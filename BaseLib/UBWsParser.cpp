@@ -1,7 +1,68 @@
 
 #include "UBWsParser.h"
+#include "UBCrypto.h"
+
+bool UBWsParser::WSReplyHeader(string &sOutHeader)
+{
+	sOutHeader.clear();
+	if(IsWebSocket()==false)return false;
+
+	string sKey,sProtocol;
+	if(GetFiled(sKey,"Sec-WebSocket-Key")==false)return false;
+	if(GetFiled(sProtocol,"Sec-WebSocket-Protocol")==false)return false;
 
 
+	sOutHeader = "HTTP/1.1 101 Switching Protocols\r\n";
+	sOutHeader.append("Upgrade: WebSocket\r\n");
+	sOutHeader.append("Connection: Upgrade\r\n");
+	if (sKey.length() > 0)
+	{
+		string sAcceptKey(sKey);
+		sAcceptKey.append("258EAFA5-E914-47DA-95CA-C5AB0DC85B11");
+
+		unsigned char digest[SHA_DIGEST_LENGTH]; // 160 bit sha1 digest
+
+		
+		SHA_CTX ctx;
+		SHA1_Init(&ctx);
+		SHA1_Update(&ctx, sAcceptKey.data(), sAcceptKey.size());
+		SHA1_Final(digest, &ctx);
+
+		//printf("DIGEST:"); for(int i=0; i<20; i++) printf("%02x ",digest[i]); printf("\n");
+
+		//little endian to big endian
+		for (int i = 0; i < 20; i += 4)
+		{
+			unsigned char c;
+
+			c = digest[i];
+			digest[i] = digest[i + 3];
+			digest[i + 3] = c;
+
+			c = digest[i + 1];
+			digest[i + 1] = digest[i + 2];
+			digest[i + 2] = c;
+		}
+
+		//printf("DIGEST:"); for(int i=0; i<20; i++) printf("%02x ",digest[i]); printf("\n");
+
+		Base64Encode(sAcceptKey,(char*)digest, SHA_DIGEST_LENGTH); //160bit = 20 bytes/chars
+
+		sOutHeader.append("Sec-WebSocket-Accept: ");
+		sOutHeader.append(sAcceptKey);
+		sOutHeader.append("\r\n");
+	}
+	if (sProtocol.length() > 0)
+	{
+		sOutHeader.append("Sec-WebSocket-Protocol: ");
+		sOutHeader.append(sProtocol);
+		sOutHeader.append("\r\n");
+	}
+	sOutHeader.append("\r\n");
+	return true;
+
+	//return WS_OPENING_FRAME;
+}
 
 int64_t UBWsParser::WSSetFrame(UBWsParserFrameType ft, uint8_t *pData, uint32_t iDataLen, uint8_t *pBuffer, uint32_t iBufferSize)
 {

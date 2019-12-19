@@ -10,9 +10,13 @@ CMakeFiles/grant.dir/grant.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
+ ../Protocol/UPAuth.h
+ ../Protocol/UPCancelsubscribe.h
  ../Protocol/UPDir.h
  ../Protocol/UPHeartbeat.h
+ ../Protocol/UPRequest.h
  ../Protocol/UPSubscribe.h
  ../Protocol/UPallmarketinfo.h
  ../Protocol/UPcanceltrade.h

@@ -102,6 +102,10 @@ pthread.h
 UBHeader.h
 ../../../BaseLib/UBHeader.h
 
+../../../BaseLib/UBWsParser.h
+UBHttpParser.h
+../../../BaseLib/UBHttpParser.h
+
 ../../../BaseLib/UBaseLib.h
 UBJson.h
 ../../../BaseLib/UBJson.h
@@ -115,14 +119,34 @@ UBDate.h
 ../../../BaseLib/UBDate.h
 UBHttpParser.h
 ../../../BaseLib/UBHttpParser.h
+UBWsParser.h
+../../../BaseLib/UBWsParser.h
 uv.h
 ../../../BaseLib/uv.h
+
+../../../Protocol/UPAuth.h
+UBaseLib.h
+../../../Protocol/UBaseLib.h
+UProtocolBase.h
+../../../Protocol/UProtocolBase.h
+
+../../../Protocol/UPCancelsubscribe.h
+UBaseLib.h
+../../../Protocol/UBaseLib.h
+UProtocolBase.h
+../../../Protocol/UProtocolBase.h
 
 ../../../Protocol/UPDir.h
 UBaseLib.h
 ../../../Protocol/UBaseLib.h
 
 ../../../Protocol/UPHeartbeat.h
+UBaseLib.h
+../../../Protocol/UBaseLib.h
+UProtocolBase.h
+../../../Protocol/UProtocolBase.h
+
+../../../Protocol/UPRequest.h
 UBaseLib.h
 ../../../Protocol/UBaseLib.h
 UProtocolBase.h
@@ -273,6 +297,12 @@ UPfiledata.h
 ../../../Protocol/UPfiledata.h
 UPSubscribe.h
 ../../../Protocol/UPSubscribe.h
+UPCancelsubscribe.h
+../../../Protocol/UPCancelsubscribe.h
+UPAuth.h
+../../../Protocol/UPAuth.h
+UPRequest.h
+../../../Protocol/UPRequest.h
 UPDir.h
 ../../../Protocol/UPDir.h
 UPHeartbeat.h
@@ -889,6 +919,8 @@ global.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/global.h
 BlockQueue.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/BlockQueue.h
+UProtocol.h
+/home/gong/workspace/git/UkexServer/Trade/FrontTrade/UProtocol.h
 
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ClientSrv.cpp
 ClientSrv.h

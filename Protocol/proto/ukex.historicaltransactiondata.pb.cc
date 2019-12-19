@@ -112,13 +112,15 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ukex_2ehistoricaltransactionda
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::ukex::historicaltransactiondata, type_),
   PROTOBUF_FIELD_OFFSET(::ukex::historicaltransactiondata, data_),
+  PROTOBUF_FIELD_OFFSET(::ukex::historicaltransactiondata, token_),
   0,
+  2,
   1,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 12, sizeof(::ukex::historicaltransactiondata_Data_TradeLog)},
   { 19, 25, sizeof(::ukex::historicaltransactiondata_Data)},
-  { 26, 33, sizeof(::ukex::historicaltransactiondata)},
+  { 26, 34, sizeof(::ukex::historicaltransactiondata)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -129,14 +131,15 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_ukex_2ehistoricaltransactiondata_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n$ukex.historicaltransactiondata.proto\022\004"
-  "ukex\"\261\002\n\031historicaltransactiondata\022\014\n\004ty"
+  "ukex\"\300\002\n\031historicaltransactiondata\022\014\n\004ty"
   "pe\030\001 \002(\t\0222\n\004data\030\002 \002(\0132$.ukex.historical"
-  "transactiondata.Data\032\277\001\n\004Data\022\?\n\010tradelo"
-  "g\030\001 \003(\0132-.ukex.historicaltransactiondata"
-  ".Data.TradeLog\032v\n\010TradeLog\022\017\n\007tradeid\030\001 "
-  "\002(\004\022\017\n\007addtime\030\002 \002(\t\022\021\n\ttimestamp\030\003 \002(\t\022"
-  "\014\n\004type\030\004 \002(\004\022\r\n\005price\030\005 \002(\t\022\013\n\003mum\030\006 \002("
-  "\t\022\013\n\003num\030\007 \002(\t\"\020\n\005CONST\022\007\n\003CMD\020k"
+  "transactiondata.Data\022\r\n\005token\030\003 \002(\t\032\277\001\n\004"
+  "Data\022\?\n\010tradelog\030\001 \003(\0132-.ukex.historical"
+  "transactiondata.Data.TradeLog\032v\n\010TradeLo"
+  "g\022\017\n\007tradeid\030\001 \002(\004\022\017\n\007addtime\030\002 \002(\t\022\021\n\tt"
+  "imestamp\030\003 \002(\t\022\014\n\004type\030\004 \002(\004\022\r\n\005price\030\005 "
+  "\002(\t\022\013\n\003mum\030\006 \002(\t\022\013\n\003num\030\007 \002(\t\"\020\n\005CONST\022\007"
+  "\n\003CMD\020k"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2ehistoricaltransactiondata_2eproto_deps[1] = {
 };
@@ -148,7 +151,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uke
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ukex_2ehistoricaltransactiondata_2eproto_once;
 static bool descriptor_table_ukex_2ehistoricaltransactiondata_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ukex_2ehistoricaltransactiondata_2eproto = {
-  &descriptor_table_ukex_2ehistoricaltransactiondata_2eproto_initialized, descriptor_table_protodef_ukex_2ehistoricaltransactiondata_2eproto, "ukex.historicaltransactiondata.proto", 352,
+  &descriptor_table_ukex_2ehistoricaltransactiondata_2eproto_initialized, descriptor_table_protodef_ukex_2ehistoricaltransactiondata_2eproto, "ukex.historicaltransactiondata.proto", 367,
   &descriptor_table_ukex_2ehistoricaltransactiondata_2eproto_once, descriptor_table_ukex_2ehistoricaltransactiondata_2eproto_sccs, descriptor_table_ukex_2ehistoricaltransactiondata_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_ukex_2ehistoricaltransactiondata_2eproto::offsets,
   file_level_metadata_ukex_2ehistoricaltransactiondata_2eproto, 3, file_level_enum_descriptors_ukex_2ehistoricaltransactiondata_2eproto, file_level_service_descriptors_ukex_2ehistoricaltransactiondata_2eproto,
@@ -884,6 +887,9 @@ class historicaltransactiondata::_Internal {
   }
   static const ::ukex::historicaltransactiondata_Data& data(const historicaltransactiondata* msg);
   static void set_has_data(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_token(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
 };
@@ -906,6 +912,10 @@ historicaltransactiondata::historicaltransactiondata(const historicaltransaction
   if (from._internal_has_type()) {
     type_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.type_);
   }
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_token()) {
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
   if (from._internal_has_data()) {
     data_ = new ::ukex::historicaltransactiondata_Data(*from.data_);
   } else {
@@ -917,6 +927,7 @@ historicaltransactiondata::historicaltransactiondata(const historicaltransaction
 void historicaltransactiondata::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_historicaltransactiondata_ukex_2ehistoricaltransactiondata_2eproto.base);
   type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   data_ = nullptr;
 }
 
@@ -927,6 +938,7 @@ historicaltransactiondata::~historicaltransactiondata() {
 
 void historicaltransactiondata::SharedDtor() {
   type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete data_;
 }
 
@@ -946,11 +958,14 @@ void historicaltransactiondata::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       type_.ClearNonDefaultToEmptyNoArena();
     }
     if (cached_has_bits & 0x00000002u) {
+      token_.ClearNonDefaultToEmptyNoArena();
+    }
+    if (cached_has_bits & 0x00000004u) {
       GOOGLE_DCHECK(data_ != nullptr);
       data_->Clear();
     }
@@ -978,6 +993,13 @@ const char* historicaltransactiondata::_InternalParse(const char* ptr, ::PROTOBU
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_data(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required string token = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_token(), ptr, ctx, "ukex.historicaltransactiondata.token");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1020,11 +1042,21 @@ failure:
   }
 
   // required .ukex.historicaltransactiondata.Data data = 2;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessageToArray(
         2, _Internal::data(this), target, stream);
+  }
+
+  // required string token = 3;
+  if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "ukex.historicaltransactiondata.token");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_token(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1046,6 +1078,13 @@ size_t historicaltransactiondata::RequiredFieldsByteSizeFallback() const {
         this->_internal_type());
   }
 
+  if (has_token()) {
+    // required string token = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+  }
+
   if (has_data()) {
     // required .ukex.historicaltransactiondata.Data data = 2;
     total_size += 1 +
@@ -1059,11 +1098,16 @@ size_t historicaltransactiondata::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.historicaltransactiondata)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required string type = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_type());
+
+    // required string token = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
 
     // required .ukex.historicaltransactiondata.Data data = 2;
     total_size += 1 +
@@ -1109,12 +1153,16 @@ void historicaltransactiondata::MergeFrom(const historicaltransactiondata& from)
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       _has_bits_[0] |= 0x00000001u;
       type_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.type_);
     }
     if (cached_has_bits & 0x00000002u) {
+      _has_bits_[0] |= 0x00000002u;
+      token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+    }
+    if (cached_has_bits & 0x00000004u) {
       _internal_mutable_data()->::ukex::historicaltransactiondata_Data::MergeFrom(from._internal_data());
     }
   }
@@ -1135,7 +1183,7 @@ void historicaltransactiondata::CopyFrom(const historicaltransactiondata& from) 
 }
 
 bool historicaltransactiondata::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   if (has_data()) {
     if (!this->data_->IsInitialized()) return false;
   }
@@ -1147,6 +1195,8 @@ void historicaltransactiondata::InternalSwap(historicaltransactiondata* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   type_.Swap(&other->type_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(data_, other->data_);
 }

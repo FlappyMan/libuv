@@ -91,6 +91,14 @@ bool UBHttpParser::GetFiled(string &sValue,string &sFiled)
 	return true;
 };
 
+bool UBHttpParser::GetFiled(string &sValue,const char *pFiled)
+{
+	map<string, string>::iterator it = m_mFiled.find(pFiled);
+	if (it == m_mFiled.end())
+		return false;
+	sValue = it->second;
+	return true;
+};
 
 
 

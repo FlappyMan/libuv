@@ -130,15 +130,17 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ukex_2eallmarketinfo_2eproto::
   PROTOBUF_FIELD_OFFSET(::ukex::allmarketinfo, data_),
   PROTOBUF_FIELD_OFFSET(::ukex::allmarketinfo, marketid_),
   PROTOBUF_FIELD_OFFSET(::ukex::allmarketinfo, exchange_),
+  PROTOBUF_FIELD_OFFSET(::ukex::allmarketinfo, token_),
   0,
   ~0u,
+  3,
   2,
   1,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 19, sizeof(::ukex::allmarketinfo_Data)},
   { 33, 40, sizeof(::ukex::allmarketinfo_Exchange)},
-  { 42, 51, sizeof(::ukex::allmarketinfo)},
+  { 42, 52, sizeof(::ukex::allmarketinfo)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -148,17 +150,17 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ukex_2eallmarketinfo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\030ukex.allmarketinfo.proto\022\004ukex\"\364\002\n\rall"
+  "\n\030ukex.allmarketinfo.proto\022\004ukex\"\203\003\n\rall"
   "marketinfo\022\014\n\004type\030\001 \002(\t\022&\n\004data\030\002 \003(\0132\030"
   ".ukex.allmarketinfo.Data\022\020\n\010marketid\030\003 \002"
   "(\004\022.\n\010exchange\030\004 \002(\0132\034.ukex.allmarketinf"
-  "o.Exchange\032\262\001\n\004Data\022\n\n\002m0\030\001 \002(\t\022\n\n\002m1\030\002 "
-  "\002(\t\022\n\n\002m2\030\003 \002(\t\022\n\n\002m3\030\004 \002(\t\022\n\n\002m4\030\005 \002(\t\022"
-  "\n\n\002m5\030\006 \002(\t\022\n\n\002m6\030\007 \002(\t\022\n\n\002m7\030\010 \002(\t\022\n\n\002m"
-  "8\030\t \002(\t\022\n\n\002m9\030\n \002(\t\022\013\n\003m10\030\013 \002(\t\022\013\n\003m11\030"
-  "\014 \002(\t\022\013\n\003m12\030\r \002(\t\022\013\n\003m13\030\016 \002(\t\032$\n\010Excha"
-  "nge\022\013\n\003btc\030\001 \002(\t\022\013\n\003eth\030\002 \002(\t\"\020\n\005CONST\022\007"
-  "\n\003CMD\020h"
+  "o.Exchange\022\r\n\005token\030\005 \002(\t\032\262\001\n\004Data\022\n\n\002m0"
+  "\030\001 \002(\t\022\n\n\002m1\030\002 \002(\t\022\n\n\002m2\030\003 \002(\t\022\n\n\002m3\030\004 \002"
+  "(\t\022\n\n\002m4\030\005 \002(\t\022\n\n\002m5\030\006 \002(\t\022\n\n\002m6\030\007 \002(\t\022\n"
+  "\n\002m7\030\010 \002(\t\022\n\n\002m8\030\t \002(\t\022\n\n\002m9\030\n \002(\t\022\013\n\003m1"
+  "0\030\013 \002(\t\022\013\n\003m11\030\014 \002(\t\022\013\n\003m12\030\r \002(\t\022\013\n\003m13"
+  "\030\016 \002(\t\032$\n\010Exchange\022\013\n\003btc\030\001 \002(\t\022\013\n\003eth\030\002"
+  " \002(\t\"\020\n\005CONST\022\007\n\003CMD\020h"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2eallmarketinfo_2eproto_deps[1] = {
 };
@@ -170,7 +172,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uke
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ukex_2eallmarketinfo_2eproto_once;
 static bool descriptor_table_ukex_2eallmarketinfo_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ukex_2eallmarketinfo_2eproto = {
-  &descriptor_table_ukex_2eallmarketinfo_2eproto_initialized, descriptor_table_protodef_ukex_2eallmarketinfo_2eproto, "ukex.allmarketinfo.proto", 407,
+  &descriptor_table_ukex_2eallmarketinfo_2eproto_initialized, descriptor_table_protodef_ukex_2eallmarketinfo_2eproto, "ukex.allmarketinfo.proto", 422,
   &descriptor_table_ukex_2eallmarketinfo_2eproto_once, descriptor_table_ukex_2eallmarketinfo_2eproto_sccs, descriptor_table_ukex_2eallmarketinfo_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_ukex_2eallmarketinfo_2eproto::offsets,
   file_level_metadata_ukex_2eallmarketinfo_2eproto, 3, file_level_enum_descriptors_ukex_2eallmarketinfo_2eproto, file_level_service_descriptors_ukex_2eallmarketinfo_2eproto,
@@ -1336,10 +1338,13 @@ class allmarketinfo::_Internal {
     (*has_bits)[0] |= 1u;
   }
   static void set_has_marketid(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
+    (*has_bits)[0] |= 8u;
   }
   static const ::ukex::allmarketinfo_Exchange& exchange(const allmarketinfo* msg);
   static void set_has_exchange(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_token(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
 };
@@ -1363,6 +1368,10 @@ allmarketinfo::allmarketinfo(const allmarketinfo& from)
   if (from._internal_has_type()) {
     type_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.type_);
   }
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_token()) {
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
   if (from._internal_has_exchange()) {
     exchange_ = new ::ukex::allmarketinfo_Exchange(*from.exchange_);
   } else {
@@ -1375,6 +1384,7 @@ allmarketinfo::allmarketinfo(const allmarketinfo& from)
 void allmarketinfo::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_allmarketinfo_ukex_2eallmarketinfo_2eproto.base);
   type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&exchange_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&marketid_) -
       reinterpret_cast<char*>(&exchange_)) + sizeof(marketid_));
@@ -1387,6 +1397,7 @@ allmarketinfo::~allmarketinfo() {
 
 void allmarketinfo::SharedDtor() {
   type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete exchange_;
 }
 
@@ -1407,11 +1418,14 @@ void allmarketinfo::Clear() {
 
   data_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       type_.ClearNonDefaultToEmptyNoArena();
     }
     if (cached_has_bits & 0x00000002u) {
+      token_.ClearNonDefaultToEmptyNoArena();
+    }
+    if (cached_has_bits & 0x00000004u) {
       GOOGLE_DCHECK(exchange_ != nullptr);
       exchange_->Clear();
     }
@@ -1463,6 +1477,13 @@ const char* allmarketinfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
+      // required string token = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_token(), ptr, ctx, "ukex.allmarketinfo.token");
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -1510,17 +1531,27 @@ failure:
   }
 
   // required uint64 marketid = 3;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000008u) {
     stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(3, this->_internal_marketid(), target);
   }
 
   // required .ukex.allmarketinfo.Exchange exchange = 4;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessageToArray(
         4, _Internal::exchange(this), target, stream);
+  }
+
+  // required string token = 5;
+  if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "ukex.allmarketinfo.token");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_token(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1540,6 +1571,13 @@ size_t allmarketinfo::RequiredFieldsByteSizeFallback() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_type());
+  }
+
+  if (has_token()) {
+    // required string token = 5;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
   }
 
   if (has_exchange()) {
@@ -1562,11 +1600,16 @@ size_t allmarketinfo::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.allmarketinfo)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
     // required string type = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_type());
+
+    // required string token = 5;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
 
     // required .ukex.allmarketinfo.Exchange exchange = 4;
     total_size += 1 +
@@ -1625,15 +1668,19 @@ void allmarketinfo::MergeFrom(const allmarketinfo& from) {
 
   data_.MergeFrom(from.data_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       _has_bits_[0] |= 0x00000001u;
       type_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.type_);
     }
     if (cached_has_bits & 0x00000002u) {
-      _internal_mutable_exchange()->::ukex::allmarketinfo_Exchange::MergeFrom(from._internal_exchange());
+      _has_bits_[0] |= 0x00000002u;
+      token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
     }
     if (cached_has_bits & 0x00000004u) {
+      _internal_mutable_exchange()->::ukex::allmarketinfo_Exchange::MergeFrom(from._internal_exchange());
+    }
+    if (cached_has_bits & 0x00000008u) {
       marketid_ = from.marketid_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -1655,7 +1702,7 @@ void allmarketinfo::CopyFrom(const allmarketinfo& from) {
 }
 
 bool allmarketinfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(this->data())) return false;
   if (has_exchange()) {
     if (!this->exchange_->IsInitialized()) return false;
@@ -1669,6 +1716,8 @@ void allmarketinfo::InternalSwap(allmarketinfo* other) {
   swap(_has_bits_[0], other->_has_bits_[0]);
   data_.InternalSwap(&other->data_);
   type_.Swap(&other->type_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(exchange_, other->exchange_);
   swap(marketid_, other->marketid_);

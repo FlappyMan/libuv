@@ -23,4 +23,5 @@ message historicaltransactiondata
         repeated	TradeLog	tradelog = 1;
     }
     required	Data	data = 2;
+    required    string	token = 3; 
 }

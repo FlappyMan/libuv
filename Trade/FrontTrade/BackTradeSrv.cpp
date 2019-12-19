@@ -16,6 +16,7 @@ void BackTradeSrv::NewConnection(uv_tcp_t *tcp)
 {
     BackTradeSession *p=new BackTradeSession(tcp,m_qReqest);
     p->Init();
+    m_mSession.insert(pair<uv_tcp_t*,BackTradeSession*>(tcp,p));
 }
 
 // return <0: 协议错误，=0:数据包长度不足，>0:已处理掉的数据长度

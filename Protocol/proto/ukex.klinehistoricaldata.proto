@@ -16,4 +16,5 @@ message klinehistoricaldata
         required    string  k5 = 6;
     }
     repeated	Data data = 1;
+    required    string	token = 2; 
 }

@@ -214,7 +214,8 @@ int main()
     //	TestJson();
     //	TestJson2();
     //	TestUBBuffer();
-    TestInherit();
+    //  TestInherit();
+
 
     return 0;
 }

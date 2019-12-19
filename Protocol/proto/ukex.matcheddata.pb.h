@@ -691,6 +691,7 @@ class matcheddata :
   enum : int {
     kAddtimeFieldNumber = 1,
     kPriceFieldNumber = 3,
+    kTokenFieldNumber = 6,
     kBuyuserFieldNumber = 4,
     kSelluserFieldNumber = 5,
     kIdFieldNumber = 2,
@@ -733,6 +734,26 @@ class matcheddata :
   const std::string& _internal_price() const;
   void _internal_set_price(const std::string& value);
   std::string* _internal_mutable_price();
+  public:
+
+  // required string token = 6;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
   public:
 
   // required .ukex.matcheddata.BuyUser buyuser = 4;
@@ -790,6 +811,7 @@ class matcheddata :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr addtime_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr price_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   ::ukex::matcheddata_BuyUser* buyuser_;
   ::ukex::matcheddata_SellUser* selluser_;
   ::PROTOBUF_NAMESPACE_ID::uint64 id_;
@@ -1425,7 +1447,7 @@ inline void matcheddata::set_allocated_addtime(std::string* addtime) {
 
 // required uint64 id = 2;
 inline bool matcheddata::_internal_has_id() const {
-  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
 inline bool matcheddata::has_id() const {
@@ -1433,7 +1455,7 @@ inline bool matcheddata::has_id() const {
 }
 inline void matcheddata::clear_id() {
   id_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 matcheddata::_internal_id() const {
   return id_;
@@ -1443,7 +1465,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 matcheddata::id() const {
   return _internal_id();
 }
 inline void matcheddata::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
   id_ = value;
 }
 inline void matcheddata::set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -1524,7 +1546,7 @@ inline void matcheddata::set_allocated_price(std::string* price) {
 
 // required .ukex.matcheddata.BuyUser buyuser = 4;
 inline bool matcheddata::_internal_has_buyuser() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
   PROTOBUF_ASSUME(!value || buyuser_ != nullptr);
   return value;
 }
@@ -1533,7 +1555,7 @@ inline bool matcheddata::has_buyuser() const {
 }
 inline void matcheddata::clear_buyuser() {
   if (buyuser_ != nullptr) buyuser_->Clear();
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline const ::ukex::matcheddata_BuyUser& matcheddata::_internal_buyuser() const {
   const ::ukex::matcheddata_BuyUser* p = buyuser_;
@@ -1546,13 +1568,13 @@ inline const ::ukex::matcheddata_BuyUser& matcheddata::buyuser() const {
 }
 inline ::ukex::matcheddata_BuyUser* matcheddata::release_buyuser() {
   // @@protoc_insertion_point(field_release:ukex.matcheddata.buyuser)
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
   ::ukex::matcheddata_BuyUser* temp = buyuser_;
   buyuser_ = nullptr;
   return temp;
 }
 inline ::ukex::matcheddata_BuyUser* matcheddata::_internal_mutable_buyuser() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   if (buyuser_ == nullptr) {
     auto* p = CreateMaybeMessage<::ukex::matcheddata_BuyUser>(GetArenaNoVirtual());
     buyuser_ = p;
@@ -1574,9 +1596,9 @@ inline void matcheddata::set_allocated_buyuser(::ukex::matcheddata_BuyUser* buyu
       buyuser = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, buyuser, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000004u;
+    _has_bits_[0] |= 0x00000008u;
   } else {
-    _has_bits_[0] &= ~0x00000004u;
+    _has_bits_[0] &= ~0x00000008u;
   }
   buyuser_ = buyuser;
   // @@protoc_insertion_point(field_set_allocated:ukex.matcheddata.buyuser)
@@ -1584,7 +1606,7 @@ inline void matcheddata::set_allocated_buyuser(::ukex::matcheddata_BuyUser* buyu
 
 // required .ukex.matcheddata.SellUser selluser = 5;
 inline bool matcheddata::_internal_has_selluser() const {
-  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
   PROTOBUF_ASSUME(!value || selluser_ != nullptr);
   return value;
 }
@@ -1593,7 +1615,7 @@ inline bool matcheddata::has_selluser() const {
 }
 inline void matcheddata::clear_selluser() {
   if (selluser_ != nullptr) selluser_->Clear();
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline const ::ukex::matcheddata_SellUser& matcheddata::_internal_selluser() const {
   const ::ukex::matcheddata_SellUser* p = selluser_;
@@ -1606,13 +1628,13 @@ inline const ::ukex::matcheddata_SellUser& matcheddata::selluser() const {
 }
 inline ::ukex::matcheddata_SellUser* matcheddata::release_selluser() {
   // @@protoc_insertion_point(field_release:ukex.matcheddata.selluser)
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
   ::ukex::matcheddata_SellUser* temp = selluser_;
   selluser_ = nullptr;
   return temp;
 }
 inline ::ukex::matcheddata_SellUser* matcheddata::_internal_mutable_selluser() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
   if (selluser_ == nullptr) {
     auto* p = CreateMaybeMessage<::ukex::matcheddata_SellUser>(GetArenaNoVirtual());
     selluser_ = p;
@@ -1634,12 +1656,83 @@ inline void matcheddata::set_allocated_selluser(::ukex::matcheddata_SellUser* se
       selluser = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, selluser, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000008u;
+    _has_bits_[0] |= 0x00000010u;
   } else {
-    _has_bits_[0] &= ~0x00000008u;
+    _has_bits_[0] &= ~0x00000010u;
   }
   selluser_ = selluser;
   // @@protoc_insertion_point(field_set_allocated:ukex.matcheddata.selluser)
+}
+
+// required string token = 6;
+inline bool matcheddata::_internal_has_token() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool matcheddata::has_token() const {
+  return _internal_has_token();
+}
+inline void matcheddata::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& matcheddata::token() const {
+  // @@protoc_insertion_point(field_get:ukex.matcheddata.token)
+  return _internal_token();
+}
+inline void matcheddata::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:ukex.matcheddata.token)
+}
+inline std::string* matcheddata::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:ukex.matcheddata.token)
+  return _internal_mutable_token();
+}
+inline const std::string& matcheddata::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void matcheddata::_internal_set_token(const std::string& value) {
+  _has_bits_[0] |= 0x00000004u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void matcheddata::set_token(std::string&& value) {
+  _has_bits_[0] |= 0x00000004u;
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.matcheddata.token)
+}
+inline void matcheddata::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000004u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.matcheddata.token)
+}
+inline void matcheddata::set_token(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000004u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.matcheddata.token)
+}
+inline std::string* matcheddata::_internal_mutable_token() {
+  _has_bits_[0] |= 0x00000004u;
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* matcheddata::release_token() {
+  // @@protoc_insertion_point(field_release:ukex.matcheddata.token)
+  if (!has_token()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000004u;
+  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void matcheddata::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
+    _has_bits_[0] |= 0x00000004u;
+  } else {
+    _has_bits_[0] &= ~0x00000004u;
+  }
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:ukex.matcheddata.token)
 }
 
 #ifdef __GNUC__

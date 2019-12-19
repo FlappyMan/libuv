@@ -31,12 +31,20 @@ void ClientSession::SendPkg(UProtocolBase* pkg)
     m_tLast = time(NULL);
     switch (pkg->m_uiType)
     {
-    case UPUptrade::CMD :
-        /* code */
-        break;
-    
-    default:
-        break;
+        case UPUptrade::CMD :
+
+            break;
+        case UPUptradebatch::CMD :
+
+            break;
+        case UPCanceltrade::CMD :
+
+            break;
+        case UPCanceltradebatch::CMD :
+
+            break;
+        default:
+            break;
     }
 }
 
@@ -48,24 +56,59 @@ int ClientSession::Read(char *pBuffer,int iDataLen)
     if(ret<0)return -1;
     if(ret>0)return ret;
 
+    UProtocolBase *pkg=NULL;
     if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/upTrade") == 0)
     {
-        /* code */
+        pkg = new UPUptrade;
+        for(map<string,string>::iterator it=m_http.m_mFiled.begin();it!=m_http.m_mFiled.end();it++)
+        {
+            if (strcasecmp(it->first.c_str(), "Token") == 0)
+            {
+                dynamic_cast<UPUptrade *>(pkg)->set_token(it->second);
+            }          
+        }   
+        JsonUnpack((UPUptrade *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());          
+        m_qRequest.put(pkg);
     }else if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/upTradeBatch") == 0)
     {
-        /* code */
+        pkg = new UPUptradebatch;
+        for(map<string,string>::iterator it=m_http.m_mFiled.begin();it!=m_http.m_mFiled.end();it++)
+        {
+            if (strcasecmp(it->first.c_str(), "Token") == 0)
+            {
+                dynamic_cast<UPUptradebatch *>(pkg)->set_token(it->second);
+            }          
+        }         
+        JsonUnpack((UPUptradebatch *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());
+        m_qRequest.put(pkg);
     }else if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/cancelTrade") == 0)
     {
-        /* code */
+        pkg = new UPCanceltrade;
+        for(map<string,string>::iterator it=m_http.m_mFiled.begin();it!=m_http.m_mFiled.end();it++)
+        {
+            if (strcasecmp(it->first.c_str(), "Token") == 0)
+            {
+                dynamic_cast<UPCanceltrade *>(pkg)->set_token(it->second);
+            }          
+        }  
+        JsonUnpack((UPCanceltrade *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());
+        m_qRequest.put(pkg);
     }else if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/cancelTradeBatch") == 0)
     {
-        /* code */
+        pkg = new UPCanceltradebatch;
+        for(map<string,string>::iterator it=m_http.m_mFiled.begin();it!=m_http.m_mFiled.end();it++)
+        {
+            if (strcasecmp(it->first.c_str(), "Token") == 0)
+            {
+                dynamic_cast<UPCanceltradebatch *>(pkg)->set_token(it->second);
+            }          
+        }  
+        JsonUnpack((UPCanceltradebatch *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());
+        m_qRequest.put(pkg);
     }else
     {
-        /* code */
-    }
-    
-    
+        return -1;
+    }         
     return iDataLen;
 }
 
