@@ -123,6 +123,60 @@ UProtocol/fast:
 	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/build
 .PHONY : UProtocol/fast
 
+UPAuth.o: UPAuth.cpp.o
+
+.PHONY : UPAuth.o
+
+# target to build an object file
+UPAuth.cpp.o:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.o
+.PHONY : UPAuth.cpp.o
+
+UPAuth.i: UPAuth.cpp.i
+
+.PHONY : UPAuth.i
+
+# target to preprocess a source file
+UPAuth.cpp.i:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.i
+.PHONY : UPAuth.cpp.i
+
+UPAuth.s: UPAuth.cpp.s
+
+.PHONY : UPAuth.s
+
+# target to generate assembly for a file
+UPAuth.cpp.s:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.s
+.PHONY : UPAuth.cpp.s
+
+UPCancelsubscribe.o: UPCancelsubscribe.cpp.o
+
+.PHONY : UPCancelsubscribe.o
+
+# target to build an object file
+UPCancelsubscribe.cpp.o:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o
+.PHONY : UPCancelsubscribe.cpp.o
+
+UPCancelsubscribe.i: UPCancelsubscribe.cpp.i
+
+.PHONY : UPCancelsubscribe.i
+
+# target to preprocess a source file
+UPCancelsubscribe.cpp.i:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.i
+.PHONY : UPCancelsubscribe.cpp.i
+
+UPCancelsubscribe.s: UPCancelsubscribe.cpp.s
+
+.PHONY : UPCancelsubscribe.s
+
+# target to generate assembly for a file
+UPCancelsubscribe.cpp.s:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.s
+.PHONY : UPCancelsubscribe.cpp.s
+
 UPDir.o: UPDir.cpp.o
 
 .PHONY : UPDir.o
@@ -149,6 +203,33 @@ UPDir.s: UPDir.cpp.s
 UPDir.cpp.s:
 	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPDir.cpp.s
 .PHONY : UPDir.cpp.s
+
+UPRequest.o: UPRequest.cpp.o
+
+.PHONY : UPRequest.o
+
+# target to build an object file
+UPRequest.cpp.o:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPRequest.cpp.o
+.PHONY : UPRequest.cpp.o
+
+UPRequest.i: UPRequest.cpp.i
+
+.PHONY : UPRequest.i
+
+# target to preprocess a source file
+UPRequest.cpp.i:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPRequest.cpp.i
+.PHONY : UPRequest.cpp.i
+
+UPRequest.s: UPRequest.cpp.s
+
+.PHONY : UPRequest.s
+
+# target to generate assembly for a file
+UPRequest.cpp.s:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPRequest.cpp.s
+.PHONY : UPRequest.cpp.s
 
 UPSubscribe.o: UPSubscribe.cpp.o
 
@@ -888,9 +969,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... UProtocol"
 	@echo "... edit_cache"
+	@echo "... UPAuth.o"
+	@echo "... UPAuth.i"
+	@echo "... UPAuth.s"
+	@echo "... UPCancelsubscribe.o"
+	@echo "... UPCancelsubscribe.i"
+	@echo "... UPCancelsubscribe.s"
 	@echo "... UPDir.o"
 	@echo "... UPDir.i"
 	@echo "... UPDir.s"
+	@echo "... UPRequest.o"
+	@echo "... UPRequest.i"
+	@echo "... UPRequest.s"
 	@echo "... UPSubscribe.o"
 	@echo "... UPSubscribe.i"
 	@echo "... UPSubscribe.s"

@@ -111,30 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named http
+# Target rules for targets named gong
 
 # Build rule for target.
-http: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 http
-.PHONY : http
+gong: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gong
+.PHONY : gong
 
 # fast build rule for target.
-http/fast:
-	$(MAKE) -f CMakeFiles/http.dir/build.make CMakeFiles/http.dir/build
-.PHONY : http/fast
-
-#=============================================================================
-# Target rules for targets named uv
-
-# Build rule for target.
-uv: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 uv
-.PHONY : uv
-
-# fast build rule for target.
-uv/fast:
-	$(MAKE) -f CMakeFiles/uv.dir/build.make CMakeFiles/uv.dir/build
-.PHONY : uv/fast
+gong/fast:
+	$(MAKE) -f CMakeFiles/gong.dir/build.make CMakeFiles/gong.dir/build
+.PHONY : gong/fast
 
 #=============================================================================
 # Target rules for targets named grant
@@ -150,17 +137,43 @@ grant/fast:
 .PHONY : grant/fast
 
 #=============================================================================
-# Target rules for targets named gong
+# Target rules for targets named uv
 
 # Build rule for target.
-gong: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gong
-.PHONY : gong
+uv: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uv
+.PHONY : uv
 
 # fast build rule for target.
-gong/fast:
-	$(MAKE) -f CMakeFiles/gong.dir/build.make CMakeFiles/gong.dir/build
-.PHONY : gong/fast
+uv/fast:
+	$(MAKE) -f CMakeFiles/uv.dir/build.make CMakeFiles/uv.dir/build
+.PHONY : uv/fast
+
+#=============================================================================
+# Target rules for targets named http
+
+# Build rule for target.
+http: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 http
+.PHONY : http
+
+# fast build rule for target.
+http/fast:
+	$(MAKE) -f CMakeFiles/http.dir/build.make CMakeFiles/http.dir/build
+.PHONY : http/fast
+
+#=============================================================================
+# Target rules for targets named ws
+
+# Build rule for target.
+ws: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ws
+.PHONY : ws
+
+# fast build rule for target.
+ws/fast:
+	$(MAKE) -f CMakeFiles/ws.dir/build.make CMakeFiles/ws.dir/build
+.PHONY : ws/fast
 
 gong.o: gong.cpp.o
 
@@ -270,6 +283,33 @@ uv.cpp.s:
 	$(MAKE) -f CMakeFiles/uv.dir/build.make CMakeFiles/uv.dir/uv.cpp.s
 .PHONY : uv.cpp.s
 
+ws.o: ws.cpp.o
+
+.PHONY : ws.o
+
+# target to build an object file
+ws.cpp.o:
+	$(MAKE) -f CMakeFiles/ws.dir/build.make CMakeFiles/ws.dir/ws.cpp.o
+.PHONY : ws.cpp.o
+
+ws.i: ws.cpp.i
+
+.PHONY : ws.i
+
+# target to preprocess a source file
+ws.cpp.i:
+	$(MAKE) -f CMakeFiles/ws.dir/build.make CMakeFiles/ws.dir/ws.cpp.i
+.PHONY : ws.cpp.i
+
+ws.s: ws.cpp.s
+
+.PHONY : ws.s
+
+# target to generate assembly for a file
+ws.cpp.s:
+	$(MAKE) -f CMakeFiles/ws.dir/build.make CMakeFiles/ws.dir/ws.cpp.s
+.PHONY : ws.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -277,11 +317,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... http"
-	@echo "... edit_cache"
-	@echo "... uv"
-	@echo "... grant"
 	@echo "... gong"
+	@echo "... grant"
+	@echo "... uv"
+	@echo "... edit_cache"
+	@echo "... http"
+	@echo "... ws"
 	@echo "... gong.o"
 	@echo "... gong.i"
 	@echo "... gong.s"
@@ -294,6 +335,9 @@ help:
 	@echo "... uv.o"
 	@echo "... uv.i"
 	@echo "... uv.s"
+	@echo "... ws.o"
+	@echo "... ws.i"
+	@echo "... ws.s"
 .PHONY : help
 
 

@@ -9,9 +9,13 @@ CMakeFiles/uv.dir/uv.cpp.o: ../BaseLib/UBHttpParser.h
 CMakeFiles/uv.dir/uv.cpp.o: ../BaseLib/UBJson.h
 CMakeFiles/uv.dir/uv.cpp.o: ../BaseLib/UBLock.h
 CMakeFiles/uv.dir/uv.cpp.o: ../BaseLib/UBMysql.h
+CMakeFiles/uv.dir/uv.cpp.o: ../BaseLib/UBWsParser.h
 CMakeFiles/uv.dir/uv.cpp.o: ../BaseLib/UBaseLib.h
+CMakeFiles/uv.dir/uv.cpp.o: ../Protocol/UPAuth.h
+CMakeFiles/uv.dir/uv.cpp.o: ../Protocol/UPCancelsubscribe.h
 CMakeFiles/uv.dir/uv.cpp.o: ../Protocol/UPDir.h
 CMakeFiles/uv.dir/uv.cpp.o: ../Protocol/UPHeartbeat.h
+CMakeFiles/uv.dir/uv.cpp.o: ../Protocol/UPRequest.h
 CMakeFiles/uv.dir/uv.cpp.o: ../Protocol/UPSubscribe.h
 CMakeFiles/uv.dir/uv.cpp.o: ../Protocol/UPallmarketinfo.h
 CMakeFiles/uv.dir/uv.cpp.o: ../Protocol/UPcanceltrade.h

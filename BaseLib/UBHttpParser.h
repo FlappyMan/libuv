@@ -20,6 +20,7 @@ public:
 	int Readed(const char *pData,uint32_t iLen);
 
 	bool GetFiled(string &sValue,string &sFiled);
+	bool GetFiled(string &sValue,const char *pFiled);
 
 	// callback function
 	int MessageBegin(){m_bHeaderFinished=false;m_bBodyFinished=false;m_sUrl.clear();m_sBody.clear();m_sCurFiled.clear();m_mFiled.clear();return 0;};

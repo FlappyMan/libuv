@@ -32,6 +32,7 @@ public:
     UBWsParser(){};
     ~UBWsParser(){};
 
+	bool WSReplyHeader(string &sOutHeader);		// 生成 WebSocket的返回头
 	int64_t WSSetFrame(UBWsParserFrameType ft, uint8_t *pData, uint32_t iDataLen, uint8_t *pBuffer, uint32_t iBufferSize);
 	int64_t WSGetFrame(UBWsParserFrameType *pFrameType, uint8_t *pOutBuffer, int iOutBufferSize, uint8_t *pInBuffer, int iInBufferLen);
 public:

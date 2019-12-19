@@ -905,6 +905,7 @@ class depthdata :
 
   enum : int {
     kTypeFieldNumber = 1,
+    kTokenFieldNumber = 3,
     kDataFieldNumber = 2,
   };
   // required string type = 1;
@@ -925,6 +926,26 @@ class depthdata :
   const std::string& _internal_type() const;
   void _internal_set_type(const std::string& value);
   std::string* _internal_mutable_type();
+  public:
+
+  // required string token = 3;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
   public:
 
   // required .ukex.depthdata.Data data = 2;
@@ -953,6 +974,7 @@ class depthdata :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   ::ukex::depthdata_Data* data_;
   friend struct ::TableStruct_ukex_2edepthdata_2eproto;
 };
@@ -1478,7 +1500,7 @@ inline void depthdata::set_allocated_type(std::string* type) {
 
 // required .ukex.depthdata.Data data = 2;
 inline bool depthdata::_internal_has_data() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
   PROTOBUF_ASSUME(!value || data_ != nullptr);
   return value;
 }
@@ -1487,7 +1509,7 @@ inline bool depthdata::has_data() const {
 }
 inline void depthdata::clear_data() {
   if (data_ != nullptr) data_->Clear();
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline const ::ukex::depthdata_Data& depthdata::_internal_data() const {
   const ::ukex::depthdata_Data* p = data_;
@@ -1500,13 +1522,13 @@ inline const ::ukex::depthdata_Data& depthdata::data() const {
 }
 inline ::ukex::depthdata_Data* depthdata::release_data() {
   // @@protoc_insertion_point(field_release:ukex.depthdata.data)
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
   ::ukex::depthdata_Data* temp = data_;
   data_ = nullptr;
   return temp;
 }
 inline ::ukex::depthdata_Data* depthdata::_internal_mutable_data() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   if (data_ == nullptr) {
     auto* p = CreateMaybeMessage<::ukex::depthdata_Data>(GetArenaNoVirtual());
     data_ = p;
@@ -1528,12 +1550,83 @@ inline void depthdata::set_allocated_data(::ukex::depthdata_Data* data) {
       data = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, data, submessage_arena);
     }
+    _has_bits_[0] |= 0x00000004u;
+  } else {
+    _has_bits_[0] &= ~0x00000004u;
+  }
+  data_ = data;
+  // @@protoc_insertion_point(field_set_allocated:ukex.depthdata.data)
+}
+
+// required string token = 3;
+inline bool depthdata::_internal_has_token() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool depthdata::has_token() const {
+  return _internal_has_token();
+}
+inline void depthdata::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& depthdata::token() const {
+  // @@protoc_insertion_point(field_get:ukex.depthdata.token)
+  return _internal_token();
+}
+inline void depthdata::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:ukex.depthdata.token)
+}
+inline std::string* depthdata::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:ukex.depthdata.token)
+  return _internal_mutable_token();
+}
+inline const std::string& depthdata::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void depthdata::_internal_set_token(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void depthdata::set_token(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.depthdata.token)
+}
+inline void depthdata::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.depthdata.token)
+}
+inline void depthdata::set_token(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.depthdata.token)
+}
+inline std::string* depthdata::_internal_mutable_token() {
+  _has_bits_[0] |= 0x00000002u;
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* depthdata::release_token() {
+  // @@protoc_insertion_point(field_release:ukex.depthdata.token)
+  if (!has_token()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void depthdata::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
     _has_bits_[0] |= 0x00000002u;
   } else {
     _has_bits_[0] &= ~0x00000002u;
   }
-  data_ = data;
-  // @@protoc_insertion_point(field_set_allocated:ukex.depthdata.data)
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:ukex.depthdata.token)
 }
 
 #ifdef __GNUC__

@@ -1,5 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/UProtocol.dir/UPAuth.cpp.o"
+  "CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o"
   "CMakeFiles/UProtocol.dir/UPDir.cpp.o"
+  "CMakeFiles/UProtocol.dir/UPRequest.cpp.o"
   "CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o"
   "CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o"
   "CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o"

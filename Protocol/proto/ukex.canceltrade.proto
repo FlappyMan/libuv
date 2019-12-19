@@ -6,5 +6,6 @@ message canceltrade
     {
         CMD = 102;
     }
-    required    uint64	id = 1;   
+    required    string	token = 1; 
+    required    uint64	id = 2;  
 }

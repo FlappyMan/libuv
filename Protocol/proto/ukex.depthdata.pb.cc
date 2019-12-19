@@ -160,7 +160,9 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ukex_2edepthdata_2eproto::offs
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::ukex::depthdata, type_),
   PROTOBUF_FIELD_OFFSET(::ukex::depthdata, data_),
+  PROTOBUF_FIELD_OFFSET(::ukex::depthdata, token_),
   0,
+  2,
   1,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -168,7 +170,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 9, 16, sizeof(::ukex::depthdata_Data_Depth_sellAction)},
   { 18, 25, sizeof(::ukex::depthdata_Data_Depth)},
   { 27, 33, sizeof(::ukex::depthdata_Data)},
-  { 34, 41, sizeof(::ukex::depthdata)},
+  { 34, 42, sizeof(::ukex::depthdata)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -180,15 +182,16 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ukex_2edepthdata_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\024ukex.depthdata.proto\022\004ukex\"\300\002\n\tdepthda"
+  "\n\024ukex.depthdata.proto\022\004ukex\"\317\002\n\tdepthda"
   "ta\022\014\n\004type\030\001 \002(\t\022\"\n\004data\030\002 \002(\0132\024.ukex.de"
-  "pthdata.Data\032\356\001\n\004Data\022)\n\005depth\030\001 \002(\0132\032.u"
-  "kex.depthdata.Data.Depth\032\272\001\n\005Depth\0221\n\003bu"
-  "y\030\001 \003(\0132$.ukex.depthdata.Data.Depth.buyA"
-  "ction\0223\n\004sell\030\002 \003(\0132%.ukex.depthdata.Dat"
-  "a.Depth.sellAction\032#\n\tbuyAction\022\n\n\002b0\030\001 "
-  "\002(\t\022\n\n\002b1\030\002 \002(\t\032$\n\nsellAction\022\n\n\002s0\030\001 \002("
-  "\t\022\n\n\002s1\030\002 \002(\t\"\020\n\005CONST\022\007\n\003CMD\020j"
+  "pthdata.Data\022\r\n\005token\030\003 \002(\t\032\356\001\n\004Data\022)\n\005"
+  "depth\030\001 \002(\0132\032.ukex.depthdata.Data.Depth\032"
+  "\272\001\n\005Depth\0221\n\003buy\030\001 \003(\0132$.ukex.depthdata."
+  "Data.Depth.buyAction\0223\n\004sell\030\002 \003(\0132%.uke"
+  "x.depthdata.Data.Depth.sellAction\032#\n\tbuy"
+  "Action\022\n\n\002b0\030\001 \002(\t\022\n\n\002b1\030\002 \002(\t\032$\n\nsellAc"
+  "tion\022\n\n\002s0\030\001 \002(\t\022\n\n\002s1\030\002 \002(\t\"\020\n\005CONST\022\007\n"
+  "\003CMD\020j"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2edepthdata_2eproto_deps[1] = {
 };
@@ -202,7 +205,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uke
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ukex_2edepthdata_2eproto_once;
 static bool descriptor_table_ukex_2edepthdata_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ukex_2edepthdata_2eproto = {
-  &descriptor_table_ukex_2edepthdata_2eproto_initialized, descriptor_table_protodef_ukex_2edepthdata_2eproto, "ukex.depthdata.proto", 351,
+  &descriptor_table_ukex_2edepthdata_2eproto_initialized, descriptor_table_protodef_ukex_2edepthdata_2eproto, "ukex.depthdata.proto", 366,
   &descriptor_table_ukex_2edepthdata_2eproto_once, descriptor_table_ukex_2edepthdata_2eproto_sccs, descriptor_table_ukex_2edepthdata_2eproto_deps, 5, 0,
   schemas, file_default_instances, TableStruct_ukex_2edepthdata_2eproto::offsets,
   file_level_metadata_ukex_2edepthdata_2eproto, 5, file_level_enum_descriptors_ukex_2edepthdata_2eproto, file_level_service_descriptors_ukex_2edepthdata_2eproto,
@@ -1247,6 +1250,9 @@ class depthdata::_Internal {
   }
   static const ::ukex::depthdata_Data& data(const depthdata* msg);
   static void set_has_data(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_token(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
 };
@@ -1269,6 +1275,10 @@ depthdata::depthdata(const depthdata& from)
   if (from._internal_has_type()) {
     type_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.type_);
   }
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_token()) {
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
   if (from._internal_has_data()) {
     data_ = new ::ukex::depthdata_Data(*from.data_);
   } else {
@@ -1280,6 +1290,7 @@ depthdata::depthdata(const depthdata& from)
 void depthdata::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_depthdata_ukex_2edepthdata_2eproto.base);
   type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   data_ = nullptr;
 }
 
@@ -1290,6 +1301,7 @@ depthdata::~depthdata() {
 
 void depthdata::SharedDtor() {
   type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete data_;
 }
 
@@ -1309,11 +1321,14 @@ void depthdata::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       type_.ClearNonDefaultToEmptyNoArena();
     }
     if (cached_has_bits & 0x00000002u) {
+      token_.ClearNonDefaultToEmptyNoArena();
+    }
+    if (cached_has_bits & 0x00000004u) {
       GOOGLE_DCHECK(data_ != nullptr);
       data_->Clear();
     }
@@ -1341,6 +1356,13 @@ const char* depthdata::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_data(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required string token = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_token(), ptr, ctx, "ukex.depthdata.token");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1383,11 +1405,21 @@ failure:
   }
 
   // required .ukex.depthdata.Data data = 2;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessageToArray(
         2, _Internal::data(this), target, stream);
+  }
+
+  // required string token = 3;
+  if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "ukex.depthdata.token");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_token(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1409,6 +1441,13 @@ size_t depthdata::RequiredFieldsByteSizeFallback() const {
         this->_internal_type());
   }
 
+  if (has_token()) {
+    // required string token = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+  }
+
   if (has_data()) {
     // required .ukex.depthdata.Data data = 2;
     total_size += 1 +
@@ -1422,11 +1461,16 @@ size_t depthdata::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.depthdata)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required string type = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_type());
+
+    // required string token = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
 
     // required .ukex.depthdata.Data data = 2;
     total_size += 1 +
@@ -1472,12 +1516,16 @@ void depthdata::MergeFrom(const depthdata& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       _has_bits_[0] |= 0x00000001u;
       type_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.type_);
     }
     if (cached_has_bits & 0x00000002u) {
+      _has_bits_[0] |= 0x00000002u;
+      token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+    }
+    if (cached_has_bits & 0x00000004u) {
       _internal_mutable_data()->::ukex::depthdata_Data::MergeFrom(from._internal_data());
     }
   }
@@ -1498,7 +1546,7 @@ void depthdata::CopyFrom(const depthdata& from) {
 }
 
 bool depthdata::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   if (has_data()) {
     if (!this->data_->IsInitialized()) return false;
   }
@@ -1510,6 +1558,8 @@ void depthdata::InternalSwap(depthdata* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   type_.Swap(&other->type_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(data_, other->data_);
 }

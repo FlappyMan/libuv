@@ -28,16 +28,16 @@ protected:
 	// void _Sync1Minute(time_t tCur);
 	// void _SyncXMinute(time_t tCur);
 
-	void SendNextSyncReq();
-	void RecvFileRequest(UPFileRequest *pkg);
-	void RecvFileData(UPFileData *pkg);
+	// void SendNextSyncReq();
+	// void RecvFileRequest(UPFileRequest *pkg);
+	// void RecvFileData(UPFileData *pkg);
 protected:
 	const uv_tcp_t* m_tcp;
 	// queue<UProtocolBase*> &m_qRequest;
 	BlockQueue<UProtocolBase*> &m_qRequest;
 	UBBuffer m_buffer;
 
-	queue<UPFileRequest *> m_qSyncFile;
+	// queue<UPFileRequest *> m_qSyncFile;
 public:
 	bool m_bLogined;
 	bool m_bSyncFinished;           // 是否已经完成初始化工作（本地缓存k线数据）

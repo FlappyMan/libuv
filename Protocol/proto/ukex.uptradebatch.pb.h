@@ -424,10 +424,11 @@ class uptradebatch :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kTradesFieldNumber = 2,
-    kPaypasswordFieldNumber = 1,
+    kTradesFieldNumber = 3,
+    kTokenFieldNumber = 1,
+    kPaypasswordFieldNumber = 2,
   };
-  // repeated .ukex.uptradebatch.Trades trades = 2;
+  // repeated .ukex.uptradebatch.Trades trades = 3;
   int trades_size() const;
   private:
   int _internal_trades_size() const;
@@ -445,7 +446,27 @@ class uptradebatch :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ukex::uptradebatch_Trades >&
       trades() const;
 
-  // required string paypassword = 1;
+  // required string token = 1;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
+  public:
+
+  // required string paypassword = 2;
   bool has_paypassword() const;
   private:
   bool _internal_has_paypassword() const;
@@ -469,10 +490,14 @@ class uptradebatch :
  private:
   class _Internal;
 
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ukex::uptradebatch_Trades > trades_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr paypassword_;
   friend struct ::TableStruct_ukex_2euptradebatch_2eproto;
 };
@@ -603,9 +628,80 @@ inline void uptradebatch_Trades::set_type(::PROTOBUF_NAMESPACE_ID::uint32 value)
 
 // uptradebatch
 
-// required string paypassword = 1;
-inline bool uptradebatch::_internal_has_paypassword() const {
+// required string token = 1;
+inline bool uptradebatch::_internal_has_token() const {
   bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool uptradebatch::has_token() const {
+  return _internal_has_token();
+}
+inline void uptradebatch::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& uptradebatch::token() const {
+  // @@protoc_insertion_point(field_get:ukex.uptradebatch.token)
+  return _internal_token();
+}
+inline void uptradebatch::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:ukex.uptradebatch.token)
+}
+inline std::string* uptradebatch::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:ukex.uptradebatch.token)
+  return _internal_mutable_token();
+}
+inline const std::string& uptradebatch::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void uptradebatch::_internal_set_token(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void uptradebatch::set_token(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.uptradebatch.token)
+}
+inline void uptradebatch::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.uptradebatch.token)
+}
+inline void uptradebatch::set_token(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.uptradebatch.token)
+}
+inline std::string* uptradebatch::_internal_mutable_token() {
+  _has_bits_[0] |= 0x00000001u;
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* uptradebatch::release_token() {
+  // @@protoc_insertion_point(field_release:ukex.uptradebatch.token)
+  if (!has_token()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void uptradebatch::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:ukex.uptradebatch.token)
+}
+
+// required string paypassword = 2;
+inline bool uptradebatch::_internal_has_paypassword() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
 inline bool uptradebatch::has_paypassword() const {
@@ -613,7 +709,7 @@ inline bool uptradebatch::has_paypassword() const {
 }
 inline void uptradebatch::clear_paypassword() {
   paypassword_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline const std::string& uptradebatch::paypassword() const {
   // @@protoc_insertion_point(field_get:ukex.uptradebatch.paypassword)
@@ -631,29 +727,29 @@ inline const std::string& uptradebatch::_internal_paypassword() const {
   return paypassword_.GetNoArena();
 }
 inline void uptradebatch::_internal_set_paypassword(const std::string& value) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   paypassword_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
 }
 inline void uptradebatch::set_paypassword(std::string&& value) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   paypassword_.SetNoArena(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:ukex.uptradebatch.paypassword)
 }
 inline void uptradebatch::set_paypassword(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   paypassword_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ukex.uptradebatch.paypassword)
 }
 inline void uptradebatch::set_paypassword(const char* value, size_t size) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   paypassword_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:ukex.uptradebatch.paypassword)
 }
 inline std::string* uptradebatch::_internal_mutable_paypassword() {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   return paypassword_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 inline std::string* uptradebatch::release_paypassword() {
@@ -661,20 +757,20 @@ inline std::string* uptradebatch::release_paypassword() {
   if (!has_paypassword()) {
     return nullptr;
   }
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
   return paypassword_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 inline void uptradebatch::set_allocated_paypassword(std::string* paypassword) {
   if (paypassword != nullptr) {
-    _has_bits_[0] |= 0x00000001u;
+    _has_bits_[0] |= 0x00000002u;
   } else {
-    _has_bits_[0] &= ~0x00000001u;
+    _has_bits_[0] &= ~0x00000002u;
   }
   paypassword_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), paypassword);
   // @@protoc_insertion_point(field_set_allocated:ukex.uptradebatch.paypassword)
 }
 
-// repeated .ukex.uptradebatch.Trades trades = 2;
+// repeated .ukex.uptradebatch.Trades trades = 3;
 inline int uptradebatch::_internal_trades_size() const {
   return trades_.size();
 }

@@ -230,9 +230,30 @@ class canceltrade :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kIdFieldNumber = 1,
+    kTokenFieldNumber = 1,
+    kIdFieldNumber = 2,
   };
-  // required uint64 id = 1;
+  // required string token = 1;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
+  public:
+
+  // required uint64 id = 2;
   bool has_id() const;
   private:
   bool _internal_has_id() const;
@@ -249,9 +270,13 @@ class canceltrade :
  private:
   class _Internal;
 
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   ::PROTOBUF_NAMESPACE_ID::uint64 id_;
   friend struct ::TableStruct_ukex_2ecanceltrade_2eproto;
 };
@@ -266,9 +291,80 @@ class canceltrade :
 #endif  // __GNUC__
 // canceltrade
 
-// required uint64 id = 1;
-inline bool canceltrade::_internal_has_id() const {
+// required string token = 1;
+inline bool canceltrade::_internal_has_token() const {
   bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool canceltrade::has_token() const {
+  return _internal_has_token();
+}
+inline void canceltrade::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& canceltrade::token() const {
+  // @@protoc_insertion_point(field_get:ukex.canceltrade.token)
+  return _internal_token();
+}
+inline void canceltrade::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:ukex.canceltrade.token)
+}
+inline std::string* canceltrade::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:ukex.canceltrade.token)
+  return _internal_mutable_token();
+}
+inline const std::string& canceltrade::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void canceltrade::_internal_set_token(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void canceltrade::set_token(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.canceltrade.token)
+}
+inline void canceltrade::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.canceltrade.token)
+}
+inline void canceltrade::set_token(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.canceltrade.token)
+}
+inline std::string* canceltrade::_internal_mutable_token() {
+  _has_bits_[0] |= 0x00000001u;
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* canceltrade::release_token() {
+  // @@protoc_insertion_point(field_release:ukex.canceltrade.token)
+  if (!has_token()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void canceltrade::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:ukex.canceltrade.token)
+}
+
+// required uint64 id = 2;
+inline bool canceltrade::_internal_has_id() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
 inline bool canceltrade::has_id() const {
@@ -276,7 +372,7 @@ inline bool canceltrade::has_id() const {
 }
 inline void canceltrade::clear_id() {
   id_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 canceltrade::_internal_id() const {
   return id_;
@@ -286,7 +382,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 canceltrade::id() const {
   return _internal_id();
 }
 inline void canceltrade::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   id_ = value;
 }
 inline void canceltrade::set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {

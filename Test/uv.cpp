@@ -148,7 +148,7 @@ void ServerTest_Read(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf)
 	{
 		g_strReply.append(buf->base,nread);
 		cout<<"\t [Server] socket already is websocket, Frame total size:"<<g_strReply.length()<<endl;
-		cout<<"\t [Server] frame:"<<g_strReply<<endl;
+		cout<<"\t [Server] frame raw:"<<g_strReply<<endl;
 
 		char sFrame[FRAME_SIZE];
 		UBWsParserFrameType wsft;
@@ -156,7 +156,7 @@ void ServerTest_Read(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf)
 		if(iFrameLen>0)
 		{
 			g_strReply.assign(sFrame,iFrameLen);
-			cout<<"\t [Server] recv frame:"<<g_strReply<<endl;
+			cout<<"\t [Server] frame content:"<<g_strReply<<endl;
 		}
 		else
 		{
@@ -323,6 +323,8 @@ void ServerClientTest()
 
 	uv_thread_join(&client);
 	uv_thread_join(&server);
+
+	cout<<"UV test finished"<<endl;
 }
 
 int main()

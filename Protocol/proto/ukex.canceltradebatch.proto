@@ -6,5 +6,6 @@ message canceltradebatch
     {
         CMD = 103;
     }
-    repeated    uint64	ids = 1;
+    required    string	token = 1; 
+    repeated    uint64	ids = 2;
 }

@@ -119,16 +119,18 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ukex_2ematcheddata_2eproto::of
   PROTOBUF_FIELD_OFFSET(::ukex::matcheddata, price_),
   PROTOBUF_FIELD_OFFSET(::ukex::matcheddata, buyuser_),
   PROTOBUF_FIELD_OFFSET(::ukex::matcheddata, selluser_),
+  PROTOBUF_FIELD_OFFSET(::ukex::matcheddata, token_),
   0,
-  4,
+  5,
   1,
-  2,
   3,
+  4,
+  2,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 10, sizeof(::ukex::matcheddata_BuyUser)},
   { 15, 25, sizeof(::ukex::matcheddata_SellUser)},
-  { 30, 40, sizeof(::ukex::matcheddata)},
+  { 30, 41, sizeof(::ukex::matcheddata)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -138,16 +140,16 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ukex_2ematcheddata_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\026ukex.matcheddata.proto\022\004ukex\"\310\002\n\013match"
+  "\n\026ukex.matcheddata.proto\022\004ukex\"\327\002\n\013match"
   "eddata\022\017\n\007addtime\030\001 \002(\t\022\n\n\002id\030\002 \002(\004\022\r\n\005p"
   "rice\030\003 \002(\t\022*\n\007buyuser\030\004 \002(\0132\031.ukex.match"
   "eddata.BuyUser\022,\n\010selluser\030\005 \002(\0132\032.ukex."
-  "matcheddata.SellUser\032O\n\007BuyUser\022\016\n\006useri"
-  "d\030\001 \002(\t\022\013\n\003num\030\002 \002(\t\022\014\n\004deal\030\003 \002(\t\022\013\n\003cn"
-  "y\030\004 \002(\004\022\014\n\004cnyd\030\005 \002(\004\032P\n\010SellUser\022\016\n\006use"
-  "rid\030\001 \002(\t\022\013\n\003num\030\002 \002(\t\022\014\n\004deal\030\003 \002(\t\022\013\n\003"
-  "xnb\030\004 \002(\004\022\014\n\004xnbd\030\005 \002(\004\"\020\n\005CONST\022\007\n\003CMD\020"
-  "l"
+  "matcheddata.SellUser\022\r\n\005token\030\006 \002(\t\032O\n\007B"
+  "uyUser\022\016\n\006userid\030\001 \002(\t\022\013\n\003num\030\002 \002(\t\022\014\n\004d"
+  "eal\030\003 \002(\t\022\013\n\003cny\030\004 \002(\004\022\014\n\004cnyd\030\005 \002(\004\032P\n\010"
+  "SellUser\022\016\n\006userid\030\001 \002(\t\022\013\n\003num\030\002 \002(\t\022\014\n"
+  "\004deal\030\003 \002(\t\022\013\n\003xnb\030\004 \002(\004\022\014\n\004xnbd\030\005 \002(\004\"\020"
+  "\n\005CONST\022\007\n\003CMD\020l"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2ematcheddata_2eproto_deps[1] = {
 };
@@ -159,7 +161,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uke
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ukex_2ematcheddata_2eproto_once;
 static bool descriptor_table_ukex_2ematcheddata_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ukex_2ematcheddata_2eproto = {
-  &descriptor_table_ukex_2ematcheddata_2eproto_initialized, descriptor_table_protodef_ukex_2ematcheddata_2eproto, "ukex.matcheddata.proto", 361,
+  &descriptor_table_ukex_2ematcheddata_2eproto_initialized, descriptor_table_protodef_ukex_2ematcheddata_2eproto, "ukex.matcheddata.proto", 376,
   &descriptor_table_ukex_2ematcheddata_2eproto_once, descriptor_table_ukex_2ematcheddata_2eproto_sccs, descriptor_table_ukex_2ematcheddata_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_ukex_2ematcheddata_2eproto::offsets,
   file_level_metadata_ukex_2ematcheddata_2eproto, 3, file_level_enum_descriptors_ukex_2ematcheddata_2eproto, file_level_service_descriptors_ukex_2ematcheddata_2eproto,
@@ -1009,18 +1011,21 @@ class matcheddata::_Internal {
     (*has_bits)[0] |= 1u;
   }
   static void set_has_id(HasBits* has_bits) {
-    (*has_bits)[0] |= 16u;
+    (*has_bits)[0] |= 32u;
   }
   static void set_has_price(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
   static const ::ukex::matcheddata_BuyUser& buyuser(const matcheddata* msg);
   static void set_has_buyuser(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
+    (*has_bits)[0] |= 8u;
   }
   static const ::ukex::matcheddata_SellUser& selluser(const matcheddata* msg);
   static void set_has_selluser(HasBits* has_bits) {
-    (*has_bits)[0] |= 8u;
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_token(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
   }
 };
 
@@ -1050,6 +1055,10 @@ matcheddata::matcheddata(const matcheddata& from)
   if (from._internal_has_price()) {
     price_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.price_);
   }
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_token()) {
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
   if (from._internal_has_buyuser()) {
     buyuser_ = new ::ukex::matcheddata_BuyUser(*from.buyuser_);
   } else {
@@ -1068,6 +1077,7 @@ void matcheddata::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_matcheddata_ukex_2ematcheddata_2eproto.base);
   addtime_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   price_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&buyuser_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&id_) -
       reinterpret_cast<char*>(&buyuser_)) + sizeof(id_));
@@ -1081,6 +1091,7 @@ matcheddata::~matcheddata() {
 void matcheddata::SharedDtor() {
   addtime_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   price_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete buyuser_;
   if (this != internal_default_instance()) delete selluser_;
 }
@@ -1101,7 +1112,7 @@ void matcheddata::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
       addtime_.ClearNonDefaultToEmptyNoArena();
     }
@@ -1109,10 +1120,13 @@ void matcheddata::Clear() {
       price_.ClearNonDefaultToEmptyNoArena();
     }
     if (cached_has_bits & 0x00000004u) {
+      token_.ClearNonDefaultToEmptyNoArena();
+    }
+    if (cached_has_bits & 0x00000008u) {
       GOOGLE_DCHECK(buyuser_ != nullptr);
       buyuser_->Clear();
     }
-    if (cached_has_bits & 0x00000008u) {
+    if (cached_has_bits & 0x00000010u) {
       GOOGLE_DCHECK(selluser_ != nullptr);
       selluser_->Clear();
     }
@@ -1166,6 +1180,13 @@ const char* matcheddata::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
+      // required string token = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_token(), ptr, ctx, "ukex.matcheddata.token");
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -1205,7 +1226,7 @@ failure:
   }
 
   // required uint64 id = 2;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000020u) {
     stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_id(), target);
   }
@@ -1221,7 +1242,7 @@ failure:
   }
 
   // required .ukex.matcheddata.BuyUser buyuser = 4;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000008u) {
     stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessageToArray(
@@ -1229,11 +1250,21 @@ failure:
   }
 
   // required .ukex.matcheddata.SellUser selluser = 5;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000010u) {
     stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessageToArray(
         5, _Internal::selluser(this), target, stream);
+  }
+
+  // required string token = 6;
+  if (cached_has_bits & 0x00000004u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "ukex.matcheddata.token");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_token(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1260,6 +1291,13 @@ size_t matcheddata::RequiredFieldsByteSizeFallback() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_price());
+  }
+
+  if (has_token()) {
+    // required string token = 6;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
   }
 
   if (has_buyuser()) {
@@ -1289,7 +1327,7 @@ size_t matcheddata::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.matcheddata)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000001f) ^ 0x0000001f) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000003f) ^ 0x0000003f) == 0) {  // All required fields are present.
     // required string addtime = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -1299,6 +1337,11 @@ size_t matcheddata::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_price());
+
+    // required string token = 6;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
 
     // required .ukex.matcheddata.BuyUser buyuser = 4;
     total_size += 1 +
@@ -1354,7 +1397,7 @@ void matcheddata::MergeFrom(const matcheddata& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
       _has_bits_[0] |= 0x00000001u;
       addtime_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.addtime_);
@@ -1364,12 +1407,16 @@ void matcheddata::MergeFrom(const matcheddata& from) {
       price_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.price_);
     }
     if (cached_has_bits & 0x00000004u) {
-      _internal_mutable_buyuser()->::ukex::matcheddata_BuyUser::MergeFrom(from._internal_buyuser());
+      _has_bits_[0] |= 0x00000004u;
+      token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
     }
     if (cached_has_bits & 0x00000008u) {
-      _internal_mutable_selluser()->::ukex::matcheddata_SellUser::MergeFrom(from._internal_selluser());
+      _internal_mutable_buyuser()->::ukex::matcheddata_BuyUser::MergeFrom(from._internal_buyuser());
     }
     if (cached_has_bits & 0x00000010u) {
+      _internal_mutable_selluser()->::ukex::matcheddata_SellUser::MergeFrom(from._internal_selluser());
+    }
+    if (cached_has_bits & 0x00000020u) {
       id_ = from.id_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -1391,7 +1438,7 @@ void matcheddata::CopyFrom(const matcheddata& from) {
 }
 
 bool matcheddata::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
+  if ((_has_bits_[0] & 0x0000003f) != 0x0000003f) return false;
   if (has_buyuser()) {
     if (!this->buyuser_->IsInitialized()) return false;
   }
@@ -1408,6 +1455,8 @@ void matcheddata::InternalSwap(matcheddata* other) {
   addtime_.Swap(&other->addtime_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   price_.Swap(&other->price_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(buyuser_, other->buyuser_);
   swap(selluser_, other->selluser_);

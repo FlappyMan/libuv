@@ -44,7 +44,11 @@ void Client_cbRead(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf)
 	}
 
 	cout<<"[Client] readed :"<<buf->base<<endl;
-	g_srv_client.Read((uv_tcp_t*)client,buf->base, nread);
+	if(g_srv_client.Read((uv_tcp_t*)client,buf->base, nread)<0)
+	{
+		uv_close((uv_handle_t*) client, Client_cbClosed);
+	}
+
 	g_cache_read.Free(buf->base,buf->len);
 }
 

@@ -46,11 +46,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ukex_2eresponse_2eproto::offse
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::ukex::response, status_),
   PROTOBUF_FIELD_OFFSET(::ukex::response, data_),
-  1,
+  PROTOBUF_FIELD_OFFSET(::ukex::response, token_),
+  2,
   0,
+  1,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, sizeof(::ukex::response)},
+  { 0, 8, sizeof(::ukex::response)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -58,9 +60,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ukex_2eresponse_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\023ukex.response.proto\022\004ukex\":\n\010response\022"
-  "\016\n\006status\030\001 \002(\005\022\014\n\004data\030\002 \002(\t\"\020\n\005CONST\022\007"
-  "\n\003CMD\020o"
+  "\n\023ukex.response.proto\022\004ukex\"I\n\010response\022"
+  "\016\n\006status\030\001 \002(\005\022\014\n\004data\030\002 \002(\t\022\r\n\005token\030\003"
+  " \002(\t\"\020\n\005CONST\022\007\n\003CMD\020o"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2eresponse_2eproto_deps[1] = {
 };
@@ -70,7 +72,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uke
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ukex_2eresponse_2eproto_once;
 static bool descriptor_table_ukex_2eresponse_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ukex_2eresponse_2eproto = {
-  &descriptor_table_ukex_2eresponse_2eproto_initialized, descriptor_table_protodef_ukex_2eresponse_2eproto, "ukex.response.proto", 87,
+  &descriptor_table_ukex_2eresponse_2eproto_initialized, descriptor_table_protodef_ukex_2eresponse_2eproto, "ukex.response.proto", 102,
   &descriptor_table_ukex_2eresponse_2eproto_once, descriptor_table_ukex_2eresponse_2eproto_sccs, descriptor_table_ukex_2eresponse_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_ukex_2eresponse_2eproto::offsets,
   file_level_metadata_ukex_2eresponse_2eproto, 1, file_level_enum_descriptors_ukex_2eresponse_2eproto, file_level_service_descriptors_ukex_2eresponse_2eproto,
@@ -107,10 +109,13 @@ class response::_Internal {
  public:
   using HasBits = decltype(std::declval<response>()._has_bits_);
   static void set_has_status(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 4u;
   }
   static void set_has_data(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
+  }
+  static void set_has_token(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
   }
 };
 
@@ -128,6 +133,10 @@ response::response(const response& from)
   if (from._internal_has_data()) {
     data_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.data_);
   }
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_token()) {
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
   status_ = from.status_;
   // @@protoc_insertion_point(copy_constructor:ukex.response)
 }
@@ -135,6 +144,7 @@ response::response(const response& from)
 void response::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_response_ukex_2eresponse_2eproto.base);
   data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   status_ = 0;
 }
 
@@ -145,6 +155,7 @@ response::~response() {
 
 void response::SharedDtor() {
   data_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void response::SetCachedSize(int size) const {
@@ -163,8 +174,13 @@ void response::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    data_.ClearNonDefaultToEmptyNoArena();
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      data_.ClearNonDefaultToEmptyNoArena();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      token_.ClearNonDefaultToEmptyNoArena();
+    }
   }
   status_ = 0;
   _has_bits_.Clear();
@@ -191,6 +207,13 @@ const char* response::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_data(), ptr, ctx, "ukex.response.data");
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required string token = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_token(), ptr, ctx, "ukex.response.token");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -223,7 +246,7 @@ failure:
 
   cached_has_bits = _has_bits_[0];
   // required int32 status = 1;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_status(), target);
   }
@@ -236,6 +259,16 @@ failure:
       "ukex.response.data");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_data(), target);
+  }
+
+  // required string token = 3;
+  if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "ukex.response.token");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_token(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -257,6 +290,13 @@ size_t response::RequiredFieldsByteSizeFallback() const {
         this->_internal_data());
   }
 
+  if (has_token()) {
+    // required string token = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+  }
+
   if (has_status()) {
     // required int32 status = 1;
     total_size += 1 +
@@ -270,11 +310,16 @@ size_t response::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.response)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required string data = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_data());
+
+    // required string token = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
 
     // required int32 status = 1;
     total_size += 1 +
@@ -320,12 +365,16 @@ void response::MergeFrom(const response& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       _has_bits_[0] |= 0x00000001u;
       data_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.data_);
     }
     if (cached_has_bits & 0x00000002u) {
+      _has_bits_[0] |= 0x00000002u;
+      token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+    }
+    if (cached_has_bits & 0x00000004u) {
       status_ = from.status_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -347,7 +396,7 @@ void response::CopyFrom(const response& from) {
 }
 
 bool response::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   return true;
 }
 
@@ -356,6 +405,8 @@ void response::InternalSwap(response* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   data_.Swap(&other->data_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(status_, other->status_);
 }

@@ -5,6 +5,7 @@
 
 #include "global.h"
 #include "BlockQueue.h"
+#include "UProtocol.h"
 
 class ClientSession
 {
@@ -23,7 +24,7 @@ public:
 protected:
     uv_tcp_t * m_tcp;
     UBBuffer m_buffer;
-
+    BlockQueue<UProtocolBase*> m_qRequest;
     UBHttpParser m_http;
 
     time_t m_tLast;

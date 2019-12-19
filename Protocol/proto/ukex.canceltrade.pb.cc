@@ -44,11 +44,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ukex_2ecanceltrade_2eproto::of
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::ukex::canceltrade, token_),
   PROTOBUF_FIELD_OFFSET(::ukex::canceltrade, id_),
   0,
+  1,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 6, sizeof(::ukex::canceltrade)},
+  { 0, 7, sizeof(::ukex::canceltrade)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -56,8 +58,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ukex_2ecanceltrade_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\026ukex.canceltrade.proto\022\004ukex\"+\n\013cancel"
-  "trade\022\n\n\002id\030\001 \002(\004\"\020\n\005CONST\022\007\n\003CMD\020f"
+  "\n\026ukex.canceltrade.proto\022\004ukex\":\n\013cancel"
+  "trade\022\r\n\005token\030\001 \002(\t\022\n\n\002id\030\002 \002(\004\"\020\n\005CONS"
+  "T\022\007\n\003CMD\020f"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2ecanceltrade_2eproto_deps[1] = {
 };
@@ -67,7 +70,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uke
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ukex_2ecanceltrade_2eproto_once;
 static bool descriptor_table_ukex_2ecanceltrade_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ukex_2ecanceltrade_2eproto = {
-  &descriptor_table_ukex_2ecanceltrade_2eproto_initialized, descriptor_table_protodef_ukex_2ecanceltrade_2eproto, "ukex.canceltrade.proto", 75,
+  &descriptor_table_ukex_2ecanceltrade_2eproto_initialized, descriptor_table_protodef_ukex_2ecanceltrade_2eproto, "ukex.canceltrade.proto", 90,
   &descriptor_table_ukex_2ecanceltrade_2eproto_once, descriptor_table_ukex_2ecanceltrade_2eproto_sccs, descriptor_table_ukex_2ecanceltrade_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_ukex_2ecanceltrade_2eproto::offsets,
   file_level_metadata_ukex_2ecanceltrade_2eproto, 1, file_level_enum_descriptors_ukex_2ecanceltrade_2eproto, file_level_service_descriptors_ukex_2ecanceltrade_2eproto,
@@ -103,8 +106,11 @@ void canceltrade::InitAsDefaultInstance() {
 class canceltrade::_Internal {
  public:
   using HasBits = decltype(std::declval<canceltrade>()._has_bits_);
-  static void set_has_id(HasBits* has_bits) {
+  static void set_has_token(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
+  }
+  static void set_has_id(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
   }
 };
 
@@ -118,11 +124,17 @@ canceltrade::canceltrade(const canceltrade& from)
       _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_token()) {
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
   id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:ukex.canceltrade)
 }
 
 void canceltrade::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_canceltrade_ukex_2ecanceltrade_2eproto.base);
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   id_ = PROTOBUF_ULONGLONG(0);
 }
 
@@ -132,6 +144,7 @@ canceltrade::~canceltrade() {
 }
 
 void canceltrade::SharedDtor() {
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void canceltrade::SetCachedSize(int size) const {
@@ -149,6 +162,10 @@ void canceltrade::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    token_.ClearNonDefaultToEmptyNoArena();
+  }
   id_ = PROTOBUF_ULONGLONG(0);
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -162,9 +179,16 @@ const char* canceltrade::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // required uint64 id = 1;
+      // required string token = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_token(), ptr, ctx, "ukex.canceltrade.token");
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required uint64 id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           _Internal::set_has_id(&has_bits);
           id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
@@ -198,10 +222,20 @@ failure:
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required uint64 id = 1;
+  // required string token = 1;
   if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "ukex.canceltrade.token");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_token(), target);
+  }
+
+  // required uint64 id = 2;
+  if (cached_has_bits & 0x00000002u) {
     stream->EnsureSpace(&target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(1, this->_internal_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -212,15 +246,43 @@ failure:
   return target;
 }
 
+size_t canceltrade::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:ukex.canceltrade)
+  size_t total_size = 0;
+
+  if (has_token()) {
+    // required string token = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+  }
+
+  if (has_id()) {
+    // required uint64 id = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_id());
+  }
+
+  return total_size;
+}
 size_t canceltrade::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.canceltrade)
   size_t total_size = 0;
 
-  // required uint64 id = 1;
-  if (has_id()) {
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required string token = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+
+    // required uint64 id = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
         this->_internal_id());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
   }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -257,8 +319,16 @@ void canceltrade::MergeFrom(const canceltrade& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_id()) {
-    _internal_set_id(from._internal_id());
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _has_bits_[0] |= 0x00000001u;
+      token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+    }
+    if (cached_has_bits & 0x00000002u) {
+      id_ = from.id_;
+    }
+    _has_bits_[0] |= cached_has_bits;
   }
 }
 
@@ -277,7 +347,7 @@ void canceltrade::CopyFrom(const canceltrade& from) {
 }
 
 bool canceltrade::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   return true;
 }
 
@@ -285,6 +355,8 @@ void canceltrade::InternalSwap(canceltrade* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
+  token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(id_, other->id_);
 }
 

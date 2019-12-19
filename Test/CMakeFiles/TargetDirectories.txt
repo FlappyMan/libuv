@@ -1,6 +1,7 @@
 /home/gong/workspace/git/UkexServer/Test/CMakeFiles/rebuild_cache.dir
-/home/gong/workspace/git/UkexServer/Test/CMakeFiles/http.dir
-/home/gong/workspace/git/UkexServer/Test/CMakeFiles/edit_cache.dir
-/home/gong/workspace/git/UkexServer/Test/CMakeFiles/uv.dir
-/home/gong/workspace/git/UkexServer/Test/CMakeFiles/grant.dir
 /home/gong/workspace/git/UkexServer/Test/CMakeFiles/gong.dir
+/home/gong/workspace/git/UkexServer/Test/CMakeFiles/grant.dir
+/home/gong/workspace/git/UkexServer/Test/CMakeFiles/uv.dir
+/home/gong/workspace/git/UkexServer/Test/CMakeFiles/edit_cache.dir
+/home/gong/workspace/git/UkexServer/Test/CMakeFiles/http.dir
+/home/gong/workspace/git/UkexServer/Test/CMakeFiles/ws.dir

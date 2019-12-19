@@ -12,7 +12,7 @@ class UPSubscribe : public UProtocolBase
         void JsonPack(Json::Value &root){};
         bool JsonUnpack(Json::Value &root){return true;};
 
-        bool JsonParser(Json::Value &root,string& sub);
+        bool JsonParser(string& sub, Json::Value &root);
     public:
         static constexpr const char* CMD_WSAPI = "sub";//WS
         //static constexpr const char* CMD_WEBAPI = "/api/private/subscribe";//HTTP

@@ -18,6 +18,9 @@
 #include "UPfilerequest.h"
 #include "UPfiledata.h"
 #include "UPSubscribe.h"
+#include "UPCancelsubscribe.h"
+#include "UPAuth.h"
+#include "UPRequest.h"
 
 #include "UPDir.h"
 #include "UPHeartbeat.h"

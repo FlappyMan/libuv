@@ -9,9 +9,13 @@ CMakeFiles/grant.dir/grant.cpp.o: ../BaseLib/UBHttpParser.h
 CMakeFiles/grant.dir/grant.cpp.o: ../BaseLib/UBJson.h
 CMakeFiles/grant.dir/grant.cpp.o: ../BaseLib/UBLock.h
 CMakeFiles/grant.dir/grant.cpp.o: ../BaseLib/UBMysql.h
+CMakeFiles/grant.dir/grant.cpp.o: ../BaseLib/UBWsParser.h
 CMakeFiles/grant.dir/grant.cpp.o: ../BaseLib/UBaseLib.h
+CMakeFiles/grant.dir/grant.cpp.o: ../Protocol/UPAuth.h
+CMakeFiles/grant.dir/grant.cpp.o: ../Protocol/UPCancelsubscribe.h
 CMakeFiles/grant.dir/grant.cpp.o: ../Protocol/UPDir.h
 CMakeFiles/grant.dir/grant.cpp.o: ../Protocol/UPHeartbeat.h
+CMakeFiles/grant.dir/grant.cpp.o: ../Protocol/UPRequest.h
 CMakeFiles/grant.dir/grant.cpp.o: ../Protocol/UPSubscribe.h
 CMakeFiles/grant.dir/grant.cpp.o: ../Protocol/UPallmarketinfo.h
 CMakeFiles/grant.dir/grant.cpp.o: ../Protocol/UPcanceltrade.h

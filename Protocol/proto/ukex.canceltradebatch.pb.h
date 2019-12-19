@@ -230,9 +230,10 @@ class canceltradebatch :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kIdsFieldNumber = 1,
+    kIdsFieldNumber = 2,
+    kTokenFieldNumber = 1,
   };
-  // repeated uint64 ids = 1;
+  // repeated uint64 ids = 2;
   int ids_size() const;
   private:
   int _internal_ids_size() const;
@@ -254,6 +255,26 @@ class canceltradebatch :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
       mutable_ids();
 
+  // required string token = 1;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
+  public:
+
   // @@protoc_insertion_point(class_scope:ukex.canceltradebatch)
  private:
   class _Internal;
@@ -262,6 +283,7 @@ class canceltradebatch :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > ids_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   friend struct ::TableStruct_ukex_2ecanceltradebatch_2eproto;
 };
 // ===================================================================
@@ -275,7 +297,78 @@ class canceltradebatch :
 #endif  // __GNUC__
 // canceltradebatch
 
-// repeated uint64 ids = 1;
+// required string token = 1;
+inline bool canceltradebatch::_internal_has_token() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool canceltradebatch::has_token() const {
+  return _internal_has_token();
+}
+inline void canceltradebatch::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& canceltradebatch::token() const {
+  // @@protoc_insertion_point(field_get:ukex.canceltradebatch.token)
+  return _internal_token();
+}
+inline void canceltradebatch::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:ukex.canceltradebatch.token)
+}
+inline std::string* canceltradebatch::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:ukex.canceltradebatch.token)
+  return _internal_mutable_token();
+}
+inline const std::string& canceltradebatch::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void canceltradebatch::_internal_set_token(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void canceltradebatch::set_token(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.canceltradebatch.token)
+}
+inline void canceltradebatch::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.canceltradebatch.token)
+}
+inline void canceltradebatch::set_token(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.canceltradebatch.token)
+}
+inline std::string* canceltradebatch::_internal_mutable_token() {
+  _has_bits_[0] |= 0x00000001u;
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* canceltradebatch::release_token() {
+  // @@protoc_insertion_point(field_release:ukex.canceltradebatch.token)
+  if (!has_token()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void canceltradebatch::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:ukex.canceltradebatch.token)
+}
+
+// repeated uint64 ids = 2;
 inline int canceltradebatch::_internal_ids_size() const {
   return ids_.size();
 }

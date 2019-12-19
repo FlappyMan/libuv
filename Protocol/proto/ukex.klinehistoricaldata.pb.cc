@@ -82,11 +82,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ukex_2eklinehistoricaldata_2ep
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::ukex::klinehistoricaldata, data_),
+  PROTOBUF_FIELD_OFFSET(::ukex::klinehistoricaldata, token_),
   ~0u,
+  0,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 11, sizeof(::ukex::klinehistoricaldata_Data)},
-  { 17, 23, sizeof(::ukex::klinehistoricaldata)},
+  { 17, 24, sizeof(::ukex::klinehistoricaldata)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -95,12 +97,12 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ukex_2eklinehistoricaldata_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\036ukex.klinehistoricaldata.proto\022\004ukex\"\245"
+  "\n\036ukex.klinehistoricaldata.proto\022\004ukex\"\264"
   "\001\n\023klinehistoricaldata\022,\n\004data\030\001 \003(\0132\036.u"
-  "kex.klinehistoricaldata.Data\032N\n\004Data\022\n\n\002"
-  "k0\030\001 \002(\t\022\n\n\002k1\030\002 \002(\t\022\n\n\002k2\030\003 \002(\t\022\n\n\002k3\030\004"
-  " \002(\t\022\n\n\002k4\030\005 \002(\t\022\n\n\002k5\030\006 \002(\t\"\020\n\005CONST\022\007\n"
-  "\003CMD\020n"
+  "kex.klinehistoricaldata.Data\022\r\n\005token\030\002 "
+  "\002(\t\032N\n\004Data\022\n\n\002k0\030\001 \002(\t\022\n\n\002k1\030\002 \002(\t\022\n\n\002k"
+  "2\030\003 \002(\t\022\n\n\002k3\030\004 \002(\t\022\n\n\002k4\030\005 \002(\t\022\n\n\002k5\030\006 "
+  "\002(\t\"\020\n\005CONST\022\007\n\003CMD\020n"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2eklinehistoricaldata_2eproto_deps[1] = {
 };
@@ -111,7 +113,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uke
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ukex_2eklinehistoricaldata_2eproto_once;
 static bool descriptor_table_ukex_2eklinehistoricaldata_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ukex_2eklinehistoricaldata_2eproto = {
-  &descriptor_table_ukex_2eklinehistoricaldata_2eproto_initialized, descriptor_table_protodef_ukex_2eklinehistoricaldata_2eproto, "ukex.klinehistoricaldata.proto", 206,
+  &descriptor_table_ukex_2eklinehistoricaldata_2eproto_initialized, descriptor_table_protodef_ukex_2eklinehistoricaldata_2eproto, "ukex.klinehistoricaldata.proto", 221,
   &descriptor_table_ukex_2eklinehistoricaldata_2eproto_once, descriptor_table_ukex_2eklinehistoricaldata_2eproto_sccs, descriptor_table_ukex_2eklinehistoricaldata_2eproto_deps, 2, 0,
   schemas, file_default_instances, TableStruct_ukex_2eklinehistoricaldata_2eproto::offsets,
   file_level_metadata_ukex_2eklinehistoricaldata_2eproto, 2, file_level_enum_descriptors_ukex_2eklinehistoricaldata_2eproto, file_level_service_descriptors_ukex_2eklinehistoricaldata_2eproto,
@@ -613,6 +615,9 @@ void klinehistoricaldata::InitAsDefaultInstance() {
 class klinehistoricaldata::_Internal {
  public:
   using HasBits = decltype(std::declval<klinehistoricaldata>()._has_bits_);
+  static void set_has_token(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 klinehistoricaldata::klinehistoricaldata()
@@ -626,11 +631,16 @@ klinehistoricaldata::klinehistoricaldata(const klinehistoricaldata& from)
       _has_bits_(from._has_bits_),
       data_(from.data_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_token()) {
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
   // @@protoc_insertion_point(copy_constructor:ukex.klinehistoricaldata)
 }
 
 void klinehistoricaldata::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_klinehistoricaldata_ukex_2eklinehistoricaldata_2eproto.base);
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 klinehistoricaldata::~klinehistoricaldata() {
@@ -639,6 +649,7 @@ klinehistoricaldata::~klinehistoricaldata() {
 }
 
 void klinehistoricaldata::SharedDtor() {
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void klinehistoricaldata::SetCachedSize(int size) const {
@@ -657,12 +668,17 @@ void klinehistoricaldata::Clear() {
   (void) cached_has_bits;
 
   data_.Clear();
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    token_.ClearNonDefaultToEmptyNoArena();
+  }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
 const char* klinehistoricaldata::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -680,6 +696,13 @@ const char* klinehistoricaldata::_InternalParse(const char* ptr, ::PROTOBUF_NAME
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else goto handle_unusual;
         continue;
+      // required string token = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_token(), ptr, ctx, "ukex.klinehistoricaldata.token");
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -693,6 +716,7 @@ const char* klinehistoricaldata::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     }  // switch
   }  // while
 success:
+  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -714,6 +738,17 @@ failure:
       InternalWriteMessageToArray(1, this->_internal_data(i), target, stream);
   }
 
+  cached_has_bits = _has_bits_[0];
+  // required string token = 2;
+  if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "ukex.klinehistoricaldata.token");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_token(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
@@ -726,6 +761,12 @@ size_t klinehistoricaldata::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.klinehistoricaldata)
   size_t total_size = 0;
 
+  // required string token = 2;
+  if (has_token()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -769,6 +810,10 @@ void klinehistoricaldata::MergeFrom(const klinehistoricaldata& from) {
   (void) cached_has_bits;
 
   data_.MergeFrom(from.data_);
+  if (from._internal_has_token()) {
+    _has_bits_[0] |= 0x00000001u;
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
 }
 
 void klinehistoricaldata::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -786,6 +831,7 @@ void klinehistoricaldata::CopyFrom(const klinehistoricaldata& from) {
 }
 
 bool klinehistoricaldata::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
   if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(this->data())) return false;
   return true;
 }
@@ -795,6 +841,8 @@ void klinehistoricaldata::InternalSwap(klinehistoricaldata* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   data_.InternalSwap(&other->data_);
+  token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata klinehistoricaldata::GetMetadata() const {

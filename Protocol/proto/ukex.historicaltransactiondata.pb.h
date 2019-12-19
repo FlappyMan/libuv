@@ -656,6 +656,7 @@ class historicaltransactiondata :
 
   enum : int {
     kTypeFieldNumber = 1,
+    kTokenFieldNumber = 3,
     kDataFieldNumber = 2,
   };
   // required string type = 1;
@@ -676,6 +677,26 @@ class historicaltransactiondata :
   const std::string& _internal_type() const;
   void _internal_set_type(const std::string& value);
   std::string* _internal_mutable_type();
+  public:
+
+  // required string token = 3;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
   public:
 
   // required .ukex.historicaltransactiondata.Data data = 2;
@@ -704,6 +725,7 @@ class historicaltransactiondata :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   ::ukex::historicaltransactiondata_Data* data_;
   friend struct ::TableStruct_ukex_2ehistoricaltransactiondata_2eproto;
 };
@@ -1249,7 +1271,7 @@ inline void historicaltransactiondata::set_allocated_type(std::string* type) {
 
 // required .ukex.historicaltransactiondata.Data data = 2;
 inline bool historicaltransactiondata::_internal_has_data() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
   PROTOBUF_ASSUME(!value || data_ != nullptr);
   return value;
 }
@@ -1258,7 +1280,7 @@ inline bool historicaltransactiondata::has_data() const {
 }
 inline void historicaltransactiondata::clear_data() {
   if (data_ != nullptr) data_->Clear();
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline const ::ukex::historicaltransactiondata_Data& historicaltransactiondata::_internal_data() const {
   const ::ukex::historicaltransactiondata_Data* p = data_;
@@ -1271,13 +1293,13 @@ inline const ::ukex::historicaltransactiondata_Data& historicaltransactiondata::
 }
 inline ::ukex::historicaltransactiondata_Data* historicaltransactiondata::release_data() {
   // @@protoc_insertion_point(field_release:ukex.historicaltransactiondata.data)
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
   ::ukex::historicaltransactiondata_Data* temp = data_;
   data_ = nullptr;
   return temp;
 }
 inline ::ukex::historicaltransactiondata_Data* historicaltransactiondata::_internal_mutable_data() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   if (data_ == nullptr) {
     auto* p = CreateMaybeMessage<::ukex::historicaltransactiondata_Data>(GetArenaNoVirtual());
     data_ = p;
@@ -1299,12 +1321,83 @@ inline void historicaltransactiondata::set_allocated_data(::ukex::historicaltran
       data = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, data, submessage_arena);
     }
+    _has_bits_[0] |= 0x00000004u;
+  } else {
+    _has_bits_[0] &= ~0x00000004u;
+  }
+  data_ = data;
+  // @@protoc_insertion_point(field_set_allocated:ukex.historicaltransactiondata.data)
+}
+
+// required string token = 3;
+inline bool historicaltransactiondata::_internal_has_token() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool historicaltransactiondata::has_token() const {
+  return _internal_has_token();
+}
+inline void historicaltransactiondata::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& historicaltransactiondata::token() const {
+  // @@protoc_insertion_point(field_get:ukex.historicaltransactiondata.token)
+  return _internal_token();
+}
+inline void historicaltransactiondata::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:ukex.historicaltransactiondata.token)
+}
+inline std::string* historicaltransactiondata::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:ukex.historicaltransactiondata.token)
+  return _internal_mutable_token();
+}
+inline const std::string& historicaltransactiondata::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void historicaltransactiondata::_internal_set_token(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void historicaltransactiondata::set_token(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.historicaltransactiondata.token)
+}
+inline void historicaltransactiondata::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.historicaltransactiondata.token)
+}
+inline void historicaltransactiondata::set_token(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.historicaltransactiondata.token)
+}
+inline std::string* historicaltransactiondata::_internal_mutable_token() {
+  _has_bits_[0] |= 0x00000002u;
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* historicaltransactiondata::release_token() {
+  // @@protoc_insertion_point(field_release:ukex.historicaltransactiondata.token)
+  if (!has_token()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void historicaltransactiondata::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
     _has_bits_[0] |= 0x00000002u;
   } else {
     _has_bits_[0] &= ~0x00000002u;
   }
-  data_ = data;
-  // @@protoc_insertion_point(field_set_allocated:ukex.historicaltransactiondata.data)
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:ukex.historicaltransactiondata.token)
 }
 
 #ifdef __GNUC__

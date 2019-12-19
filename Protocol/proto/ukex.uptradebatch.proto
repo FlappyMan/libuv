@@ -6,7 +6,8 @@ message uptradebatch
     {
         CMD = 101;	
     }
-    required    string  paypassword = 1; 
+    required    string	token = 1; 
+    required    string  paypassword = 2; 
     message Trades
     {
         required    uint64  marketid = 1;
@@ -14,5 +15,5 @@ message uptradebatch
         required    uint64  num = 3;
         required    uint32  type = 4;
     }
-    repeated    Trades  trades = 2;
+    repeated    Trades  trades = 3;
 }
