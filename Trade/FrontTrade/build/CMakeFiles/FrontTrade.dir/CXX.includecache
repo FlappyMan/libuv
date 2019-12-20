@@ -919,8 +919,8 @@ global.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/global.h
 BlockQueue.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/BlockQueue.h
-UProtocol.h
-/home/gong/workspace/git/UkexServer/Trade/FrontTrade/UProtocol.h
+ThreadBackTrade.h
+/home/gong/workspace/git/UkexServer/Trade/FrontTrade/ThreadBackTrade.h
 
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ClientSrv.cpp
 ClientSrv.h
@@ -929,8 +929,8 @@ ClientSrv.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ClientSrv.h
 ClientSession.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ClientSession.h
-UProtocol.h
-/home/gong/workspace/git/UkexServer/Trade/FrontTrade/UProtocol.h
+BackTradeSrv.h
+/home/gong/workspace/git/UkexServer/Trade/FrontTrade/BackTradeSrv.h
 
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ThreadBackTrade.cpp
 ThreadBackTrade.h
@@ -951,6 +951,8 @@ ThreadClient.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ThreadClient.h
 ClientSrv.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ClientSrv.h
+ThreadBackTrade.h
+/home/gong/workspace/git/UkexServer/Trade/FrontTrade/ThreadBackTrade.h
 
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/config.cpp
 config.h

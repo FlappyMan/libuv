@@ -4,6 +4,7 @@
 #define _THREAD_CLIENT_HEADER_
 
 #include "ClientSrv.h"
+#include "ThreadBackTrade.h"
 
 void ThreadClient(void *arg);
 

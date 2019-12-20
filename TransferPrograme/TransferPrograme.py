@@ -94,25 +94,25 @@ class DBOperation(object):
         # ukex - new 用户名登录的用户
         insertList = database.selectSQL(database.ukex_cursor,
                                         'last_insert_id() as id, username as user_account ,password, 1 as source_type, logins as login_attempts, login_time , addtime as create_time , addtime as update_time',
-                                        'coin_user where username !="" LIMIT 50;')
+                                        'coin_user where username !="";')
         dbOper.insertToDB('user', insertList, dbOper.user_list)
 
         # ukex - new 手机号登录的用户
         insertList = database.selectSQL(database.ukex_cursor,
                                         'last_insert_id() as id, moble as user_account ,password, 1 as source_type, logins as login_attempts, login_time , addtime as create_time , addtime as update_time',
-                                        'coin_user where moble !="" LIMIT 50;')
+                                        'coin_user where moble !="";')
         dbOper.insertToDB('user', insertList, dbOper.user_list)
 
         # ukex - new 邮箱登录的用户
         insertList = database.selectSQL(database.ukex_cursor,
                                         'last_insert_id() as id, email as user_account ,password, 1 as source_type, logins as login_attempts, login_time , addtime as create_time , addtime as update_time',
-                                        'coin_user where email !="" LIMIT 50;')
+                                        'coin_user where email !="";')
         dbOper.insertToDB('user', insertList, dbOper.user_list)
 
         # ukexpay - new 邮箱登录的用户
         insertList = database.selectSQL(database.ukexpay_cursor,
                                         'last_insert_id() as id, email as user_account ,password, 2 as source_type, 0 as login_attempts, 0 as login_time , create_time as create_time , update_time as update_time',
-                                        'cnuk_user_main where email !="" LIMIT 50;')
+                                        'cnuk_user_main where email !="";')
         dbOper.insertToDB('user', insertList, dbOper.user_list)
         print ('------------------------------------------------------------')
 
@@ -161,11 +161,15 @@ class DBOperation(object):
                 else:
                     dic['account_type'] = 0
 
+                dic['ukexpay_uid'] = '0'
                 dic['source_type'] = '1'
                 dic['ukex_uid'] = resultList[0]['user_id']
-                dic['account'] = ukex['user_account']
                 dic['user_id'] = ukex['user_id']
-                dic['ukexpay_uid'] = '0'
+                for dicObj in insertList:
+                    if str(dicObj['ukex_uid']) == str(dic['ukex_uid']):
+                        dic['user_id'] = dicObj['user_id']
+                
+                dic['account'] = ukex['user_account']
                 dic['create_time'] = ukex['create_time']
                 dic['update_time'] = ukex['update_time']
                 insertList.append(dic)
@@ -176,6 +180,15 @@ class DBOperation(object):
                     if len(resultList) == 0:
                         resultList = database.selectSQL(database.ukex_cursor, "id as user_id",'coin_user where moble = "' + ukex['user_account'] + '";')
                         assert (len(resultList) != 0)
+                for dicObj in insertList:
+                    if str(dicObj['ukex_uid']) == str(resultList[0]['user_id']):
+                        print(dicObj)
+                        print(str(resultList[0]['user_id']))
+                        comboxList = list(database.selectSQL(database.accountDB_cursor, 'user_id,ukexpay_uid','user_account where account = "' + ukex['user_account'] + '";'))
+                        
+                        assert(len(comboxList) <= 1)
+                        dicObj['user_id'] = comboxList[0]['user_id']
+                        dicObj['ukexpay_uid'] = comboxList[0]['ukexpay_uid']
                 database.update(database.accountDB_cursor,'user_account set ukex_uid = "' + str(resultList[0]['user_id']) + '" where account = "' + ukex['user_account'] + '";')
         dbOper.insertToDB('user_account', insertList, dbOper.user_account_list)
         print ('-------------------------------------------------------------')
@@ -351,8 +364,8 @@ class DBOperation(object):
 
     def loadTableUserFactsData(self):
         print ('--------------------导入表user_facts---------------------------')
-        insertList = []
         icount = 0
+        insertList = []
         for object in mappingList:
             insertObj = {}
             insertObj['user_id'] = object['user_id']
@@ -362,13 +375,13 @@ class DBOperation(object):
                 searchUkexList = database.selectSQL(database.ukex_cursor, "user_id, first_name, last_name, birthday, country , \'\' as residence_country,province ,city,town,district,street_address,building_number,building_name,"
                                                                           "sex,zip_code,\'\' as apartment, living_proof_1 as first_residence_certificate, living_proof_2 as second_residence_certificate,"
                                                                           "street_code, unit, house_code, passport, passport_ocr, passport_expire,passport_1 as passport_picture, passport_2 as passport_picture_hold,"
-                                                                          "driving as driving_number, driving_1 as driving_picture, driving_2 as driving_picture_hold, is_eu as is_europe, nationality, "
+                                                                          "driving as driving_number, driving_1 as driving_picture, driving_2 as driving_picture_hold, is_eu as is_europe, nationality,has_deducted_gbp,has_deducted_eur,has_deducted_usd, "
                                                                           "0 as create_time, 0 as update_time"
                                                     ,'coin_user_info where user_id = "' + str(object['ukex_uid']) + '";')
             if object['ukexpay_uid'] != 0:
                 searchUkexpayList = database.selectSQL(database.ukexpay_cursor, "uid as user_id, first_name, last_name , birth as birthday, residence_country as country, residence_country, state as province,"
                                                                                 "city, town, district , street as street_address, building as building_number, building_name, sex, postcode as zip_code,"
-                                                                                "apartment, living_proof_1 as first_residence_certificate, living_proof_2 as second_residence_certificate, 0 as create_time, 0 as update_time"
+                                                                                "apartment, living_proof_1 as first_residence_certificate, living_proof_2 as second_residence_certificate,0 as has_deducted_gbp,0 as has_deducted_eur,0 as has_deducted_usd 0 as create_time, 0 as update_time"
                                                        , 'cnuk_user_info where uid = "' + str(object['ukexpay_uid']) + '";')
             # assert (len(searchUkexList) == 1 or len(searchUkexpayList) == 1)
             if searchUkexList == None:
@@ -385,13 +398,17 @@ class DBOperation(object):
                 if ukexObj['birthday'] == '':
                     insertObj['birthday'] = 0
                 else:
-                    insertObj['birthday'] = datetime.datetime.strptime(ukexObj['birthday'], '%Y-%m-%d')
+                    t = datetime.datetime.strptime(ukexObj['birthday'], '%Y-%m-%d')
+                    insertObj['birthday'] = str(time.mktime(t.timetuple()))
                 insertObj['country'] = ukexObj['country']
                 insertObj['residence_country'] = ukexpayObj['residence_country']
                 insertObj['province'] = ukexObj['province']
                 insertObj['city'] = ukexObj['city']
                 insertObj['town'] = ukexObj['town']
                 insertObj['district'] = ukexObj['district']
+                insertObj['has_deducted_gbp'] = ukexObj['has_deducted_gbp']
+                insertObj['has_deducted_eur'] = ukexObj['has_deducted_eur']
+                insertObj['has_deducted_usd'] = ukexObj['has_deducted_usd']
                 insertObj['street_address'] = ukexObj['street_address']
                 insertObj['building_number'] = ukexObj['building_number']
                 insertObj['building_name'] = ukexObj['building_name']
@@ -411,7 +428,7 @@ class DBOperation(object):
                 insertObj['passport_expire'] = ukexObj['passport_expire']
                 insertObj['passport_picture'] = ukexObj['passport_picture']
                 insertObj['passport_picture_hold'] = ukexObj['passport_picture_hold']
-                insertObj['driving_number'] = ukexObj['driving_number']
+                insertObj['driving_number'] = ('' if ukexObj['driving_number'] == None else ukexObj['driving_number'])
                 insertObj['driving_picture'] = ukexObj['driving_picture']
                 insertObj['driving_picture_hold'] = ukexObj['driving_picture_hold']
                 insertObj['is_europe'] = ukexObj['is_europe']
@@ -424,10 +441,12 @@ class DBOperation(object):
                 insertObj['user_id'] = object['user_id']
                 insertObj['first_name'] = ukexObj['first_name']
                 insertObj['last_name'] = ukexObj['last_name']
+                
                 if ukexObj['birthday'] == '':
                     insertObj['birthday'] = 0
                 else:
-                    insertObj['birthday'] = datetime.datetime.strptime(ukexObj['birthday'], '%Y-%m-%d')
+                    t = datetime.datetime.strptime(ukexObj['birthday'], '%Y-%m-%d')
+                    insertObj['birthday'] = str(time.mktime(t.timetuple()))
                 insertObj['country'] = ukexObj['country']
                 insertObj['residence_country'] = ukexObj['country']
                 insertObj['province'] = ukexObj['province']
@@ -447,13 +466,16 @@ class DBOperation(object):
                 insertObj['second_residence_certificate'] = ukexObj['second_residence_certificate']
                 insertObj['street_code'] = ukexObj['street_code']
                 insertObj['unit'] = ukexObj['unit']
+                insertObj['has_deducted_gbp'] = ukexObj['has_deducted_gbp']
+                insertObj['has_deducted_eur'] = ukexObj['has_deducted_eur']
+                insertObj['has_deducted_usd'] = ukexObj['has_deducted_usd']
                 insertObj['house_code'] = ukexObj['house_code']
                 insertObj['passport'] = ukexObj['passport']
                 insertObj['passport_ocr'] = ukexObj['passport_ocr']
                 insertObj['passport_expire'] = ukexObj['passport_expire']
                 insertObj['passport_picture'] = ukexObj['passport_picture']
                 insertObj['passport_picture_hold'] = ukexObj['passport_picture_hold']
-                insertObj['driving_number'] = ukexObj['driving_number']
+                insertObj['driving_number'] = ('' if ukexObj['driving_number'] == None else ukexObj['driving_number'])
                 insertObj['driving_picture'] = ukexObj['driving_picture']
                 insertObj['driving_picture_hold'] = ukexObj['driving_picture_hold']
                 insertObj['is_europe'] = ukexObj['is_europe']
@@ -490,6 +512,9 @@ class DBOperation(object):
                 insertObj['apartment'] = ukexpayObj['apartment']
                 insertObj['first_residence_certificate'] = ukexpayObj['first_residence_certificate']
                 insertObj['second_residence_certificate'] = ukexpayObj['second_residence_certificate']
+                insertObj['has_deducted_gbp'] = ukexpayObj['has_deducted_gbp']
+                insertObj['has_deducted_eur'] = ukexpayObj['has_deducted_eur']
+                insertObj['has_deducted_usd'] = ukexpayObj['has_deducted_usd']
                 insertObj['street_code'] = ''
                 insertObj['unit'] = ''
                 insertObj['house_code'] = ''
@@ -513,7 +538,7 @@ class DBOperation(object):
         print ('-------------------------------------------------------------' + str(icount))
 
     def loadTableUserInfoData(self):
-        print ('--------------------导入表user_facts---------------------------')
+        print ('--------------------导入表user_Info---------------------------')
         insertList = []
         icount = 0
         for object in mappingList:
@@ -924,13 +949,12 @@ class DBOperation(object):
     # --------------------------------------------------以下是BackTrade数据库表导入逻辑部分------------------------------------------
     def loadTableRecommendedTradeAwardData(self):
         icount = 0
-        insertList = []
         for object in mappingList:
             insertObj = {}
             insertObj['user_id'] = object['user_id']
             searchUkexList = []
             if object['ukex_uid'] != 0:
-                searchUkexList = database.selectSQL(database.ukex_cursor,"last_insert_id() as id,invit as recommender_id, name as market_id , type as oper_type , coinname as coin_id , num as trading_volume , mum as trading_amount,"
+                searchUkexList = database.selectSQL(database.ukex_cursor,"last_insert_id() as id,invit as recommender_id, name as market_id , type as oper_type , coinname , num as trading_volume , mum as trading_amount,"
                                                                          "fee as profit , addtime as create_time, addtime as update_time",
                                                     'coin_invit where userid = "' + str(object['ukex_uid']) + '";')
 
@@ -940,14 +964,12 @@ class DBOperation(object):
             if len(searchUkexList) != 0:
                 for ukexObj in searchUkexList:
                     insertObj['id'] = ukexObj['id']
-                    insertObj['recommender_id'] = ''
-                    for recommenderInfo in mappingList:
-                        if recommenderInfo['user_id'] == ukexObj['recommender_id']:
-                            insertObj['recommender_id'] = recommenderInfo['ukex_uid']
-                    insertObj['recommender_id'] = '777777'
+                    insertObj['recommender_id'] = dbOper.getNewUserId(str(ukexObj['recommender_id']))
+                    
                     insertObj['oper_type'] = (1 if '买入' in ukexObj['oper_type'] else 2)
+                    
                     key1 = re.sub('[^a-zA-Z_]', '', ukexObj['oper_type'])
-                    key2 = re.sub('[^a-zA-Z_]', '', ukexObj['coin_id'])
+                    key2 = re.sub('[^a-zA-Z_]', '', ukexObj['coinname'])
                     if key1 != '' and marketMapping.has_key(key1):
                         insertObj['market_id'] = marketMapping[key1]
                     else:
@@ -962,12 +984,13 @@ class DBOperation(object):
                     insertObj['profit'] = ukexObj['profit']
                     insertObj['create_time'] = ukexObj['create_time']
                     insertObj['update_time'] = ukexObj['update_time']
-                    insertList.append(insertObj)
+                    if str(insertObj['user_id']) == '56':
+                        print(insertObj)
+                    dbOper.insertToAssets('recommended_trade_award', [insertObj], dbOper.recommended_trade_award)
             else:
                 icount += 1
                 continue
-
-        dbOper.insertToAssets('recommended_trade_award', insertList, dbOper.recommended_trade_award)
+        
         print ('-------------------------------------------------------------' + str(icount))
 
     def loadTableKLineMinData(self):
@@ -997,7 +1020,9 @@ class DBOperation(object):
         insertList = []
         searchUkexList = database.selectSQL(database.ukex_cursor,"id, market as market_id,type as Kline_type, data , addtime as create_time, addtime as update_time",
                                                 'coin_trade_json;')
+        print(len(searchUkexList))
         assert (searchUkexList != None)
+        dicvalue = {}
         for searchObj in searchUkexList:
             insertObj = {}
             insertObj['id'] = searchObj['id']
@@ -1023,7 +1048,11 @@ class DBOperation(object):
                 insertObj['create_time'] = searchObj['create_time']
                 insertObj['update_time'] = searchObj['update_time']
                 insertList.append(insertObj)
-        dbOper.insertToSA('kline_record', insertList, dbOper.kline_record)
+            else:
+                dicvalue[str(searchObj['market_id'])] = 1
+        print(dicvalue)
+        print(len(insertList))
+        # dbOper.insertToSA('kline_record', insertList, dbOper.kline_record)
         print ('-------------------------------------------------------------' + str(icount))
 
     def loadTableFinancialRecordsData(self):
@@ -1038,7 +1067,7 @@ class DBOperation(object):
             for searchObj in searchUkexList:
                 insertObj = {}
                 insertObj['id'] = searchObj['id']
-                insertObj['user_id'] = object['ukex_uid']
+                insertObj['user_id'] = object['user_id']
                 insertObj['coin_id'] = coinnameMapping[searchObj['coin_id']]
                 insertObj['gross_amount'] = searchObj['gross_amount']
                 insertObj['gross_frozen'] = searchObj['gross_frozen']
@@ -1103,7 +1132,7 @@ class DBOperation(object):
         for object in mappingList:
             searchUkexList = database.selectSQL(database.ukex_cursor,
                                                 "id, market as market_id , price ,num as trading_volume , deal as traded_volume , mum as trading_amount , fee as estimated_fee , deal_fee as actual_fee,"
-                                                "type as oper_type, status , endtime ,  addtime as create_time, addtime as update_time",
+                                                "type as oper_type, status , endtime ,  addtime as create_time, updatetime as update_time",
                                                 'coin_trade where userid = "' + str(object['ukex_uid']) + '"and status = 0;')
             if searchUkexList == None:
                 continue
@@ -1130,7 +1159,7 @@ class DBOperation(object):
         for object in mappingList:
             searchUkexList = database.selectSQL(database.ukex_cursor,
                                                 "id, market as market_id , price ,num as trading_volume , deal as traded_volume , mum as trading_amount , fee as estimated_fee , deal_fee as actual_fee,"
-                                                "type as oper_type, status , endtime ,  addtime as create_time, addtime as update_time",
+                                                "type as oper_type, status , endtime ,  addtime as create_time, updatetime as update_time",
                                                 'coin_trade where userid = "' + str(object['ukex_uid']) + '" and status != 0;')
             if searchUkexList == None:
                 continue
@@ -1445,7 +1474,7 @@ class DBOperation(object):
                         for obj in mappingList:
                             if obj['ukex_uid'] == tradeLogObj['buyer_user_id']:
                                 insertObj['buyer_user_id'] = obj['user_id']
-                            elif obj['ukex_uid'] == tradeLogObj['seller_user_id']:
+                            if obj['ukex_uid'] == tradeLogObj['seller_user_id']:
                                 insertObj['seller_user_id'] = obj['user_id']
                         insertObj['market_id'] = marketMapping[tradeLogObj['market_id']]
                         insertObj['price'] = tradeLogObj['price']
@@ -1633,8 +1662,6 @@ class DBOperation(object):
                                             `or_open_fee` decimal(32,16) NOT NULL DEFAULT \'0.00\' COMMENT \'或开卡收费币种费用\',\
                                             `or_open_fee_coin_img` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'或开卡收费币种图标\',\
                                             `status` tinyint(3) NOT NULL DEFAULT \'0\' COMMENT \'状态：1 启用，0 禁用\',\
-                                            `card_status` varchar(10) NOT NULL DEFAULT '' COMMENT '卡片状态（同步contis）',\
-                                            `card_issue_date` varchar(60) DEFAULT '' COMMENT '卡片发行时间',\
                                             PRIMARY KEY (`id`)\
                                             ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci")
                 # cur.execute("drop table coin_user_bank_type;")
@@ -1706,7 +1733,7 @@ class DBOperation(object):
                                             `token_addr` varchar(255) NOT NULL DEFAULT \'\' COMMENT \'token 私有链接地址\',\
                                             `token_decimal` varchar(2) NOT NULL DEFAULT \'\' COMMENT \'token 小数位数\',\
                                             `token_issue_date` varchar(255) NOT NULL DEFAULT \'\' COMMENT \'token 发行日期\',\
-                                            `token_max_number` varchar(255) NOT NULL DEFAULT \'\' COMMENT \'最大供应数量\',\
+                                            `token_max_number` decimal(32,16) NOT NULL DEFAULT \'0.0\' COMMENT \'最大供应数量\',\
                                             `token_circulating_number` varchar(255) NOT NULL DEFAULT \'\' COMMENT \'循环数量 Provide the number of circulating supply\',\
                                             `token_description` text NOT NULL COMMENT \'token 项目描述\',\
                                             `token_audit_report` varchar(255) NOT NULL DEFAULT \'\' COMMENT \'智能合约安全审计报告文件地址\',\
@@ -2011,8 +2038,8 @@ class DBOperation(object):
                                             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,\
                                             `userid` int(11) unsigned NOT NULL,\
                                             `currency` varchar(30) NOT NULL COMMENT \'币种\',\
-                                            `num` decimal(20,2) NOT NULL DEFAULT \'0.00\',\
-                                            `mum` decimal(20,2) unsigned NOT NULL DEFAULT \'0.00\',\
+                                            `num` decimal(32,16) NOT NULL DEFAULT \'0.00\',\
+                                            `mum` decimal(32,16) unsigned NOT NULL DEFAULT \'0.00\',\
                                             `type` varchar(50) NOT NULL COMMENT \'类型:visa 支付卡, bank 银行卡\',\
                                             `tradeno` varchar(50) NOT NULL,\
                                             `remark` varchar(250) NOT NULL DEFAULT \'\',\
@@ -2084,9 +2111,9 @@ class DBOperation(object):
                                             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,\
                                             `userid` int(11) unsigned NOT NULL,\
                                             `currency` varchar(30) NOT NULL COMMENT \'法币类型\',\
-                                            `num` decimal(20,2) unsigned NOT NULL,\
-                                            `fee` decimal(20,2) unsigned NOT NULL,\
-                                            `mum` decimal(20,2) unsigned NOT NULL,\
+                                            `num` decimal(32,16) unsigned NOT NULL,\
+                                            `fee` decimal(32,16) unsigned NOT NULL,\
+                                            `mum` decimal(32,16) unsigned NOT NULL,\
                                             `truename` varchar(32) NOT NULL,\
                                             `name` varchar(32) NOT NULL,\
                                             `bank` varchar(250) NOT NULL,\
@@ -2256,6 +2283,8 @@ class DBOperation(object):
                                             `updatetime` int(10) unsigned DEFAULT \'0\' COMMENT \'更新时间\',\
                                             `addtime` int(10) unsigned DEFAULT \'0\' COMMENT \'添加时间\',\
                                             `account_status` varchar(10) DEFAULT \'0\' COMMENT \'消费者账户状态\',\
+                                            `card_status` varchar(10) NOT NULL DEFAULT '' COMMENT '卡片状态（同步contis）',\
+                                            `card_issue_date` varchar(60) DEFAULT '' COMMENT '卡片发行时间',\
                                             PRIMARY KEY (`id`)\
                                             ) ENGINE=InnoDB AUTO_INCREMENT=516 DEFAULT CHARSET=utf8 COMMENT=\'用户 VISA 卡\'")
                 # cur.execute("drop table coin_user_visa_log;")
@@ -2270,9 +2299,9 @@ class DBOperation(object):
                                             `to_account_number` varchar(10) DEFAULT \'\' COMMENT \'to_account_number\',\
                                             `to_sort_code` varchar(6) DEFAULT \'\' COMMENT \'to_sort_code\',\
                                             `transaction_id` varchar(32) DEFAULT \'\' COMMENT \'transaction_id\',\
-                                            `amount` decimal(20,2) unsigned NOT NULL DEFAULT \'0.00\' COMMENT \'金额\',\
-                                            `from_balance` decimal(20,2) unsigned NOT NULL DEFAULT \'0.00\' COMMENT \'from 剩余金额\',\
-                                            `to_balance` decimal(20,2) unsigned NOT NULL DEFAULT \'0.00\' COMMENT \'to 剩余金额\',\
+                                            `amount`  decimal(32,16) unsigned NOT NULL DEFAULT \'0.00\' COMMENT \'金额\',\
+                                            `from_balance`  decimal(32,16) unsigned NOT NULL DEFAULT \'0.00\' COMMENT \'from 剩余金额\',\
+                                            `to_balance`  decimal(32,16) unsigned NOT NULL DEFAULT \'0.00\' COMMENT \'to 剩余金额\',\
                                             `settlement_date` varchar(50) DEFAULT \'\' COMMENT \'时间\',\
                                             `description` varchar(600) NOT NULL DEFAULT \'\',\
                                             `content` text COMMENT \'json 内容\',\
@@ -2437,11 +2466,11 @@ class DBOperation(object):
                                             `currency` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT \'交易货币 cny\',\
                                             `name` varchar(60) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'显示名称\',\
                                             `task_free_price` tinyint(1) NOT NULL DEFAULT \'0\' COMMENT \'是否允许用户自定义价格\',\
-                                            `task_buy_price` decimal(10,2) NOT NULL DEFAULT \'0.00\' COMMENT \'买价\',\
-                                            `task_sell_price` decimal(10,2) NOT NULL DEFAULT \'0.00\' COMMENT \'卖价\',\
+                                            `task_buy_price` decimal(32,16) NOT NULL DEFAULT \'0.00\' COMMENT \'买价\',\
+                                            `task_sell_price` decimal(32,16) NOT NULL DEFAULT \'0.00\' COMMENT \'卖价\',\
                                             `task_pay_time` int(11) NOT NULL DEFAULT \'0\' COMMENT \'默认付款期限\',\
-                                            `task_min` int(11) NOT NULL DEFAULT \'0\' COMMENT \'单笔最小交易额\',\
-                                            `task_max` int(11) NOT NULL DEFAULT \'0\' COMMENT \'单笔最大交易额\',\
+                                            `task_min` decimal(32,16) NOT NULL DEFAULT \'0\' COMMENT \'单笔最小交易额\',\
+                                            `task_max` decimal(32,16) NOT NULL DEFAULT \'0\' COMMENT \'单笔最大交易额\',\
                                             `is_default` tinyint(1) NOT NULL DEFAULT \'0\' COMMENT \'是否为默认\',\
                                             `status` tinyint(1) NOT NULL DEFAULT \'1\' COMMENT \'是否启用 1 ：启用 0：禁用\',\
                                             `allow_release_uid` text COLLATE utf8_unicode_ci COMMENT \'允许发布挂单人 id（,\号分隔，不填代表不限制）\',\
@@ -2465,8 +2494,8 @@ class DBOperation(object):
                                             `pay_type` varchar(64) DEFAULT \'\' COMMENT \'支付方式 alipay :1 wechat:2 bank:4 求和结果\',\
                                             `pay_banks` varchar(64) DEFAULT \'\' COMMENT \'支付银行卡\',\
                                             `pay_time` int(10) unsigned DEFAULT \'0\' COMMENT \'到期时间分钟\',\
-                                            `min_limit` decimal(20,2) unsigned DEFAULT \'0.00\' COMMENT \'最小限制\',\
-                                            `max_limit` decimal(20,2) DEFAULT \'0.00\' COMMENT \'最大限制\',\
+                                            `min_limit` decimal(32,16) unsigned DEFAULT \'0.00\' COMMENT \'最小限制\',\
+                                            `max_limit` decimal(32,16) DEFAULT \'0.00\' COMMENT \'最大限制\',\
                                             `trade_rule` varchar(512) DEFAULT \'\' COMMENT \'交易规则，备注信息\',\
                                             `addtime` int(10) unsigned DEFAULT \'0\' COMMENT \'添加时间\',\
                                             `status` tinyint(1) unsigned DEFAULT \'0\' COMMENT \'状态 0:关闭 1:开启 2：完成\',\
@@ -2561,29 +2590,26 @@ class DBOperation(object):
                                             `user_text_log` text NOT NULL,\
                                             `user_text_password` text NOT NULL,\
                                             `user_text_paypassword` text NOT NULL,\
-                                            `mytx_min` text NOT NULL,\
-                                            `mytx_max` text NOT NULL,\
+                                            `mytx_min` decimal(32,16) NOT NULL DEFAULT \'0.00000000\',\
+                                            `mytx_max` decimal(32,16) NOT NULL DEFAULT \'0.00000000\',\
                                             `mytx_bei` text NOT NULL,\
                                             `mytx_coin` text NOT NULL,\
-                                            `mytx_fee` text NOT NULL,\
-                                            `trade_min` text NOT NULL,\
-                                            `trade_max` text NOT NULL,\
-                                            `trade_limit` text NOT NULL,\
+                                            `mytx_fee` decimal(32,16) NOT NULL DEFAULT \'0.00000000\',\
+                                            `trade_min` decimal(32,16) NOT NULL DEFAULT \'0.00000000\',\
+                                            `trade_max` decimal(32,16) NOT NULL DEFAULT \'0.00000000\',\
+                                            `trade_limit` decimal(32,16) NOT NULL DEFAULT \'0.00000000\',\
                                             `trade_text_log` text NOT NULL,\
                                             `issue_ci` text NOT NULL,\
                                             `issue_jian` text NOT NULL,\
-                                            `issue_min` text NOT NULL,\
-                                            `issue_max` text NOT NULL,\
-                                            `money_min` text NOT NULL,\
-                                            `money_max` text NOT NULL,\
+                                            `issue_min` decimal(32,16) NOT NULL DEFAULT \'0.00000000\',\
+                                            `issue_max` decimal(32,16) NOT NULL DEFAULT \'0.00000000\',\
+                                            `money_min` decimal(32,16) NOT NULL DEFAULT \'0.00000000\',\
+                                            `money_max` decimal(32,16) NOT NULL DEFAULT \'0.00000000\',\
                                             `money_bei` text NOT NULL,\
                                             `money_text_index` text NOT NULL,\
                                             `money_text_log` text NOT NULL,\
                                             `money_text_type` text NOT NULL,\
                                             `invit_type` text NOT NULL,\
-                                            `invit_fee1` text NOT NULL,\
-                                            `invit_fee2` text NOT NULL,\
-                                            `invit_fee3` text NOT NULL,\
                                             `invit_text_txt` text NOT NULL,\
                                             `invit_text_log` text NOT NULL,\
                                             `index_notice_1` text NOT NULL,\
@@ -2609,8 +2635,6 @@ class DBOperation(object):
                                             `index_html` varchar(50) DEFAULT NULL,\
                                             `trade_hangqing` varchar(50) DEFAULT NULL,\
                                             `trade_moshi` varchar(50) DEFAULT NULL,\
-                                            `task_buy_price` decimal(10,2) DEFAULT NULL,\
-                                            `task_sell_price` decimal(10,2) DEFAULT NULL,\
                                             `company_name` varchar(200) DEFAULT \'\',\
                                             `company_addr` varchar(200) DEFAULT \'\',\
                                             `app_version` varchar(200) DEFAULT \'\',\
@@ -2724,6 +2748,115 @@ class DBOperation(object):
             import traceback
             traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
             traceback.print_exc()
+    def loadCoinCoin(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.accountDB_dbAddress, user=dbConfid.accountDB_userName,
+                                      passwd=dbConfid.accountDB_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                for Obj in selectList:
+                    Obj['cs_zl'] = '0.0'
+                    Obj['cs_cl'] = '0.0'
+                    Obj['cs_jl'] = '0.0'
+                    if Obj['zr_zs'] == '':
+                        Obj['zr_zs'] = '0.0'
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
+    def loadCxbapply(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.accountDB_dbAddress, user=dbConfid.accountDB_userName,
+                                      passwd=dbConfid.accountDB_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                for Obj in selectList:
+                    Obj['user_id'] = dbOper.getNewUserId(str(Obj['user_id']))
+                    Obj['token_max_number'] = '0.0'
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
+
+    def loadCoinMarket(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.accountDB_dbAddress, user=dbConfid.accountDB_userName,
+                                      passwd=dbConfid.accountDB_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                for Obj in selectList:
+                    if Obj['invit_1'] == '':
+                        Obj['invit_1'] = '0.0'
+                    if Obj['invit_2'] == '':
+                        Obj['invit_2'] = '0.0'
+                    if Obj['invit_3'] == '':
+                        Obj['invit_3'] = '0.0'
+                    if Obj['zhang'] == '':
+                        Obj['zhang'] = '0.0'
+                    if Obj['die'] == '':
+                        Obj['die'] = '0.0'
+                    if Obj['fee_buy'] == '':
+                        Obj['fee_buy'] = '0.0'
+                    if Obj['fee_sell'] == '':
+                        Obj['fee_sell'] = '0.0'
+                    if Obj['buy_min'] == '':
+                        Obj['buy_min'] = '0.0'
+                    if Obj['buy_max'] == '':
+                        Obj['buy_max'] = '0.0'
+                    if Obj['sell_min'] == '':
+                        Obj['sell_min'] = '0.0'
+                    if Obj['sell_max'] == '':
+                        Obj['sell_max'] = '0.0'
+                    if Obj['trade_min'] == '':
+                        Obj['trade_min'] = '0.0'
+                    if Obj['trade_max'] == '':
+                        Obj['trade_max'] = '0.0'
+                    if Obj['hou_price'] == '':
+                        Obj['hou_price'] = '0.0'
+                        
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
     def loadStatusData(self,useDBCommand,colmun,tableName,colStr=''):
         try:
             con = None
@@ -2748,8 +2881,40 @@ class DBOperation(object):
             import traceback
             traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
             traceback.print_exc()
-    def synchCoinID(self):
+    def loadCoinOnfidokycApplication(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.accountDB_dbAddress, user=dbConfid.accountDB_userName,
+                                      passwd=dbConfid.accountDB_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                for Obj in selectList:
+                    Obj['uid'] = dbOper.getNewUserId(str(Obj['uid']))
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
 
+    def getNewUserId(self,ukexuid):
+        if str(ukexuid) == '0':
+            return '0'
+        for userInfo in mappingList:
+            if str(userInfo['ukex_uid']) == str(ukexuid):
+                return str(userInfo['user_id'])
+        return '777777'
+    def synchCoinID(self):
         try:
             con = None
             if con is None:
@@ -2790,19 +2955,19 @@ class DBOperation(object):
                     Obj['dj_dk'] = ''
                     Obj['dj_yh'] = ''
                     Obj['dj_mm'] = ''
-                    Obj['zr_zs'] = ''
+                    Obj['zr_zs'] = '0.0'
                     Obj['zr_jz'] = '0'
                     Obj['zr_dz'] = ''
                     Obj['zr_sm'] = ''
                     Obj['zc_sm'] = ''
-                    Obj['zc_fee'] = ''
+                    Obj['zc_fee'] = '0.0'
                     Obj['zc_mfee'] = '0'
                     Obj['zc_user'] = ''
-                    Obj['zc_min'] = ''
-                    Obj['zc_min_zn'] = '0'
-                    Obj['zc_max'] = ''
+                    Obj['zc_min'] = '0.0'
+                    Obj['zc_min_zn'] = '0.0'
+                    Obj['zc_max'] = '0.0'
                     Obj['zc_jz'] = '0'
-                    Obj['zc_zd'] = '0'
+                    Obj['zc_zd'] = '0.0'
                     Obj['js_yw'] = ''
                     Obj['js_sm'] = ''
                     Obj['js_qb'] = ''
@@ -2814,11 +2979,11 @@ class DBOperation(object):
                     Obj['cs_sf'] = ''
                     Obj['cs_fb'] = ''
                     Obj['cs_qk'] = ''
-                    Obj['cs_zl'] = ''
-                    Obj['cs_cl'] = ''
+                    Obj['cs_zl'] = '0.0'
+                    Obj['cs_cl'] = '0.0'
                     Obj['cs_zm'] = ''
                     Obj['cs_nd'] = ''
-                    Obj['cs_jl'] = ''
+                    Obj['cs_jl'] = '0.0'
                     Obj['cs_ts'] = ''
                     Obj['cs_bz'] = ''
                     Obj['zc_wtdays'] = '0'
@@ -2844,131 +3009,218 @@ class DBOperation(object):
             traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
             traceback.print_exc()
 
+    def loadCoinConfig(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.accountDB_dbAddress, user=dbConfid.accountDB_userName,
+                                      passwd=dbConfid.accountDB_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                for Obj in selectList:
+                    if Obj['mytx_min'] == '':
+                        Obj['mytx_min'] = '0.0'
+                    if Obj['mytx_max'] == '':
+                        Obj['mytx_max'] = '0.0'
+                    if Obj['mytx_fee'] == '':
+                        Obj['mytx_fee'] = '0.0'
+                    if Obj['trade_min'] == '':
+                        Obj['trade_min'] = '0.0'
+                    if Obj['trade_max'] == '':
+                        Obj['trade_max'] = '0.0'
+                    if Obj['trade_limit'] == '':
+                        Obj['trade_limit'] = '0.0'
+                    if Obj['issue_min'] == '':
+                        Obj['issue_min'] = '0.0'
+                    if Obj['issue_max'] == '':
+                        Obj['issue_max'] = '0.0'
+                    if Obj['money_min'] == '':
+                        Obj['money_min'] = '0.0'
+                    if Obj['money_max'] == '':
+                        Obj['money_max'] = '0.0'
+                        
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
+            
+    def loadCoinAddrPool(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.accountDB_dbAddress, user=dbConfid.accountDB_userName,
+                                      passwd=dbConfid.accountDB_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                for Obj in selectList:
+                    Obj['uid'] = dbOper.getNewUserId(str(Obj['uid']))
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
+    def loadOnlyReplaceUserId(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.accountDB_dbAddress, user=dbConfid.accountDB_userName,
+                                      passwd=dbConfid.accountDB_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                for Obj in selectList:
+                    if Obj.has_key('user_id'):
+                        Obj['user_id'] = dbOper.getNewUserId(str(Obj['user_id']))
+                    if Obj.has_key('userid'):
+                        Obj['userid'] = dbOper.getNewUserId(str(Obj['userid']))
+                    if Obj.has_key('pay_uid'):
+                        Obj['pay_uid'] = dbOper.getNewUserId(str(Obj['pay_uid']))
+                    if Obj.has_key('accept_uid'):
+                        Obj['accept_uid'] = dbOper.getNewUserId(str(Obj['accept_uid']))
+                    if Obj.has_key('platform_userid'):
+                        Obj['platform_userid'] = dbOper.getNewUserId(str(Obj['platform_userid']))
+                    if Obj.has_key('platform_fee_userid'):
+                        Obj['platform_fee_userid'] = dbOper.getNewUserId(str(Obj['platform_fee_userid']))
+                    if Obj.has_key('fee_userid'):
+                        Obj['fee_userid'] = dbOper.getNewUserId(str(Obj['fee_userid']))
+                    if Obj.has_key('from_uid'):
+                        Obj['from_uid'] = dbOper.getNewUserId(str(Obj['from_uid']))    
+                    if Obj.has_key('invit_id'):
+                        Obj['invit_id'] = dbOper.getNewUserId(str(Obj['invit_id']))
+                        
+                        
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
+    def loadCoinTaskConfig(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.accountDB_dbAddress, user=dbConfid.accountDB_userName,
+                                      passwd=dbConfid.accountDB_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                for Obj in selectList:
+                    userids = ''
+                    ids = str(Obj['allow_release_uid']).split(',')
+                    for id in ids:
+                        userids = userids + str(dbOper.getNewUserId(str(id)))
+                        userids += ','
+                    if userids != '':
+                        userids = userids[-1]
+                    Obj['allow_release_uid'] = userids
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
+    def loadCoinTicketCoupon(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.accountDB_dbAddress, user=dbConfid.accountDB_userName,
+                                      passwd=dbConfid.accountDB_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                for Obj in selectList:
+                    Obj['issuer_id'] = dbOper.getNewUserId(str(Obj['issuer_id']))
+                    Obj['receive_id'] = dbOper.getNewUserId(str(Obj['receive_id']))
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
 
-        
-
+    def loadCoinUserIdcard(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.accountDB_dbAddress, user=dbConfid.accountDB_userName,
+                                      passwd=dbConfid.accountDB_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                for Obj in selectList:
+                    Obj['id'] = dbOper.getNewUserId(str(Obj['id']))
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
+    
 if __name__ == '__main__':
     reload(sys)
     sys.setdefaultencoding('utf-8')
 
     dbOper = DBOperation()
-    # dbOper.createBaseTables()
+    dbOper.createBaseTables()
 
     database = Database()
-    # 创建数据库account中的表
-    # dbOper.createAccountTables()
+    # # 创建数据库account中的表
+    dbOper.createAccountTables()
 
-    # dbOper.loadStatusData('use account',['id','content','addtime'],'coin_user_auth_fail')
-    # dbOper.loadStatusData('use account', ['id', 'userid', 'country','bankprov','bankcity','bank','bankaddr','bankcode','sort_code','iban','bankcard','name','username','sort','type','addtime','endtime','status','currency',
-    #                                       'swift','account_number','account_owner','ach_number','wire_number'], 'coin_user_bank')
-    # dbOper.loadStatusData('use account', ['id', 'userid', 'auth_fail_reason', 'kyc_fail_reason', 'addtime'], 'coin_user_extend')
-    # dbOper.loadStatusData('use account', ['id', 'user_id', 'addtime','status'], 'coin_user_global_orc_recode')
-    # dbOper.loadStatusData('use account', ['id', 'user_id', 'biz_no','addtime','endtime','status'], 'coin_user_ocr_recode')
-    # dbOper.loadStatusData('use admin', ['id', 'email', 'username', 'nickname', 'moble', 'password', 'sort', 'addtime', 'last_login_time', 'last_login_ip', 'endtime', 'status', 'is_notice_tx1', 'is_notice_tx2',
-    #                                     'is_notice_sm', 'is_notice_bs', 'is_notice_mycz'], 'coin_admin')
-    # dbOper.loadStatusData('use admin', ['id', 'adminid', 'rowid', 'type', 'remark', 'addip', 'addr', 'addtime', 'status', 'data'], 'coin_admin_log')
-    # dbOper.loadStatusData('use admin', ['group_id', 'extend_id', 'type'], 'coin_auth_extend')
-    # dbOper.loadStatusData('use admin', ['id', 'module', 'type', 'title', 'description', 'status', 'rules'], 'coin_auth_group')
-    # dbOper.loadStatusData('use admin', ['uid', 'group_id'], 'coin_auth_group_access')
-    # dbOper.loadStatusData('use admin', ['id', 'module', 'type', 'name', 'title', 'status', 'condition'], 'coin_auth_rule','id,module,type,name,title,status,`condition`')
-    # dbOper.loadStatusData('use admin', ['id', 'date', 'coinname', 'balance', 'coin_zr', 'coin_zc', 'coin_zc_coin_fee', 'coin_zc_coin_fee_total', 'coin_zc_fee', 'coin_zc_fee_total', 'trade_fee', 'trade_fee_total',
-    #                                     'fee_total', 'coin_price', 'coin_price_total', 'addtime'], 'coin_count_fee')
-    # dbOper.loadStatusData('use admin', ['id', 'date', 'coin_a', 'coin_b', 'market', 'price_cny', 'num', 'mum', 'fee', 'fee_gbp', 'amount_cny', 'amount_gbp', 'addtime'], 'coin_count_trade')
-    # dbOper.loadStatusData('use admin', ['id', 'user_id', 'user_name', 'email', 'token_name', 'token_symbol', 'official_website', 'white_apper_url', 'token_standard', 'token_addr', 'token_decimal', 'token_issue_date',
-    #                                     'token_max_number', 'token_circulating_number', 'token_description', 'token_audit_report', 'coinmarketcap_line', 'contact_info', 'token_parameters', 'mag', 'main_line_time',
-    #                                     'media_group', 'exchanges_online','addtime','status'], 'coin_cxb_apply')
-    # dbOper.loadStatusData('use admin', ['id', 'userid', 'adminid', 'coin_id', 'coinname', 'amount', 'remark', 'ip', 'addtime'], 'coin_finance_tally')
-    # dbOper.loadStatusData('use admin', ['id', 'title', 'pid', 'sort', 'url', 'hide', 'tip', 'group', 'is_dev', 'ico_name'], 'coin_menu','id,title,pid,sort,url,hide,tip,`group`,is_dev,ico_name')
-    
-    # dbOper.loadStatusData('use assets', ['id','add_time','end_time','start_time','coinname','zr_total','zr_real','zr_fee','zr_temp','zc_total','zc_fee','zc_chain','trade_buy','trade_sell','trade_in',
-    #                                      'trade_mum','invit','income','money','account','coin_num'], 'coin_balance')
-    # dbOper.loadStatusData('use assets', ['id','coin','platform_assets','cold_wallet_assets','hot_wallet_assets','borrow_amount','differ_assets','valuation_coin','valuation','addtime'], 'coin_balance_liab')
-    # dbOper.loadStatusData('use assets', ['id','userid','currency','num','mum','type','tradeno','remark','sort','addtime','endtime','status','truename','name','bank','bankprov','bankcity','bankaddr','bankcard'], 'coin_mycz')
-    # dbOper.loadStatusData('use assets', ['id','mycz_id','currency','uuid','amout','date','data','create_time'], 'coin_mycz_bank_log')
-    # dbOper.loadStatusData('use assets', ['id','max','min','code','account_owner','account_number','swift','sort_code','iban','ach_number','wire_number','address','currency','kaihu','truename','addr','country','name',
-    #                                      'title','url','username','password','img','extra','remark','sort','addtime','endtime','status'], 'coin_mycz_type')
-    # dbOper.loadStatusData('use assets', ['id','userid','currency','num','fee','mum','truename','name','bank','bankprov','bankcity','bankaddr','bankcode','bankcard','account_number','sort','addtime','endtime',
-    #                                      'status','type'], 'coin_mytx')
-    # dbOper.loadStatusData('use assets', ['id','userid','username','coinname','txid','type','fee','num','mum','sort','addtime','endtime','status'], 'coin_myzc_fee')
-    # dbOper.loadStatusData('use assets', ['id','userid','username','coinname','from_user','txid','payment_code','num','mum','fee','balance','sort','addtime','endtime','type','status'], 'coin_myzr')
-    # dbOper.loadStatusData('use assets', ['id','user_id','username','coin_name','addr','status','payment_id','standard_address'], 'coin_user_coin_addr')
-    # dbOper.loadStatusData('use assets', ['id','coin','user_id','usable','freeze','lockup','add_time'], 'coin_user_coin_balance_snapshot')
-    # dbOper.loadStatusData('use assets', ['id','userid','coinname','name','addr','payment_id','sort','addtime','endtime','status'], 'coin_user_qianbao')
-    # dbOper.loadStatusData('use assets', ['id','userid','code','qrcode','type','expire_time','coinname','num','money','updatetime','addtime'], 'coin_user_transfer_code')
-    # dbOper.loadStatusData('use assets', ['id','userid','account_number','consumer_id','has_card','card_id','sort_code','bic','iban','coinname','status','enabled','bank_card','last_four','expire_time','updatetime','addtime',
-    #                                      'account_status'], 'coin_user_visa')
-    # dbOper.loadStatusData('use assets', ['id','userid','currency','type','transaction_type','from_account_number','from_sort_code','to_account_number','to_sort_code','transaction_id','amount','from_balance','to_balance',
-    #                                      'settlement_date','description','content','addtime'], 'coin_user_visa_log')
-    # dbOper.loadStatusData('use assets', ['id','userid','accept_user','accept_uid','coinname','code','num','fee','mum','addtime','endtime','status'], 'coin_znzc')
-    # dbOper.loadStatusData('use assets', ['id','userid','from_user','from_uid','coinname','code','num','fee','mum','addtime','endtime','status'], 'coin_znzr')
-    
-    # dbOper.loadStatusData('use base',['id','name','type','title','img','img_ext1','app_img','sort','fee_bili','endtime','addtime','status','fee_meitian','dj_zj','dj_dk','dj_yh','dj_mm',
-    #                                   'zr_zs','zr_jz','zr_dz','zr_sm','zc_sm','zc_fee','zc_mfee','zc_user','zc_min','zc_min_zn','zc_max','zc_jz','zc_zd','js_yw','js_sm','js_qb','js_ym','js_gw',
-    #                                   'js_lt','js_wk','cs_yf','cs_sf','cs_fb','cs_qk','cs_zl','cs_cl','cs_zm','cs_nd','cs_jl','cs_ts','cs_bz','zc_wtdays',
-    #                                   'zr_tips','auto_zc_day_num','auto_zc_rate','is_split_addr','is_usable_integra'],'coin_coin')
-    # dbOper.synchCoinID()
-    # dbOper.loadStatusData('use base',['id','coin_id','name','main_coin','main_coin_name','zc_fee','zc_mfee','zc_min','zc_max','is_split_addr','is_usable_integra','update_time','status'],'coin_coin_ext')
-    # dbOper.loadStatusData('use base',['id','country_en','country_cn','code','mcode','number','is_oumeng','is_eaa','is_forbidden','remark_1','remark_2','remark_3'],'coin_country')
-    # dbOper.loadStatusData('use base',['id','currency','name','symbol','tx_min','tx_max','tx_multiple','tx_min_fee','tx_fee','sort','status','platform_userid','platform_fee_userid','day_tx_num'],'coin_currency_config')
-    # dbOper.loadStatusData('use base',['id','name','title','url','img','mytx','remark','sort','addtime','endtime','status'],'coin_user_bank_type')
-    # dbOper.loadStatusData('use base',['id','name','level','min','max','discount','status'],'coin_vip')
-    # dbOper.loadStatusData('use base',['userid','level','update_time'],'coin_vip_user')
-    
-    # dbOper.loadStatusData('use base',['id','name','currency','symbol','charge','fee','open_fee','open_fee_coin_img','or_open_fee_coin','or_open_fee','or_open_fee_coin_img','status'],'coin_visa_config')
-    
-    # dbOper.loadStatusData('use exassets', ['id','uid','coin_id','coin_name','integration_addr','sub_addr','payment_id','ext','create_time','update_time'], 'coin_addr_pool')
-    
-    # dbOper.loadStatusData('use kyc',['id','sn','uid','email','status','create_time','update_time','msg','ext','ocr','auto','edited_ocr','files','reports','handle'],'coin_onfidokyc_application')
-    # dbOper.loadStatusData('use kyc',['id','url1','url2','url3'],'coin_user_idcard')
-    # dbOper.loadStatusData('use kyc',['id','userid','type','remark','addip','addr','addtime','status'],'coin_user_log')
-    # dbOper.loadStatusData('use kyc',['id','userid','currency','sign','content','is_read'],'coin_user_notification')
-    # dbOper.loadStatusData('use kyc',['id','userid','type','remark','addip','addr','status','new_data','old_data','addtime'],'coin_user_operate_log')
-    
-    # dbOper.loadStatusData('use otc', ['id', 'userid', 'username', 'orderid', 'content', 'sort', 'addtime', 'endtime', 'status'], 'coin_chat')
-    # dbOper.loadStatusData('use otc',['id', 'orderid', 'pay_type', 'pay_uid', 'pay_user', 'pay_status', 'pay_time', 'accept_uid', 'accept_user', 'accept_status', 'accept_time', 'market_id', 'task_id', 'coinname', 'currency',
-    #                        'price', 'money', 'num', 'addtime', 'is_cancel', 'cancel_time', 'remark', 'expire_time', 'is_fed'], 'coin_order')
-    # dbOper.loadStatusData('use otc',['id', 'userid', 'order_id', 'fed_content', 'fed_file', 'addtime'], 'coin_order_fed')
-    # dbOper.loadStatusData('use otc',['id', 'userid', 'merchant_order_no', 'order_no', 'currency', 'num', 'mum', 'type', 'status', 'callback_time', 'addtime'], 'coin_otc_bitmall')
-    # dbOper.loadStatusData('use otc',
-    #                       ['id', 'user_id', 'username', 'type', 'is_fixed', 'float_pct', 'market_id', 'coinname', 'country', 'currency', 'price', 'num', 'num_d', 'pay_type', 'pay_banks',
-    #                        'pay_time', 'min_limit', 'max_limit', 'trade_rule','addtime','status','is_del'], 'coin_task')
-    # dbOper.loadStatusData('use otc',
-    #                       ['id', 'coinname', 'currency', 'name', 'task_free_price', 'task_buy_price', 'task_sell_price', 'task_pay_time', 'task_min', 'task_max', 'is_default', 'status', 'allow_release_uid'], 'coin_task_config')
-    
-    # dbOper.loadStatusData('use other',['id','footer_logo','huafei_zidong','kefu','huafei_openid','huafei_appkey','index_lejimum','login_verify','fee_meitian','top_name','web_name','web_title','web_logo','web_llogo_small',
-    #                                    'web_keywords','web_description','web_close','web_close_cause','web_icp','web_cnzz','web_ren','web_reg', 'market_mr', 'xnb_mr', 'rmb_mr', 'web_waring', 'moble_type', 'moble_url', 'moble_user',
-    #                                    'moble_pwd', 'moble_pwd_int', 'moble_user_int', 'contact_moble', 'contact_weibo', 'contact_tqq', 'contact_qq','contact_qqun', 'contact_weixin', 'contact_weixin_img', 'contact_email',
-    #                                    'contact_alipay', 'contact_alipay_img', 'contact_bank', 'user_truename', 'user_moble', 'user_alipay', 'user_bank', 'user_text_truename', 'user_text_moble', 'user_text_alipay', 'user_text_bank',
-    #                                    'user_text_log', 'user_text_password', 'user_text_paypassword', 'mytx_min', 'mytx_max', 'mytx_bei', 'mytx_coin', 'mytx_fee', 'trade_min', 'trade_max', 'trade_limit', 'trade_text_log', 'issue_ci',
-    #                                    'issue_jian', 'issue_min', 'issue_max', 'money_min', 'money_max', 'money_bei', 'money_text_index', 'money_text_log', 'money_text_type', 'invit_type', 'invit_fee1', 'invit_fee2', 'invit_fee3',
-    #                                    'invit_text_txt','invit_text_log', 'index_notice_1', 'index_notice_11', 'index_notice_2', 'index_notice_22', 'index_notice_3', 'index_notice_33','index_notice_4','index_notice_44',
-    #                                    'text_footer', 'shop_text_index', 'shop_text_log', 'shop_text_addr', 'shop_text_view', 'huafei_text_index', 'huafei_text_log', 'addtime', 'status', 'shop_coin', 'shop_logo', 'shop_login',
-    #                                    'index_html', 'trade_hangqing','trade_moshi', 'task_buy_price', 'task_sell_price','company_name', 'company_addr', 'app_version', 'app_version_code', 'login_verify_sms', 'login_limit_num',
-    #                                    'login_limit_time', 'chart_config', 'login_keep_time'], 'coin_config')
-    # dbOper.loadStatusData('use other',['id', 'type', 'name', 'data_1', 'data_2', 'data_3', 'data', 'status', 'is_edit'], 'coin_config_other')
-    # dbOper.loadStatusData('use other',['id', 'coin_name', 'full_name', 'img', 'app_img', 'status'], 'coin_global_indexs')
-    # dbOper.loadStatusData('use other',['id', 'name', 'sort', 'note', 'status'], 'coin_shard')
-    # dbOper.loadStatusData('use other',['id', 'shard_id', 'title', 'content', 'img', 'url', 'lang', 'sort', 'data_1', 'data_2'], 'coin_shard_data')
-    # dbOper.loadStatusData('use other',['id', 'name', 'title', 'content', 'sort', 'addtime', 'endtime', 'status'], 'coin_text')
-    # dbOper.loadStatusData('use other',['code', 'type', 'tmp_id', 'coin_id', 'issuer_id', 'receive_id', 'amount', 'status', 'used_time', 'recycled_time', 'received_time', 'created', 'updated', 'rule_ext'], 'coin_ticket_coupon')
-    # dbOper.loadStatusData('use other',['id', 'type', 'title', 'content', 'ico', 'url', 'rule_ext', 'status', 'created', 'updated'], 'coin_ticket_template')
-    
-    # dbOper.loadStatusData('use trade', ['id', 'tel', 'invit_id'],'coin_invit_tel')
-    # dbOper.loadStatusData('use trade', ['id', 'name', 'round', 'round_buy_sell_num', 'fee_buy', 'fee_sell', 'fee_user_id', 'buy_min', 'buy_max', 'sell_min', 'sell_max', 'trade_min', 'trade_max', 'invit_buy', 'invit_sell',
-    #                                     'invit_1', 'invit_2', 'invit_3', 'zhang', 'die', 'hou_price', 'tendency', 'trade','new_price', 'buy_price', 'sell_price', 'min_price', 'max_price', 'volume', 'change', 'api_min',
-    #                                     'api_max','sort','addtime','endtime','status'],'coin_market','id,name,round,round_buy_sell_num,fee_buy,fee_sell,fee_user_id,buy_min,buy_max,sell_min,sell_max,trade_min,trade_max,invit_buy,invit_sell,invit_1,invit_2,invit_3,zhang,die,hou_price,tendency,trade,new_price,buy_price,sell_price,min_price,max_price,volume,`change`,api_min,api_max,sort,addtime,endtime,status')
-    # dbOper.loadStatusData('use trade', ['id', 'name', 'data', 'type', 'sort', 'addtime', 'endtime', 'status'],'coin_market_json')
-
-    # 创建数据库assets中的表
-    dbOper.createAssetsTables()
-
-    # 创建数据库 sa 中的表
-    dbOper.createSATables()
-
-    # 创建数据库 trade 中的表
-    dbOper.createTradeTables()
-
-    # 加载 user 表的数据A
+    # # 加载 user 表的数据A
     dbOper.loadTableUserData()
 
     # 获取user表中的ukex用户信息和ukexpay的用户信息用于做后续处理
@@ -2991,6 +3243,120 @@ if __name__ == '__main__':
             temp[str(obj['ukex_uid'])] = 1
             tempArray.append(obj)
     mappingList = tempArray
+
+    dbOper.loadStatusData('use account',['id','content','addtime'],'coin_user_auth_fail')
+    dbOper.loadOnlyReplaceUserId('use account', ['id', 'userid', 'country','bankprov','bankcity','bank','bankaddr','bankcode','sort_code','iban','bankcard','name','username','sort','type','addtime','endtime','status','currency',
+                                          'swift','account_number','account_owner','ach_number','wire_number'], 'coin_user_bank')
+    dbOper.loadOnlyReplaceUserId('use account', ['id', 'userid', 'auth_fail_reason', 'kyc_fail_reason', 'addtime'], 'coin_user_extend')
+    dbOper.loadOnlyReplaceUserId('use account', ['id', 'user_id', 'addtime','status'], 'coin_user_global_orc_recode')
+    dbOper.loadOnlyReplaceUserId('use account', ['id', 'user_id', 'biz_no','addtime','endtime','status'], 'coin_user_ocr_recode')
+
+    dbOper.loadStatusData('use admin', ['id', 'email', 'username', 'nickname', 'moble', 'password', 'sort', 'addtime', 'last_login_time', 'last_login_ip', 'endtime', 'status', 'is_notice_tx1', 'is_notice_tx2',
+                                        'is_notice_sm', 'is_notice_bs', 'is_notice_mycz'], 'coin_admin')
+    dbOper.loadStatusData('use admin', ['id', 'adminid', 'rowid', 'type', 'remark', 'addip', 'addr', 'addtime', 'status', 'data'], 'coin_admin_log')
+    dbOper.loadStatusData('use admin', ['group_id', 'extend_id', 'type'], 'coin_auth_extend')
+    dbOper.loadStatusData('use admin', ['id', 'module', 'type', 'title', 'description', 'status', 'rules'], 'coin_auth_group')
+    dbOper.loadStatusData('use admin', ['uid', 'group_id'], 'coin_auth_group_access')
+    dbOper.loadStatusData('use admin', ['id', 'module', 'type', 'name', 'title', 'status', 'condition'], 'coin_auth_rule','id,module,type,name,title,status,`condition`')
+    dbOper.loadStatusData('use admin', ['id', 'date', 'coinname', 'balance', 'coin_zr', 'coin_zc', 'coin_zc_coin_fee', 'coin_zc_coin_fee_total', 'coin_zc_fee', 'coin_zc_fee_total', 'trade_fee', 'trade_fee_total',
+                                        'fee_total', 'coin_price', 'coin_price_total', 'addtime'], 'coin_count_fee')
+    dbOper.loadStatusData('use admin', ['id', 'date', 'coin_a', 'coin_b', 'market', 'price_cny', 'num', 'mum', 'fee', 'fee_gbp', 'amount_cny', 'amount_gbp', 'addtime'], 'coin_count_trade')
+    dbOper.loadCxbapply('use admin', ['id', 'user_id', 'user_name', 'email', 'token_name', 'token_symbol', 'official_website', 'white_apper_url', 'token_standard', 'token_addr', 'token_decimal', 'token_issue_date',
+                                        'token_max_number', 'token_circulating_number', 'token_description', 'token_audit_report', 'coinmarketcap_line', 'contact_info', 'token_parameters', 'mag', 'main_line_time',
+                                        'media_group', 'exchanges_online','addtime','status'], 'coin_cxb_apply')
+    dbOper.loadOnlyReplaceUserId('use admin', ['id', 'userid', 'adminid', 'coin_id', 'coinname', 'amount', 'remark', 'ip', 'addtime'], 'coin_finance_tally')
+    dbOper.loadStatusData('use admin', ['id', 'title', 'pid', 'sort', 'url', 'hide', 'tip', 'group', 'is_dev', 'ico_name'], 'coin_menu','id,title,pid,sort,url,hide,tip,`group`,is_dev,ico_name')
+    
+    dbOper.loadStatusData('use assets', ['id','add_time','end_time','start_time','coinname','zr_total','zr_real','zr_fee','zr_temp','zc_total','zc_fee','zc_chain','trade_buy','trade_sell','trade_in',
+                                         'trade_mum','invit','income','money','account','coin_num'], 'coin_balance')
+    dbOper.loadStatusData('use assets', ['id','coin','platform_assets','cold_wallet_assets','hot_wallet_assets','borrow_amount','differ_assets','valuation_coin','valuation','addtime'], 'coin_balance_liab')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','currency','num','mum','type','tradeno','remark','sort','addtime','endtime','status','truename','name','bank','bankprov','bankcity','bankaddr','bankcard'], 'coin_mycz')
+    dbOper.loadStatusData('use assets', ['id','mycz_id','currency','uuid','amout','date','data','create_time'], 'coin_mycz_bank_log')
+    dbOper.loadStatusData('use assets', ['id','max','min','code','account_owner','account_number','swift','sort_code','iban','ach_number','wire_number','address','currency','kaihu','truename','addr','country','name',
+                                         'title','url','username','password','img','extra','remark','sort','addtime','endtime','status'], 'coin_mycz_type')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','currency','num','fee','mum','truename','name','bank','bankprov','bankcity','bankaddr','bankcode','bankcard','account_number','sort','addtime','endtime',
+                                         'status','type'], 'coin_mytx')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','username','payment_id','coinname','accept_user','txid','payment_code','num','fee','coin_fee','mum','balance','sort','addtime','endtime','status','type','is_read','is_verify','chain_status','is_op'], 'coin_myzc')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','username','coinname','txid','type','fee','num','mum','sort','addtime','endtime','status'], 'coin_myzc_fee')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','username','coinname','from_user','txid','payment_code','num','mum','fee','balance','sort','addtime','endtime','type','status','main_coin'], 'coin_myzr')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','user_id','username','coin_name','addr','status','payment_id','standard_address','main_coin'], 'coin_user_coin_addr')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','coin','user_id','usable','freeze','lockup','add_time'], 'coin_user_coin_balance_snapshot')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','coinname','name','addr','payment_id','sort','addtime','endtime','status'], 'coin_user_qianbao')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','code','qrcode','type','expire_time','coinname','num','money','updatetime','addtime'], 'coin_user_transfer_code')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','account_number','consumer_id','has_card','card_id','sort_code','bic','iban','coinname','status','enabled','bank_card','last_four','expire_time','updatetime','addtime',
+                                         'account_status','card_status','card_issue_date'], 'coin_user_visa')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','currency','type','transaction_type','from_account_number','from_sort_code','to_account_number','to_sort_code','transaction_id','amount','from_balance','to_balance',
+                                         'settlement_date','description','content','addtime'], 'coin_user_visa_log')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','accept_user','accept_uid','coinname','code','num','fee','mum','addtime','endtime','status'], 'coin_znzc')
+    dbOper.loadOnlyReplaceUserId('use assets', ['id','userid','from_user','from_uid','coinname','code','num','fee','mum','addtime','endtime','status'], 'coin_znzr')
+    
+    dbOper.loadCoinCoin('use base',['id','name','type','title','img','img_ext1','app_img','sort','fee_bili','endtime','addtime','status','fee_meitian','dj_zj','dj_dk','dj_yh','dj_mm',
+                                      'zr_zs','zr_jz','zr_dz','zr_sm','zc_sm','zc_fee','zc_mfee','zc_user','zc_min','zc_min_zn','zc_max','zc_jz','zc_zd','js_yw','js_sm','js_qb','js_ym','js_gw',
+                                      'js_lt','js_wk','cs_yf','cs_sf','cs_fb','cs_qk','cs_zl','cs_cl','cs_zm','cs_nd','cs_jl','cs_ts','cs_bz','zc_wtdays',
+                                      'zr_tips','auto_zc_day_num','auto_zc_rate','is_split_addr','is_usable_integra'],'coin_coin')
+    dbOper.synchCoinID()
+    dbOper.loadStatusData('use base',['id','coin_id','name','main_coin','main_coin_name','zc_fee','zc_mfee','zc_min','zc_max','is_split_addr','is_usable_integra','update_time','status'],'coin_coin_ext')
+    dbOper.loadStatusData('use base',['id','country_en','country_cn','code','mcode','number','is_oumeng','is_eaa','is_forbidden','remark_1','remark_2','remark_3'],'coin_country')
+    dbOper.loadOnlyReplaceUserId('use base',['id','currency','name','symbol','tx_min','tx_max','tx_multiple','tx_min_fee','tx_fee','sort','status','platform_userid','platform_fee_userid','day_tx_num'],'coin_currency_config')
+    dbOper.loadStatusData('use base',['id','name','title','url','img','mytx','remark','sort','addtime','endtime','status'],'coin_user_bank_type')
+    dbOper.loadStatusData('use base',['id','name','level','min','max','discount','status'],'coin_vip')
+    dbOper.loadOnlyReplaceUserId('use base',['userid','level','update_time'],'coin_vip_user')
+    
+    dbOper.loadOnlyReplaceUserId('use base',['id','name','currency','symbol','charge','fee','open_fee','open_fee_coin_img','or_open_fee_coin','or_open_fee','or_open_fee_coin_img','status'],'coin_visa_config')
+    
+    dbOper.loadCoinAddrPool('use exassets', ['id','uid','coin_id','coin_name','main_coin','integration_addr','sub_addr','payment_id','ext','create_time','update_time'], 'coin_addr_pool')
+    
+    dbOper.loadCoinOnfidokycApplication('use kyc',['id','sn','uid','email','status','create_time','update_time','msg','ext','ocr','auto','edited_ocr','files','reports','handle'],'coin_onfidokyc_application')
+    dbOper.loadCoinUserIdcard('use kyc',['id','url1','url2','url3'],'coin_user_idcard')
+    dbOper.loadOnlyReplaceUserId('use kyc',['id','userid','type','remark','addip','addr','addtime','status'],'coin_user_log')
+    dbOper.loadOnlyReplaceUserId('use kyc',['id','userid','currency','sign','content','is_read'],'coin_user_notification')
+    dbOper.loadOnlyReplaceUserId('use kyc',['id','userid','type','remark','addip','addr','status','new_data','old_data','addtime'],'coin_user_operate_log')
+    
+    dbOper.loadOnlyReplaceUserId('use otc', ['id', 'userid', 'username', 'orderid', 'content', 'sort', 'addtime', 'endtime', 'status'], 'coin_chat')
+    dbOper.loadOnlyReplaceUserId('use otc',['id', 'orderid', 'pay_type', 'pay_uid', 'pay_user', 'pay_status', 'pay_time', 'accept_uid', 'accept_user', 'accept_status', 'accept_time', 'market_id', 'task_id', 'coinname', 'currency',
+                           'price', 'money', 'num', 'addtime', 'is_cancel', 'cancel_time', 'remark', 'expire_time', 'is_fed'], 'coin_order')
+    dbOper.loadOnlyReplaceUserId('use otc',['id', 'userid', 'order_id', 'fed_content', 'fed_file', 'addtime'], 'coin_order_fed')
+    dbOper.loadOnlyReplaceUserId('use otc',['id', 'userid', 'merchant_order_no', 'order_no', 'currency', 'num', 'mum', 'type', 'status', 'callback_time', 'addtime'], 'coin_otc_bitmall')
+    dbOper.loadOnlyReplaceUserId('use otc',
+                          ['id', 'user_id', 'username', 'type', 'is_fixed', 'float_pct', 'market_id', 'coinname', 'country', 'currency', 'price', 'num', 'num_d', 'pay_type', 'pay_banks',
+                           'pay_time', 'min_limit', 'max_limit', 'trade_rule','addtime','status','is_del'], 'coin_task')
+    dbOper.loadCoinTaskConfig('use otc',
+                          ['id', 'coinname', 'currency', 'name', 'task_free_price', 'task_buy_price', 'task_sell_price', 'task_pay_time', 'task_min', 'task_max', 'is_default', 'status', 'allow_release_uid'], 'coin_task_config')
+    
+    dbOper.loadCoinConfig('use other',['id','footer_logo','huafei_zidong','kefu','huafei_openid','huafei_appkey','index_lejimum','login_verify','fee_meitian','top_name','web_name','web_title','web_logo','web_llogo_small',
+                                       'web_keywords','web_description','web_close','web_close_cause','web_icp','web_cnzz','web_ren','web_reg', 'market_mr', 'xnb_mr', 'rmb_mr', 'web_waring', 'moble_type', 'moble_url', 'moble_user',
+                                       'moble_pwd', 'moble_pwd_int', 'moble_user_int', 'contact_moble', 'contact_weibo', 'contact_tqq', 'contact_qq','contact_qqun', 'contact_weixin', 'contact_weixin_img', 'contact_email',
+                                       'contact_alipay', 'contact_alipay_img', 'contact_bank', 'user_truename', 'user_moble', 'user_alipay', 'user_bank', 'user_text_truename', 'user_text_moble', 'user_text_alipay', 'user_text_bank',
+                                       'user_text_log', 'user_text_password', 'user_text_paypassword', 'mytx_min', 'mytx_max', 'mytx_bei', 'mytx_coin', 'mytx_fee', 'trade_min', 'trade_max', 'trade_limit', 'trade_text_log', 'issue_ci',
+                                       'issue_jian', 'issue_min', 'issue_max', 'money_min', 'money_max', 'money_bei', 'money_text_index', 'money_text_log', 'money_text_type', 'invit_type',
+                                       'invit_text_txt','invit_text_log', 'index_notice_1', 'index_notice_11', 'index_notice_2', 'index_notice_22', 'index_notice_3', 'index_notice_33','index_notice_4','index_notice_44',
+                                       'text_footer', 'shop_text_index', 'shop_text_log', 'shop_text_addr', 'shop_text_view', 'huafei_text_index', 'huafei_text_log', 'addtime', 'status', 'shop_coin', 'shop_logo', 'shop_login',
+                                       'index_html', 'trade_hangqing','trade_moshi', 'company_name', 'company_addr', 'app_version', 'app_version_code', 'login_verify_sms', 'login_limit_num',
+                                       'login_limit_time', 'chart_config', 'login_keep_time'], 'coin_config')
+    dbOper.loadStatusData('use other',['id', 'type', 'name', 'data_1', 'data_2', 'data_3', 'data', 'status', 'is_edit'], 'coin_config_other')
+    dbOper.loadStatusData('use other',['id', 'coin_name', 'full_name', 'img', 'app_img', 'status'], 'coin_global_indexs')
+    dbOper.loadStatusData('use other',['id', 'name', 'sort', 'note', 'status'], 'coin_shard')
+    dbOper.loadStatusData('use other',['id', 'shard_id', 'title', 'content', 'img', 'url', 'lang', 'sort', 'data_1', 'data_2'], 'coin_shard_data')
+    dbOper.loadStatusData('use other',['id', 'name', 'title', 'content', 'sort', 'addtime', 'endtime', 'status'], 'coin_text')
+    dbOper.loadCoinTicketCoupon('use other',['code', 'type', 'tmp_id', 'coin_id', 'issuer_id', 'receive_id', 'amount', 'status', 'used_time', 'recycled_time', 'received_time', 'created', 'updated', 'rule_ext'], 'coin_ticket_coupon')
+    dbOper.loadStatusData('use other',['id', 'type', 'title', 'content', 'ico', 'url', 'rule_ext', 'status', 'created', 'updated'], 'coin_ticket_template')
+    
+    dbOper.loadOnlyReplaceUserId('use trade', ['id', 'tel', 'invit_id'],'coin_invit_tel')
+
+    dbOper.loadCoinMarket('use trade', ['id', 'name', 'round', 'round_buy_sell_num', 'fee_buy', 'fee_sell', 'fee_user_id', 'buy_min', 'buy_max', 'sell_min', 'sell_max', 'trade_min', 'trade_max', 'invit_buy', 'invit_sell',
+                                        'invit_1', 'invit_2', 'invit_3', 'zhang', 'die', 'hou_price', 'tendency', 'trade','new_price', 'buy_price', 'sell_price', 'min_price', 'max_price', 'volume', 'change', 'api_min',
+                                        'api_max','sort','addtime','endtime','status'],'coin_market','id,name,round,round_buy_sell_num,fee_buy,fee_sell,fee_user_id,buy_min,buy_max,sell_min,sell_max,trade_min,trade_max,invit_buy,invit_sell,invit_1,invit_2,invit_3,zhang,die,hou_price,tendency,trade,new_price,buy_price,sell_price,min_price,max_price,volume,`change`,api_min,api_max,sort,addtime,endtime,status')
+    dbOper.loadStatusData('use trade', ['id', 'name', 'data', 'type', 'sort', 'addtime', 'endtime', 'status'],'coin_market_json')
+
+    # 创建数据库assets中的表
+    dbOper.createAssetsTables()
+
+    # 创建数据库 sa 中的表
+    dbOper.createSATables()
+
+    # 创建数据库 trade 中的表
+    dbOper.createTradeTables()
+
     # 加载 user_auth 表的数据
     dbOper.loadTableUserAuthData()
 
@@ -3005,7 +3371,7 @@ if __name__ == '__main__':
     # 加载各资产表中的用户信息
     dbOper.loadTableUserAssetsData()
 
-    print('-------------------------分割线以下是BackTrade部分------------------------------')
+    # print('-------------------------分割线以下是BackTrade部分------------------------------')
     coinMappingList = database.selectSQL(database.ukex_cursor, 'name, id','coin_coin')
     marketMappingList = database.selectSQL(database.ukex_cursor, 'name, id','coin_market')
     coinnameMapping = {}

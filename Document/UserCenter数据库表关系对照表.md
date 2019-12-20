@@ -41,7 +41,7 @@ id                      | id                | uid                       | -     
 user_account            | username          | email                     | 修改                  | 修改      
 password                | password          | password                  | -                    | -
 login_attempts          | logins            | -                         | 修改                  | - 
-account_source          |-                  | -                         |-                     | -
+source_type             |-                  | -                         |-                     | -
 无                      | ~~token~~         | -                         | -                    | -
 login_time              | login_time        | -                         | -                    | -
 无                      | ~~sort~~          | -                         | 新表无此字段          | -
@@ -164,7 +164,9 @@ driving_number          | driving           | -                         | 修改
 driving_picture         | driving_1         | -                         | 修改               | -
 driving_picture_hold    | driving_2         | -                         | 修改               | -
 is_europe               | is_eu             | -                         | 修改               | -
--                       | ~~has_deducted~~  | -                         | 移除               | -
+has_deducted_gbp        | -                 | -                         | 新增               | -
+has_deducted_eur        | -                 | -                         | 新增               | -
+has_deducted_usd        | -                 | -                         | 新增               | -
 -                       | ~~visa_email~~    | -                         | 移除               | -
 -                       | ~~visa_mobile_code~~  | -                         | 修改               | -
 -                       | ~~visa_mobile~~   | -                         | 移除               | -

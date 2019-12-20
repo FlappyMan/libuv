@@ -31,10 +31,10 @@
 > trading_volume          | num               | 修改      
 > trading_amount          | mum               | 修改      
 > profit                  | fee               | 修改      
-> -                       | ~~name~~          | 新表-此字段
-> -                       | ~~sort~~          | 新表-此字段
-> -                       | ~~endtime~~       | 新表-此字段
-> -                       | ~~status~~        | 新表-此字段
+> -                       | ~~name~~          | -
+> -                       | ~~sort~~          | -
+> -                       | ~~endtime~~       | -
+> -                       | ~~status~~        | -
 > create_time             | add_time          | 修改
 > update_time             | -                 | 新增    
 
@@ -57,7 +57,7 @@
 > oper_type               | type              | 修改      
 > status                  | status            | -
 > endtime                 | endtime           | -
-> -                       | ~~sort~~          | 新表-此字段
+> -                       | ~~sort~~          | -
 > create_time             | addtime           | 修改      
 > update_time             | updatetime        | 修改      
 
@@ -83,11 +83,11 @@ seller_fee              | fee_sell      | 修改
 oper_type               | type          | 修改      
 buyer_order_id          | buy_id        | 修改      
 seller_order_id         | sell_id       | 修改      
--                       | ~~endtime~~   | 新表-此字段
--                       | ~~sort~~      | 新表-此字段
--                       | ~~status~~    | 新表-此字段
+-                       | ~~endtime~~   | -
+-                       | ~~sort~~      | -
+-                       | ~~status~~    | -
 create_time             | addtime       | 修改      
-update_time             | updatetime    | -
+update_time             | updatetime    | 修改 
 
 
 
@@ -126,7 +126,7 @@ open                    | -             | 新增
 high                    | -             | 新增
 low                     | -             | 新增
 close                   | -             | 新增
--                       | ~~status~~    | 新表-此字段
+-                       | ~~status~~    | -
 create_time             | -             | 新增
 update_time             | -             | 新增
 

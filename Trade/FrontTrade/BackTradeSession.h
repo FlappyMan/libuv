@@ -35,6 +35,7 @@ protected:
 	const uv_tcp_t* m_tcp;
 	// queue<UProtocolBase*> &m_qRequest;
 	BlockQueue<UProtocolBase*> &m_qRequest;
+	map<string, UProtocolBase*> m_responsePackage;
 	UBBuffer m_buffer;
 
 	// queue<UPFileRequest *> m_qSyncFile;

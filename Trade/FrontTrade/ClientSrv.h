@@ -3,9 +3,7 @@
 #define _CLIENT_SRV_HEADER_
 
 #include "ClientSession.h"
-#include "UProtocol.h"
-
-extern UBHttpParser hp;
+#include "BackTradeSrv.h"
 
 class ClientSrv
 {
@@ -18,8 +16,6 @@ public:
 
     void PushRequest(BlockQueue<UProtocolBase*> &q);
     void OnTimer(time_t tNow);
-public:
-
 
 protected:
     map<uv_tcp_t*,ClientSession*> m_mSession;
@@ -27,6 +23,7 @@ protected:
     //queue<UProtocolBase*> m_qReqest;
     BlockQueue<UProtocolBase*> m_qReqest;
     // uv_mutex_t m_lock;
+    BackTradeSrv bts;
 };
 
 

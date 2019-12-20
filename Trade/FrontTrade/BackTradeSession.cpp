@@ -89,21 +89,25 @@ int BackTradeSession::Read(char *pBuffer,int iDataLen)
             pkg = new UPUptrade;
             ProtoUnpack(*(UPUptrade*)pkg,m_buffer.Data(),uiValueLen);
             m_qRequest.put(pkg);
+			m_responsePackage.insert(make_pair(dynamic_cast<UPUptrade*>(pkg)->token(),pkg));
             break;
         case UPUptradebatch::CMD :
             pkg = new UPUptradebatch;
             ProtoUnpack(*(UPUptradebatch*)pkg,m_buffer.Data(),uiValueLen);
-            m_qRequest.put(pkg);           
+            m_qRequest.put(pkg);
+			m_responsePackage.insert(make_pair(dynamic_cast<UPUptradebatch*>(pkg)->token(),pkg));          
             break;
         case UPCanceltrade::CMD :
             pkg = new UPCanceltrade;
             ProtoUnpack(*(UPCanceltrade*)pkg,m_buffer.Data(),uiValueLen);
             m_qRequest.put(pkg);
+			m_responsePackage.insert(make_pair(dynamic_cast<UPCanceltrade*>(pkg)->token(),pkg));
             break;
         case UPCanceltradebatch::CMD :
             pkg = new UPCanceltradebatch;
             ProtoUnpack(*(UPCanceltradebatch*)pkg,m_buffer.Data(),uiValueLen);
             m_qRequest.put(pkg);
+			m_responsePackage.insert(make_pair(dynamic_cast<UPCanceltradebatch*>(pkg)->token(),pkg));
             break;
         default:
             break;
@@ -118,7 +122,6 @@ bool BackTradeSession::LoginCheck(UPLogin *pLogin)
 {
 	return true;
 }
-
 // void BackTradeSession::RecvFileRequest(UPFileRequest *pkg)
 // {
 	

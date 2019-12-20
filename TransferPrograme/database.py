@@ -21,7 +21,7 @@ class Database(object):
     # SA
     SADB_conn = None
     SADB_cursor = None
-    # SA
+    # trade
     tradeDB_conn = None
     tradeDB_cursor = None
 

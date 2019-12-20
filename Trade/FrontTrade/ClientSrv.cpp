@@ -1,8 +1,6 @@
 
 #include "ClientSrv.h"
 
-UBHttpParser hp;
-
 ClientSrv::ClientSrv()
 {
     // uv_mutex_init(&m_lock);
@@ -27,7 +25,7 @@ int ClientSrv::Read(uv_tcp_t* tcp,char *pBuffer,int iDataLen)
     map<uv_tcp_t*,ClientSession*>::iterator it=m_mSession.find(tcp);
     if(it==m_mSession.end())return false;
 
-    return it->second->Read(pBuffer,iDataLen);
+    return it->second->Read(tcp, pBuffer, iDataLen);
 }
 
 
@@ -40,7 +38,8 @@ void ClientSrv::PushRequest(BlockQueue<UProtocolBase*> &q)
     //     q.pop();
     // }
     // uv_mutex_unlock(&m_lock);
-    m_qReqest.put(q.get());
+    // Client json->pb request
+    m_qReqest.put(q.get());//BackTrade pb response
 }
 
 
@@ -59,7 +58,7 @@ void ClientSrv::OnTimer(time_t tNow)
     BlockQueue<UProtocolBase* > qReq;
     qReq = m_qReqest;
     map<uv_tcp_t*,ClientSession*>::iterator it;
-    UProtocolBase* pkg = NULL;
+    UProtocolBase* pkg = NULL;  
     while(qReq.size()>0)
     {
         pkg = qReq.get();
@@ -72,7 +71,10 @@ void ClientSrv::OnTimer(time_t tNow)
                 it = m_mSession.erase(it);
                 continue;
             }
-            it->second->SendPkg(pkg);
+            for (map<uv_tcp_t*,BackTradeSession*>::iterator iter = bts.m_mSession.begin();iter!=bts.m_mSession.end();iter++)
+            {
+                it->second->SendPkg(iter->first, pkg);
+            }
         }
         delete pkg;
     }

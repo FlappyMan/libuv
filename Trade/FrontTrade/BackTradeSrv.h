@@ -18,7 +18,7 @@ public:
 public:
 
 
-protected:
+public:
     map<uv_tcp_t*,BackTradeSession*> m_mSession;
     
     // queue<UProtocolBase*> m_qReqest;

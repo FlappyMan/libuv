@@ -34,5 +34,6 @@ void BackTradeSrv::GetRequest(BlockQueue<UProtocolBase*> &q)
     // uv_mutex_lock(&m_lock);
     // q.swap(m_qReqest);
     // uv_mutex_unlock(&m_lock);
+    
     q = m_qReqest;
 }
