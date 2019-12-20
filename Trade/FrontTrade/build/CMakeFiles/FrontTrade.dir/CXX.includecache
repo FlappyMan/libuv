@@ -919,8 +919,13 @@ global.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/global.h
 BlockQueue.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/BlockQueue.h
+<<<<<<< HEAD
 ThreadBackTrade.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ThreadBackTrade.h
+=======
+UProtocol.h
+/home/gong/workspace/git/UkexServer/Trade/FrontTrade/UProtocol.h
+>>>>>>> refs/remotes/origin/master
 
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ClientSrv.cpp
 ClientSrv.h

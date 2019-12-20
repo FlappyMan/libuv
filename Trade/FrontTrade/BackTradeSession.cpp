@@ -122,6 +122,10 @@ bool BackTradeSession::LoginCheck(UPLogin *pLogin)
 {
 	return true;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 // void BackTradeSession::RecvFileRequest(UPFileRequest *pkg)
 // {
 	

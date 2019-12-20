@@ -38,8 +38,12 @@ void ClientSrv::PushRequest(BlockQueue<UProtocolBase*> &q)
     //     q.pop();
     // }
     // uv_mutex_unlock(&m_lock);
+<<<<<<< HEAD
     // Client json->pb request
     m_qReqest.put(q.get());//BackTrade pb response
+=======
+    m_qReqest.put(q.get());
+>>>>>>> refs/remotes/origin/master
 }
 
 
@@ -71,10 +75,14 @@ void ClientSrv::OnTimer(time_t tNow)
                 it = m_mSession.erase(it);
                 continue;
             }
+<<<<<<< HEAD
             for (map<uv_tcp_t*,BackTradeSession*>::iterator iter = bts.m_mSession.begin();iter!=bts.m_mSession.end();iter++)
             {
                 it->second->SendPkg(iter->first, pkg);
             }
+=======
+            it->second->SendPkg(pkg);
+>>>>>>> refs/remotes/origin/master
         }
         delete pkg;
     }

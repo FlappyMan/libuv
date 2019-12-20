@@ -5,7 +5,11 @@
 
 #include "global.h"
 #include "BlockQueue.h"
+<<<<<<< HEAD
 #include "ThreadBackTrade.h"
+=======
+#include "UProtocol.h"
+>>>>>>> refs/remotes/origin/master
 
 class ClientSession
 {

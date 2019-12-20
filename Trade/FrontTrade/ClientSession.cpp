@@ -32,6 +32,7 @@ void ClientSession::SendPkg(uv_tcp_t* client, UProtocolBase* pkg)
     switch (pkg->m_uiType)
     {
         case UPUptrade::CMD :
+<<<<<<< HEAD
             BackTrade_Write((uv_stream_t *)client, dynamic_cast<UPUptrade *>(pkg), SIZE_BUFFER_2k);
             break;
         case UPUptradebatch::CMD :
@@ -42,6 +43,18 @@ void ClientSession::SendPkg(uv_tcp_t* client, UProtocolBase* pkg)
             break;
         case UPCanceltradebatch::CMD :
             BackTrade_Write((uv_stream_t *)client, dynamic_cast<UPCanceltradebatch *>(pkg), SIZE_BUFFER_2k);
+=======
+
+            break;
+        case UPUptradebatch::CMD :
+
+            break;
+        case UPCanceltrade::CMD :
+
+            break;
+        case UPCanceltradebatch::CMD :
+
+>>>>>>> refs/remotes/origin/master
             break;
         default:
             break;
@@ -57,8 +70,11 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
     if(ret>0)return ret;
 
     UProtocolBase *pkg=NULL;
+<<<<<<< HEAD
     string _token;
     map<uv_tcp_t*,UProtocolBase*> temp;
+=======
+>>>>>>> refs/remotes/origin/master
     if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/upTrade") == 0)
     {
         pkg = new UPUptrade;
@@ -67,13 +83,19 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
             if (strcasecmp(it->first.c_str(), "Token") == 0)
             {
                 dynamic_cast<UPUptrade *>(pkg)->set_token(it->second);
+<<<<<<< HEAD
                 _token = it->first;
+=======
+>>>>>>> refs/remotes/origin/master
             }          
         }   
         JsonUnpack((UPUptrade *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());          
         m_qRequest.put(pkg);
+<<<<<<< HEAD
         temp.insert(make_pair(client,pkg));
         m_tokenPackage.insert(make_pair(_token,temp));
+=======
+>>>>>>> refs/remotes/origin/master
     }else if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/upTradeBatch") == 0)
     {
         pkg = new UPUptradebatch;
@@ -82,6 +104,7 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
             if (strcasecmp(it->first.c_str(), "Token") == 0)
             {
                 dynamic_cast<UPUptradebatch *>(pkg)->set_token(it->second);
+<<<<<<< HEAD
             }
             _token = it->first;         
         }         
@@ -89,6 +112,12 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         m_qRequest.put(pkg);
         temp.insert(make_pair(client,pkg));
         m_tokenPackage.insert(make_pair(_token,temp));
+=======
+            }          
+        }         
+        JsonUnpack((UPUptradebatch *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());
+        m_qRequest.put(pkg);
+>>>>>>> refs/remotes/origin/master
     }else if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/cancelTrade") == 0)
     {
         pkg = new UPCanceltrade;
@@ -97,6 +126,7 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
             if (strcasecmp(it->first.c_str(), "Token") == 0)
             {
                 dynamic_cast<UPCanceltrade *>(pkg)->set_token(it->second);
+<<<<<<< HEAD
             } 
             _token = it->first;         
         }  
@@ -104,6 +134,12 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         m_qRequest.put(pkg);
         temp.insert(make_pair(client,pkg));
         m_tokenPackage.insert(make_pair(_token,temp));
+=======
+            }          
+        }  
+        JsonUnpack((UPCanceltrade *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());
+        m_qRequest.put(pkg);
+>>>>>>> refs/remotes/origin/master
     }else if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/cancelTradeBatch") == 0)
     {
         pkg = new UPCanceltradebatch;
@@ -112,6 +148,7 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
             if (strcasecmp(it->first.c_str(), "Token") == 0)
             {
                 dynamic_cast<UPCanceltradebatch *>(pkg)->set_token(it->second);
+<<<<<<< HEAD
             }
             _token = it->first;         
         }  
@@ -124,6 +161,16 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         return -1;
     }   
     delete pkg;      
+=======
+            }          
+        }  
+        JsonUnpack((UPCanceltradebatch *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());
+        m_qRequest.put(pkg);
+    }else
+    {
+        return -1;
+    }         
+>>>>>>> refs/remotes/origin/master
     return iDataLen;
 }
 
