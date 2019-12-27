@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/gong/workspace/git/UkexServer/Protocol/UPAuth.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPAuth.cpp.o"
   "/home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o"
   "/home/gong/workspace/git/UkexServer/Protocol/UPDir.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPDir.cpp.o"
+  "/home/gong/workspace/git/UkexServer/Protocol/UPOpt.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPOpt.cpp.o"
   "/home/gong/workspace/git/UkexServer/Protocol/UPRequest.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPRequest.cpp.o"
   "/home/gong/workspace/git/UkexServer/Protocol/UPSubscribe.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o"
   "/home/gong/workspace/git/UkexServer/Protocol/UPallmarketinfo.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o"

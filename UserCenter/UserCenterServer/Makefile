@@ -177,6 +177,33 @@ DispatchManager.cpp.s:
 	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/DispatchManager.cpp.s
 .PHONY : DispatchManager.cpp.s
 
+HttpSession.o: HttpSession.cpp.o
+
+.PHONY : HttpSession.o
+
+# target to build an object file
+HttpSession.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/HttpSession.cpp.o
+.PHONY : HttpSession.cpp.o
+
+HttpSession.i: HttpSession.cpp.i
+
+.PHONY : HttpSession.i
+
+# target to preprocess a source file
+HttpSession.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/HttpSession.cpp.i
+.PHONY : HttpSession.cpp.i
+
+HttpSession.s: HttpSession.cpp.s
+
+.PHONY : HttpSession.s
+
+# target to generate assembly for a file
+HttpSession.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/HttpSession.cpp.s
+.PHONY : HttpSession.cpp.s
+
 RequestOperCancelTrade.o: RequestOperCancelTrade.cpp.o
 
 .PHONY : RequestOperCancelTrade.o
@@ -311,6 +338,33 @@ RequestOperTradeBatch.s: RequestOperTradeBatch.cpp.s
 RequestOperTradeBatch.cpp.s:
 	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperTradeBatch.cpp.s
 .PHONY : RequestOperTradeBatch.cpp.s
+
+ThreadHttpOper.o: ThreadHttpOper.cpp.o
+
+.PHONY : ThreadHttpOper.o
+
+# target to build an object file
+ThreadHttpOper.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/ThreadHttpOper.cpp.o
+.PHONY : ThreadHttpOper.cpp.o
+
+ThreadHttpOper.i: ThreadHttpOper.cpp.i
+
+.PHONY : ThreadHttpOper.i
+
+# target to preprocess a source file
+ThreadHttpOper.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/ThreadHttpOper.cpp.i
+.PHONY : ThreadHttpOper.cpp.i
+
+ThreadHttpOper.s: ThreadHttpOper.cpp.s
+
+.PHONY : ThreadHttpOper.s
+
+# target to generate assembly for a file
+ThreadHttpOper.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/ThreadHttpOper.cpp.s
+.PHONY : ThreadHttpOper.cpp.s
 
 ThreadTCPOper.o: ThreadTCPOper.cpp.o
 
@@ -462,6 +516,9 @@ help:
 	@echo "... DispatchManager.o"
 	@echo "... DispatchManager.i"
 	@echo "... DispatchManager.s"
+	@echo "... HttpSession.o"
+	@echo "... HttpSession.i"
+	@echo "... HttpSession.s"
 	@echo "... RequestOperCancelTrade.o"
 	@echo "... RequestOperCancelTrade.i"
 	@echo "... RequestOperCancelTrade.s"
@@ -477,6 +534,9 @@ help:
 	@echo "... RequestOperTradeBatch.o"
 	@echo "... RequestOperTradeBatch.i"
 	@echo "... RequestOperTradeBatch.s"
+	@echo "... ThreadHttpOper.o"
+	@echo "... ThreadHttpOper.i"
+	@echo "... ThreadHttpOper.s"
 	@echo "... ThreadTCPOper.o"
 	@echo "... ThreadTCPOper.i"
 	@echo "... ThreadTCPOper.s"

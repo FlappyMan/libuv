@@ -7,7 +7,5 @@ message login
     {
         CMD = 114;
     }
-    required    string  key = 1;
-    required    string  value = 2;
-    required    string	token = 3; 
+    required    string  key = 1; 
 }

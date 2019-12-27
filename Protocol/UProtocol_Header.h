@@ -19,7 +19,7 @@
 #include "UPfiledata.h"
 #include "UPSubscribe.h"
 #include "UPCancelsubscribe.h"
-#include "UPAuth.h"
+#include "UPOpt.h"
 #include "UPRequest.h"
 
 #include "UPDir.h"

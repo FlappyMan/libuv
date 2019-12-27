@@ -22,26 +22,22 @@ public:
 	void Init();
 
 	int Read(char *pBuffer,int iDataLen);
+
+	void sendReply(uv_tcp_t* client, UProtocolBase* pkg);
 protected:
 	bool LoginCheck(UPLogin *pLogin);
-	// void BuildLoginSyncReq();
-	// void _Sync1Minute(time_t tCur);
-	// void _SyncXMinute(time_t tCur);
 
-	// void SendNextSyncReq();
-	// void RecvFileRequest(UPFileRequest *pkg);
-	// void RecvFileData(UPFileData *pkg);
 protected:
 	const uv_tcp_t* m_tcp;
-	// queue<UProtocolBase*> &m_qRequest;
+	//queue<UProtocolBase*> &m_qRequest;
 	BlockQueue<UProtocolBase*> &m_qRequest;
-	map<string, UProtocolBase*> m_responsePackage;
+	map<string, UProtocolBase*> m_qReply;
 	UBBuffer m_buffer;
 
-	// queue<UPFileRequest *> m_qSyncFile;
+	//queue<UPFileRequest *> m_qSyncFile;
 public:
 	bool m_bLogined;
-	bool m_bSyncFinished;           // 是否已经完成初始化工作（本地缓存k线数据）
+	//bool m_bSyncFinished;           // 是否已经完成初始化工作（本地缓存k线数据）
 	string m_sMarkID;
 };
 

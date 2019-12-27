@@ -231,8 +231,6 @@ class login :
 
   enum : int {
     kKeyFieldNumber = 1,
-    kValueFieldNumber = 2,
-    kTokenFieldNumber = 3,
   };
   // required string key = 1;
   bool has_key() const;
@@ -254,59 +252,14 @@ class login :
   std::string* _internal_mutable_key();
   public:
 
-  // required string value = 2;
-  bool has_value() const;
-  private:
-  bool _internal_has_value() const;
-  public:
-  void clear_value();
-  const std::string& value() const;
-  void set_value(const std::string& value);
-  void set_value(std::string&& value);
-  void set_value(const char* value);
-  void set_value(const char* value, size_t size);
-  std::string* mutable_value();
-  std::string* release_value();
-  void set_allocated_value(std::string* value);
-  private:
-  const std::string& _internal_value() const;
-  void _internal_set_value(const std::string& value);
-  std::string* _internal_mutable_value();
-  public:
-
-  // required string token = 3;
-  bool has_token() const;
-  private:
-  bool _internal_has_token() const;
-  public:
-  void clear_token();
-  const std::string& token() const;
-  void set_token(const std::string& value);
-  void set_token(std::string&& value);
-  void set_token(const char* value);
-  void set_token(const char* value, size_t size);
-  std::string* mutable_token();
-  std::string* release_token();
-  void set_allocated_token(std::string* token);
-  private:
-  const std::string& _internal_token() const;
-  void _internal_set_token(const std::string& value);
-  std::string* _internal_mutable_token();
-  public:
-
   // @@protoc_insertion_point(class_scope:ukex.login)
  private:
   class _Internal;
-
-  // helper for ByteSizeLong()
-  size_t RequiredFieldsByteSizeFallback() const;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr key_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   friend struct ::TableStruct_ukex_2elogin_2eproto;
 };
 // ===================================================================
@@ -389,148 +342,6 @@ inline void login::set_allocated_key(std::string* key) {
   }
   key_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), key);
   // @@protoc_insertion_point(field_set_allocated:ukex.login.key)
-}
-
-// required string value = 2;
-inline bool login::_internal_has_value() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
-  return value;
-}
-inline bool login::has_value() const {
-  return _internal_has_value();
-}
-inline void login::clear_value() {
-  value_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline const std::string& login::value() const {
-  // @@protoc_insertion_point(field_get:ukex.login.value)
-  return _internal_value();
-}
-inline void login::set_value(const std::string& value) {
-  _internal_set_value(value);
-  // @@protoc_insertion_point(field_set:ukex.login.value)
-}
-inline std::string* login::mutable_value() {
-  // @@protoc_insertion_point(field_mutable:ukex.login.value)
-  return _internal_mutable_value();
-}
-inline const std::string& login::_internal_value() const {
-  return value_.GetNoArena();
-}
-inline void login::_internal_set_value(const std::string& value) {
-  _has_bits_[0] |= 0x00000002u;
-  value_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void login::set_value(std::string&& value) {
-  _has_bits_[0] |= 0x00000002u;
-  value_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:ukex.login.value)
-}
-inline void login::set_value(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  _has_bits_[0] |= 0x00000002u;
-  value_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:ukex.login.value)
-}
-inline void login::set_value(const char* value, size_t size) {
-  _has_bits_[0] |= 0x00000002u;
-  value_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:ukex.login.value)
-}
-inline std::string* login::_internal_mutable_value() {
-  _has_bits_[0] |= 0x00000002u;
-  return value_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* login::release_value() {
-  // @@protoc_insertion_point(field_release:ukex.login.value)
-  if (!has_value()) {
-    return nullptr;
-  }
-  _has_bits_[0] &= ~0x00000002u;
-  return value_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void login::set_allocated_value(std::string* value) {
-  if (value != nullptr) {
-    _has_bits_[0] |= 0x00000002u;
-  } else {
-    _has_bits_[0] &= ~0x00000002u;
-  }
-  value_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set_allocated:ukex.login.value)
-}
-
-// required string token = 3;
-inline bool login::_internal_has_token() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
-  return value;
-}
-inline bool login::has_token() const {
-  return _internal_has_token();
-}
-inline void login::clear_token() {
-  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline const std::string& login::token() const {
-  // @@protoc_insertion_point(field_get:ukex.login.token)
-  return _internal_token();
-}
-inline void login::set_token(const std::string& value) {
-  _internal_set_token(value);
-  // @@protoc_insertion_point(field_set:ukex.login.token)
-}
-inline std::string* login::mutable_token() {
-  // @@protoc_insertion_point(field_mutable:ukex.login.token)
-  return _internal_mutable_token();
-}
-inline const std::string& login::_internal_token() const {
-  return token_.GetNoArena();
-}
-inline void login::_internal_set_token(const std::string& value) {
-  _has_bits_[0] |= 0x00000004u;
-  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void login::set_token(std::string&& value) {
-  _has_bits_[0] |= 0x00000004u;
-  token_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:ukex.login.token)
-}
-inline void login::set_token(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  _has_bits_[0] |= 0x00000004u;
-  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:ukex.login.token)
-}
-inline void login::set_token(const char* value, size_t size) {
-  _has_bits_[0] |= 0x00000004u;
-  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:ukex.login.token)
-}
-inline std::string* login::_internal_mutable_token() {
-  _has_bits_[0] |= 0x00000004u;
-  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* login::release_token() {
-  // @@protoc_insertion_point(field_release:ukex.login.token)
-  if (!has_token()) {
-    return nullptr;
-  }
-  _has_bits_[0] &= ~0x00000004u;
-  return token_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void login::set_allocated_token(std::string* token) {
-  if (token != nullptr) {
-    _has_bits_[0] |= 0x00000004u;
-  } else {
-    _has_bits_[0] &= ~0x00000004u;
-  }
-  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
-  // @@protoc_insertion_point(field_set_allocated:ukex.login.token)
 }
 
 #ifdef __GNUC__

@@ -28,9 +28,9 @@ bool Config::Load(string &sPath)
     if(!ret)
         return false;
     this->m_sListenIP_BackTrade = root["ip_for_client"].asString();
-    this->m_uiListenPort_BackTrade = root["port_for_client"].asUInt64();
+    this->m_uiListenPort_BackTrade = root["port_for_backtrade"].asUInt64();
     this->m_sListenIP_Client = root["ip_for_backtrade"].asString();
-    this->m_uiListenPort_Client = root["port_for_backtrade"].asUInt64();
+    this->m_uiListenPort_Client = root["port_for_client"].asUInt64();
     this->m_connectKey_BackTrade = root["connect_key"].asString();
     return true;
 }

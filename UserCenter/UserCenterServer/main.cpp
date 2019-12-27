@@ -2,7 +2,7 @@
 #include "config.h"
 #include "global.h"
 #include "ThreadTCPOper.h"
-
+#include "ThreadHttpOper.h"
 bool Init(int argc, char *argv[])
 {
     if(argc<2)
@@ -30,15 +30,15 @@ int main(int argc, char *argv[])
 {
     if(Init(argc,argv)==false)
     {
-        cout<<"Init failed"<<endl;
+        cout<<"[UserCenter Init Failed]"<<endl;
         return -1;
     }
-    cout<<"User Center run"<<endl;
+    cout<<"[UserCenter running]"<<endl;
     uv_thread_t tTcp,tHttp;
     uv_thread_create(&tTcp, CThreadTCPOper::ThreadTCPOper, NULL);
-    // uv_thread_create(&tHttp, ThreadHttpOper, NULL);
+    uv_thread_create(&tHttp, CThreadHttpOper::ThreadHttpOper, NULL);
 
     uv_thread_join(&tTcp);
-    // uv_thread_join(&tHttp);
+    uv_thread_join(&tHttp);
     return 0;
 }

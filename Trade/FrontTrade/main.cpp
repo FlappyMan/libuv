@@ -72,28 +72,32 @@ int main(int argc, char *argv[])
         cout<<"Init failed"<<endl;
         return -1;
     }
-    BlockQueue<UProtocolBase*> proto;
-    UProtocolBase *base = new UPUptrade;
-    TestUptrade(base);
-    proto.put(base);
-    UProtocolBase *pop= proto.get();
-    const int BUFFSIZE=1024;
-    char buffer[BUFFSIZE];
-    int iLen=JsonPack<UProtocolBase>(pop,buffer,BUFFSIZE);
-    buffer[iLen]='\0';
-    cout<<"buff:"<<buffer<<endl;
-    UProtocolBase *upp = new UPUptrade;
-    int itmp=JsonUnpack<UProtocolBase>(upp,buffer,BUFFSIZE);
-    if (UPUptrade::CMD)
-    {
-        /* code */
-    }
-    cout<<dynamic_cast<UPUptrade*>(upp)->token()<<endl;
-    cout<<dynamic_cast<UPUptrade*>(upp)->paypassword()<<endl;
-    cout<<dynamic_cast<UPUptrade*>(upp)->CMD<<endl;
+    // BlockQueue<UProtocolBase*> proto;
+    // UProtocolBase *base = new UPUptrade;
+    // TestUptrade(base);
+    // proto.put(base);
+    // UProtocolBase *pop= proto.get();
+    // const int BUFFSIZE=1024;
+    // char buffer[BUFFSIZE];
+    // int iLen=JsonPack<UProtocolBase>(pop,buffer,BUFFSIZE);
+    // buffer[iLen]='\0';
+    // cout<<"buff:"<<buffer<<endl;
+    // UProtocolBase *upp = new UPUptrade;
+    // int itmp=JsonUnpack<UProtocolBase>(upp,buffer,BUFFSIZE);
+    // if (UPUptrade::CMD)
+    // {
+    //     /* code */
+    // }
+    // cout<<dynamic_cast<UPUptrade*>(upp)->token()<<endl;
+    // cout<<dynamic_cast<UPUptrade*>(upp)->paypassword()<<endl;
+    // cout<<dynamic_cast<UPUptrade*>(upp)->CMD<<endl;
 
-    cout<<"test : "<<UPUptrade::CMD_WEBAPI<<endl;
-    cout<<"test : "<<UPUptrade::CMD_ROBOTAPI<<endl;
+    // cout<<"test : "<<UPUptrade::CMD_WEBAPI<<endl;
+    // cout<<"test : "<<UPUptrade::CMD_ROBOTAPI<<endl;
+
+    // char szGmtTime[40] = {0};
+    // int timeRet = GetGMTime(szGmtTime);
+    // cout<<"time : "<< szGmtTime<<endl;
 
     uv_thread_t tClient,tBackTrade;
     uv_thread_create(&tBackTrade, ThreadBacktrade, NULL);

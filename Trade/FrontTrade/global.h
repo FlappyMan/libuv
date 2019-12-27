@@ -63,5 +63,4 @@ extern Config g_config;
 extern WriteReqCache g_cache_write_req;
 extern ReadCache g_cache_read;
 
-
 #endif

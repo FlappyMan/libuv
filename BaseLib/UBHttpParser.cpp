@@ -12,7 +12,7 @@ int UBHttpParser_cbHeaderValue(http_parser* p, const char* at, size_t length);
 int UBHttpParser_cbBody(http_parser* p, const char* at, size_t length);
 
 
-UBHttpParser::UBHttpParser():m_bHeaderFinished(false),m_bBodyFinished(false)
+UBHttpParser::UBHttpParser():m_bHeaderFinished(false),m_bMsgFinished(false)
 {
 	memset(&m_parser, 0, sizeof(http_parser));
 	memset(&m_settings, 0, sizeof(http_parser_settings));
@@ -25,16 +25,12 @@ UBHttpParser::~UBHttpParser()
 
 void UBHttpParser::Destroy()
 {
-	m_sUrl.clear();
-	m_sBody.clear();
+	http_parser_type type=(http_parser_type)m_parser.type;
 
 	memset(&m_parser, 0, sizeof(http_parser));
 	memset(&m_settings, 0, sizeof(http_parser_settings));
 
-	m_mFiled.clear();
-
-	m_bHeaderFinished=false;
-	m_bBodyFinished=false;
+	Init(type);
 }
 
 
@@ -50,7 +46,7 @@ void UBHttpParser::Init(http_parser_type iType)
 	m_settings.on_header_value = UBHttpParser_cbHeaderValue;
 	m_settings.on_headers_complete = UBHttpParser_cbHeaderComplete;
 	m_settings.on_body = UBHttpParser_cbBody;
-	m_settings.on_message_complete = UBHttpParser_cbHeaderComplete;
+	m_settings.on_message_complete = UBHttpParser_cbMessageComplete;
 
 	m_parser.data = this;
 	http_parser_init(&m_parser, iType);
@@ -58,8 +54,9 @@ void UBHttpParser::Init(http_parser_type iType)
 	m_sUrl.clear();
 	m_sBody.clear();
 	m_sCurFiled.clear();
+	m_mFiled.clear();
 	m_bHeaderFinished=false;
-	m_bBodyFinished = false;
+	m_bMsgFinished = false;
 };
 
 // 当读到数据后，就调用该函数
@@ -68,7 +65,6 @@ int UBHttpParser::Readed(const char *pData, uint32_t iLen)
 {
 	assert(m_parser.data);
 	assert(m_settings.on_message_begin);
-
 	size_t nparsed = http_parser_execute(&m_parser, &m_settings, pData, iLen);
 	if (m_parser.upgrade) // websocket
 	{
@@ -78,8 +74,15 @@ int UBHttpParser::Readed(const char *pData, uint32_t iLen)
 	{
 		return -1;
 	}
-
-	return nparsed;
+	if(m_bMsgFinished)
+	{
+		http_parser_execute(&m_parser, &m_settings, pData, 0);
+		return 0;
+	}
+	else 
+	{
+		return nparsed;
+	}
 };
 
 bool UBHttpParser::GetFiled(string &sValue,string &sFiled)
@@ -119,7 +122,7 @@ int UBHttpParser_cbMessageComplete(http_parser* p)
 
 int UBHttpParser_cbUrl(http_parser* p, const char* at, size_t length) 
 {
-	return ((UBHttpParser*)p->data)->HeaderField(at,length);
+	return ((UBHttpParser*)p->data)->Url(at,length);
 }
 
 int UBHttpParser_cbHeaderField(http_parser* p, const char* at, size_t length) 
@@ -136,3 +139,4 @@ int UBHttpParser_cbBody(http_parser* p, const char* at, size_t length)
 {
 	return ((UBHttpParser*)p->data)->Body(at,length);
 }
+

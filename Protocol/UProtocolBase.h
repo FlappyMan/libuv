@@ -60,16 +60,19 @@ const char MARKET_STR[][10]=
     "ltc_eth","xmr_eth","ae_eth","btm_eth",
     "btc_usdt","eth_usdt","ltc_usdt","upb_usdt","ncd_usdt","dic_usdt"
 };
+int MARKETFromString(string &s);
 
 enum CURRENCY
 {
 	CURRENCY_UNKNOWN=0,
-	USD=1,      // 美元
-	GBP,      // 英镑
-	EUR,      // 欧元
-	CNY,      // 人民币
+	CURRENCY_USD=1,      // 美元
+	CURRENCY_GBP,      // 英镑
+	CURRENCY_EUR,      // 欧元
+	CURRENCY_CNY,      // 人民币
+    CURRENCY_MAX,
 };
 const char CURRENCY_STR[][8]={"UNKNOWN","USD","GBP","EUR","CNY"};
+int CurrencyFromString(string &s);
 
 enum KLINE
 {
@@ -83,9 +86,10 @@ enum KLINE
 	KLINE_1D,
 	KLINE_1W,
 	KLINE_1M,
+    KLINE_MAX,
 };
 const char KLINE_STR[][8]={"UNKNOWN","1m","5m","15m","30m","1h","6h","1d","1w","1M"};
-
+int KLineFromString(string &s);
 
 
 

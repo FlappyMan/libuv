@@ -17,6 +17,9 @@ public:
     static string g_sListenIP;
     static uint16_t g_uiListenPort;
     static string g_connectKey;
+
+    static string g_sHttpIP;
+    static uint16_t g_uiHttpPort;
 };
 
 #endif

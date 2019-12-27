@@ -33,7 +33,17 @@ void ClientSession::SendPkg(UProtocolBase *pkg)
 
 	switch(pkg->m_uiType)
 	{
-		case UPUptrade::CMD :
+		case UPKlinedata::CMD :
+			_SendPkg_KLine((UPKlinedata*)pkg);
+			break;
+		case UPAllmarketinfo::CMD :
+			_SendPkg_AllMarketInfo((UPAllmarketinfo*)pkg);
+			break;
+		case UPDepthdata::CMD : 
+			_SendPkg_DepthData((UPDepthdata*)pkg);
+			break;
+		case UPMatchedData::CMD :
+			_SendPkg_MatchedDat((UPMatchedData*)pkg);
 			break;
 		default:
 			break;
@@ -41,6 +51,25 @@ void ClientSession::SendPkg(UProtocolBase *pkg)
 }
 
 
+void ClientSession::_SendPkg_KLine(UPKlinedata *pkg)
+{
+
+}
+
+void ClientSession::_SendPkg_AllMarketInfo(UPAllmarketinfo *pkg)
+{
+
+}
+
+void ClientSession::_SendPkg_DepthData(UPDepthdata *pkg)
+{
+
+}
+
+void ClientSession::_SendPkg_MatchedDat(UPMatchedData *pkg)
+{
+
+}
 
 // return <0: 协议错误，=0:数据包长度不足，>0:已处理掉的数据长度
 int ClientSession::Read(char *pBuffer,int iDataLen)
@@ -94,24 +123,28 @@ int ClientSession::_FrameParse()
 	if(it==m.end())return -2;
 
 	string &cmd=*it;
+	Json::Value &v=root[cmd];
+	if(v.type()!=Json::stringValue)return -3;
+
+	string sValue=v.asString();
 	if(cmd.compare(UPRequest::CMD_WSAPI)==0)
 	{
-		_Requst();
+		_Requst(sValue);
 		return ret;
 	}
 	if(cmd.compare(UPSubscribe::CMD_WSAPI)==0)
 	{
-		_Subscribe();
+		_Subscribe(sValue);
 		return ret;
 	}
 	else if(cmd.compare(UPCancelSubscribe::CMD_WSAPI)==0)
 	{
-		_Unsubscribe();
+		_Unsubscribe(sValue);
 		return ret;	
 	}
-	else if(cmd.compare(UPAuth::CMD_WSAPI)==0)
+	else if(cmd.compare(UPOpt::CMD_WSAPI)==0)
 	{
-		_Auth();
+		_Opt(sValue);
 		return ret;
 	}
 
@@ -119,22 +152,73 @@ int ClientSession::_FrameParse()
 }
 
 // 订阅请求
-void ClientSession::_Subscribe()
+void ClientSession::_Subscribe(string &str)
 {
+	vector<string> v;
+	UBStringSplit(v,str,'.');
+	if(v.size()<=0)return;
+
+	if(v[0].compare("markets")==0)
+	{
+		if(v.size()<1)return;
+		m_subs.m_currency=CurrencyFromString(v[1]);
+	}
+	else if(v[0].compare("depth")==0)
+	{
+		if(v.size()<1)return;
+		m_subs.m_depth=MARKETFromString(v[1]);
+	}
+	else if(v[0].compare("tradelog")==0)
+	{
+		if(v.size()<1)return;
+		m_subs.m_tradelog=MARKETFromString(v[1]);
+	}
+	else if(v[0].compare("kline")==0)
+	{
+		if(v.size()<1)return;
+		m_subs.m_kline=KLineFromString(v[1]);
+	}
 
 }
 
-void ClientSession::_Unsubscribe()
+void ClientSession::_Unsubscribe(string &str)
 {
+	vector<string> v;
+	UBStringSplit(v,str,'.');
+	if(v.size()<=0)return;
+
+	if(v[0].compare("markets")==0)
+	{
+		if(v.size()<1)return;
+		m_subs.m_currency=CURRENCY_UNKNOWN;
+	}
+	else if(v[0].compare("depth")==0)
+	{
+		if(v.size()<1)return;
+		m_subs.m_depth=MARKET_UNKNOWN;
+	}
+	else if(v[0].compare("tradelog")==0)
+	{
+		if(v.size()<1)return;
+		m_subs.m_tradelog=MARKET_UNKNOWN;
+	}
+	else if(v[0].compare("kline")==0)
+	{
+		if(v.size()<1)return;
+		m_subs.m_kline=KLINE_UNKNOWN;
+	}
+}
+
+void ClientSession::_Requst(string &str)
+{
+	vector<string> v;
+	UBStringSplit(v,str,'.');
+	if(v.size()!=5)return;
+
 
 }
 
-void ClientSession::_Requst()
-{
-
-}
-
-void ClientSession::_Auth()
+void ClientSession::_Opt(string &str)
 {
 
 }

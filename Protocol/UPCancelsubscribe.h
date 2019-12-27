@@ -12,7 +12,7 @@ class UPCancelSubscribe : public UProtocolBase
         void JsonPack(Json::Value &root){};
         bool JsonUnpack(Json::Value &root){return true;};
 
-        bool JsonParser(string& sub, Json::Value &root);
+        bool JsonParser(string& cancelsub, Json::Value &root);
     public:
         static constexpr const char* CMD_WSAPI = "cancelsub";//WS
         //static constexpr const char* CMD_WEBAPI = "/api/private/subscribe";//HTTP

@@ -12,6 +12,8 @@
 #include "UBDate.h"
 #include "UBHttpParser.h"
 #include "UBWsParser.h"
+#include "UBString.h"
+#include "UBCrypto.h"
 
 #include "uv.h"
 

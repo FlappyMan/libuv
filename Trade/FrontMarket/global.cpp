@@ -84,6 +84,8 @@ UVWriteReq* WriteReqCache::Get(int iBuffSize)
 		if(m_q2k.size()<=0)
 		{
 			p=new UVWriteReq;
+			p->buf.base=new char[SIZE_BUFFER_2k];
+			p->buf.len=SIZE_BUFFER_2k;
 			return p;
 		}
 		p=m_q2k.front();
@@ -96,6 +98,8 @@ UVWriteReq* WriteReqCache::Get(int iBuffSize)
 		if(m_q8k.size()<=0)
 		{
 			p=new UVWriteReq;
+			p->buf.base=new char[SIZE_BUFFER_8k];
+			p->buf.len=SIZE_BUFFER_8k;
 			return p;
 		}
 		p=m_q8k.front();
@@ -108,6 +112,8 @@ UVWriteReq* WriteReqCache::Get(int iBuffSize)
 		if(m_q16k.size()<=0)
 		{
 			p=new UVWriteReq;
+			p->buf.base=new char[SIZE_BUFFER_16k];
+			p->buf.len=SIZE_BUFFER_16k;
 			return p;
 		}
 		p=m_q16k.front();

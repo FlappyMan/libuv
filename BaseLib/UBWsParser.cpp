@@ -28,9 +28,6 @@ bool UBWsParser::WSReplyHeader(string &sOutHeader)
 		SHA1_Update(&ctx, sAcceptKey.data(), sAcceptKey.size());
 		SHA1_Final(digest, &ctx);
 
-		//printf("DIGEST:"); for(int i=0; i<20; i++) printf("%02x ",digest[i]); printf("\n");
-
-		//little endian to big endian
 		for (int i = 0; i < 20; i += 4)
 		{
 			unsigned char c;
@@ -43,8 +40,6 @@ bool UBWsParser::WSReplyHeader(string &sOutHeader)
 			digest[i + 1] = digest[i + 2];
 			digest[i + 2] = c;
 		}
-
-		//printf("DIGEST:"); for(int i=0; i<20; i++) printf("%02x ",digest[i]); printf("\n");
 
 		Base64Encode(sAcceptKey,(char*)digest, SHA_DIGEST_LENGTH); //160bit = 20 bytes/chars
 
@@ -60,8 +55,6 @@ bool UBWsParser::WSReplyHeader(string &sOutHeader)
 	}
 	sOutHeader.append("\r\n");
 	return true;
-
-	//return WS_OPENING_FRAME;
 }
 
 int64_t UBWsParser::WSSetFrame(UBWsParserFrameType ft, uint8_t *pData, uint32_t iDataLen, uint8_t *pBuffer, uint32_t iBufferSize)

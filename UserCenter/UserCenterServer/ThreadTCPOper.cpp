@@ -12,7 +12,7 @@ void CThreadTCPOper::cbTimer(uv_timer_t *handle)
 
 void CThreadTCPOper::cbReadBuff(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
 {
-	cout << "[Server] New read buffer" << endl;
+	cout << "[CThreadTCPOper->cbNewConnection->cbReadBuff] New read buffer" << endl;
 	buf->base = new char[suggested_size];
 	buf->len = suggested_size;
 }
@@ -26,41 +26,38 @@ void CThreadTCPOper::cbWrited(uv_write_t *req, int status)
 {
 	if (status < 0)
 	{
-		cout << "[Server] Write failed" << endl;
+		cout << "[CThreadTCPOper->cbWrited] Write failed" << endl;
 	}
 	g_cache_write_req.Free((UVWriteReq *)req);
 }
 
 void CThreadTCPOper::cbRead(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
 {
-	cout << "[Server] Server begin read" << endl;
+	cout << "[CThreadTCPOper->cbNewConnection->cbRead] Server begin read" << endl;
 	if (nread < 0)
 	{
 		if (nread != UV_EOF)
-			cout << "Read error :" << uv_err_name(nread) << endl;
+			cout << "[CThreadTCPOper->cbNewConnection->cbRead] Read error :" << uv_err_name(nread) << endl;
 		uv_close((uv_handle_t *)client, cbClosed);
-		uv_stop(&g_uvLoop);
-		return;
 	}
 	else if (nread == 0)
 	{
-		delete[] buf->base;
-		cout << "read noting" << endl;
-		return;
+		cout << "[CThreadTCPOper->cbNewConnection->cbRead] read noting" << endl;
 	}
 	else
 	{
-		cout << "[Server] readed :" << buf->base << endl;
+		cout << "[CThreadTCPOper->cbNewConnection->cbRead] readed :" << buf->base << endl;
 		CDispatchManager::DispatchClient((uv_tcp_t *)client,buf->base,nread);
 	}
+	delete[] buf->base;
 }
 
 void CThreadTCPOper::cbNewConnection(uv_stream_t *server, int status)
 {
-	cout << "[BackTrade] Accept new connection" << endl;
+	cout << "[CThreadTCPOper->cbNewConnection] Accept new connection" << endl;
 	if (status < 0)
 	{
-		cout << "[BackTrade] New connection error :" << uv_strerror(status) << endl;
+		cout << "[CThreadTCPOper->cbNewConnection] New connection error :" << uv_strerror(status) << endl;
 		return;
 	}
 
@@ -69,17 +66,18 @@ void CThreadTCPOper::cbNewConnection(uv_stream_t *server, int status)
 	if (uv_accept(server, (uv_stream_t *)client) == 0)
 	{
 		int ret = uv_read_start((uv_stream_t *)client, cbReadBuff, cbRead);
-		cout << "[BackTrade] New connection begin read : " << ret << endl;
+		cout << "[CThreadTCPOper->cbNewConnection] New connection begin read : " << ret << endl;
 	}
 	else
 	{
-		cout << "[BackTrade] New connection accept failed" << endl;
+		cout << "[CThreadTCPOper->cbNewConnection] New connection accept failed" << endl;
 		uv_close((uv_handle_t *)client, cbClosed);
 	}
 }
 
 void CThreadTCPOper::ThreadTCPOper(void *arg)
 {
+	cout<<"[CThreadTCPOper Init]"<<endl;
 	uv_loop_init(&g_uvLoop);
 	uv_tcp_t server;
 	uv_tcp_init(&g_uvLoop, &server);
@@ -91,7 +89,7 @@ void CThreadTCPOper::ThreadTCPOper(void *arg)
 	int ret = uv_listen((uv_stream_t *)&server, 1000, cbNewConnection);
 	if (ret)
 	{
-		cout << "[Client] Listen error :" << uv_strerror(ret) << endl;
+		cout << "[CThreadTCPOper Client Listen error]:" << uv_strerror(ret) << endl;
 		return;
 	}
 

@@ -19,20 +19,20 @@ CBaseSession::~CBaseSession()
 {
 }
 
-int CBaseSession::OnRecv(uv_tcp_t *client,char *pBuffer, int iDataLen)
+int CBaseSession::OnRecv(uv_tcp_t *client, char *pBuffer, int iDataLen)
 {
-    cout<<"[CBaseSession]:[OnRecv]"<<endl;
+    cout << "[CBaseSession]:[OnRecv]" << endl;
     int iTotalDataLen = m_buffer.AppendData(pBuffer, iDataLen);
     int ret = ProtocolHead(m_uiType, m_uiValueLen, m_buffer.Data(), m_buffer.DataLength());
-    UProtocolBase* pkg = NULL;
+    UProtocolBase *pkg = NULL;
     if (ret == RET_HOLD)
     {
-        cout<<"[CBaseSession]:[RET_HOLD]"<<endl;
+        cout << "[CBaseSession]:[RET_HOLD]" << endl;
         return ret;
     }
     else if (ret == RET_FAILED)
     {
-        cout<<"[CBaseSession]:[RET_FAILED]"<<endl;
+        cout << "[CBaseSession]:[RET_FAILED]" << endl;
         return ret;
     }
     else
@@ -41,7 +41,7 @@ int CBaseSession::OnRecv(uv_tcp_t *client,char *pBuffer, int iDataLen)
         {
         case UPUptrade::CMD:
         {
-            cout<<"[UPUptrade]:[CMD]"<<endl;
+            cout << "[UPUptrade]:[CMD]" << endl;
             pkg = new UPUptrade;
             ProtoUnpack(*(UPUptrade *)pkg, m_buffer.Data(), m_uiValueLen);
             CTradeModel model;
@@ -52,7 +52,7 @@ int CBaseSession::OnRecv(uv_tcp_t *client,char *pBuffer, int iDataLen)
         break;
         case UPUptradebatch::CMD:
         {
-            cout<<"[UPUptradebatch]:[CMD]"<<endl;
+            cout << "[UPUptradebatch]:[CMD]" << endl;
             pkg = new UPUptradebatch;
             ProtoUnpack(*(UPUptradebatch *)pkg, m_buffer.Data(), m_uiValueLen);
             CTradeBatchModel model;
@@ -63,7 +63,7 @@ int CBaseSession::OnRecv(uv_tcp_t *client,char *pBuffer, int iDataLen)
         break;
         case UPCanceltrade::CMD:
         {
-            cout<<"[UPCanceltrade]:[CMD]"<<endl;
+            cout << "[UPCanceltrade]:[CMD]" << endl;
             pkg = new UPCanceltrade;
             ProtoUnpack(*(UPCanceltrade *)pkg, m_buffer.Data(), m_uiValueLen);
             CCancelTradeModel model;
@@ -75,7 +75,7 @@ int CBaseSession::OnRecv(uv_tcp_t *client,char *pBuffer, int iDataLen)
         break;
         case UPCanceltradebatch::CMD:
         {
-            cout<<"[UPCanceltradebatch]:[CMD]"<<endl;
+            cout << "[UPCanceltradebatch]:[CMD]" << endl;
             pkg = new UPCanceltradebatch;
             ProtoUnpack(*(UPCanceltradebatch *)pkg, m_buffer.Data(), m_uiValueLen);
             CCancelTradeBatchModel model;
@@ -86,7 +86,7 @@ int CBaseSession::OnRecv(uv_tcp_t *client,char *pBuffer, int iDataLen)
         break;
         case UPMatchedData::CMD:
         {
-            cout<<"[UPMatchedData]:[CMD]"<<endl;
+            cout << "[UPMatchedData]:[CMD]" << endl;
             pkg = new UPMatchedData;
             ProtoUnpack(*(UPMatchedData *)pkg, m_buffer.Data(), m_uiValueLen);
             CMatchedDataModel model;
@@ -96,11 +96,13 @@ int CBaseSession::OnRecv(uv_tcp_t *client,char *pBuffer, int iDataLen)
         }
         break;
         default:
-            cout<<"[default]:["<<m_uiType<<"]"<<endl;
-            break;
+        {
+            cout << "[default]:[" << m_uiType << "]" << endl;
+        }
+        break;
         }
         m_buffer.RemoveData(m_uiValueLen);
-        cout<<"[CBaseSession]:[RET_SUCCESS]"<<endl;
+        cout << "[CBaseSession]:[RET_SUCCESS]" << endl;
         return RET_SUCCESS;
     }
 }

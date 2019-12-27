@@ -102,6 +102,10 @@ pthread.h
 UBHeader.h
 ../BaseLib/UBHeader.h
 
+../BaseLib/UBString.h
+UBHeader.h
+../BaseLib/UBHeader.h
+
 ../BaseLib/UBWsParser.h
 UBHttpParser.h
 ../BaseLib/UBHttpParser.h
@@ -121,14 +125,10 @@ UBHttpParser.h
 ../BaseLib/UBHttpParser.h
 UBWsParser.h
 ../BaseLib/UBWsParser.h
+UBString.h
+../BaseLib/UBString.h
 uv.h
 ../BaseLib/uv.h
-
-../Protocol/UPAuth.h
-UBaseLib.h
-../Protocol/UBaseLib.h
-UProtocolBase.h
-../Protocol/UProtocolBase.h
 
 ../Protocol/UPCancelsubscribe.h
 UBaseLib.h
@@ -141,6 +141,12 @@ UBaseLib.h
 ../Protocol/UBaseLib.h
 
 ../Protocol/UPHeartbeat.h
+UBaseLib.h
+../Protocol/UBaseLib.h
+UProtocolBase.h
+../Protocol/UProtocolBase.h
+
+../Protocol/UPOpt.h
 UBaseLib.h
 ../Protocol/UBaseLib.h
 UProtocolBase.h
@@ -299,8 +305,8 @@ UPSubscribe.h
 ../Protocol/UPSubscribe.h
 UPCancelsubscribe.h
 ../Protocol/UPCancelsubscribe.h
-UPAuth.h
-../Protocol/UPAuth.h
+UPOpt.h
+../Protocol/UPOpt.h
 UPRequest.h
 ../Protocol/UPRequest.h
 UPDir.h

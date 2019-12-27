@@ -19,12 +19,16 @@ public:
 	// return <0:failed; =0: finished >0:need more call
 	int Readed(const char *pData,uint32_t iLen);
 
+	int GetStatusCode(){return m_parser.status_code;};	// responses only
 	bool GetFiled(string &sValue,string &sFiled);
 	bool GetFiled(string &sValue,const char *pFiled);
 
+	http_parser& GetParser(){return m_parser;};		// 调用方不应该直接修改返回值中的成员
+
+
 	// callback function
-	int MessageBegin(){m_bHeaderFinished=false;m_bBodyFinished=false;m_sUrl.clear();m_sBody.clear();m_sCurFiled.clear();m_mFiled.clear();return 0;};
-	int MessageComplete(){m_bBodyFinished=true;return 0;};
+	int MessageBegin(){m_bHeaderFinished=false;m_bMsgFinished=false;m_sUrl.clear();m_sBody.clear();m_sCurFiled.clear();m_mFiled.clear();return 0;};
+	int MessageComplete(){m_bMsgFinished=true;return 0;};
 
 	int Url(const char* pStr, size_t iLen){m_sUrl.append(pStr,iLen);return 0;};
 
@@ -41,6 +45,11 @@ public:
 	int HeaderComplete(){m_bHeaderFinished=true;return 0;};
 	bool IsWebSocket(){return m_parser.upgrade;};
 	bool IsHeaderComplete(){return m_bHeaderFinished;};
+	bool IsMsgComplete(){return m_bMsgFinished;};
+	bool IsGet(){if(m_bHeaderFinished==false)return false;return m_parser.method==HTTP_GET;};
+	bool IsPost(){if(m_bHeaderFinished==false)return false;return m_parser.method==HTTP_POST;};
+
+
 
 	int Body(const char* pStr, size_t iLen)
 	{
@@ -59,7 +68,7 @@ protected:
 
 	string m_sCurFiled;
 	bool m_bHeaderFinished;
-	bool m_bBodyFinished;
+	bool m_bMsgFinished;
 
 };
 

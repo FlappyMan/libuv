@@ -123,33 +123,6 @@ UProtocol/fast:
 	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/build
 .PHONY : UProtocol/fast
 
-UPAuth.o: UPAuth.cpp.o
-
-.PHONY : UPAuth.o
-
-# target to build an object file
-UPAuth.cpp.o:
-	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.o
-.PHONY : UPAuth.cpp.o
-
-UPAuth.i: UPAuth.cpp.i
-
-.PHONY : UPAuth.i
-
-# target to preprocess a source file
-UPAuth.cpp.i:
-	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.i
-.PHONY : UPAuth.cpp.i
-
-UPAuth.s: UPAuth.cpp.s
-
-.PHONY : UPAuth.s
-
-# target to generate assembly for a file
-UPAuth.cpp.s:
-	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.s
-.PHONY : UPAuth.cpp.s
-
 UPCancelsubscribe.o: UPCancelsubscribe.cpp.o
 
 .PHONY : UPCancelsubscribe.o
@@ -203,6 +176,33 @@ UPDir.s: UPDir.cpp.s
 UPDir.cpp.s:
 	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPDir.cpp.s
 .PHONY : UPDir.cpp.s
+
+UPOpt.o: UPOpt.cpp.o
+
+.PHONY : UPOpt.o
+
+# target to build an object file
+UPOpt.cpp.o:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPOpt.cpp.o
+.PHONY : UPOpt.cpp.o
+
+UPOpt.i: UPOpt.cpp.i
+
+.PHONY : UPOpt.i
+
+# target to preprocess a source file
+UPOpt.cpp.i:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPOpt.cpp.i
+.PHONY : UPOpt.cpp.i
+
+UPOpt.s: UPOpt.cpp.s
+
+.PHONY : UPOpt.s
+
+# target to generate assembly for a file
+UPOpt.cpp.s:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPOpt.cpp.s
+.PHONY : UPOpt.cpp.s
 
 UPRequest.o: UPRequest.cpp.o
 
@@ -969,15 +969,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... UProtocol"
 	@echo "... edit_cache"
-	@echo "... UPAuth.o"
-	@echo "... UPAuth.i"
-	@echo "... UPAuth.s"
 	@echo "... UPCancelsubscribe.o"
 	@echo "... UPCancelsubscribe.i"
 	@echo "... UPCancelsubscribe.s"
 	@echo "... UPDir.o"
 	@echo "... UPDir.i"
 	@echo "... UPDir.s"
+	@echo "... UPOpt.o"
+	@echo "... UPOpt.i"
+	@echo "... UPOpt.s"
 	@echo "... UPRequest.o"
 	@echo "... UPRequest.i"
 	@echo "... UPRequest.s"

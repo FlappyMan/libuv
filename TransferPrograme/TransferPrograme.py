@@ -23,7 +23,7 @@ class DBOperation(object):
                           'register_type','verify_type','global_kyc_status','last_operate_time','account_status','os_verify','pin_verify','two_factor','hide_balance','create_time','update_time']
         self.user_facts = ['user_id','first_name','last_name','birthday','country','residence_country','province','city','town','district','street_address','building_number','building_name','sex','zip_code','apartment',
                            'first_residence_certificate','second_residence_certificate','street_code','unit','house_code','passport','passport_ocr','passport_expire','passport_picture','passport_picture_hold','driving_number',
-                           'driving_picture','driving_picture_hold','is_europe','nationality','create_time','update_time']
+                           'driving_picture','driving_picture_hold','is_europe','nationality','create_time','has_deducted_gbp','has_deducted_eur','has_deducted_usd','update_time']
         self.user_info = ['user_id','mobile','id_type','identity_number','identity_expiry_date','identity_info','paypassword','recommender_level1','recommender_level2','recommender_level3','realname','country',
                           'c2c_info_ext','ext','invit_time','source_of_funds','mobile_binding_time','id_number','ip_address',
                           'address_desc','email','wechat','wechat_img','wechat_openid','alipay','alipay_img','invite_code','custom_cate_id','master_account','source_proj_uid','uuid','uuid_salt','user_image','country_code',
@@ -221,6 +221,7 @@ class DBOperation(object):
             assert (len(searchUkexList) == 1 or len(searchUkexpayList) == 1)
             if len(searchUkexList) != 0 and len(searchUkexpayList) != 0:
                 assert (len(searchUkexList) == 1 and len(searchUkexpayList) == 1)
+                
                 ukexObj = searchUkexList[0]
                 ukexpayObj = searchUkexpayList[0]
                 if ukexObj['is_allow_login'] == 1:
@@ -381,7 +382,7 @@ class DBOperation(object):
             if object['ukexpay_uid'] != 0:
                 searchUkexpayList = database.selectSQL(database.ukexpay_cursor, "uid as user_id, first_name, last_name , birth as birthday, residence_country as country, residence_country, state as province,"
                                                                                 "city, town, district , street as street_address, building as building_number, building_name, sex, postcode as zip_code,"
-                                                                                "apartment, living_proof_1 as first_residence_certificate, living_proof_2 as second_residence_certificate,0 as has_deducted_gbp,0 as has_deducted_eur,0 as has_deducted_usd 0 as create_time, 0 as update_time"
+                                                                                "apartment, living_proof_1 as first_residence_certificate, living_proof_2 as second_residence_certificate, 0 as has_deducted_gbp, 0 as has_deducted_eur, 0 as has_deducted_usd, 0 as create_time, 0 as update_time "
                                                        , 'cnuk_user_info where uid = "' + str(object['ukexpay_uid']) + '";')
             # assert (len(searchUkexList) == 1 or len(searchUkexpayList) == 1)
             if searchUkexList == None:
@@ -399,7 +400,7 @@ class DBOperation(object):
                     insertObj['birthday'] = 0
                 else:
                     t = datetime.datetime.strptime(ukexObj['birthday'], '%Y-%m-%d')
-                    insertObj['birthday'] = str(time.mktime(t.timetuple()))
+                    insertObj['birthday'] = str(int(time.mktime(t.timetuple())))
                 insertObj['country'] = ukexObj['country']
                 insertObj['residence_country'] = ukexpayObj['residence_country']
                 insertObj['province'] = ukexObj['province']
@@ -446,7 +447,7 @@ class DBOperation(object):
                     insertObj['birthday'] = 0
                 else:
                     t = datetime.datetime.strptime(ukexObj['birthday'], '%Y-%m-%d')
-                    insertObj['birthday'] = str(time.mktime(t.timetuple()))
+                    insertObj['birthday'] = str(int(time.mktime(t.timetuple())))
                 insertObj['country'] = ukexObj['country']
                 insertObj['residence_country'] = ukexObj['country']
                 insertObj['province'] = ukexObj['province']
@@ -568,7 +569,6 @@ class DBOperation(object):
                 searchUkexpayMainList = []
             if searchUkexpayInfoList == None:
                 searchUkexpayInfoList = []
-
             insertObj['mobile'] = ''
             insertObj['id_type'] = 0
             insertObj['identity_number'] = ''
@@ -826,7 +826,12 @@ class DBOperation(object):
                 insertObj['country'] = ukexpayMainObj['country']
                 insertObj['user_image'] = ukexpayMainObj['user_image']
                 insertObj['country_code'] = ukexpayMainObj['country_code']
-                insertObj['user_type'] = ukexpayMainObj['user_type']
+                if ukexpayMainObj['user_type'] == 'user':
+                    insertObj['user_type'] = 1
+                elif ukexpayMainObj['user_type'] == 'merchant':
+                    insertObj['user_type'] = 2
+                else:
+                    insertObj['user_type'] = 0
                 insertObj['account_active_time'] = ukexpayMainObj['account_active_time']
                 insertObj['secret_key'] = ukexpayMainObj['secret_key']
                 insertObj['refer_currency'] = ukexpayMainObj['refer_currency']
@@ -1020,7 +1025,6 @@ class DBOperation(object):
         insertList = []
         searchUkexList = database.selectSQL(database.ukex_cursor,"id, market as market_id,type as Kline_type, data , addtime as create_time, addtime as update_time",
                                                 'coin_trade_json;')
-        print(len(searchUkexList))
         assert (searchUkexList != None)
         dicvalue = {}
         for searchObj in searchUkexList:
@@ -1050,9 +1054,7 @@ class DBOperation(object):
                 insertList.append(insertObj)
             else:
                 dicvalue[str(searchObj['market_id'])] = 1
-        print(dicvalue)
-        print(len(insertList))
-        # dbOper.insertToSA('kline_record', insertList, dbOper.kline_record)
+        dbOper.insertToSA('kline_record', insertList, dbOper.kline_record)
         print ('-------------------------------------------------------------' + str(icount))
 
     def loadTableFinancialRecordsData(self):
@@ -1085,7 +1087,8 @@ class DBOperation(object):
                 insertObj['create_time'] = searchObj['create_time']
                 insertObj['update_time'] = searchObj['update_time']
                 insertList.append(insertObj)
-        dbOper.insertToSA('financial_records', insertList, dbOper.financial_records)
+        print(len(insertList))
+        # dbOper.insertToSA('financial_records', insertList, dbOper.financial_records)
         print ('-------------------------------------------------------------')
 
     def createWaitCloseTables(self):
@@ -1216,7 +1219,7 @@ class DBOperation(object):
                         email_auth tinyint(1) unsigned DEFAULT 0 COMMENT \'邮箱认证 1-已验证；0-未验证\' ,\
                         allow_openapi_withdrawal tinyint(1) unsigned NOT NULL COMMENT \'是否可以通过openid提现 1-允许；0不允许\' ,\
                         is_reauth tinyint(1) unsigned DEFAULT 0 COMMENT \'是否重新认证 1-已重新认证；0-未重新认证\' ,\
-                        is_pass_aml tinyint(1) unsigned DEFAULT 0 COMMENT \'是否通过 aml 验证 1-通过；0-未通过\' ,\
+                        is_pass_aml tinyint(1) DEFAULT 0 COMMENT \'是否通过 aml 验证 1-通过；0-未通过；-1 认证失败\' ,\
                         register_type tinyint(3) unsigned DEFAULT 0 COMMENT \'注册类型 0-默认；1-邮箱；2-手机\' ,\
                         verify_type tinyint(3) unsigned DEFAULT 0 COMMENT \'验证方式 1-邮箱；2-手机\' ,\
                         global_kyc_status tinyint(3) unsigned DEFAULT 0 COMMENT \'国外 KYC 状态 0-待审核；1-已审核\' ,\
@@ -1234,7 +1237,7 @@ class DBOperation(object):
                             user_id BIGINT NOT NULL AUTO_INCREMENT  COMMENT \'用户 id 自增int\' ,\
                             first_name varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT \'真实姓\' ,\
                             last_name varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT \'真实名\' ,\
-                            birthday int(11) unsigned DEFAULT 0 COMMENT \'生日\' ,\
+                            birthday int(11) DEFAULT 0 COMMENT \'生日\' ,\
                             country varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT \'居住地国家\' ,\
                             residence_country varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT \'\' COMMENT \'居住地国籍\',\
                             province varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT \'所属省\' ,\
@@ -1253,6 +1256,9 @@ class DBOperation(object):
                             unit  varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT \'楼栋号(单元号)\' ,\
                             house_code varchar(32) NOT NULL COMMENT \'门牌号\' ,\
                             passport varchar(128) NOT NULL COMMENT \'护照号\' ,\
+                            `has_deducted_gbp` tinyint(1) NOT NULL DEFAULT \'0\' COMMENT \'visa开卡gbp是否已收费 1：已收 0：未收\',\
+                            `has_deducted_eur` tinyint(1) NOT NULL DEFAULT \'0\' COMMENT \'visa开卡eur是否收费 1：已收 0：未收\',\
+                            `has_deducted_usd` tinyint(1) NOT NULL DEFAULT \'0\' COMMENT \'visa开卡usd是否收费 1：已收 0：未收\',\
                             passport_ocr varchar(128) NOT NULL COMMENT \'护照 OCR 码\' ,\
                             passport_expire  varchar(32) NOT NULL COMMENT \'护照过期时间\' ,\
                             passport_picture varchar(256) NOT NULL COMMENT \'护照图 1\' ,\
@@ -3136,14 +3142,15 @@ class DBOperation(object):
                 selectList = database.selectSQL(database.ukex_cursor,colStr,tableName)
                 cur = con.cursor()
                 cur.execute(useDBCommand)
+                
                 for Obj in selectList:
                     userids = ''
                     ids = str(Obj['allow_release_uid']).split(',')
                     for id in ids:
-                        userids = userids + str(dbOper.getNewUserId(str(id)))
+                        userids += dbOper.getNewUserId(str(id))
                         userids += ','
                     if userids != '':
-                        userids = userids[-1]
+                        userids = userids[:-1]
                     Obj['allow_release_uid'] = userids
                     tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
                     # 最后添加transfer字段，表示新数据都没有被转换过
@@ -3184,6 +3191,7 @@ class DBOperation(object):
             traceback.print_exc()
 
     def loadCoinUserIdcard(self,useDBCommand,colmun,tableName,colStr=''):
+        # 0，12，17
         try:
             con = None
             if con is None:
@@ -3197,6 +3205,8 @@ class DBOperation(object):
                 cur.execute(useDBCommand)
                 for Obj in selectList:
                     Obj['id'] = dbOper.getNewUserId(str(Obj['id']))
+                    if Obj['id'] == '0' or Obj['id'] == '777777':
+                        continue
                     tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
                     # 最后添加transfer字段，表示新数据都没有被转换过
                     baseSql = 'INSERT INTO '+tableColumns
@@ -3214,13 +3224,13 @@ if __name__ == '__main__':
     sys.setdefaultencoding('utf-8')
 
     dbOper = DBOperation()
-    dbOper.createBaseTables()
+    # dbOper.createBaseTables()
 
     database = Database()
-    # # 创建数据库account中的表
+    # 创建数据库account中的表
     dbOper.createAccountTables()
 
-    # # 加载 user 表的数据A
+    # 加载 user 表的数据A
     dbOper.loadTableUserData()
 
     # 获取user表中的ukex用户信息和ukexpay的用户信息用于做后续处理
@@ -3228,8 +3238,8 @@ if __name__ == '__main__':
                                   'user where user_account !="" and source_type = 1')
     ukexpayList = database.selectSQL(database.accountDB_cursor, 'id as user_id, user_account,create_time,update_time',
                                      'user where user_account !="" and source_type = 2')
-    # 加载 user_account 表的数据
-    dbOper.loadTableUserAccountData()
+    # # 加载 user_account 表的数据
+    # dbOper.loadTableUserAccountData()
 
     mappingList = database.selectSQL(database.accountDB_cursor, 'user_id, ukex_uid,ukexpay_uid,account',
                                      'user_account where account !=""')
@@ -3371,7 +3381,7 @@ if __name__ == '__main__':
     # 加载各资产表中的用户信息
     dbOper.loadTableUserAssetsData()
 
-    # print('-------------------------分割线以下是BackTrade部分------------------------------')
+    # # print('-------------------------分割线以下是BackTrade部分------------------------------')
     coinMappingList = database.selectSQL(database.ukex_cursor, 'name, id','coin_coin')
     marketMappingList = database.selectSQL(database.ukex_cursor, 'name, id','coin_market')
     coinnameMapping = {}

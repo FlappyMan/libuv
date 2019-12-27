@@ -14,7 +14,7 @@ BackTradeSrv::~BackTradeSrv()
 
 void BackTradeSrv::NewConnection(uv_tcp_t *tcp)
 {
-    BackTradeSession *p=new BackTradeSession(tcp,m_qReqest);
+    BackTradeSession *p=new BackTradeSession(tcp,m_qRequest);
     p->Init();
     m_mSession.insert(pair<uv_tcp_t*,BackTradeSession*>(tcp,p));
 }
@@ -35,5 +35,5 @@ void BackTradeSrv::GetRequest(BlockQueue<UProtocolBase*> &q)
     // q.swap(m_qReqest);
     // uv_mutex_unlock(&m_lock);
     
-    q = m_qReqest;
+    q = m_qRequest;
 }

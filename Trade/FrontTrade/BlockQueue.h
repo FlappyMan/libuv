@@ -22,7 +22,7 @@ class BlockQueue
 };
 
 template <typename T>
-BlockQueue<T>::BlockQueue() : m_size(128)
+BlockQueue<T>::BlockQueue() : m_size(100000)
 {
     uv_mutex_init(&m_mutex);
     uv_cond_init(&m_getCondition);

@@ -7,9 +7,17 @@
 #include "openssl/bio.h"
 #include "openssl/buffer.h"
 #include "openssl/sha.h"
+#include "openssl/rsa.h"
+#include <openssl/pem.h>
+#include <openssl/bn.h>
 
 bool Base64Encode(string &strEncoded,const char *pData, int iDataLen, bool bNewLine=false);
 bool Base64Decode(string &strDecoded,const char *pData, int iDataLen, bool bNewLine=false);
+
+enum{RSA_KEY_BITS=2048,RSA_KEY_BYTES=256};
+bool RsaKeyGen(string &sPrivateKey,string &sPublicKey);
+bool RsaPublicEncrypt();
+bool RsaPrivateDecrypt();
 
 
 #endif

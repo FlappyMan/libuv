@@ -9,12 +9,13 @@ CMakeFiles/gong.dir/gong.cpp.o: ../BaseLib/UBHttpParser.h
 CMakeFiles/gong.dir/gong.cpp.o: ../BaseLib/UBJson.h
 CMakeFiles/gong.dir/gong.cpp.o: ../BaseLib/UBLock.h
 CMakeFiles/gong.dir/gong.cpp.o: ../BaseLib/UBMysql.h
+CMakeFiles/gong.dir/gong.cpp.o: ../BaseLib/UBString.h
 CMakeFiles/gong.dir/gong.cpp.o: ../BaseLib/UBWsParser.h
 CMakeFiles/gong.dir/gong.cpp.o: ../BaseLib/UBaseLib.h
-CMakeFiles/gong.dir/gong.cpp.o: ../Protocol/UPAuth.h
 CMakeFiles/gong.dir/gong.cpp.o: ../Protocol/UPCancelsubscribe.h
 CMakeFiles/gong.dir/gong.cpp.o: ../Protocol/UPDir.h
 CMakeFiles/gong.dir/gong.cpp.o: ../Protocol/UPHeartbeat.h
+CMakeFiles/gong.dir/gong.cpp.o: ../Protocol/UPOpt.h
 CMakeFiles/gong.dir/gong.cpp.o: ../Protocol/UPRequest.h
 CMakeFiles/gong.dir/gong.cpp.o: ../Protocol/UPSubscribe.h
 CMakeFiles/gong.dir/gong.cpp.o: ../Protocol/UPallmarketinfo.h

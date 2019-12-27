@@ -1,7 +1,7 @@
 #include "UPCancelsubscribe.h"
 
-bool UPCancelSubscribe::JsonParser(string& sub, Json::Value &root)
+bool UPCancelSubscribe::JsonParser(string& cancelsub, Json::Value &root)
 {
-    sub = root["cancelsub"].asString();
+    cancelsub = root["cancelsub"].asString();
     return true;
 }

@@ -25,7 +25,7 @@ int ClientSrv::Read(uv_tcp_t* tcp,char *pBuffer,int iDataLen)
     map<uv_tcp_t*,ClientSession*>::iterator it=m_mSession.find(tcp);
     if(it==m_mSession.end())return false;
 
-    return it->second->Read(tcp, pBuffer, iDataLen);
+    return it->second->Read(tcp, pBuffer, iDataLen,this->m_qRequest);
 }
 
 
@@ -34,16 +34,12 @@ void ClientSrv::PushRequest(BlockQueue<UProtocolBase*> &q)
     // uv_mutex_lock(&m_lock);
     // while(q.size()>0)
     // {
-    //     m_qReqest.push(q.front());
+    //     m_qRequest.push(q.front());
     //     q.pop();
     // }
     // uv_mutex_unlock(&m_lock);
-<<<<<<< HEAD
     // Client json->pb request
-    m_qReqest.put(q.get());//BackTrade pb response
-=======
-    m_qReqest.put(q.get());
->>>>>>> refs/remotes/origin/master
+    m_qRequest.put(q.get());//BackTrade pb response
 }
 
 
@@ -60,7 +56,7 @@ void ClientSrv::OnTimer(time_t tNow)
     //     qReq.pop();
     // }
     BlockQueue<UProtocolBase* > qReq;
-    qReq = m_qReqest;
+    qReq = m_qRequest;
     map<uv_tcp_t*,ClientSession*>::iterator it;
     UProtocolBase* pkg = NULL;  
     while(qReq.size()>0)
@@ -75,16 +71,12 @@ void ClientSrv::OnTimer(time_t tNow)
                 it = m_mSession.erase(it);
                 continue;
             }
-<<<<<<< HEAD
-            for (map<uv_tcp_t*,BackTradeSession*>::iterator iter = bts.m_mSession.begin();iter!=bts.m_mSession.end();iter++)
+            for (map<uv_tcp_t*,BackTradeSession*>::iterator iter = m_btSrv.m_mSession.begin();iter!=m_btSrv.m_mSession.end();iter++)
             {
-                it->second->SendPkg(iter->first, pkg);
+                it->second->SendPkg(iter->first, pkg);//客户端的Request发送给Server
             }
-=======
-            it->second->SendPkg(pkg);
->>>>>>> refs/remotes/origin/master
         }
-        delete pkg;
+        
     }
 }
 

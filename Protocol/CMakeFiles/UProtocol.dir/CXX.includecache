@@ -124,16 +124,6 @@ UBWsParser.h
 uv.h
 ../BaseLib/uv.h
 
-/home/gong/workspace/git/UkexServer/Protocol/UPAuth.cpp
-UPAuth.h
-/home/gong/workspace/git/UkexServer/Protocol/UPAuth.h
-
-/home/gong/workspace/git/UkexServer/Protocol/UPAuth.h
-UBaseLib.h
-/home/gong/workspace/git/UkexServer/Protocol/UBaseLib.h
-UProtocolBase.h
-/home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.h
-
 /home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.cpp
 UPCancelsubscribe.h
 /home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.h
@@ -153,6 +143,16 @@ UBaseLib.h
 /home/gong/workspace/git/UkexServer/Protocol/UBaseLib.h
 
 /home/gong/workspace/git/UkexServer/Protocol/UPHeartbeat.h
+UBaseLib.h
+/home/gong/workspace/git/UkexServer/Protocol/UBaseLib.h
+UProtocolBase.h
+/home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.h
+
+/home/gong/workspace/git/UkexServer/Protocol/UPOpt.cpp
+UPOpt.h
+/home/gong/workspace/git/UkexServer/Protocol/UPOpt.h
+
+/home/gong/workspace/git/UkexServer/Protocol/UPOpt.h
 UBaseLib.h
 /home/gong/workspace/git/UkexServer/Protocol/UBaseLib.h
 UProtocolBase.h
@@ -359,8 +359,8 @@ UPSubscribe.h
 /home/gong/workspace/git/UkexServer/Protocol/UPSubscribe.h
 UPCancelsubscribe.h
 /home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.h
-UPAuth.h
-/home/gong/workspace/git/UkexServer/Protocol/UPAuth.h
+UPOpt.h
+/home/gong/workspace/git/UkexServer/Protocol/UPOpt.h
 UPRequest.h
 /home/gong/workspace/git/UkexServer/Protocol/UPRequest.h
 UPDir.h

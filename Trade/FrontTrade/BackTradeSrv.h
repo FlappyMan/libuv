@@ -23,7 +23,7 @@ public:
     
     // queue<UProtocolBase*> m_qReqest;
     // uv_mutex_t m_lock;
-    BlockQueue<UProtocolBase*> m_qReqest;
+    BlockQueue<UProtocolBase*> m_qRequest;
 };
 
 

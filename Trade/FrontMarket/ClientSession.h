@@ -22,10 +22,16 @@ public:
 
 protected:
 	int _FrameParse();
-	void _Subscribe();
-	void _Unsubscribe();
-	void _Requst();
-	void _Auth();
+	void _Subscribe(string &str);
+	void _Unsubscribe(string &str);
+	void _Requst(string &str);
+	void _Opt(string &str);
+
+
+	void _SendPkg_KLine(UPKlinedata *pkg);
+	void _SendPkg_AllMarketInfo(UPAllmarketinfo *pkg);
+	void _SendPkg_DepthData(UPDepthdata *pkg);
+	void _SendPkg_MatchedDat(UPMatchedData *pkg);
 
 protected:
 	uv_tcp_t * m_tcp;

@@ -9,7 +9,7 @@ C_DEFINES =
 
 C_INCLUDES = -I/usr/local/UkexServer/lib/jsoncpp/include -I/usr/local/UkexServer/lib/openssl/include -I/usr/local/UkexServer/lib/mysqlinc -I/usr/local/UkexServer/lib/spdlog/include -I/usr/local/UkexServer/lib/libuv/include -I/usr/local/UkexServer/lib/http-parser -I/home/gong/workspace/git/UkexServer/Trade/FrontTrade/../../BaseLib -I/home/gong/workspace/git/UkexServer/Trade/FrontTrade/../../Protocol 
 
-CXX_FLAGS = -std=c++11  
+CXX_FLAGS = -g -std=c++11  
 
 CXX_DEFINES = 
 

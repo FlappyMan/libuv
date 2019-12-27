@@ -17,13 +17,13 @@ public:
     void PushRequest(BlockQueue<UProtocolBase*> &q);
     void OnTimer(time_t tNow);
 
-protected:
+public:
     map<uv_tcp_t*,ClientSession*> m_mSession;
     
-    //queue<UProtocolBase*> m_qReqest;
-    BlockQueue<UProtocolBase*> m_qReqest;
+    //queue<UProtocolBase*> m_qRequest;
+    BlockQueue<UProtocolBase*> m_qRequest;
     // uv_mutex_t m_lock;
-    BackTradeSrv bts;
+    BackTradeSrv m_btSrv;
 };
 
 

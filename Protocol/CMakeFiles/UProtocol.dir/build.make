@@ -57,33 +57,9 @@ include CMakeFiles/UProtocol.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/UProtocol.dir/flags.make
 
-CMakeFiles/UProtocol.dir/UPAuth.cpp.o: CMakeFiles/UProtocol.dir/flags.make
-CMakeFiles/UProtocol.dir/UPAuth.cpp.o: UPAuth.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/UProtocol.dir/UPAuth.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPAuth.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPAuth.cpp
-
-CMakeFiles/UProtocol.dir/UPAuth.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPAuth.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPAuth.cpp > CMakeFiles/UProtocol.dir/UPAuth.cpp.i
-
-CMakeFiles/UProtocol.dir/UPAuth.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPAuth.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPAuth.cpp -o CMakeFiles/UProtocol.dir/UPAuth.cpp.s
-
-CMakeFiles/UProtocol.dir/UPAuth.cpp.o.requires:
-
-.PHONY : CMakeFiles/UProtocol.dir/UPAuth.cpp.o.requires
-
-CMakeFiles/UProtocol.dir/UPAuth.cpp.o.provides: CMakeFiles/UProtocol.dir/UPAuth.cpp.o.requires
-	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.o.provides.build
-.PHONY : CMakeFiles/UProtocol.dir/UPAuth.cpp.o.provides
-
-CMakeFiles/UProtocol.dir/UPAuth.cpp.o.provides.build: CMakeFiles/UProtocol.dir/UPAuth.cpp.o
-
-
 CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o: UPCancelsubscribe.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.cpp
 
 CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.i: cmake_force
@@ -107,7 +83,7 @@ CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o.provides.build: CMakeFiles/UPro
 
 CMakeFiles/UProtocol.dir/UPDir.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPDir.cpp.o: UPDir.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/UProtocol.dir/UPDir.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/UProtocol.dir/UPDir.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPDir.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPDir.cpp
 
 CMakeFiles/UProtocol.dir/UPDir.cpp.i: cmake_force
@@ -127,6 +103,30 @@ CMakeFiles/UProtocol.dir/UPDir.cpp.o.provides: CMakeFiles/UProtocol.dir/UPDir.cp
 .PHONY : CMakeFiles/UProtocol.dir/UPDir.cpp.o.provides
 
 CMakeFiles/UProtocol.dir/UPDir.cpp.o.provides.build: CMakeFiles/UProtocol.dir/UPDir.cpp.o
+
+
+CMakeFiles/UProtocol.dir/UPOpt.cpp.o: CMakeFiles/UProtocol.dir/flags.make
+CMakeFiles/UProtocol.dir/UPOpt.cpp.o: UPOpt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/UProtocol.dir/UPOpt.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPOpt.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPOpt.cpp
+
+CMakeFiles/UProtocol.dir/UPOpt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPOpt.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPOpt.cpp > CMakeFiles/UProtocol.dir/UPOpt.cpp.i
+
+CMakeFiles/UProtocol.dir/UPOpt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPOpt.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPOpt.cpp -o CMakeFiles/UProtocol.dir/UPOpt.cpp.s
+
+CMakeFiles/UProtocol.dir/UPOpt.cpp.o.requires:
+
+.PHONY : CMakeFiles/UProtocol.dir/UPOpt.cpp.o.requires
+
+CMakeFiles/UProtocol.dir/UPOpt.cpp.o.provides: CMakeFiles/UProtocol.dir/UPOpt.cpp.o.requires
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPOpt.cpp.o.provides.build
+.PHONY : CMakeFiles/UProtocol.dir/UPOpt.cpp.o.provides
+
+CMakeFiles/UProtocol.dir/UPOpt.cpp.o.provides.build: CMakeFiles/UProtocol.dir/UPOpt.cpp.o
 
 
 CMakeFiles/UProtocol.dir/UPRequest.cpp.o: CMakeFiles/UProtocol.dir/flags.make
@@ -803,9 +803,9 @@ CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.o.provides.build: CMakeFi
 
 # Object files for target UProtocol
 UProtocol_OBJECTS = \
-"CMakeFiles/UProtocol.dir/UPAuth.cpp.o" \
 "CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o" \
 "CMakeFiles/UProtocol.dir/UPDir.cpp.o" \
+"CMakeFiles/UProtocol.dir/UPOpt.cpp.o" \
 "CMakeFiles/UProtocol.dir/UPRequest.cpp.o" \
 "CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o" \
 "CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o" \
@@ -838,9 +838,9 @@ UProtocol_OBJECTS = \
 # External object files for target UProtocol
 UProtocol_EXTERNAL_OBJECTS =
 
-libUProtocol.a: CMakeFiles/UProtocol.dir/UPAuth.cpp.o
 libUProtocol.a: CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o
 libUProtocol.a: CMakeFiles/UProtocol.dir/UPDir.cpp.o
+libUProtocol.a: CMakeFiles/UProtocol.dir/UPOpt.cpp.o
 libUProtocol.a: CMakeFiles/UProtocol.dir/UPRequest.cpp.o
 libUProtocol.a: CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o
 libUProtocol.a: CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o
@@ -880,9 +880,9 @@ CMakeFiles/UProtocol.dir/build: libUProtocol.a
 
 .PHONY : CMakeFiles/UProtocol.dir/build
 
-CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPAuth.cpp.o.requires
 CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o.requires
 CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPDir.cpp.o.requires
+CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPOpt.cpp.o.requires
 CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPRequest.cpp.o.requires
 CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o.requires
 CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o.requires

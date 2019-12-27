@@ -14,7 +14,7 @@ SET(CMAKE_SOURCE_DIR .)
 
 set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_FLAGS "-g -std=c++11")
 
 include_directories(
     ${OPENSOUR_LIB_ROOT}/jsoncpp/include
@@ -40,4 +40,4 @@ link_directories(
 
 aux_source_directory(. SRC_LIST)
 add_executable(${APP_NAME} ${SRC_LIST})
-target_link_libraries(${APP_NAME} UProtocol uv_a UBaseLib jsoncpp crypto pthread protobuf)
+target_link_libraries(${APP_NAME} UProtocol uv_a UBaseLib jsoncpp crypto pthread protobuf http_parser)
