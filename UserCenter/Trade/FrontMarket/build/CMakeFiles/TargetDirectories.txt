@@ -1,0 +1,3 @@
+/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles/rebuild_cache.dir
+/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles/FrontMarket.dir
+/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles/edit_cache.dir

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libUBaseLib.a  CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o CMakeFiles/UBaseLib.dir/UBDate.cpp.o CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o CMakeFiles/UBaseLib.dir/UBJson.cpp.o CMakeFiles/UBaseLib.dir/UBMysql.cpp.o
+/usr/bin/ranlib libUBaseLib.a

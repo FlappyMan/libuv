@@ -1,0 +1,52 @@
+INSERT INTO user_facts(user_id,first_name,last_name,birthday,country,residence_country,province,city,town,district,street_address,building_number,building_name,sex,zip_code,apartment,first_residence_certificate,second_residence_certificate,street_code,unit,house_code,passport,passport_ocr,passport_expire,passport_picture,passport_picture_hold,driving_number,driving_picture,driving_picture_hold,is_europe,nationality,create_time,has_deducted_gbp,has_deducted_eur,has_deducted_usd,update_time) values("625","oo","ll","-2209017943","FR","FR","county","","City","","street","no","name","0","postcode","","","","","","","9999999999","","","idcard/2019-06-29/267102fa46bc4fd73cb9a1ea44a2908c.jpg","","","","","0","","0","1","1","0","0");Traceback (most recent call last):
+
+INSERT INTO user_facts(user_id,first_name,last_name,birthday,country,residence_country,province,city,town,district,street_address,building_number,building_name,sex,zip_code,apartment,first_residence_certificate,second_residence_certificate,street_code,unit,house_code,passport,passport_ocr,passport_expire,passport_picture,passport_picture_hold,driving_number,driving_picture,driving_picture_hold,is_europe,nationality,create_time,has_deducted_gbp,has_deducted_eur,has_deducted_usd,update_time) values("2188","test","test","-2209017943","IT","","test","","test","","test","test123","test123","0","test","","","","","","","9999999999","","","kyc/2019-06-29/572b31e04ac7af08ac1e2389a8cb8bdd.jpg","","","","","0","","0","0","0","0","0");Traceback (most recent call last):
+
+INSERT INTO user_facts(user_id,first_name,last_name,birthday,country,residence_country,province,city,town,district,street_address,building_number,building_name,sex,zip_code,apartment,first_residence_certificate,second_residence_certificate,street_code,unit,house_code,passport,passport_ocr,passport_expire,passport_picture,passport_picture_hold,driving_number,driving_picture,driving_picture_hold,is_europe,nationality,create_time,has_deducted_gbp,has_deducted_eur,has_deducted_usd,update_time) values("532","ll","ll","-2209017943","AT","AT","state10","","city9","","street8","NO6","NAME7","0","AODILI","","","","","","","9999999999","","","kyc/2019-07-02/ceaba75ca9ecb31f0557f333f941e9cd.jpg","user/2019-07-02/5d1acec771ae2.jpg","","","","0","","0","0","0","0","0");Traceback (most recent call last):
+
+INSERT INTO user_facts(user_id,first_name,last_name,birthday,country,residence_country,province,city,town,district,street_address,building_number,building_name,sex,zip_code,apartment,first_residence_certificate,second_residence_certificate,street_code,unit,house_code,passport,passport_ocr,passport_expire,passport_picture,passport_picture_hold,driving_number,driving_picture,driving_picture_hold,is_europe,nationality,create_time,has_deducted_gbp,has_deducted_eur,has_deducted_usd,update_time) values("533","ll","ll","-2209017943","FR","FR","ll","","ll","","ll","ll","ll","0","lllllll","","","","","","","9999999999","","","","","","kyc/2019-07-03/3b5b2952ecbdfdfa642e4dc778f39b9a.jpg","","0","","0","1","0","0","0");Traceback (most recent call last):
+
+INSERT INTO user_facts(user_id,first_name,last_name,birthday,country,residence_country,province,city,town,district,street_address,building_number,building_name,sex,zip_code,apartment,first_residence_certificate,second_residence_certificate,street_code,unit,house_code,passport,passport_ocr,passport_expire,passport_picture,passport_picture_hold,driving_number,driving_picture,driving_picture_hold,is_europe,nationality,create_time,has_deducted_gbp,has_deducted_eur,has_deducted_usd,update_time) values("537","dhd","dud","-2209017943","GB","GB","dhd","","dhd","","dhd","dhd","dhd","0","dhdh","","","","","","","9999999999","","","","","","kyc/2019-06-29/1e90583b72b5458f8ad9531619e6dd64.jpg","","0","","0","1","0","0","0");Traceback (most recent call last):
+
+INSERT INTO user_facts(user_id,first_name,last_name,birthday,country,residence_country,province,city,town,district,street_address,building_number,building_name,sex,zip_code,apartment,first_residence_certificate,second_residence_certificate,street_code,unit,house_code,passport,passport_ocr,passport_expire,passport_picture,passport_picture_hold,driving_number,driving_picture,driving_picture_hold,is_europe,nationality,create_time,has_deducted_gbp,has_deducted_eur,has_deducted_usd,update_time) values("587","first","last","-2209017943","GB","GB","","","united kingdom town","","street 123 number","","xingking builing ","0","WER 23QW","","","","","","","9999999999","","","","","","","","0","","0","1","0","0","0");Traceback (most recent call last):
+
+INSERT INTO user_facts(user_id,first_name,last_name,birthday,country,residence_country,province,city,town,district,street_address,building_number,building_name,sex,zip_code,apartment,first_residence_certificate,second_residence_certificate,street_code,unit,house_code,passport,passport_ocr,passport_expire,passport_picture,passport_picture_hold,driving_number,driving_picture,driving_picture_hold,is_europe,nationality,create_time,has_deducted_gbp,has_deducted_eur,has_deducted_usd,update_time) values("1972","","","739728000","DE","826","ss","ss","","","s","s","","0","27828272","","idcard/2019-01-14/5c3c319aad0b3.png","","","e","","","5064868049GBR8012089M2110248&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;03","2019-02-08","idcard/2019-01-14/5c3c318c61960.png","idcard/2019-01-14/5c3c31954fc85.png","","","","0","","0","0","0","0","0");Traceback (most recent call last):
+  File "/home/wuyoupeng/UkexServer/TransferPrograme/database.py", line 201, in inserSQL
+    cursor.execute(baseSql)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/connections.py", line 231, in query
+    _mysql.connection.query(self, query)
+IntegrityError: (1062, "Duplicate entry '1972' for key 'PRIMARY'")
+INSERT INTO user_facts(user_id,first_name,last_name,birthday,country,residence_country,province,city,town,district,street_address,building_number,building_name,sex,zip_code,apartment,first_residence_certificate,second_residence_certificate,street_code,unit,house_code,passport,passport_ocr,passport_expire,passport_picture,passport_picture_hold,driving_number,driving_picture,driving_picture_hold,is_europe,nationality,create_time,has_deducted_gbp,has_deducted_eur,has_deducted_usd,update_time) values("2145","","","0","","","","","","","","","","0","","","","","","","","","","","","","","","","0","","0","0","0","0","0");Traceback (most recent call last):
+  File "/home/wuyoupeng/UkexServer/TransferPrograme/database.py", line 201, in inserSQL
+    cursor.execute(baseSql)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/connections.py", line 231, in query
+    _mysql.connection.query(self, query)
+IntegrityError: (1062, "Duplicate entry '2145' for key 'PRIMARY'")
+INSERT INTO user_facts(user_id,first_name,last_name,birthday,country,residence_country,province,city,town,district,street_address,building_number,building_name,sex,zip_code,apartment,first_residence_certificate,second_residence_certificate,street_code,unit,house_code,passport,passport_ocr,passport_expire,passport_picture,passport_picture_hold,driving_number,driving_picture,driving_picture_hold,is_europe,nationality,create_time,has_deducted_gbp,has_deducted_eur,has_deducted_usd,update_time) values("2145","","","0","","","","","","","","","","0","","","","","","","","","","","","","","","","0","","0","0","0","0","0");Traceback (most recent call last):
+  File "/home/wuyoupeng/UkexServer/TransferPrograme/database.py", line 201, in inserSQL
+    cursor.execute(baseSql)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/connections.py", line 231, in query
+    _mysql.connection.query(self, query)
+IntegrityError: (1062, "Duplicate entry '2145' for key 'PRIMARY'")
+INSERT INTO user_facts(user_id,first_name,last_name,birthday,country,residence_country,province,city,town,district,street_address,building_number,building_name,sex,zip_code,apartment,first_residence_certificate,second_residence_certificate,street_code,unit,house_code,passport,passport_ocr,passport_expire,passport_picture,passport_picture_hold,driving_number,driving_picture,driving_picture_hold,is_europe,nationality,create_time,has_deducted_gbp,has_deducted_eur,has_deducted_usd,update_time) values("2145","","","0","","","","","","","","","","0","","","","","","","","","","","","","","","","0","","0","0","0","0","0");Traceback (most recent call last):
+  File "/home/wuyoupeng/UkexServer/TransferPrograme/database.py", line 201, in inserSQL
+    cursor.execute(baseSql)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/home/wuyoupeng/.local/lib/python2.7/site-packages/MySQLdb/connections.py", line 231, in query
+    _mysql.connection.query(self, query)
+IntegrityError: (1062, "Duplicate entry '2145' for key 'PRIMARY'")

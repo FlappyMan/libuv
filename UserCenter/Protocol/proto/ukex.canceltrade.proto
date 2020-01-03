@@ -1,0 +1,12 @@
+syntax = "proto2";
+package ukex; 
+message canceltrade 
+{ 
+    enum CONST
+    {
+        CMD = 102;
+    }
+    required    string	token = 1; 
+    required    uint64	id = 2;
+    required    uint64	marketid = 3;
+}
