@@ -123,221 +123,275 @@ UserCenter/fast:
 	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/build
 .PHONY : UserCenter/fast
 
-BaseRequestOper.o: BaseRequestOper.cpp.o
+BaseConfig/config.o: BaseConfig/config.cpp.o
 
-.PHONY : BaseRequestOper.o
-
-# target to build an object file
-BaseRequestOper.cpp.o:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/BaseRequestOper.cpp.o
-.PHONY : BaseRequestOper.cpp.o
-
-BaseRequestOper.i: BaseRequestOper.cpp.i
-
-.PHONY : BaseRequestOper.i
-
-# target to preprocess a source file
-BaseRequestOper.cpp.i:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/BaseRequestOper.cpp.i
-.PHONY : BaseRequestOper.cpp.i
-
-BaseRequestOper.s: BaseRequestOper.cpp.s
-
-.PHONY : BaseRequestOper.s
-
-# target to generate assembly for a file
-BaseRequestOper.cpp.s:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/BaseRequestOper.cpp.s
-.PHONY : BaseRequestOper.cpp.s
-
-DispatchManager.o: DispatchManager.cpp.o
-
-.PHONY : DispatchManager.o
+.PHONY : BaseConfig/config.o
 
 # target to build an object file
-DispatchManager.cpp.o:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/DispatchManager.cpp.o
-.PHONY : DispatchManager.cpp.o
+BaseConfig/config.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/BaseConfig/config.cpp.o
+.PHONY : BaseConfig/config.cpp.o
 
-DispatchManager.i: DispatchManager.cpp.i
+BaseConfig/config.i: BaseConfig/config.cpp.i
 
-.PHONY : DispatchManager.i
+.PHONY : BaseConfig/config.i
 
 # target to preprocess a source file
-DispatchManager.cpp.i:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/DispatchManager.cpp.i
-.PHONY : DispatchManager.cpp.i
+BaseConfig/config.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/BaseConfig/config.cpp.i
+.PHONY : BaseConfig/config.cpp.i
 
-DispatchManager.s: DispatchManager.cpp.s
+BaseConfig/config.s: BaseConfig/config.cpp.s
 
-.PHONY : DispatchManager.s
+.PHONY : BaseConfig/config.s
 
 # target to generate assembly for a file
-DispatchManager.cpp.s:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/DispatchManager.cpp.s
-.PHONY : DispatchManager.cpp.s
+BaseConfig/config.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/BaseConfig/config.cpp.s
+.PHONY : BaseConfig/config.cpp.s
 
-HttpSession.o: HttpSession.cpp.o
+Business/BaseRequestOper.o: Business/BaseRequestOper.cpp.o
 
-.PHONY : HttpSession.o
+.PHONY : Business/BaseRequestOper.o
 
 # target to build an object file
-HttpSession.cpp.o:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/HttpSession.cpp.o
-.PHONY : HttpSession.cpp.o
+Business/BaseRequestOper.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/BaseRequestOper.cpp.o
+.PHONY : Business/BaseRequestOper.cpp.o
 
-HttpSession.i: HttpSession.cpp.i
+Business/BaseRequestOper.i: Business/BaseRequestOper.cpp.i
 
-.PHONY : HttpSession.i
+.PHONY : Business/BaseRequestOper.i
 
 # target to preprocess a source file
-HttpSession.cpp.i:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/HttpSession.cpp.i
-.PHONY : HttpSession.cpp.i
+Business/BaseRequestOper.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/BaseRequestOper.cpp.i
+.PHONY : Business/BaseRequestOper.cpp.i
 
-HttpSession.s: HttpSession.cpp.s
+Business/BaseRequestOper.s: Business/BaseRequestOper.cpp.s
 
-.PHONY : HttpSession.s
+.PHONY : Business/BaseRequestOper.s
 
 # target to generate assembly for a file
-HttpSession.cpp.s:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/HttpSession.cpp.s
-.PHONY : HttpSession.cpp.s
+Business/BaseRequestOper.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/BaseRequestOper.cpp.s
+.PHONY : Business/BaseRequestOper.cpp.s
 
-RequestOperCancelTrade.o: RequestOperCancelTrade.cpp.o
+Business/RequestOperCancelTrade.o: Business/RequestOperCancelTrade.cpp.o
 
-.PHONY : RequestOperCancelTrade.o
+.PHONY : Business/RequestOperCancelTrade.o
 
 # target to build an object file
-RequestOperCancelTrade.cpp.o:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperCancelTrade.cpp.o
-.PHONY : RequestOperCancelTrade.cpp.o
+Business/RequestOperCancelTrade.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperCancelTrade.cpp.o
+.PHONY : Business/RequestOperCancelTrade.cpp.o
 
-RequestOperCancelTrade.i: RequestOperCancelTrade.cpp.i
+Business/RequestOperCancelTrade.i: Business/RequestOperCancelTrade.cpp.i
 
-.PHONY : RequestOperCancelTrade.i
+.PHONY : Business/RequestOperCancelTrade.i
 
 # target to preprocess a source file
-RequestOperCancelTrade.cpp.i:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperCancelTrade.cpp.i
-.PHONY : RequestOperCancelTrade.cpp.i
+Business/RequestOperCancelTrade.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperCancelTrade.cpp.i
+.PHONY : Business/RequestOperCancelTrade.cpp.i
 
-RequestOperCancelTrade.s: RequestOperCancelTrade.cpp.s
+Business/RequestOperCancelTrade.s: Business/RequestOperCancelTrade.cpp.s
 
-.PHONY : RequestOperCancelTrade.s
+.PHONY : Business/RequestOperCancelTrade.s
 
 # target to generate assembly for a file
-RequestOperCancelTrade.cpp.s:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperCancelTrade.cpp.s
-.PHONY : RequestOperCancelTrade.cpp.s
+Business/RequestOperCancelTrade.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperCancelTrade.cpp.s
+.PHONY : Business/RequestOperCancelTrade.cpp.s
 
-RequestOperCancelTradeBatch.o: RequestOperCancelTradeBatch.cpp.o
+Business/RequestOperCancelTradeBatch.o: Business/RequestOperCancelTradeBatch.cpp.o
 
-.PHONY : RequestOperCancelTradeBatch.o
+.PHONY : Business/RequestOperCancelTradeBatch.o
 
 # target to build an object file
-RequestOperCancelTradeBatch.cpp.o:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperCancelTradeBatch.cpp.o
-.PHONY : RequestOperCancelTradeBatch.cpp.o
+Business/RequestOperCancelTradeBatch.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperCancelTradeBatch.cpp.o
+.PHONY : Business/RequestOperCancelTradeBatch.cpp.o
 
-RequestOperCancelTradeBatch.i: RequestOperCancelTradeBatch.cpp.i
+Business/RequestOperCancelTradeBatch.i: Business/RequestOperCancelTradeBatch.cpp.i
 
-.PHONY : RequestOperCancelTradeBatch.i
+.PHONY : Business/RequestOperCancelTradeBatch.i
 
 # target to preprocess a source file
-RequestOperCancelTradeBatch.cpp.i:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperCancelTradeBatch.cpp.i
-.PHONY : RequestOperCancelTradeBatch.cpp.i
+Business/RequestOperCancelTradeBatch.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperCancelTradeBatch.cpp.i
+.PHONY : Business/RequestOperCancelTradeBatch.cpp.i
 
-RequestOperCancelTradeBatch.s: RequestOperCancelTradeBatch.cpp.s
+Business/RequestOperCancelTradeBatch.s: Business/RequestOperCancelTradeBatch.cpp.s
 
-.PHONY : RequestOperCancelTradeBatch.s
+.PHONY : Business/RequestOperCancelTradeBatch.s
 
 # target to generate assembly for a file
-RequestOperCancelTradeBatch.cpp.s:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperCancelTradeBatch.cpp.s
-.PHONY : RequestOperCancelTradeBatch.cpp.s
+Business/RequestOperCancelTradeBatch.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperCancelTradeBatch.cpp.s
+.PHONY : Business/RequestOperCancelTradeBatch.cpp.s
 
-RequestOperMatchData.o: RequestOperMatchData.cpp.o
+Business/RequestOperMatchData.o: Business/RequestOperMatchData.cpp.o
 
-.PHONY : RequestOperMatchData.o
+.PHONY : Business/RequestOperMatchData.o
 
 # target to build an object file
-RequestOperMatchData.cpp.o:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperMatchData.cpp.o
-.PHONY : RequestOperMatchData.cpp.o
+Business/RequestOperMatchData.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperMatchData.cpp.o
+.PHONY : Business/RequestOperMatchData.cpp.o
 
-RequestOperMatchData.i: RequestOperMatchData.cpp.i
+Business/RequestOperMatchData.i: Business/RequestOperMatchData.cpp.i
 
-.PHONY : RequestOperMatchData.i
+.PHONY : Business/RequestOperMatchData.i
 
 # target to preprocess a source file
-RequestOperMatchData.cpp.i:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperMatchData.cpp.i
-.PHONY : RequestOperMatchData.cpp.i
+Business/RequestOperMatchData.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperMatchData.cpp.i
+.PHONY : Business/RequestOperMatchData.cpp.i
 
-RequestOperMatchData.s: RequestOperMatchData.cpp.s
+Business/RequestOperMatchData.s: Business/RequestOperMatchData.cpp.s
 
-.PHONY : RequestOperMatchData.s
+.PHONY : Business/RequestOperMatchData.s
 
 # target to generate assembly for a file
-RequestOperMatchData.cpp.s:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperMatchData.cpp.s
-.PHONY : RequestOperMatchData.cpp.s
+Business/RequestOperMatchData.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperMatchData.cpp.s
+.PHONY : Business/RequestOperMatchData.cpp.s
 
-RequestOperTrade.o: RequestOperTrade.cpp.o
+Business/RequestOperTrade.o: Business/RequestOperTrade.cpp.o
 
-.PHONY : RequestOperTrade.o
+.PHONY : Business/RequestOperTrade.o
 
 # target to build an object file
-RequestOperTrade.cpp.o:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperTrade.cpp.o
-.PHONY : RequestOperTrade.cpp.o
+Business/RequestOperTrade.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperTrade.cpp.o
+.PHONY : Business/RequestOperTrade.cpp.o
 
-RequestOperTrade.i: RequestOperTrade.cpp.i
+Business/RequestOperTrade.i: Business/RequestOperTrade.cpp.i
 
-.PHONY : RequestOperTrade.i
+.PHONY : Business/RequestOperTrade.i
 
 # target to preprocess a source file
-RequestOperTrade.cpp.i:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperTrade.cpp.i
-.PHONY : RequestOperTrade.cpp.i
+Business/RequestOperTrade.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperTrade.cpp.i
+.PHONY : Business/RequestOperTrade.cpp.i
 
-RequestOperTrade.s: RequestOperTrade.cpp.s
+Business/RequestOperTrade.s: Business/RequestOperTrade.cpp.s
 
-.PHONY : RequestOperTrade.s
+.PHONY : Business/RequestOperTrade.s
 
 # target to generate assembly for a file
-RequestOperTrade.cpp.s:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperTrade.cpp.s
-.PHONY : RequestOperTrade.cpp.s
+Business/RequestOperTrade.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperTrade.cpp.s
+.PHONY : Business/RequestOperTrade.cpp.s
 
-RequestOperTradeBatch.o: RequestOperTradeBatch.cpp.o
+Business/RequestOperTradeBatch.o: Business/RequestOperTradeBatch.cpp.o
 
-.PHONY : RequestOperTradeBatch.o
+.PHONY : Business/RequestOperTradeBatch.o
 
 # target to build an object file
-RequestOperTradeBatch.cpp.o:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperTradeBatch.cpp.o
-.PHONY : RequestOperTradeBatch.cpp.o
+Business/RequestOperTradeBatch.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperTradeBatch.cpp.o
+.PHONY : Business/RequestOperTradeBatch.cpp.o
 
-RequestOperTradeBatch.i: RequestOperTradeBatch.cpp.i
+Business/RequestOperTradeBatch.i: Business/RequestOperTradeBatch.cpp.i
 
-.PHONY : RequestOperTradeBatch.i
+.PHONY : Business/RequestOperTradeBatch.i
 
 # target to preprocess a source file
-RequestOperTradeBatch.cpp.i:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperTradeBatch.cpp.i
-.PHONY : RequestOperTradeBatch.cpp.i
+Business/RequestOperTradeBatch.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperTradeBatch.cpp.i
+.PHONY : Business/RequestOperTradeBatch.cpp.i
 
-RequestOperTradeBatch.s: RequestOperTradeBatch.cpp.s
+Business/RequestOperTradeBatch.s: Business/RequestOperTradeBatch.cpp.s
 
-.PHONY : RequestOperTradeBatch.s
+.PHONY : Business/RequestOperTradeBatch.s
 
 # target to generate assembly for a file
-RequestOperTradeBatch.cpp.s:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/RequestOperTradeBatch.cpp.s
-.PHONY : RequestOperTradeBatch.cpp.s
+Business/RequestOperTradeBatch.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperTradeBatch.cpp.s
+.PHONY : Business/RequestOperTradeBatch.cpp.s
+
+Manager/DispatchManager.o: Manager/DispatchManager.cpp.o
+
+.PHONY : Manager/DispatchManager.o
+
+# target to build an object file
+Manager/DispatchManager.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Manager/DispatchManager.cpp.o
+.PHONY : Manager/DispatchManager.cpp.o
+
+Manager/DispatchManager.i: Manager/DispatchManager.cpp.i
+
+.PHONY : Manager/DispatchManager.i
+
+# target to preprocess a source file
+Manager/DispatchManager.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Manager/DispatchManager.cpp.i
+.PHONY : Manager/DispatchManager.cpp.i
+
+Manager/DispatchManager.s: Manager/DispatchManager.cpp.s
+
+.PHONY : Manager/DispatchManager.s
+
+# target to generate assembly for a file
+Manager/DispatchManager.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Manager/DispatchManager.cpp.s
+.PHONY : Manager/DispatchManager.cpp.s
+
+Manager/HttpSession.o: Manager/HttpSession.cpp.o
+
+.PHONY : Manager/HttpSession.o
+
+# target to build an object file
+Manager/HttpSession.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Manager/HttpSession.cpp.o
+.PHONY : Manager/HttpSession.cpp.o
+
+Manager/HttpSession.i: Manager/HttpSession.cpp.i
+
+.PHONY : Manager/HttpSession.i
+
+# target to preprocess a source file
+Manager/HttpSession.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Manager/HttpSession.cpp.i
+.PHONY : Manager/HttpSession.cpp.i
+
+Manager/HttpSession.s: Manager/HttpSession.cpp.s
+
+.PHONY : Manager/HttpSession.s
+
+# target to generate assembly for a file
+Manager/HttpSession.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Manager/HttpSession.cpp.s
+.PHONY : Manager/HttpSession.cpp.s
+
+Manager/UBaseSession.o: Manager/UBaseSession.cpp.o
+
+.PHONY : Manager/UBaseSession.o
+
+# target to build an object file
+Manager/UBaseSession.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Manager/UBaseSession.cpp.o
+.PHONY : Manager/UBaseSession.cpp.o
+
+Manager/UBaseSession.i: Manager/UBaseSession.cpp.i
+
+.PHONY : Manager/UBaseSession.i
+
+# target to preprocess a source file
+Manager/UBaseSession.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Manager/UBaseSession.cpp.i
+.PHONY : Manager/UBaseSession.cpp.i
+
+Manager/UBaseSession.s: Manager/UBaseSession.cpp.s
+
+.PHONY : Manager/UBaseSession.s
+
+# target to generate assembly for a file
+Manager/UBaseSession.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Manager/UBaseSession.cpp.s
+.PHONY : Manager/UBaseSession.cpp.s
 
 ThreadHttpOper.o: ThreadHttpOper.cpp.o
 
@@ -392,60 +446,6 @@ ThreadTCPOper.s: ThreadTCPOper.cpp.s
 ThreadTCPOper.cpp.s:
 	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/ThreadTCPOper.cpp.s
 .PHONY : ThreadTCPOper.cpp.s
-
-UBaseSession.o: UBaseSession.cpp.o
-
-.PHONY : UBaseSession.o
-
-# target to build an object file
-UBaseSession.cpp.o:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/UBaseSession.cpp.o
-.PHONY : UBaseSession.cpp.o
-
-UBaseSession.i: UBaseSession.cpp.i
-
-.PHONY : UBaseSession.i
-
-# target to preprocess a source file
-UBaseSession.cpp.i:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/UBaseSession.cpp.i
-.PHONY : UBaseSession.cpp.i
-
-UBaseSession.s: UBaseSession.cpp.s
-
-.PHONY : UBaseSession.s
-
-# target to generate assembly for a file
-UBaseSession.cpp.s:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/UBaseSession.cpp.s
-.PHONY : UBaseSession.cpp.s
-
-config.o: config.cpp.o
-
-.PHONY : config.o
-
-# target to build an object file
-config.cpp.o:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/config.cpp.o
-.PHONY : config.cpp.o
-
-config.i: config.cpp.i
-
-.PHONY : config.i
-
-# target to preprocess a source file
-config.cpp.i:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/config.cpp.i
-.PHONY : config.cpp.i
-
-config.s: config.cpp.s
-
-.PHONY : config.s
-
-# target to generate assembly for a file
-config.cpp.s:
-	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/config.cpp.s
-.PHONY : config.cpp.s
 
 global.o: global.cpp.o
 
@@ -510,42 +510,42 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... UserCenter"
 	@echo "... edit_cache"
-	@echo "... BaseRequestOper.o"
-	@echo "... BaseRequestOper.i"
-	@echo "... BaseRequestOper.s"
-	@echo "... DispatchManager.o"
-	@echo "... DispatchManager.i"
-	@echo "... DispatchManager.s"
-	@echo "... HttpSession.o"
-	@echo "... HttpSession.i"
-	@echo "... HttpSession.s"
-	@echo "... RequestOperCancelTrade.o"
-	@echo "... RequestOperCancelTrade.i"
-	@echo "... RequestOperCancelTrade.s"
-	@echo "... RequestOperCancelTradeBatch.o"
-	@echo "... RequestOperCancelTradeBatch.i"
-	@echo "... RequestOperCancelTradeBatch.s"
-	@echo "... RequestOperMatchData.o"
-	@echo "... RequestOperMatchData.i"
-	@echo "... RequestOperMatchData.s"
-	@echo "... RequestOperTrade.o"
-	@echo "... RequestOperTrade.i"
-	@echo "... RequestOperTrade.s"
-	@echo "... RequestOperTradeBatch.o"
-	@echo "... RequestOperTradeBatch.i"
-	@echo "... RequestOperTradeBatch.s"
+	@echo "... BaseConfig/config.o"
+	@echo "... BaseConfig/config.i"
+	@echo "... BaseConfig/config.s"
+	@echo "... Business/BaseRequestOper.o"
+	@echo "... Business/BaseRequestOper.i"
+	@echo "... Business/BaseRequestOper.s"
+	@echo "... Business/RequestOperCancelTrade.o"
+	@echo "... Business/RequestOperCancelTrade.i"
+	@echo "... Business/RequestOperCancelTrade.s"
+	@echo "... Business/RequestOperCancelTradeBatch.o"
+	@echo "... Business/RequestOperCancelTradeBatch.i"
+	@echo "... Business/RequestOperCancelTradeBatch.s"
+	@echo "... Business/RequestOperMatchData.o"
+	@echo "... Business/RequestOperMatchData.i"
+	@echo "... Business/RequestOperMatchData.s"
+	@echo "... Business/RequestOperTrade.o"
+	@echo "... Business/RequestOperTrade.i"
+	@echo "... Business/RequestOperTrade.s"
+	@echo "... Business/RequestOperTradeBatch.o"
+	@echo "... Business/RequestOperTradeBatch.i"
+	@echo "... Business/RequestOperTradeBatch.s"
+	@echo "... Manager/DispatchManager.o"
+	@echo "... Manager/DispatchManager.i"
+	@echo "... Manager/DispatchManager.s"
+	@echo "... Manager/HttpSession.o"
+	@echo "... Manager/HttpSession.i"
+	@echo "... Manager/HttpSession.s"
+	@echo "... Manager/UBaseSession.o"
+	@echo "... Manager/UBaseSession.i"
+	@echo "... Manager/UBaseSession.s"
 	@echo "... ThreadHttpOper.o"
 	@echo "... ThreadHttpOper.i"
 	@echo "... ThreadHttpOper.s"
 	@echo "... ThreadTCPOper.o"
 	@echo "... ThreadTCPOper.i"
 	@echo "... ThreadTCPOper.s"
-	@echo "... UBaseSession.o"
-	@echo "... UBaseSession.i"
-	@echo "... UBaseSession.s"
-	@echo "... config.o"
-	@echo "... config.i"
-	@echo "... config.s"
 	@echo "... global.o"
 	@echo "... global.i"
 	@echo "... global.s"

@@ -15,7 +15,7 @@ void ThreadClient(void *arg);
 int GetGMTime(char* szGmtTime);
 
 void Client_cbWrited(uv_write_t* req, int status);
-int32_t Client_Write(uv_stream_t* client,/*UPResponse* pkg,*/uint32_t uiPkgMaxSize,int status);
+int32_t Client_Write(uv_stream_t* client,UPResponse* pkg,int status);
 
 #endif
 

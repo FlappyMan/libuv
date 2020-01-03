@@ -1,4 +1,5 @@
 #include "ClientSession.h"
+#include "ThreadClient.h"
 
 ClientSession::ClientSession(uv_tcp_t* tcp,char *pBuffer,int iBufferSize):
 	m_tcp(tcp),m_pBuffer(pBuffer),m_iBufferSize(iBufferSize),m_tLast(0)
@@ -53,22 +54,23 @@ void ClientSession::SendPkg(UProtocolBase *pkg)
 
 void ClientSession::_SendPkg_KLine(UPKlinedata *pkg)
 {
-
+	Client_Write<UPKlinedata>(m_tcp,pkg);
 }
 
 void ClientSession::_SendPkg_AllMarketInfo(UPAllmarketinfo *pkg)
 {
-
+	Client_Write<UPAllmarketinfo>(m_tcp,pkg);
 }
 
 void ClientSession::_SendPkg_DepthData(UPDepthdata *pkg)
 {
+	Client_Write<UPDepthdata>(m_tcp,pkg);
 
 }
 
 void ClientSession::_SendPkg_MatchedDat(UPMatchedData *pkg)
 {
-
+	Client_Write<UPMatchedData>(m_tcp,pkg);
 }
 
 // return <0: 协议错误，=0:数据包长度不足，>0:已处理掉的数据长度
@@ -129,97 +131,108 @@ int ClientSession::_FrameParse()
 	string sValue=v.asString();
 	if(cmd.compare(UPRequest::CMD_WSAPI)==0)
 	{
-		_Requst(sValue);
-		return ret;
+		return _Requst(sValue);
 	}
 	if(cmd.compare(UPSubscribe::CMD_WSAPI)==0)
 	{
-		_Subscribe(sValue);
-		return ret;
+		return _Subscribe(sValue);
 	}
 	else if(cmd.compare(UPCancelSubscribe::CMD_WSAPI)==0)
 	{
-		_Unsubscribe(sValue);
-		return ret;	
+		return _Unsubscribe(sValue);
 	}
 	else if(cmd.compare(UPOpt::CMD_WSAPI)==0)
 	{
-		_Opt(sValue);
-		return ret;
+		return _Opt(root);
 	}
 
 	return -3;
 }
 
 // 订阅请求
-void ClientSession::_Subscribe(string &str)
+int ClientSession::_Subscribe(string &str)
 {
 	vector<string> v;
 	UBStringSplit(v,str,'.');
-	if(v.size()<=0)return;
+	if(v.size()<=0)return 0;
+	if(v.size()<1)return 0;
 
 	if(v[0].compare("markets")==0)
 	{
-		if(v.size()<1)return;
 		m_subs.m_currency=CurrencyFromString(v[1]);
 	}
 	else if(v[0].compare("depth")==0)
 	{
-		if(v.size()<1)return;
+		if(m_subs.m_depth.length()>0)g_srv_client.Unsubscribe(this,m_subs.m_depth);
 		m_subs.m_depth=MARKETFromString(v[1]);
+		g_srv_client.Subscribe(this,m_subs.m_depth);
 	}
 	else if(v[0].compare("tradelog")==0)
 	{
-		if(v.size()<1)return;
+		if(m_subs.m_tradelog.length()>0)g_srv_client.Unsubscribe(this,m_subs.m_tradelog);
 		m_subs.m_tradelog=MARKETFromString(v[1]);
+		g_srv_client.Subscribe(this,m_subs.m_tradelog);
 	}
 	else if(v[0].compare("kline")==0)
 	{
-		if(v.size()<1)return;
+		if(m_subs.m_kline.length()>0)g_srv_client.Unsubscribe(this,m_subs.m_kline);
 		m_subs.m_kline=KLineFromString(v[1]);
+		g_srv_client.Subscribe(this,m_subs.m_kline);
 	}
-
+	return 0;
 }
 
-void ClientSession::_Unsubscribe(string &str)
+int ClientSession::_Unsubscribe(string &str)
 {
 	vector<string> v;
 	UBStringSplit(v,str,'.');
-	if(v.size()<=0)return;
+	if(v.size()<=0)return 0;
+	if(v.size()<1)return 0;
 
 	if(v[0].compare("markets")==0)
 	{
-		if(v.size()<1)return;
 		m_subs.m_currency=CURRENCY_UNKNOWN;
 	}
 	else if(v[0].compare("depth")==0)
 	{
-		if(v.size()<1)return;
+		g_srv_client.Unsubscribe(this,m_subs.m_depth);
 		m_subs.m_depth=MARKET_UNKNOWN;
 	}
 	else if(v[0].compare("tradelog")==0)
 	{
-		if(v.size()<1)return;
+		g_srv_client.Unsubscribe(this,m_subs.m_tradelog);
 		m_subs.m_tradelog=MARKET_UNKNOWN;
 	}
 	else if(v[0].compare("kline")==0)
 	{
-		if(v.size()<1)return;
+		g_srv_client.Unsubscribe(this,m_subs.m_kline);
 		m_subs.m_kline=KLINE_UNKNOWN;
 	}
+	return 0;
 }
 
-void ClientSession::_Requst(string &str)
+int ClientSession::_Requst(string &str)
 {
 	vector<string> v;
 	UBStringSplit(v,str,'.');
-	if(v.size()!=5)return;
+	if(v.size()!=5)return 0;
 
 
+
+	return 0;
 }
 
-void ClientSession::_Opt(string &str)
+int ClientSession::_Opt(Json::Value &root)
 {
+	string opt=root["opt"].asString();
+	if(opt.compare("auth")!=0)return -1;
+
+	string cid=root["cid"].asString();
+	string key=root["key"].asString();
+	string sign=root["sign"].asString();
+	string timestamp=root["timestamp"].asString();
+
+	return 0;
 
 }
 

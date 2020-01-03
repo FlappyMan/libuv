@@ -16,6 +16,8 @@ class UPMatchedData : public UProtocolBase, public ukex::matcheddata
         static constexpr const char* CMD_WSAPI = "trade";//WS
         static constexpr const char* CMD_WEBAPI = "/api/private/upTrade";//HTTP
         static constexpr const char* CMD_ROBOTAPI = "/api/private/upTrade";//robot http
+    public:
+        string m_sMarketID;
 };
 
 

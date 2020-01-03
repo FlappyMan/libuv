@@ -254,7 +254,7 @@ class response :
   std::string* _internal_mutable_data();
   public:
 
-  // required string token = 3;
+  // optional string token = 3;
   bool has_token() const;
   private:
   bool _internal_has_token() const;
@@ -412,7 +412,7 @@ inline void response::set_allocated_data(std::string* data) {
   // @@protoc_insertion_point(field_set_allocated:ukex.response.data)
 }
 
-// required string token = 3;
+// optional string token = 3;
 inline bool response::_internal_has_token() const {
   bool value = (_has_bits_[0] & 0x00000002u) != 0;
   return value;

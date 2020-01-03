@@ -2,7 +2,6 @@
 
 #include "UBMysql.h"
 
-
 UBMysql::UBMysql(uint32_t uiSqlSize) : m_pMysql(NULL),m_pMysqlResult(NULL),m_iError(0),
 	m_pSql(NULL),m_bFreeBuffer(true),m_iSqlSize(uiSqlSize),m_iSqlLength(0),
 	m_row(NULL),m_uiColumnCnt(0)
@@ -15,8 +14,23 @@ UBMysql::UBMysql(char *pSqlBuff,uint32_t uiSqlSize) : m_pMysql(NULL),m_pMysqlRes
 	m_row(NULL),m_uiColumnCnt(0)
 {
 }
-
-
+UBMysql::UBMysql() : m_pMysql(NULL),m_pMysqlResult(NULL),m_iError(0),
+	m_bFreeBuffer(false),m_iSqlLength(0),
+	m_row(NULL),m_uiColumnCnt(0)
+{
+}
+void UBMysql::init(uint32_t uiSqlSize)
+{
+	if (NULL == m_pSql)
+	{
+		m_pSql = new char[uiSqlSize];
+	}
+	else
+	{
+		delete []m_pSql;
+		m_pSql = new char[uiSqlSize];
+	}
+}
 UBMysql::~UBMysql()
 {
 	if(m_pMysql)

@@ -1,13 +1,13 @@
 
 #include "UBString.h"
 
-void UBStringSplit(vector< std::string > &vRet,string& str, char d)
+void UBStringSplit(vector< std::string > &vRet,const string& str, char d)
 {
 	string delim(d,1);
 	UBStringSplit(vRet,str,delim);
 };
 
-void UBStringSplit(vector< std::string > &vRet,string& str, string& delim)
+void UBStringSplit(vector< std::string > &vRet,const string& str, string& delim)
 {
     vRet.clear();
 

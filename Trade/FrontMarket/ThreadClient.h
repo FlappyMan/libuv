@@ -14,7 +14,7 @@ void ThreadClient(void *arg);
 void Client_cbWrited(uv_write_t* req, int status);
 
 template<class T>
-int32_t Client_Write(uv_stream_t* client,T* pkg,uint32_t uiPkgMaxSize=SIZE_BUFFER_2k) 
+int32_t Client_Write(uv_tcp_t* client,T* pkg,uint32_t uiPkgMaxSize=SIZE_BUFFER_2k) 
 {	
 	UVWriteReq* req=g_cache_write_req.Get(uiPkgMaxSize);
 	if(req==NULL)return -1;
@@ -27,7 +27,7 @@ int32_t Client_Write(uv_stream_t* client,T* pkg,uint32_t uiPkgMaxSize=SIZE_BUFFE
 	}
 
 	req->pkg=pkg;
-	uv_write((uv_write_t *)req, client, &req->buf, 1, Client_cbWrited);
+	uv_write((uv_write_t *)req, (uv_stream_t*)client, &req->buf, 1, Client_cbWrited);
 };
 
 

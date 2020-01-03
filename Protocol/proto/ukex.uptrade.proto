@@ -6,7 +6,7 @@ message uptrade
     {
         CMD = 100;
     }
-    required    string	token = 1; 
+    optional    string	token = 1; 
     required    string	paypassword = 2; 
     required    uint64	marketid = 3;
     required    uint64	price = 4;  

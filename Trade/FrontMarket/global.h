@@ -7,6 +7,20 @@
 #include "UProtocol.h"
 #include "config.h"
 
+class UPMarketAdd : public UProtocolBase
+{
+public:
+	enum {CMD=1000};
+
+	UPMarketAdd(){};
+	~UPMarketAdd(){};
+
+    void JsonPack(Json::Value &root){};
+    bool JsonUnpack(Json::Value &root){};
+public:
+	string m_sMarketID;
+};
+
 
 class WriteReqCache
 {

@@ -22,10 +22,10 @@ public:
 
 protected:
 	int _FrameParse();
-	void _Subscribe(string &str);
-	void _Unsubscribe(string &str);
-	void _Requst(string &str);
-	void _Opt(string &str);
+	int _Subscribe(string &str);
+	int _Unsubscribe(string &str);
+	int _Requst(string &str);
+	int _Opt(Json::Value &root);
 
 
 	void _SendPkg_KLine(UPKlinedata *pkg);

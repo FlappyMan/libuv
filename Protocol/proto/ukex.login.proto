@@ -8,4 +8,5 @@ message login
         CMD = 114;
     }
     required    string  key = 1; 
+    required    string  hash = 2;
 }

@@ -35,6 +35,15 @@ int ClientSrv::Read(uv_tcp_t* tcp,char *pBuffer,int iDataLen)
 	return it->second->Read(pBuffer,iDataLen);
 }
 
+void ClientSrv::Subscribe(ClientSession* p,string &s)
+{
+
+}
+
+void ClientSrv::Unsubscribe(ClientSession* p,string &s)
+{
+
+}
 
 void ClientSrv::PushRequest(queue<UProtocolBase*> &q)
 {
@@ -55,30 +64,23 @@ void ClientSrv::OnTimer(time_t tNow)
 	uv_mutex_unlock(&m_lock);
 
 	map<uv_tcp_t*,ClientSession*>::iterator it;
-	UProtocolBase *pkg=NULL;
+	for(it=m_mSession.begin();it!=m_mSession.end();)
+	{
+		if(it->second->IsTimeout(tNow))
+		{
+		   it->second->Destroy();
+		   
+		   delete it->second;
+		   it=m_mSession.erase(it);
+		   continue;
+		}
+		it++;
+	}
+
 	while(qReq.size()>0)
 	{
-		pkg=qReq.front();
+		_DispatchPkg(qReq.front());
 		qReq.pop();
-
-		_DispatchPkg(pkg);
-
-		for(it=m_mSession.begin();it!=m_mSession.end();)
-		{
-			if(it->second->IsTimeout(tNow))
-			{
-			   it->second->Destroy();
-			   
-			   delete it->second;
-			   it=m_mSession.erase(it);
-			   continue;
-		   	}
-
-			it->second->SendPkg(pkg);
-			it++;
-		}
-		
-		delete pkg;
 	}
 }
 
@@ -93,28 +95,122 @@ void ClientSrv::_DispatchPkg(UProtocolBase *pkg)
 
 	switch (pkg->m_uiType)
 		{
-		case UPAllmarketinfo::CMD :
-			
-			break;
-		
-		case UPKlinedata::CMD :
-			
-			break;
-		
 		case UPDepthdata::CMD :
-			
+			_DispatchPkg_DepthData((UPDepthdata*)pkg);
 			break;
-
-		case UPHistoricalTransactionData::CMD :
-			
+		case UPKlinedata::CMD :
+			_DispatchPkg_KLine((UPKlinedata*)pkg);
 			break;
-
-
+		case UPAllmarketinfo::CMD :
+			_DispatchPkg_AllMarketInfo((UPAllmarketinfo*)pkg);
+			break;
 		case UPMatchedData::CMD :
-			
+			_DispatchPkg_MatchedData((UPMatchedData*)pkg);
 			break;
-
+		case UPHistoricalTransactionData::CMD :
+			_DispatchPkg_TransactionData((UPHistoricalTransactionData*)pkg);
+			break;
+		case UPMarketAdd::CMD:
+			_AddMarket((UPMarketAdd*)pkg);
 		default:
 			break;
 		}
+}
+
+void ClientSrv::_AddMarket(UPMarketAdd *pkg)
+{
+	g_market_mgr.AddMarket(pkg->m_sMarketID);
+}
+
+
+void ClientSrv::_DispatchPkg_AllMarketInfo(UPAllmarketinfo *pkg)
+{
+	for(map<uv_tcp_t*,ClientSession*>::iterator it=m_mSession.begin();it!=m_mSession.end();it++)
+	{
+		it->second->SendPkg(pkg);
+	}
+}
+
+
+void ClientSrv::_DispatchPkg_KLine(UPKlinedata *pkg)
+{
+	Market *pMarket=g_market_mgr.Get(pkg->m_sMarketID);
+	if(pMarket==NULL)return;
+
+	vector<string> vType;
+	UBStringSplit(vType,pkg->type(),'.');
+	if(vType.size()!=2)return;
+
+	if(vType[1].compare("1m"))
+	{
+		_DispatchPkg(pkg,pMarket->m_60s);
+	}
+	else if(vType[1].compare("5m"))
+	{
+		_DispatchPkg(pkg,pMarket->m_5m);
+	}
+	else if(vType[1].compare("15m"))
+	{
+		_DispatchPkg(pkg,pMarket->m_15m);
+	}
+	else if(vType[1].compare("30m"))
+	{
+		_DispatchPkg(pkg,pMarket->m_30m);
+	}
+	else if(vType[1].compare("1h"))
+	{
+		_DispatchPkg(pkg,pMarket->m_1h);
+	}
+	else if(vType[1].compare("6h"))
+	{
+		_DispatchPkg(pkg,pMarket->m_6h);
+	}	
+	else if(vType[1].compare("1d"))
+	{
+		_DispatchPkg(pkg,pMarket->m_1d);
+	}
+	else if(vType[1].compare("1w"))
+	{
+		_DispatchPkg(pkg,pMarket->m_1w);
+	}
+	else if(vType[1].compare("1m"))
+	{
+		_DispatchPkg(pkg,pMarket->m_1m);
+	}
+
+}
+
+
+
+void ClientSrv::_DispatchPkg_DepthData(UPDepthdata *pkg)
+{
+	Market *pMarket=g_market_mgr.Get(pkg->m_sMarketID);
+	if(pMarket==NULL)return;
+
+	_DispatchPkg(pkg,pMarket->m_depth);
+}
+
+void ClientSrv::_DispatchPkg_MatchedData(UPMatchedData *pkg)
+{
+	Market *pMarket=g_market_mgr.Get(pkg->m_sMarketID);
+	if(pMarket==NULL)return;
+
+	_DispatchPkg(pkg,pMarket->m_order);
+}
+
+void ClientSrv::_DispatchPkg_TransactionData(UPHistoricalTransactionData *pkg)
+{
+	Market *pMarket=g_market_mgr.Get(pkg->m_sMarketID);
+	if(pMarket==NULL)return;
+
+	_DispatchPkg(pkg,pMarket->m_tracelog);
+}
+
+
+void ClientSrv::_DispatchPkg(UProtocolBase *pkg,set<ClientSession*> &client)
+{
+	for(set<ClientSession*>::iterator it=client.begin();it!=client.end();it++)
+	{
+		(*it)->SendPkg(pkg);
+	}
 }

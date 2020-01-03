@@ -232,6 +232,7 @@ class canceltrade :
   enum : int {
     kTokenFieldNumber = 1,
     kIdFieldNumber = 2,
+    kMarketidFieldNumber = 3,
   };
   // required string token = 1;
   bool has_token() const;
@@ -266,6 +267,19 @@ class canceltrade :
   void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
   public:
 
+  // required uint64 marketid = 3;
+  bool has_marketid() const;
+  private:
+  bool _internal_has_marketid() const;
+  public:
+  void clear_marketid();
+  ::PROTOBUF_NAMESPACE_ID::uint64 marketid() const;
+  void set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_marketid() const;
+  void _internal_set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:ukex.canceltrade)
  private:
   class _Internal;
@@ -278,6 +292,7 @@ class canceltrade :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   ::PROTOBUF_NAMESPACE_ID::uint64 id_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 marketid_;
   friend struct ::TableStruct_ukex_2ecanceltrade_2eproto;
 };
 // ===================================================================
@@ -388,6 +403,34 @@ inline void canceltrade::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint64 value)
 inline void canceltrade::set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   _internal_set_id(value);
   // @@protoc_insertion_point(field_set:ukex.canceltrade.id)
+}
+
+// required uint64 marketid = 3;
+inline bool canceltrade::_internal_has_marketid() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool canceltrade::has_marketid() const {
+  return _internal_has_marketid();
+}
+inline void canceltrade::clear_marketid() {
+  marketid_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 canceltrade::_internal_marketid() const {
+  return marketid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 canceltrade::marketid() const {
+  // @@protoc_insertion_point(field_get:ukex.canceltrade.marketid)
+  return _internal_marketid();
+}
+inline void canceltrade::_internal_set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000004u;
+  marketid_ = value;
+}
+inline void canceltrade::set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_marketid(value);
+  // @@protoc_insertion_point(field_set:ukex.canceltrade.marketid)
 }
 
 #ifdef __GNUC__

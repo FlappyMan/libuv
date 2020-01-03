@@ -47,7 +47,7 @@ void CThreadTCPOper::cbRead(uv_stream_t *client, ssize_t nread, const uv_buf_t *
 	else
 	{
 		cout << "[CThreadTCPOper->cbNewConnection->cbRead] readed :" << buf->base << endl;
-		CDispatchManager::DispatchClient((uv_tcp_t *)client,buf->base,nread);
+		CDispatchManager::DispatchClient((uv_tcp_t *)client, buf->base, nread);
 	}
 	delete[] buf->base;
 }
@@ -58,26 +58,27 @@ void CThreadTCPOper::cbNewConnection(uv_stream_t *server, int status)
 	if (status < 0)
 	{
 		cout << "[CThreadTCPOper->cbNewConnection] New connection error :" << uv_strerror(status) << endl;
-		return;
-	}
-
-	uv_tcp_t *client = new uv_tcp_t;
-	uv_tcp_init(&g_uvLoop, client);
-	if (uv_accept(server, (uv_stream_t *)client) == 0)
-	{
-		int ret = uv_read_start((uv_stream_t *)client, cbReadBuff, cbRead);
-		cout << "[CThreadTCPOper->cbNewConnection] New connection begin read : " << ret << endl;
 	}
 	else
 	{
-		cout << "[CThreadTCPOper->cbNewConnection] New connection accept failed" << endl;
-		uv_close((uv_handle_t *)client, cbClosed);
+		uv_tcp_t *client = new uv_tcp_t;
+		uv_tcp_init(&g_uvLoop, client);
+		if (uv_accept(server, (uv_stream_t *)client) == 0)
+		{
+			int ret = uv_read_start((uv_stream_t *)client, cbReadBuff, cbRead);
+			cout << "[CThreadTCPOper->cbNewConnection] New connection begin read : " << ret << endl;
+		}
+		else
+		{
+			cout << "[CThreadTCPOper->cbNewConnection] New connection accept failed" << endl;
+			uv_close((uv_handle_t *)client, cbClosed);
+		}
 	}
 }
 
 void CThreadTCPOper::ThreadTCPOper(void *arg)
 {
-	cout<<"[CThreadTCPOper Init]"<<endl;
+	cout << "[CThreadTCPOper Init]" << endl;
 	uv_loop_init(&g_uvLoop);
 	uv_tcp_t server;
 	uv_tcp_init(&g_uvLoop, &server);
@@ -90,11 +91,11 @@ void CThreadTCPOper::ThreadTCPOper(void *arg)
 	if (ret)
 	{
 		cout << "[CThreadTCPOper Client Listen error]:" << uv_strerror(ret) << endl;
-		return;
 	}
-
-	uv_timer_init(&g_uvLoop, &g_uvTimer);
-	uv_timer_start(&g_uvTimer, cbTimer, 10, 1);
-
-	uv_run(&g_uvLoop, UV_RUN_DEFAULT);
+	else
+	{
+		uv_timer_init(&g_uvLoop, &g_uvTimer);
+		uv_timer_start(&g_uvTimer, cbTimer, 10, 1);
+		uv_run(&g_uvLoop, UV_RUN_DEFAULT);
+	}
 }

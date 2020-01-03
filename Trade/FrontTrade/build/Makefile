@@ -339,33 +339,6 @@ global.cpp.s:
 	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/global.cpp.s
 .PHONY : global.cpp.s
 
-http_parser.o: http_parser.c.o
-
-.PHONY : http_parser.o
-
-# target to build an object file
-http_parser.c.o:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/http_parser.c.o
-.PHONY : http_parser.c.o
-
-http_parser.i: http_parser.c.i
-
-.PHONY : http_parser.i
-
-# target to preprocess a source file
-http_parser.c.i:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/http_parser.c.i
-.PHONY : http_parser.c.i
-
-http_parser.s: http_parser.c.s
-
-.PHONY : http_parser.s
-
-# target to generate assembly for a file
-http_parser.c.s:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/http_parser.c.s
-.PHONY : http_parser.c.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -426,9 +399,6 @@ help:
 	@echo "... global.o"
 	@echo "... global.i"
 	@echo "... global.s"
-	@echo "... http_parser.o"
-	@echo "... http_parser.i"
-	@echo "... http_parser.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

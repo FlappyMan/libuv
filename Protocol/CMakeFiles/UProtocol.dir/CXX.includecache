@@ -10,6 +10,24 @@
 UBHeader.h
 ../BaseLib/UBHeader.h
 
+../BaseLib/UBCrypto.h
+UBHeader.h
+../BaseLib/UBHeader.h
+openssl/evp.h
+../BaseLib/openssl/evp.h
+openssl/bio.h
+../BaseLib/openssl/bio.h
+openssl/buffer.h
+../BaseLib/openssl/buffer.h
+openssl/sha.h
+../BaseLib/openssl/sha.h
+openssl/rsa.h
+../BaseLib/openssl/rsa.h
+openssl/pem.h
+-
+openssl/bn.h
+-
+
 ../BaseLib/UBDate.h
 UBHeader.h
 ../BaseLib/UBHeader.h
@@ -102,6 +120,10 @@ pthread.h
 UBHeader.h
 ../BaseLib/UBHeader.h
 
+../BaseLib/UBString.h
+UBHeader.h
+../BaseLib/UBHeader.h
+
 ../BaseLib/UBWsParser.h
 UBHttpParser.h
 ../BaseLib/UBHttpParser.h
@@ -121,6 +143,10 @@ UBHttpParser.h
 ../BaseLib/UBHttpParser.h
 UBWsParser.h
 ../BaseLib/UBWsParser.h
+UBString.h
+../BaseLib/UBString.h
+UBCrypto.h
+../BaseLib/UBCrypto.h
 uv.h
 ../BaseLib/uv.h
 
@@ -278,6 +304,10 @@ proto/ukex.klinehistoricaldata.pb.h
 UProtocolBase.h
 /home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.h
 
+/home/gong/workspace/git/UkexServer/Protocol/UPlogin.cpp
+UPlogin.h
+/home/gong/workspace/git/UkexServer/Protocol/UPlogin.h
+
 /home/gong/workspace/git/UkexServer/Protocol/UPlogin.h
 UBaseLib.h
 /home/gong/workspace/git/UkexServer/Protocol/UBaseLib.h
@@ -319,6 +349,10 @@ UBaseLib.h
 /home/gong/workspace/git/UkexServer/Protocol/UBaseLib.h
 UProtocol_Header.h
 /home/gong/workspace/git/UkexServer/Protocol/UProtocol_Header.h
+
+/home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.cpp
+UProtocolBase.h
+/home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.h
 
 /home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.h
 UBaseLib.h

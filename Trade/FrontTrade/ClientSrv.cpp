@@ -1,5 +1,6 @@
 
 #include "ClientSrv.h"
+#include "ThreadClient.h"
 
 ClientSrv::ClientSrv()
 {
@@ -10,7 +11,6 @@ ClientSrv::~ClientSrv()
 {
 
 }
-
 
 void ClientSrv::NewConnection(uv_tcp_t* tcp)
 {
@@ -25,58 +25,55 @@ int ClientSrv::Read(uv_tcp_t* tcp,char *pBuffer,int iDataLen)
     map<uv_tcp_t*,ClientSession*>::iterator it=m_mSession.find(tcp);
     if(it==m_mSession.end())return false;
 
-    return it->second->Read(tcp, pBuffer, iDataLen,this->m_qRequest);
+    return it->second->Read(tcp, pBuffer, iDataLen,m_qRequest,m_mClientID);
 }
 
-
-void ClientSrv::PushRequest(BlockQueue<UProtocolBase*> &q)
+void ClientSrv::PushResponse(BlockQueue<UProtocolBase*> &res)
 {
-    // uv_mutex_lock(&m_lock);
-    // while(q.size()>0)
-    // {
-    //     m_qRequest.push(q.front());
-    //     q.pop();
-    // }
-    // uv_mutex_unlock(&m_lock);
-    // Client json->pb request
-    m_qRequest.put(q.get());//BackTrade pb response
+    while (res.size()>0)
+    {
+        m_qResponse.put(res.get());
+    }
 }
 
+void ClientSrv::GetRequest(BlockQueue<UProtocolBase*> &req)
+{
+    while (req.size()>0)
+    {
+        req.put(m_qRequest.get());
+    }
+}
 
 void ClientSrv::OnTimer(time_t tNow)
 {
-    // queue<UProtocolBase*> qReq;
-    // uv_mutex_lock(&m_lock);
-    // qReq.swap(m_qReqest);
-    // uv_mutex_unlock(&m_lock);
-
-    // while(qReq.size()>0)
-    // {
-    //     delete qReq.front();
-    //     qReq.pop();
-    // }
-    BlockQueue<UProtocolBase* > qReq;
-    qReq = m_qRequest;
     map<uv_tcp_t*,ClientSession*>::iterator it;
-    UProtocolBase* pkg = NULL;  
-    while(qReq.size()>0)
+    for(it=m_mSession.begin();it!=m_mSession.end();it++)
     {
-        pkg = qReq.get();
-        for(it=m_mSession.begin();it!=m_mSession.end();it++)
+        if (it->second->IsTimeout(tNow))
         {
-            if (it->second->IsTimeout(tNow))
-            {
-                it->second->Destroy();
-                delete it->second;
-                it = m_mSession.erase(it);
-                continue;
-            }
-            for (map<uv_tcp_t*,BackTradeSession*>::iterator iter = m_btSrv.m_mSession.begin();iter!=m_btSrv.m_mSession.end();iter++)
-            {
-                it->second->SendPkg(iter->first, pkg);//客户端的Request发送给Server
-            }
+            it->second->Destroy();
+            delete it->second;
+            m_mSession.erase(it);
+            continue;
         }
-        
+    }  
+    while(m_qResponse.size()>0)
+    {
+        _DispatchPkg(m_qResponse.get());
+    }   
+}
+
+void ClientSrv::_DispatchPkg(UProtocolBase* pkg)
+{
+    UPResponse *res = (UPResponse *)pkg;
+    map<string,uv_tcp_t*>::iterator it = m_mClientID.begin();
+    for (; it!=m_mClientID.end(); it++)
+    {
+        if (strcasecmp(it->first.c_str(),res->token().c_str()) == 0)
+        {
+            Client_Write((uv_stream_t*)it->second,res,200);
+        }     
     }
+    
 }
 

@@ -447,6 +447,33 @@ UPklinehistoricaldata.cpp.s:
 	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.s
 .PHONY : UPklinehistoricaldata.cpp.s
 
+UPlogin.o: UPlogin.cpp.o
+
+.PHONY : UPlogin.o
+
+# target to build an object file
+UPlogin.cpp.o:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPlogin.cpp.o
+.PHONY : UPlogin.cpp.o
+
+UPlogin.i: UPlogin.cpp.i
+
+.PHONY : UPlogin.i
+
+# target to preprocess a source file
+UPlogin.cpp.i:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPlogin.cpp.i
+.PHONY : UPlogin.cpp.i
+
+UPlogin.s: UPlogin.cpp.s
+
+.PHONY : UPlogin.s
+
+# target to generate assembly for a file
+UPlogin.cpp.s:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPlogin.cpp.s
+.PHONY : UPlogin.cpp.s
+
 UPmatcheddata.o: UPmatcheddata.cpp.o
 
 .PHONY : UPmatcheddata.o
@@ -527,6 +554,33 @@ UProtocol.s: UProtocol.cpp.s
 UProtocol.cpp.s:
 	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UProtocol.cpp.s
 .PHONY : UProtocol.cpp.s
+
+UProtocolBase.o: UProtocolBase.cpp.o
+
+.PHONY : UProtocolBase.o
+
+# target to build an object file
+UProtocolBase.cpp.o:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UProtocolBase.cpp.o
+.PHONY : UProtocolBase.cpp.o
+
+UProtocolBase.i: UProtocolBase.cpp.i
+
+.PHONY : UProtocolBase.i
+
+# target to preprocess a source file
+UProtocolBase.cpp.i:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UProtocolBase.cpp.i
+.PHONY : UProtocolBase.cpp.i
+
+UProtocolBase.s: UProtocolBase.cpp.s
+
+.PHONY : UProtocolBase.s
+
+# target to generate assembly for a file
+UProtocolBase.cpp.s:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UProtocolBase.cpp.s
+.PHONY : UProtocolBase.cpp.s
 
 UPuptrade.o: UPuptrade.cpp.o
 
@@ -1005,6 +1059,9 @@ help:
 	@echo "... UPklinehistoricaldata.o"
 	@echo "... UPklinehistoricaldata.i"
 	@echo "... UPklinehistoricaldata.s"
+	@echo "... UPlogin.o"
+	@echo "... UPlogin.i"
+	@echo "... UPlogin.s"
 	@echo "... UPmatcheddata.o"
 	@echo "... UPmatcheddata.i"
 	@echo "... UPmatcheddata.s"
@@ -1014,6 +1071,9 @@ help:
 	@echo "... UProtocol.o"
 	@echo "... UProtocol.i"
 	@echo "... UProtocol.s"
+	@echo "... UProtocolBase.o"
+	@echo "... UProtocolBase.i"
+	@echo "... UProtocolBase.s"
 	@echo "... UPuptrade.o"
 	@echo "... UPuptrade.i"
 	@echo "... UPuptrade.s"

@@ -5,29 +5,25 @@
 
 #include "global.h"
 #include "BlockQueue.h"
-#include "ThreadBackTrade.h"
-#include "BackTradeSession.h"
 
 class ClientSession
 {
-public:
-    ClientSession(uv_tcp_t* tcp);
-    ~ClientSession();
+    public:
+        ClientSession(uv_tcp_t* tcp);
+        ~ClientSession();
 
-    void Init();
-    void Destroy();
-    bool IsTimeout(time_t tNow);
+        void Init();
+        void Destroy();
+        bool IsTimeout(time_t tNow);
 
-    int Read(uv_tcp_t* client, char *pBuffer,int iDataLen,BlockQueue<UProtocolBase*> &m_qRequest);
+        int Read(uv_tcp_t* client, char *pBuffer,int iDataLen,BlockQueue<UProtocolBase*> &m_qRequest,map<string,uv_tcp_t*> &m_mClientID);
 
-    void SendPkg(uv_tcp_t* client, UProtocolBase* pkg);
+    public:
+        uv_tcp_t * m_tcp;
+        UBBuffer m_buffer;
+        UBHttpParser m_http;
 
-public:
-    uv_tcp_t * m_tcp;
-    UBBuffer m_buffer;
-    UBHttpParser m_http;
-
-    time_t m_tLast;
+        time_t m_tLast;
 };
 
 #endif

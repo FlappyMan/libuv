@@ -6,9 +6,11 @@
 
 /*
 常用文件路径计算类
-* 
+
 
 */
+
+const char UPDIR_KLINE_DIR_ROOT[]="Kline/";
 
 
 class UPDir

@@ -16,6 +16,11 @@ class UPKlinedata : public UProtocolBase, public ukex::klinedata
         static constexpr const char* CMD_WSAPI = "kline";//WS
         static constexpr const char* CMD_WEBAPI = "/api/private/kline";//HTTP
         static constexpr const char* CMD_ROBOTAPI = "/api/private/upTrklineade";//robot http
+
+
+        enum{KLINE_FILE_RECORD_LENGTH=200,};        // K线数据每条记录在记录文件中最大长度
+    public:
+        string m_sMarketID;
 };
 
 

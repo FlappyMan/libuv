@@ -16,8 +16,7 @@ bool Base64Decode(string &strDecoded,const char *pData, int iDataLen, bool bNewL
 
 enum{RSA_KEY_BITS=2048,RSA_KEY_BYTES=256};
 bool RsaKeyGen(string &sPrivateKey,string &sPublicKey);
-bool RsaPublicEncrypt();
-bool RsaPrivateDecrypt();
 
+void Sha256(string &hash,const uint8_t *pData,uint32_t uiLen);
 
 #endif

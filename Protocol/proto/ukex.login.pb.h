@@ -231,6 +231,7 @@ class login :
 
   enum : int {
     kKeyFieldNumber = 1,
+    kHashFieldNumber = 2,
   };
   // required string key = 1;
   bool has_key() const;
@@ -252,14 +253,38 @@ class login :
   std::string* _internal_mutable_key();
   public:
 
+  // required string hash = 2;
+  bool has_hash() const;
+  private:
+  bool _internal_has_hash() const;
+  public:
+  void clear_hash();
+  const std::string& hash() const;
+  void set_hash(const std::string& value);
+  void set_hash(std::string&& value);
+  void set_hash(const char* value);
+  void set_hash(const char* value, size_t size);
+  std::string* mutable_hash();
+  std::string* release_hash();
+  void set_allocated_hash(std::string* hash);
+  private:
+  const std::string& _internal_hash() const;
+  void _internal_set_hash(const std::string& value);
+  std::string* _internal_mutable_hash();
+  public:
+
   // @@protoc_insertion_point(class_scope:ukex.login)
  private:
   class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr key_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr hash_;
   friend struct ::TableStruct_ukex_2elogin_2eproto;
 };
 // ===================================================================
@@ -342,6 +367,77 @@ inline void login::set_allocated_key(std::string* key) {
   }
   key_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), key);
   // @@protoc_insertion_point(field_set_allocated:ukex.login.key)
+}
+
+// required string hash = 2;
+inline bool login::_internal_has_hash() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool login::has_hash() const {
+  return _internal_has_hash();
+}
+inline void login::clear_hash() {
+  hash_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& login::hash() const {
+  // @@protoc_insertion_point(field_get:ukex.login.hash)
+  return _internal_hash();
+}
+inline void login::set_hash(const std::string& value) {
+  _internal_set_hash(value);
+  // @@protoc_insertion_point(field_set:ukex.login.hash)
+}
+inline std::string* login::mutable_hash() {
+  // @@protoc_insertion_point(field_mutable:ukex.login.hash)
+  return _internal_mutable_hash();
+}
+inline const std::string& login::_internal_hash() const {
+  return hash_.GetNoArena();
+}
+inline void login::_internal_set_hash(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  hash_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void login::set_hash(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  hash_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ukex.login.hash)
+}
+inline void login::set_hash(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  hash_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ukex.login.hash)
+}
+inline void login::set_hash(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  hash_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ukex.login.hash)
+}
+inline std::string* login::_internal_mutable_hash() {
+  _has_bits_[0] |= 0x00000002u;
+  return hash_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* login::release_hash() {
+  // @@protoc_insertion_point(field_release:ukex.login.hash)
+  if (!has_hash()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return hash_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void login::set_allocated_hash(std::string* hash) {
+  if (hash != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  hash_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), hash);
+  // @@protoc_insertion_point(field_set_allocated:ukex.login.hash)
 }
 
 #ifdef __GNUC__

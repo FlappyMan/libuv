@@ -62,7 +62,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_ukex_2eresponse_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\023ukex.response.proto\022\004ukex\"I\n\010response\022"
   "\016\n\006status\030\001 \002(\005\022\014\n\004data\030\002 \002(\t\022\r\n\005token\030\003"
-  " \002(\t\"\020\n\005CONST\022\007\n\003CMD\020o"
+  " \001(\t\"\020\n\005CONST\022\007\n\003CMD\020o"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2eresponse_2eproto_deps[1] = {
 };
@@ -210,7 +210,7 @@ const char* response::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required string token = 3;
+      // optional string token = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_token(), ptr, ctx, "ukex.response.token");
@@ -261,7 +261,7 @@ failure:
         2, this->_internal_data(), target);
   }
 
-  // required string token = 3;
+  // optional string token = 3;
   if (cached_has_bits & 0x00000002u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
@@ -290,13 +290,6 @@ size_t response::RequiredFieldsByteSizeFallback() const {
         this->_internal_data());
   }
 
-  if (has_token()) {
-    // required string token = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_token());
-  }
-
   if (has_status()) {
     // required int32 status = 1;
     total_size += 1 +
@@ -310,16 +303,11 @@ size_t response::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.response)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000005) ^ 0x00000005) == 0) {  // All required fields are present.
     // required string data = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_data());
-
-    // required string token = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_token());
 
     // required int32 status = 1;
     total_size += 1 +
@@ -332,6 +320,14 @@ size_t response::ByteSizeLong() const {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // optional string token = 3;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000002u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+  }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
@@ -396,7 +392,7 @@ void response::CopyFrom(const response& from) {
 }
 
 bool response::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
   return true;
 }
 

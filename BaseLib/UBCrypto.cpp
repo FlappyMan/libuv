@@ -74,38 +74,20 @@ bool RsaKeyGen(string &sPrivateKey,string &sPublicKey)
 	PEM_write_bio_RSAPublicKey(pPublicKey, rsa);
 	size_t uiPublic = BIO_pending(pPublicKey); 
 	buffer=new char[uiPublic];
-	BIO_read(pPrivateKey, buffer, uiPublic); 
+	BIO_read(pPublicKey, buffer, uiPublic); 
 	sPublicKey.assign(buffer,uiPublic);
 	delete []buffer;
 
 	RSA_free(rsa);
 }
 
-/*
-bool RsaPublicEncrypt(uint8_t *pOut,uint32_t uiOutSize,uint8_t key[RSA_KEY_LENGTH],uint8_t *pData,uint32_t uiDataLen)
-{
-	RSA *rsa=RSA_new(void);
-    if(rsa==NULL)return -2;
+void Sha256(string &hash,const uint8_t *pData,uint32_t uiLen)
+{	
+	uint8_t out[SHA256_DIGEST_LENGTH];
+	SHA256_CTX sha256;
+    SHA256_Init(&sha256);
+	SHA256_Update(&sha256, pData, uiLen);
+	SHA256_Final(out, &sha256);
 
-	BIO *keybio = BIO_new_mem_buf(key, RSA_KEY_LENGTH);
-	if (keybio==NULL)return false;
-
-	RSA *rsa= NULL;
-	EM_read_bio_RSA_PUBKEY(keybio, &rsa,NULL, NULL);
-	if(rsa==NULL)return false;
-
-	int iBlockSize=RSA_size(rsa);
-
-	RSA_public_encrypt(uiDataLen,pData,encrypted,rsa,RSA_NO_PADDING);
-
-    RSA_size();
-
-    RSA_private_encrypt(BUFFER_LEN,sBuffer,,rsa,RSA_NO_PADDING);
+	hash.assign((char*)out,SHA256_DIGEST_LENGTH);
 }
-
-
-bool RsaPrivateDecrypt()
-{
-
-}
-*/

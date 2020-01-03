@@ -238,7 +238,7 @@ class uptrade :
     kTypeFieldNumber = 6,
     kMainCoinFieldNumber = 7,
   };
-  // required string token = 1;
+  // optional string token = 1;
   bool has_token() const;
   private:
   bool _internal_has_token() const;
@@ -373,7 +373,7 @@ class uptrade :
 #endif  // __GNUC__
 // uptrade
 
-// required string token = 1;
+// optional string token = 1;
 inline bool uptrade::_internal_has_token() const {
   bool value = (_has_bits_[0] & 0x00000001u) != 0;
   return value;

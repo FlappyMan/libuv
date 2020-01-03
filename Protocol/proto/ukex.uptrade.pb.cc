@@ -69,7 +69,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_ukex_2euptrade_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\022ukex.uptrade.proto\022\004ukex\"\216\001\n\007uptrade\022\r"
-  "\n\005token\030\001 \002(\t\022\023\n\013paypassword\030\002 \002(\t\022\020\n\010ma"
+  "\n\005token\030\001 \001(\t\022\023\n\013paypassword\030\002 \002(\t\022\020\n\010ma"
   "rketid\030\003 \002(\004\022\r\n\005price\030\004 \002(\004\022\013\n\003num\030\005 \002(\004"
   "\022\014\n\004type\030\006 \002(\r\022\021\n\tmain_coin\030\007 \001(\r\"\020\n\005CON"
   "ST\022\007\n\003CMD\020d"
@@ -225,7 +225,7 @@ const char* uptrade::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // required string token = 1;
+      // optional string token = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_token(), ptr, ctx, "ukex.uptrade.token");
@@ -307,7 +307,7 @@ failure:
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required string token = 1;
+  // optional string token = 1;
   if (cached_has_bits & 0x00000001u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
@@ -369,13 +369,6 @@ size_t uptrade::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:ukex.uptrade)
   size_t total_size = 0;
 
-  if (has_token()) {
-    // required string token = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_token());
-  }
-
   if (has_paypassword()) {
     // required string paypassword = 2;
     total_size += 1 +
@@ -417,12 +410,7 @@ size_t uptrade::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.uptrade)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000003f) ^ 0x0000003f) == 0) {  // All required fields are present.
-    // required string token = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_token());
-
+  if (((_has_bits_[0] & 0x0000003e) ^ 0x0000003e) == 0) {  // All required fields are present.
     // required string paypassword = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -455,8 +443,15 @@ size_t uptrade::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional uint32 main_coin = 7;
+  // optional string token = 1;
   cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+  }
+
+  // optional uint32 main_coin = 7;
   if (cached_has_bits & 0x00000040u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
@@ -538,7 +533,7 @@ void uptrade::CopyFrom(const uptrade& from) {
 }
 
 bool uptrade::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000003f) != 0x0000003f) return false;
+  if ((_has_bits_[0] & 0x0000003e) != 0x0000003e) return false;
   return true;
 }
 

@@ -3,6 +3,7 @@
 
 CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -10,6 +11,7 @@ CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.cpp
@@ -56,6 +58,7 @@ CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPDir.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -63,6 +66,7 @@ CMakeFiles/UProtocol.dir/UPDir.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPDir.cpp
@@ -108,6 +112,7 @@ CMakeFiles/UProtocol.dir/UPDir.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPOpt.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -115,6 +120,7 @@ CMakeFiles/UProtocol.dir/UPOpt.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPOpt.cpp
@@ -161,6 +167,7 @@ CMakeFiles/UProtocol.dir/UPOpt.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPRequest.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -168,6 +175,7 @@ CMakeFiles/UProtocol.dir/UPRequest.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPRequest.cpp
@@ -214,6 +222,7 @@ CMakeFiles/UProtocol.dir/UPRequest.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -221,6 +230,7 @@ CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPSubscribe.cpp
@@ -267,6 +277,7 @@ CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -274,6 +285,7 @@ CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPallmarketinfo.cpp
@@ -321,6 +333,7 @@ CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -328,6 +341,7 @@ CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPcanceltrade.cpp
@@ -375,6 +389,7 @@ CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -382,6 +397,7 @@ CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPcanceltradebatch.cpp
@@ -429,6 +445,7 @@ CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -436,6 +453,7 @@ CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPdepthdata.cpp
@@ -483,6 +501,7 @@ CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -490,6 +509,7 @@ CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPhistoricaltransactiondata.cpp
@@ -537,6 +557,7 @@ CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPklinedata.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -544,6 +565,7 @@ CMakeFiles/UProtocol.dir/UPklinedata.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPklinedata.cpp
@@ -591,6 +613,7 @@ CMakeFiles/UProtocol.dir/UPklinedata.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -598,6 +621,7 @@ CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPklinehistoricaldata.cpp
@@ -643,8 +667,9 @@ CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/mysql_time.h
  /usr/local/UkexServer/lib/mysqlinc/mysql_version.h
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
-CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o
+CMakeFiles/UProtocol.dir/UPlogin.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -652,6 +677,63 @@ CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
+ ../BaseLib/UBWsParser.h
+ ../BaseLib/UBaseLib.h
+ /home/gong/workspace/git/UkexServer/Protocol/UPlogin.cpp
+ /home/gong/workspace/git/UkexServer/Protocol/UPlogin.h
+ /home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.h
+ /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.login.pb.h
+ /usr/local/UkexServer/lib/http-parser/http_parser.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/allocator.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/autolink.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/config.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/features.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/forwards.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/json.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/reader.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/value.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/version.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/writer.h
+ /usr/local/UkexServer/lib/libuv/include/uv.h
+ /usr/local/UkexServer/lib/libuv/include/uv/aix.h
+ /usr/local/UkexServer/lib/libuv/include/uv/bsd.h
+ /usr/local/UkexServer/lib/libuv/include/uv/darwin.h
+ /usr/local/UkexServer/lib/libuv/include/uv/errno.h
+ /usr/local/UkexServer/lib/libuv/include/uv/linux.h
+ /usr/local/UkexServer/lib/libuv/include/uv/os390.h
+ /usr/local/UkexServer/lib/libuv/include/uv/posix.h
+ /usr/local/UkexServer/lib/libuv/include/uv/stdint-msvc2008.h
+ /usr/local/UkexServer/lib/libuv/include/uv/sunos.h
+ /usr/local/UkexServer/lib/libuv/include/uv/threadpool.h
+ /usr/local/UkexServer/lib/libuv/include/uv/tree.h
+ /usr/local/UkexServer/lib/libuv/include/uv/unix.h
+ /usr/local/UkexServer/lib/libuv/include/uv/version.h
+ /usr/local/UkexServer/lib/libuv/include/uv/win.h
+ /usr/local/UkexServer/lib/mysqlinc/binary_log_types.h
+ /usr/local/UkexServer/lib/mysqlinc/my_alloc.h
+ /usr/local/UkexServer/lib/mysqlinc/my_command.h
+ /usr/local/UkexServer/lib/mysqlinc/my_list.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql/client_plugin.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql/plugin_auth_common.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql/psi/psi_base.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql/psi/psi_memory.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql_com.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql_time.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql_version.h
+ /usr/local/UkexServer/lib/mysqlinc/typelib.h
+CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o
+ ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
+ ../BaseLib/UBDate.h
+ ../BaseLib/UBDefine.h
+ ../BaseLib/UBHeader.h
+ ../BaseLib/UBHttpParser.h
+ ../BaseLib/UBJson.h
+ ../BaseLib/UBLock.h
+ ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPmatcheddata.cpp
@@ -699,6 +781,7 @@ CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPresponse.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -706,6 +789,7 @@ CMakeFiles/UProtocol.dir/UPresponse.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPresponse.cpp
@@ -753,6 +837,7 @@ CMakeFiles/UProtocol.dir/UPresponse.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UProtocol.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -760,6 +845,7 @@ CMakeFiles/UProtocol.dir/UProtocol.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.h
@@ -839,8 +925,9 @@ CMakeFiles/UProtocol.dir/UProtocol.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/mysql_time.h
  /usr/local/UkexServer/lib/mysqlinc/mysql_version.h
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
-CMakeFiles/UProtocol.dir/UPuptrade.cpp.o
+CMakeFiles/UProtocol.dir/UProtocolBase.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -848,6 +935,61 @@ CMakeFiles/UProtocol.dir/UPuptrade.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
+ ../BaseLib/UBWsParser.h
+ ../BaseLib/UBaseLib.h
+ /home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.cpp
+ /home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.h
+ /usr/local/UkexServer/lib/http-parser/http_parser.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/allocator.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/autolink.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/config.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/features.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/forwards.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/json.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/reader.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/value.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/version.h
+ /usr/local/UkexServer/lib/jsoncpp/include/json/writer.h
+ /usr/local/UkexServer/lib/libuv/include/uv.h
+ /usr/local/UkexServer/lib/libuv/include/uv/aix.h
+ /usr/local/UkexServer/lib/libuv/include/uv/bsd.h
+ /usr/local/UkexServer/lib/libuv/include/uv/darwin.h
+ /usr/local/UkexServer/lib/libuv/include/uv/errno.h
+ /usr/local/UkexServer/lib/libuv/include/uv/linux.h
+ /usr/local/UkexServer/lib/libuv/include/uv/os390.h
+ /usr/local/UkexServer/lib/libuv/include/uv/posix.h
+ /usr/local/UkexServer/lib/libuv/include/uv/stdint-msvc2008.h
+ /usr/local/UkexServer/lib/libuv/include/uv/sunos.h
+ /usr/local/UkexServer/lib/libuv/include/uv/threadpool.h
+ /usr/local/UkexServer/lib/libuv/include/uv/tree.h
+ /usr/local/UkexServer/lib/libuv/include/uv/unix.h
+ /usr/local/UkexServer/lib/libuv/include/uv/version.h
+ /usr/local/UkexServer/lib/libuv/include/uv/win.h
+ /usr/local/UkexServer/lib/mysqlinc/binary_log_types.h
+ /usr/local/UkexServer/lib/mysqlinc/my_alloc.h
+ /usr/local/UkexServer/lib/mysqlinc/my_command.h
+ /usr/local/UkexServer/lib/mysqlinc/my_list.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql/client_plugin.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql/plugin_auth_common.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql/psi/psi_base.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql/psi/psi_memory.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql_com.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql_time.h
+ /usr/local/UkexServer/lib/mysqlinc/mysql_version.h
+ /usr/local/UkexServer/lib/mysqlinc/typelib.h
+CMakeFiles/UProtocol.dir/UPuptrade.cpp.o
+ ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
+ ../BaseLib/UBDate.h
+ ../BaseLib/UBDefine.h
+ ../BaseLib/UBHeader.h
+ ../BaseLib/UBHttpParser.h
+ ../BaseLib/UBJson.h
+ ../BaseLib/UBLock.h
+ ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.h
@@ -895,6 +1037,7 @@ CMakeFiles/UProtocol.dir/UPuptrade.cpp.o
  /usr/local/UkexServer/lib/mysqlinc/typelib.h
 CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.o
  ../BaseLib/UBBuffer.h
+ ../BaseLib/UBCrypto.h
  ../BaseLib/UBDate.h
  ../BaseLib/UBDefine.h
  ../BaseLib/UBHeader.h
@@ -902,6 +1045,7 @@ CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.o
  ../BaseLib/UBJson.h
  ../BaseLib/UBLock.h
  ../BaseLib/UBMysql.h
+ ../BaseLib/UBString.h
  ../BaseLib/UBWsParser.h
  ../BaseLib/UBaseLib.h
  /home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.h

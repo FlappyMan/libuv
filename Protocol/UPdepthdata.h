@@ -16,6 +16,8 @@ class UPDepthdata : public UProtocolBase, public ukex::depthdata
         static constexpr const char* CMD_WSAPI = "depth";//WS
         static constexpr const char* CMD_WEBAPI = "/api/private/depth";//HTTP
         static constexpr const char* CMD_ROBOTAPI = "/api/private/depth";//robot http
+    public:
+        string m_sMarketID;
 };
 
 

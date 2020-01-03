@@ -46,11 +46,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ukex_2ecanceltradebatch_2eprot
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::ukex::canceltradebatch, token_),
   PROTOBUF_FIELD_OFFSET(::ukex::canceltradebatch, ids_),
+  PROTOBUF_FIELD_OFFSET(::ukex::canceltradebatch, marketid_),
   0,
   ~0u,
+  1,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, sizeof(::ukex::canceltradebatch)},
+  { 0, 8, sizeof(::ukex::canceltradebatch)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -58,9 +60,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ukex_2ecanceltradebatch_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\033ukex.canceltradebatch.proto\022\004ukex\"@\n\020c"
+  "\n\033ukex.canceltradebatch.proto\022\004ukex\"R\n\020c"
   "anceltradebatch\022\r\n\005token\030\001 \002(\t\022\013\n\003ids\030\002 "
-  "\003(\004\"\020\n\005CONST\022\007\n\003CMD\020g"
+  "\003(\004\022\020\n\010marketid\030\003 \002(\004\"\020\n\005CONST\022\007\n\003CMD\020g"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2ecanceltradebatch_2eproto_deps[1] = {
 };
@@ -70,7 +72,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uke
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ukex_2ecanceltradebatch_2eproto_once;
 static bool descriptor_table_ukex_2ecanceltradebatch_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ukex_2ecanceltradebatch_2eproto = {
-  &descriptor_table_ukex_2ecanceltradebatch_2eproto_initialized, descriptor_table_protodef_ukex_2ecanceltradebatch_2eproto, "ukex.canceltradebatch.proto", 101,
+  &descriptor_table_ukex_2ecanceltradebatch_2eproto_initialized, descriptor_table_protodef_ukex_2ecanceltradebatch_2eproto, "ukex.canceltradebatch.proto", 119,
   &descriptor_table_ukex_2ecanceltradebatch_2eproto_once, descriptor_table_ukex_2ecanceltradebatch_2eproto_sccs, descriptor_table_ukex_2ecanceltradebatch_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_ukex_2ecanceltradebatch_2eproto::offsets,
   file_level_metadata_ukex_2ecanceltradebatch_2eproto, 1, file_level_enum_descriptors_ukex_2ecanceltradebatch_2eproto, file_level_service_descriptors_ukex_2ecanceltradebatch_2eproto,
@@ -109,6 +111,9 @@ class canceltradebatch::_Internal {
   static void set_has_token(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
+  static void set_has_marketid(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 canceltradebatch::canceltradebatch()
@@ -126,12 +131,14 @@ canceltradebatch::canceltradebatch(const canceltradebatch& from)
   if (from._internal_has_token()) {
     token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
   }
+  marketid_ = from.marketid_;
   // @@protoc_insertion_point(copy_constructor:ukex.canceltradebatch)
 }
 
 void canceltradebatch::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_canceltradebatch_ukex_2ecanceltradebatch_2eproto.base);
   token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  marketid_ = PROTOBUF_ULONGLONG(0);
 }
 
 canceltradebatch::~canceltradebatch() {
@@ -163,6 +170,7 @@ void canceltradebatch::Clear() {
   if (cached_has_bits & 0x00000001u) {
     token_.ClearNonDefaultToEmptyNoArena();
   }
+  marketid_ = PROTOBUF_ULONGLONG(0);
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
@@ -194,6 +202,14 @@ const char* canceltradebatch::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<16>(ptr));
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18) {
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_ids(), ptr, ctx);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required uint64 marketid = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          _Internal::set_has_marketid(&has_bits);
+          marketid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -241,6 +257,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_ids(i), target);
   }
 
+  // required uint64 marketid = 3;
+  if (cached_has_bits & 0x00000002u) {
+    stream->EnsureSpace(&target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(3, this->_internal_marketid(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
@@ -249,15 +271,43 @@ failure:
   return target;
 }
 
+size_t canceltradebatch::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:ukex.canceltradebatch)
+  size_t total_size = 0;
+
+  if (has_token()) {
+    // required string token = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+  }
+
+  if (has_marketid()) {
+    // required uint64 marketid = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_marketid());
+  }
+
+  return total_size;
+}
 size_t canceltradebatch::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.canceltradebatch)
   size_t total_size = 0;
 
-  // required string token = 1;
-  if (has_token()) {
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required string token = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_token());
+
+    // required uint64 marketid = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_marketid());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
   }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -304,9 +354,16 @@ void canceltradebatch::MergeFrom(const canceltradebatch& from) {
   (void) cached_has_bits;
 
   ids_.MergeFrom(from.ids_);
-  if (from._internal_has_token()) {
-    _has_bits_[0] |= 0x00000001u;
-    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _has_bits_[0] |= 0x00000001u;
+      token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+    }
+    if (cached_has_bits & 0x00000002u) {
+      marketid_ = from.marketid_;
+    }
+    _has_bits_[0] |= cached_has_bits;
   }
 }
 
@@ -325,7 +382,7 @@ void canceltradebatch::CopyFrom(const canceltradebatch& from) {
 }
 
 bool canceltradebatch::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   return true;
 }
 
@@ -336,6 +393,7 @@ void canceltradebatch::InternalSwap(canceltradebatch* other) {
   ids_.InternalSwap(&other->ids_);
   token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
+  swap(marketid_, other->marketid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata canceltradebatch::GetMetadata() const {

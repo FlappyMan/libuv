@@ -46,11 +46,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ukex_2ecanceltrade_2eproto::of
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::ukex::canceltrade, token_),
   PROTOBUF_FIELD_OFFSET(::ukex::canceltrade, id_),
+  PROTOBUF_FIELD_OFFSET(::ukex::canceltrade, marketid_),
   0,
   1,
+  2,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, sizeof(::ukex::canceltrade)},
+  { 0, 8, sizeof(::ukex::canceltrade)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -58,9 +60,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ukex_2ecanceltrade_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\026ukex.canceltrade.proto\022\004ukex\":\n\013cancel"
-  "trade\022\r\n\005token\030\001 \002(\t\022\n\n\002id\030\002 \002(\004\"\020\n\005CONS"
-  "T\022\007\n\003CMD\020f"
+  "\n\026ukex.canceltrade.proto\022\004ukex\"L\n\013cancel"
+  "trade\022\r\n\005token\030\001 \002(\t\022\n\n\002id\030\002 \002(\004\022\020\n\010mark"
+  "etid\030\003 \002(\004\"\020\n\005CONST\022\007\n\003CMD\020f"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ukex_2ecanceltrade_2eproto_deps[1] = {
 };
@@ -70,7 +72,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uke
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ukex_2ecanceltrade_2eproto_once;
 static bool descriptor_table_ukex_2ecanceltrade_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ukex_2ecanceltrade_2eproto = {
-  &descriptor_table_ukex_2ecanceltrade_2eproto_initialized, descriptor_table_protodef_ukex_2ecanceltrade_2eproto, "ukex.canceltrade.proto", 90,
+  &descriptor_table_ukex_2ecanceltrade_2eproto_initialized, descriptor_table_protodef_ukex_2ecanceltrade_2eproto, "ukex.canceltrade.proto", 108,
   &descriptor_table_ukex_2ecanceltrade_2eproto_once, descriptor_table_ukex_2ecanceltrade_2eproto_sccs, descriptor_table_ukex_2ecanceltrade_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_ukex_2ecanceltrade_2eproto::offsets,
   file_level_metadata_ukex_2ecanceltrade_2eproto, 1, file_level_enum_descriptors_ukex_2ecanceltrade_2eproto, file_level_service_descriptors_ukex_2ecanceltrade_2eproto,
@@ -112,6 +114,9 @@ class canceltrade::_Internal {
   static void set_has_id(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
+  static void set_has_marketid(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
 };
 
 canceltrade::canceltrade()
@@ -128,14 +133,18 @@ canceltrade::canceltrade(const canceltrade& from)
   if (from._internal_has_token()) {
     token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
   }
-  id_ = from.id_;
+  ::memcpy(&id_, &from.id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&marketid_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(marketid_));
   // @@protoc_insertion_point(copy_constructor:ukex.canceltrade)
 }
 
 void canceltrade::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_canceltrade_ukex_2ecanceltrade_2eproto.base);
   token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  id_ = PROTOBUF_ULONGLONG(0);
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&marketid_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(marketid_));
 }
 
 canceltrade::~canceltrade() {
@@ -166,7 +175,11 @@ void canceltrade::Clear() {
   if (cached_has_bits & 0x00000001u) {
     token_.ClearNonDefaultToEmptyNoArena();
   }
-  id_ = PROTOBUF_ULONGLONG(0);
+  if (cached_has_bits & 0x00000006u) {
+    ::memset(&id_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&marketid_) -
+        reinterpret_cast<char*>(&id_)) + sizeof(marketid_));
+  }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
@@ -191,6 +204,14 @@ const char* canceltrade::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           _Internal::set_has_id(&has_bits);
           id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required uint64 marketid = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          _Internal::set_has_marketid(&has_bits);
+          marketid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -238,6 +259,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_id(), target);
   }
 
+  // required uint64 marketid = 3;
+  if (cached_has_bits & 0x00000004u) {
+    stream->EnsureSpace(&target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(3, this->_internal_marketid(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
@@ -264,13 +291,20 @@ size_t canceltrade::RequiredFieldsByteSizeFallback() const {
         this->_internal_id());
   }
 
+  if (has_marketid()) {
+    // required uint64 marketid = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_marketid());
+  }
+
   return total_size;
 }
 size_t canceltrade::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ukex.canceltrade)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required string token = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -280,6 +314,11 @@ size_t canceltrade::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
         this->_internal_id());
+
+    // required uint64 marketid = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_marketid());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -320,13 +359,16 @@ void canceltrade::MergeFrom(const canceltrade& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       _has_bits_[0] |= 0x00000001u;
       token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
     }
     if (cached_has_bits & 0x00000002u) {
       id_ = from.id_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      marketid_ = from.marketid_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -347,7 +389,7 @@ void canceltrade::CopyFrom(const canceltrade& from) {
 }
 
 bool canceltrade::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   return true;
 }
 
@@ -358,6 +400,7 @@ void canceltrade::InternalSwap(canceltrade* other) {
   token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(id_, other->id_);
+  swap(marketid_, other->marketid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata canceltrade::GetMetadata() const {

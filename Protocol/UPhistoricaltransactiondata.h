@@ -16,6 +16,8 @@ class UPHistoricalTransactionData : public UProtocolBase, public ukex::historica
         static constexpr const char* CMD_WSAPI = "tradelog";//WS
         static constexpr const char* CMD_WEBAPI = "/api/private/tradelog";//HTTP
         static constexpr const char* CMD_ROBOTAPI = "/api/private/tradelog";//robot http
+    public:
+        string m_sMarketID;
 };
 
 

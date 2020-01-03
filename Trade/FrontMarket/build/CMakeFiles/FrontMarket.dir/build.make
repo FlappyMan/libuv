@@ -177,9 +177,33 @@ CMakeFiles/FrontMarket.dir/ClientSrv.cpp.o.provides: CMakeFiles/FrontMarket.dir/
 CMakeFiles/FrontMarket.dir/ClientSrv.cpp.o.provides.build: CMakeFiles/FrontMarket.dir/ClientSrv.cpp.o
 
 
+CMakeFiles/FrontMarket.dir/Subscribe.cpp.o: CMakeFiles/FrontMarket.dir/flags.make
+CMakeFiles/FrontMarket.dir/Subscribe.cpp.o: ../Subscribe.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/FrontMarket.dir/Subscribe.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontMarket.dir/Subscribe.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontMarket/Subscribe.cpp
+
+CMakeFiles/FrontMarket.dir/Subscribe.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FrontMarket.dir/Subscribe.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Trade/FrontMarket/Subscribe.cpp > CMakeFiles/FrontMarket.dir/Subscribe.cpp.i
+
+CMakeFiles/FrontMarket.dir/Subscribe.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FrontMarket.dir/Subscribe.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Trade/FrontMarket/Subscribe.cpp -o CMakeFiles/FrontMarket.dir/Subscribe.cpp.s
+
+CMakeFiles/FrontMarket.dir/Subscribe.cpp.o.requires:
+
+.PHONY : CMakeFiles/FrontMarket.dir/Subscribe.cpp.o.requires
+
+CMakeFiles/FrontMarket.dir/Subscribe.cpp.o.provides: CMakeFiles/FrontMarket.dir/Subscribe.cpp.o.requires
+	$(MAKE) -f CMakeFiles/FrontMarket.dir/build.make CMakeFiles/FrontMarket.dir/Subscribe.cpp.o.provides.build
+.PHONY : CMakeFiles/FrontMarket.dir/Subscribe.cpp.o.provides
+
+CMakeFiles/FrontMarket.dir/Subscribe.cpp.o.provides.build: CMakeFiles/FrontMarket.dir/Subscribe.cpp.o
+
+
 CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.o: CMakeFiles/FrontMarket.dir/flags.make
 CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.o: ../ThreadBackTrade.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontMarket/ThreadBackTrade.cpp
 
 CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.o.provides.build: CMakeFiles/Fron
 
 CMakeFiles/FrontMarket.dir/ThreadClient.cpp.o: CMakeFiles/FrontMarket.dir/flags.make
 CMakeFiles/FrontMarket.dir/ThreadClient.cpp.o: ../ThreadClient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/FrontMarket.dir/ThreadClient.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/FrontMarket.dir/ThreadClient.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontMarket.dir/ThreadClient.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontMarket/ThreadClient.cpp
 
 CMakeFiles/FrontMarket.dir/ThreadClient.cpp.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/FrontMarket.dir/ThreadClient.cpp.o.provides.build: CMakeFiles/FrontMa
 
 CMakeFiles/FrontMarket.dir/config.cpp.o: CMakeFiles/FrontMarket.dir/flags.make
 CMakeFiles/FrontMarket.dir/config.cpp.o: ../config.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/FrontMarket.dir/config.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/FrontMarket.dir/config.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontMarket.dir/config.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontMarket/config.cpp
 
 CMakeFiles/FrontMarket.dir/config.cpp.i: cmake_force
@@ -251,7 +275,7 @@ CMakeFiles/FrontMarket.dir/config.cpp.o.provides.build: CMakeFiles/FrontMarket.d
 
 CMakeFiles/FrontMarket.dir/global.cpp.o: CMakeFiles/FrontMarket.dir/flags.make
 CMakeFiles/FrontMarket.dir/global.cpp.o: ../global.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/FrontMarket.dir/global.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/FrontMarket.dir/global.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontMarket.dir/global.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontMarket/global.cpp
 
 CMakeFiles/FrontMarket.dir/global.cpp.i: cmake_force
@@ -280,6 +304,7 @@ FrontMarket_OBJECTS = \
 "CMakeFiles/FrontMarket.dir/BackTradeSrv.cpp.o" \
 "CMakeFiles/FrontMarket.dir/ClientSession.cpp.o" \
 "CMakeFiles/FrontMarket.dir/ClientSrv.cpp.o" \
+"CMakeFiles/FrontMarket.dir/Subscribe.cpp.o" \
 "CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.o" \
 "CMakeFiles/FrontMarket.dir/ThreadClient.cpp.o" \
 "CMakeFiles/FrontMarket.dir/config.cpp.o" \
@@ -293,13 +318,14 @@ FrontMarket: CMakeFiles/FrontMarket.dir/BackTradeSession.cpp.o
 FrontMarket: CMakeFiles/FrontMarket.dir/BackTradeSrv.cpp.o
 FrontMarket: CMakeFiles/FrontMarket.dir/ClientSession.cpp.o
 FrontMarket: CMakeFiles/FrontMarket.dir/ClientSrv.cpp.o
+FrontMarket: CMakeFiles/FrontMarket.dir/Subscribe.cpp.o
 FrontMarket: CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.o
 FrontMarket: CMakeFiles/FrontMarket.dir/ThreadClient.cpp.o
 FrontMarket: CMakeFiles/FrontMarket.dir/config.cpp.o
 FrontMarket: CMakeFiles/FrontMarket.dir/global.cpp.o
 FrontMarket: CMakeFiles/FrontMarket.dir/build.make
 FrontMarket: CMakeFiles/FrontMarket.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable FrontMarket"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable FrontMarket"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FrontMarket.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -312,6 +338,7 @@ CMakeFiles/FrontMarket.dir/requires: CMakeFiles/FrontMarket.dir/BackTradeSession
 CMakeFiles/FrontMarket.dir/requires: CMakeFiles/FrontMarket.dir/BackTradeSrv.cpp.o.requires
 CMakeFiles/FrontMarket.dir/requires: CMakeFiles/FrontMarket.dir/ClientSession.cpp.o.requires
 CMakeFiles/FrontMarket.dir/requires: CMakeFiles/FrontMarket.dir/ClientSrv.cpp.o.requires
+CMakeFiles/FrontMarket.dir/requires: CMakeFiles/FrontMarket.dir/Subscribe.cpp.o.requires
 CMakeFiles/FrontMarket.dir/requires: CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.o.requires
 CMakeFiles/FrontMarket.dir/requires: CMakeFiles/FrontMarket.dir/ThreadClient.cpp.o.requires
 CMakeFiles/FrontMarket.dir/requires: CMakeFiles/FrontMarket.dir/config.cpp.o.requires

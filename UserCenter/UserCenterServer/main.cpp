@@ -1,5 +1,5 @@
 #include "UProtocol.h"
-#include "config.h"
+#include "./BaseConfig/config.h"
 #include "global.h"
 #include "ThreadTCPOper.h"
 #include "ThreadHttpOper.h"

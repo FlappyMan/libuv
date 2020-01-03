@@ -7,13 +7,14 @@
 class UBMysql
 {
 public:
+	UBMysql();
 	UBMysql(uint32_t uiSqlSize);
 	UBMysql(char *pSqlBuff,uint32_t uiSqlSize);
 	virtual ~UBMysql(); 
 
 	int Error(){return m_iError;};
 	void Error(string &str){str=m_sError;};
-
+	void init(uint32_t uiSqlSize);
 
 	void Disconnect();
 	bool Connect(string &host,int port,string &user,string &pwd,string &db);

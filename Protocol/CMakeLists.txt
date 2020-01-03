@@ -18,7 +18,7 @@ SET(CMAKE_SOURCE_DIR .)
 SET(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_FLAGS "-g -std=c++11")
 
 include_directories(
     ${OPENSOUR_LIB_ROOT}/jsoncpp/include

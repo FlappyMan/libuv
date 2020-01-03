@@ -9,6 +9,12 @@ set(APP_NAME UserCenter)
 SET(OPENSOUR_LIB_ROOT "/usr/local/UkexServer/lib")   
 SET(UBASE_LIB_ROOT "../../BaseLib/")   
 SET(UPROTOCOL_LIB_ROOT "../../Protocol/")   
+SET(DTO_DIR "./Dto/")
+SET(MODEL_DIR "./Model/")
+SET(BUSINESS_DIR "./Business/")
+SET(BASE_CONFIG_DIR "./BaseConfig/")
+SET(MANAGER_DIR "./Manager/")
+
 
 SET(CMAKE_SOURCE_DIR .)
 
@@ -25,6 +31,11 @@ include_directories(
     ${OPENSOUR_LIB_ROOT}/http-parser
 	${UBASE_LIB_ROOT}
 	${UPROTOCOL_LIB_ROOT}
+    ${DTO_DIR}
+    ${MODEL_DIR}
+    ${BUSINESS_DIR}
+    ${BASE_CONFIG_DIR}
+    ${MANAGER_DIR}
     )
 
 link_directories(
@@ -36,8 +47,19 @@ link_directories(
     ${OPENSOUR_LIB_ROOT}/http-parser
     ${UBASE_LIB_ROOT}
     ${UPROTOCOL_LIB_ROOT}
+    ${DTO_DIR}
+    ${MODEL_DIR}
+    ${BUSINESS_DIR}
+    ${BASE_CONFIG_DIR}
+    ${MANAGER_DIR}
     )
 
 aux_source_directory(. SRC_LIST)
+aux_source_directory(./Dto/ SRC_LIST)
+aux_source_directory(./Manager/ SRC_LIST)
+aux_source_directory(./Model/ SRC_LIST)
+aux_source_directory(./Business/ SRC_LIST)
+aux_source_directory(./BaseConfig/ SRC_LIST)
+
 add_executable(${APP_NAME} ${SRC_LIST})
-target_link_libraries(${APP_NAME} UProtocol uv_a UBaseLib jsoncpp crypto pthread protobuf http_parser)
+target_link_libraries(${APP_NAME} UProtocol uv_a UBaseLib jsoncpp crypto pthread protobuf http_parser mysqlclient)

@@ -232,6 +232,7 @@ class canceltradebatch :
   enum : int {
     kIdsFieldNumber = 2,
     kTokenFieldNumber = 1,
+    kMarketidFieldNumber = 3,
   };
   // repeated uint64 ids = 2;
   int ids_size() const;
@@ -275,15 +276,32 @@ class canceltradebatch :
   std::string* _internal_mutable_token();
   public:
 
+  // required uint64 marketid = 3;
+  bool has_marketid() const;
+  private:
+  bool _internal_has_marketid() const;
+  public:
+  void clear_marketid();
+  ::PROTOBUF_NAMESPACE_ID::uint64 marketid() const;
+  void set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_marketid() const;
+  void _internal_set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:ukex.canceltradebatch)
  private:
   class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > ids_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 marketid_;
   friend struct ::TableStruct_ukex_2ecanceltradebatch_2eproto;
 };
 // ===================================================================
@@ -413,6 +431,34 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >
 canceltradebatch::mutable_ids() {
   // @@protoc_insertion_point(field_mutable_list:ukex.canceltradebatch.ids)
   return _internal_mutable_ids();
+}
+
+// required uint64 marketid = 3;
+inline bool canceltradebatch::_internal_has_marketid() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool canceltradebatch::has_marketid() const {
+  return _internal_has_marketid();
+}
+inline void canceltradebatch::clear_marketid() {
+  marketid_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 canceltradebatch::_internal_marketid() const {
+  return marketid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 canceltradebatch::marketid() const {
+  // @@protoc_insertion_point(field_get:ukex.canceltradebatch.marketid)
+  return _internal_marketid();
+}
+inline void canceltradebatch::_internal_set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000002u;
+  marketid_ = value;
+}
+inline void canceltradebatch::set_marketid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_marketid(value);
+  // @@protoc_insertion_point(field_set:ukex.canceltradebatch.marketid)
 }
 
 #ifdef __GNUC__

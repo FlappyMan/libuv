@@ -16,7 +16,6 @@ void UPUptrade::JsonPack(Json::Value &root)
 
 bool UPUptrade::JsonUnpack(Json::Value &root)
 {
-    set_token(root["token"].asString());
     set_paypassword(root["paypassword"].asString());
     set_marketid(root["marketid"].asInt64());
     set_price(root["price"].asInt64());

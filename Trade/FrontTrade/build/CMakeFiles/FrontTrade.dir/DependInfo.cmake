@@ -1,25 +1,8 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "C"
   "CXX"
   )
 # The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_C
-  "/home/gong/workspace/git/UkexServer/Trade/FrontTrade/http_parser.c" "/home/gong/workspace/git/UkexServer/Trade/FrontTrade/build/CMakeFiles/FrontTrade.dir/http_parser.c.o"
-  )
-set(CMAKE_C_COMPILER_ID "GNU")
-
-# The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/usr/local/UkexServer/lib/jsoncpp/include"
-  "/usr/local/UkexServer/lib/openssl/include"
-  "/usr/local/UkexServer/lib/mysqlinc"
-  "/usr/local/UkexServer/lib/spdlog/include"
-  "/usr/local/UkexServer/lib/libuv/include"
-  "/usr/local/UkexServer/lib/http-parser"
-  "../../../BaseLib"
-  "../../../Protocol"
-  )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/gong/workspace/git/UkexServer/Trade/FrontTrade/BackTradeSession.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTrade/build/CMakeFiles/FrontTrade.dir/BackTradeSession.cpp.o"
   "/home/gong/workspace/git/UkexServer/Trade/FrontTrade/BackTradeSrv.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTrade/build/CMakeFiles/FrontTrade.dir/BackTradeSrv.cpp.o"

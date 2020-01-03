@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/BackTradeSrv.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles/FrontMarket.dir/BackTradeSrv.cpp.o"
   "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/ClientSession.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles/FrontMarket.dir/ClientSession.cpp.o"
   "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/ClientSrv.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles/FrontMarket.dir/ClientSrv.cpp.o"
+  "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/Subscribe.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles/FrontMarket.dir/Subscribe.cpp.o"
   "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/ThreadBackTrade.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles/FrontMarket.dir/ThreadBackTrade.cpp.o"
   "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/ThreadClient.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles/FrontMarket.dir/ThreadClient.cpp.o"
   "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/config.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontMarket/build/CMakeFiles/FrontMarket.dir/config.cpp.o"

@@ -1,5 +1,5 @@
 #include "ThreadHttpOper.h"
-#include "DispatchManager.h"
+#include "./Manager/DispatchManager.h"
 uv_loop_t g_uvHttpLoop;
 uv_timer_t g_uvHttpTimer;
 
@@ -49,7 +49,7 @@ void CThreadHttpOper::cbRead(uv_stream_t *client, ssize_t nread, const uv_buf_t 
 	}
 	else
 	{
-		CDispatchManager::DispatchHttpClient((uv_tcp_t *)client,buf->base,nread);
+		CDispatchManager::DispatchHttpClient((uv_tcp_t *)client, buf->base, nread);
 	}
 	delete[] buf->base;
 }
@@ -60,26 +60,27 @@ void CThreadHttpOper::cbNewConnection(uv_stream_t *server, int status)
 	if (status < 0)
 	{
 		cout << "[CThreadHttpOper->cbNewConnection] New connection error :" << uv_strerror(status) << endl;
-		return;
-	}
-
-	uv_tcp_t *client = new uv_tcp_t;
-	uv_tcp_init(&g_uvHttpLoop, client);
-	if (uv_accept(server, (uv_stream_t *)client) == 0)
-	{
-		int ret = uv_read_start((uv_stream_t *)client, cbReadBuff, cbRead);
-		cout << "[CThreadHttpOper->cbNewConnection] New connection begin read : " << ret << endl;
 	}
 	else
 	{
-		cout << "[CThreadHttpOper->cbNewConnection] New connection accept failed" << endl;
-		uv_close((uv_handle_t *)client, cbClosed);
+		uv_tcp_t *client = new uv_tcp_t;
+		uv_tcp_init(&g_uvHttpLoop, client);
+		if (uv_accept(server, (uv_stream_t *)client) == 0)
+		{
+			int ret = uv_read_start((uv_stream_t *)client, cbReadBuff, cbRead);
+			cout << "[CThreadHttpOper->cbNewConnection] New connection begin read : " << ret << endl;
+		}
+		else
+		{
+			cout << "[CThreadHttpOper->cbNewConnection] New connection accept failed" << endl;
+			uv_close((uv_handle_t *)client, cbClosed);
+		}
 	}
 }
 
 void CThreadHttpOper::ThreadHttpOper(void *arg)
 {
-	cout<<"[CThreadHttpOper Init]"<<endl;
+	cout << "[CThreadHttpOper Init]" << endl;
 	uv_loop_init(&g_uvHttpLoop);
 	uv_tcp_t server;
 	uv_tcp_init(&g_uvHttpLoop, &server);
@@ -92,11 +93,11 @@ void CThreadHttpOper::ThreadHttpOper(void *arg)
 	if (ret)
 	{
 		cout << "[CThreadHttpOper] Listen error :" << uv_strerror(ret) << endl;
-		return;
 	}
-
-	uv_timer_init(&g_uvHttpLoop, &g_uvHttpTimer);
-	uv_timer_start(&g_uvHttpTimer, cbTimer, 10, 1);
-
-	uv_run(&g_uvHttpLoop, UV_RUN_DEFAULT);
+	else
+	{
+		uv_timer_init(&g_uvHttpLoop, &g_uvHttpTimer);
+		uv_timer_start(&g_uvHttpTimer, cbTimer, 10, 1);
+		uv_run(&g_uvHttpLoop, UV_RUN_DEFAULT);
+	}
 }

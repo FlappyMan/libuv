@@ -8,32 +8,43 @@
 class ClientSrv
 {
 public:
-    ClientSrv(int iBufferSize=1024*8);
-    ~ClientSrv();
+	ClientSrv(int iBufferSize=1024*8);
+	~ClientSrv();
 
-    void NewConnection(uv_tcp_t* tcp);
-    void CloseConnection(uv_tcp_t *tcp);
+	void NewConnection(uv_tcp_t* tcp);
+	void CloseConnection(uv_tcp_t *tcp);
 
-    int Read(uv_tcp_t *tcp,char *pBuffer,int iDataLen);
+	int Read(uv_tcp_t *tcp,char *pBuffer,int iDataLen);
 
-    void Subscribe(ClientSession* p,string &s);
-    void Unsubscribe(ClientSession* p,string &s);
+	void Subscribe(ClientSession* p,string &s);
+	void Unsubscribe(ClientSession* p,string &s);
 
-    void PushRequest(queue<UProtocolBase*> &q);
-    void OnTimer(time_t tNow);
+	void PushRequest(queue<UProtocolBase*> &q);
+	void OnTimer(time_t tNow);
 public:
-    void _DispatchPkg(UProtocolBase *pkg);
+	void _DispatchPkg(UProtocolBase *pkg);
+
+	void _AddMarket(UPMarketAdd *pkg);
+
+	void _DispatchPkg_AllMarketInfo(UPAllmarketinfo *pkg);
+
+	void _DispatchPkg_KLine(UPKlinedata *pkg);
+	void _DispatchPkg_DepthData(UPDepthdata *pkg);
+	void _DispatchPkg_MatchedData(UPMatchedData *pkg);
+	void _DispatchPkg_TransactionData(UPHistoricalTransactionData *pkg);
+
+	void _DispatchPkg(UProtocolBase *pkg,set<ClientSession*> &client);
 
 protected:
-    map<uv_tcp_t*,ClientSession*> m_mSession;
-    
-    queue<UProtocolBase*> m_qReqest;
-    uv_mutex_t m_lock;
+	map<uv_tcp_t*,ClientSession*> m_mSession;
+	
+	queue<UProtocolBase*> m_qReqest;
+	uv_mutex_t m_lock;
 
-    char *m_pBuffer;
-    int m_iBufferSize;
+	char *m_pBuffer;
+	int m_iBufferSize;
 
-    Market m_vMarket[MARKET_CNT];
+	Market m_vMarket[MARKET_CNT];
 };
 
 

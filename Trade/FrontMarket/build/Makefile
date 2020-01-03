@@ -231,6 +231,33 @@ ClientSrv.cpp.s:
 	$(MAKE) -f CMakeFiles/FrontMarket.dir/build.make CMakeFiles/FrontMarket.dir/ClientSrv.cpp.s
 .PHONY : ClientSrv.cpp.s
 
+Subscribe.o: Subscribe.cpp.o
+
+.PHONY : Subscribe.o
+
+# target to build an object file
+Subscribe.cpp.o:
+	$(MAKE) -f CMakeFiles/FrontMarket.dir/build.make CMakeFiles/FrontMarket.dir/Subscribe.cpp.o
+.PHONY : Subscribe.cpp.o
+
+Subscribe.i: Subscribe.cpp.i
+
+.PHONY : Subscribe.i
+
+# target to preprocess a source file
+Subscribe.cpp.i:
+	$(MAKE) -f CMakeFiles/FrontMarket.dir/build.make CMakeFiles/FrontMarket.dir/Subscribe.cpp.i
+.PHONY : Subscribe.cpp.i
+
+Subscribe.s: Subscribe.cpp.s
+
+.PHONY : Subscribe.s
+
+# target to generate assembly for a file
+Subscribe.cpp.s:
+	$(MAKE) -f CMakeFiles/FrontMarket.dir/build.make CMakeFiles/FrontMarket.dir/Subscribe.cpp.s
+.PHONY : Subscribe.cpp.s
+
 ThreadBackTrade.o: ThreadBackTrade.cpp.o
 
 .PHONY : ThreadBackTrade.o
@@ -387,6 +414,9 @@ help:
 	@echo "... ClientSrv.o"
 	@echo "... ClientSrv.i"
 	@echo "... ClientSrv.s"
+	@echo "... Subscribe.o"
+	@echo "... Subscribe.i"
+	@echo "... Subscribe.s"
 	@echo "... ThreadBackTrade.o"
 	@echo "... ThreadBackTrade.i"
 	@echo "... ThreadBackTrade.s"

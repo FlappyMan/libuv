@@ -7,13 +7,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/FrontTrade.dir/ThreadClient.cpp.o"
   "CMakeFiles/FrontTrade.dir/config.cpp.o"
   "CMakeFiles/FrontTrade.dir/global.cpp.o"
-  "CMakeFiles/FrontTrade.dir/http_parser.c.o"
   "CMakeFiles/FrontTrade.dir/main.cpp.o"
   "FrontTrade.pdb"
   "FrontTrade"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang C CXX)
+foreach(lang CXX)
   include(CMakeFiles/FrontTrade.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()
