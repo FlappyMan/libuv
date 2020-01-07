@@ -9,6 +9,7 @@
 
 typedef map<uv_tcp_t*,CBaseSession*> mapBaseSession;
 typedef map<uv_tcp_t*,CHttpSession*> mapHttpSession;
+
 class CDispatchManager
 {
 public:

@@ -19,7 +19,7 @@ int32_t Client_Write(uv_tcp_t* client,T* pkg,uint32_t uiPkgMaxSize=SIZE_BUFFER_2
 	UVWriteReq* req=g_cache_write_req.Get(uiPkgMaxSize);
 	if(req==NULL)return -1;
 
-	int ret=ProtoPack<T>(req->buf.base,req->buf.len,*pkg);
+	int ret=JsonPack<T>(pkg,req->buf.base,req->buf.len);
 	if(ret<=0)
 	{
 		g_cache_write_req.Free(req);

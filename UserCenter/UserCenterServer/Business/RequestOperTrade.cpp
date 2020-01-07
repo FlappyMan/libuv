@@ -4,7 +4,7 @@ CRequestOperTrade::CRequestOperTrade(CTradeModel model)
 {
     m_mTradeModel = model;
 }
-int CRequestOperTrade::requestOperation(uv_tcp_t *client)
+UProtocolBase* CRequestOperTrade::requestOperation()
 {
 #ifdef DEBUG
     cout << "[CTradeModel]:[token]=[" << m_mTradeModel.token << "]" << endl;
@@ -26,7 +26,7 @@ int CRequestOperTrade::requestOperation(uv_tcp_t *client)
     up->set_num(3);
     up->set_type(4);
     up->set_main_coin(5);
-
-    CDispatchManager::DispatchOnSend(up,client);
-
+    UProtocolBase* prot = (UProtocolBase*)up;
+    prot->m_uiType = UPUptrade::CMD;
+    return prot;
 }

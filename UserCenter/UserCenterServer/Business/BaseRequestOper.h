@@ -2,7 +2,6 @@
 #define _BASE_REQUEST_HEADER_
 #include "../global.h"
 #include "../Manager/DispatchManager.h"
-
 typedef struct 
 {
     uv_write_t req;
@@ -12,9 +11,9 @@ typedef struct
 class CBaseRequestOper
 {
 public:
-    virtual int requestOperation(uv_tcp_t *client) = 0;
-
-    
+    virtual UProtocolBase* requestOperation() = 0;
+    uint16_t m_usCMD;
+    uv_tcp_t *m_client;
 };
 
 #endif

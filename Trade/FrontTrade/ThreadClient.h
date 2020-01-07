@@ -10,6 +10,7 @@ void ThreadClient(void *arg);
 
 extern uv_loop_t g_loop_client;
 extern ClientSrv g_srv_client;
+extern uint64_t m_uClientID;
 
 void ThreadClient(void *arg);
 int GetGMTime(char* szGmtTime);

@@ -1,13 +1,46 @@
 #include "ThreadTCPOper.h"
 #include "DispatchManager.h"
+#include "BaseRequestOper.h"
+#include "ThreadDBOper.h"
 uv_loop_t g_uvLoop;
 uv_timer_t g_uvTimer;
 
 void CThreadTCPOper::cbTimer(uv_timer_t *handle)
 {
-	// queue<UProtocolBase *> qReq;
-	// g_srv_backtrade.GetRequest(qReq);
-	// g_srv_client.PushRequest(qReq);
+	int iIndex = 0;
+	CBaseRequestOper *szArray[CDispatchManager::g_mapMapping.size()];
+	for (mapBaseSession::iterator itr = CDispatchManager::g_mapMapping.begin(); itr != CDispatchManager::g_mapMapping.end();)
+	{
+		if (true == itr->second->isRecvFinish())
+		{
+			CBaseRequestOper *oper = itr->second->PraseOperation();
+			szArray[iIndex++] = oper;
+			CDispatchManager::g_mapMapping.erase(itr++); // 把数据包从socket接收队列中移除
+		}
+		else
+		{
+			itr++;
+		}
+	}
+	if (0 != iIndex)
+	{
+#warning 待优化push方法可以批量push
+		for (int iLoop = 0; iLoop < iIndex; iLoop++)
+		{
+			CBaseRequestOper *oper = szArray[iLoop];
+			CThreadDBOper::m_qDBOper.put(oper);
+		}
+	}
+	else
+	{
+		// 无数据处理
+	}
+	while (0 != CThreadDBOper::m_qDBResult.size())
+	{
+		CDBResult result = CThreadDBOper::m_qDBResult.get();
+		CDispatchManager::DispatchOnSend(result.m_cProt,result.m_cOper->m_client);
+	}
+	
 }
 
 void CThreadTCPOper::cbReadBuff(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)

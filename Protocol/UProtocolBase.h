@@ -6,38 +6,39 @@
 
 class UProtocolBase
 {
-public:
-    UProtocolBase():m_uiType(0),m_uiPkgLength(0){};
-    virtual ~UProtocolBase(){};
+    public:
+        UProtocolBase():m_uiType(0),m_uiPkgLength(0){};
+        virtual ~UProtocolBase(){};
 
-    virtual void JsonPack(Json::Value &root)=0;
-    virtual bool JsonUnpack(Json::Value &root)=0;
-public:
-    uint16_t m_uiType;      // 包类型
-    uint32_t m_uiPkgLength; // 打包后长度，使用时注意场景
+        virtual void JsonPack(Json::Value &root)=0;
+        virtual bool JsonUnpack(Json::Value &root)=0;
+    public:
+        uint16_t m_uiType;      // 包类型
+        uint32_t m_uiPkgLength; // 打包后长度，使用时注意场景
+        enum {MAXCMD=200};
 };
 
 class UVWriteReq
 {
-public:
-    UVWriteReq():len(0),pkg(NULL){};
-    UVWriteReq(UProtocolBase *p):len(0),pkg(p){};
-    virtual ~UVWriteReq()
-    {
-        if(pkg!=NULL)delete pkg;
-    };
+    public:
+        UVWriteReq():len(0),pkg(NULL){};
+        UVWriteReq(UProtocolBase *p):len(0),pkg(p){};
+        virtual ~UVWriteReq()
+        {
+            if(pkg!=NULL)delete pkg;
+        };
 
-    void Reset(){len=0;if(pkg){delete pkg;pkg=NULL;};};
-public:
-    uv_write_t req;
-    uv_buf_t buf;
-    uint32_t len;           // buf 中实际数据长度
-    UProtocolBase *pkg;
+        void Reset(){len=0;if(pkg){delete pkg;pkg=NULL;};};
+    public:
+        uv_write_t req;
+        uv_buf_t buf;
+        uint32_t len;           // buf 中实际数据长度
+        UProtocolBase *pkg;
 };
 
 enum MARKET
 {
-	MARKET_UNKNOWN=0,
+    MARKET_UNKNOWN=0,
 
     // 法币交易
     MARKET_BTC_GBP, MARKET_ETH_GBP, MARKET_BCH_GBP,MARKET_LTC_GBP,
@@ -64,11 +65,11 @@ int MARKETFromString(string &s);
 
 enum CURRENCY
 {
-	CURRENCY_UNKNOWN=0,
-	CURRENCY_USD=1,      // 美元
-	CURRENCY_GBP,      // 英镑
-	CURRENCY_EUR,      // 欧元
-	CURRENCY_CNY,      // 人民币
+    CURRENCY_UNKNOWN=0,
+    CURRENCY_USD=1,      // 美元
+    CURRENCY_GBP,      // 英镑
+    CURRENCY_EUR,      // 欧元
+    CURRENCY_CNY,      // 人民币
     CURRENCY_MAX,
 };
 const char CURRENCY_STR[][8]={"UNKNOWN","USD","GBP","EUR","CNY"};
@@ -76,16 +77,16 @@ int CurrencyFromString(string &s);
 
 enum KLINE
 {
-	KLINE_UNKNOWN=0,
-	KLINE_60S,
-	KLINE_5M,
-	KLINE_15M,
-	KLINE_30M,
-	KLINE_1H,
-	KLINE_6H,
-	KLINE_1D,
-	KLINE_1W,
-	KLINE_1M,
+    KLINE_UNKNOWN=0,
+    KLINE_60S,
+    KLINE_5M,
+    KLINE_15M,
+    KLINE_30M,
+    KLINE_1H,
+    KLINE_6H,
+    KLINE_1D,
+    KLINE_1W,
+    KLINE_1M,
     KLINE_MAX,
 };
 const char KLINE_STR[][8]={"UNKNOWN","1m","5m","15m","30m","1h","6h","1d","1w","1M"};

@@ -57,10 +57,16 @@ bool ProtoUnpack(UProtocol &up,char *pBuff,uint32_t uiLen)
 	char *pos=pBuff+sizeof(uint16_t)+sizeof(uint32_t);
 	string str(pos,uiLen);
 	stringstream ss(str) ;
-	if(up.ParseFromString(str)==false)
-		return false;
-	else
+	if(up.ParseFromString(str))
+	{
+		uint16_t *pType=(uint16_t*)pBuff;
+		up.m_uiType=ntohl(*pType);
+		uint32_t *pLen=(uint32_t*)(pBuff+sizeof(uint16_t));
+		up.m_uiPkgLength=ntohl(*pLen);
 		return true;
+
+	}
+	return false;		
 };
 
 template<class UProtocol>

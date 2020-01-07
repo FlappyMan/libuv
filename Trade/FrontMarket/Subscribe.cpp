@@ -71,8 +71,6 @@ void MarketMgr::Destroy()
 
 void MarketMgr::Init()
 {
-
-
 }
 
 

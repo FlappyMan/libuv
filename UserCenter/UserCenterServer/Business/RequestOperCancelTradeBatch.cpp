@@ -3,7 +3,8 @@ CRequestOperCancelTradeBatch::CRequestOperCancelTradeBatch(CCancelTradeBatchMode
 {
     m_mCancelTradeBatch = model;
 }
-int CRequestOperCancelTradeBatch::requestOperation(uv_tcp_t *client)
+UProtocolBase* CRequestOperCancelTradeBatch::requestOperation()
 {
-    
+    cout<<"[CRequestOperCancelTradeBatch]"<<endl;
+    return NULL;
 }

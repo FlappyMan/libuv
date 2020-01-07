@@ -6,7 +6,7 @@ class CRequestOperMatchData : public CBaseRequestOper
 {
 public:
     CRequestOperMatchData(CMatchedDataModel model);
-    int requestOperation(uv_tcp_t *client);
+    UProtocolBase * requestOperation();
 
 public:
     CMatchedDataModel m_mMatchData;

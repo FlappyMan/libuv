@@ -35,7 +35,7 @@ int ClientSrv::Read(uv_tcp_t* tcp,char *pBuffer,int iDataLen)
 	return it->second->Read(pBuffer,iDataLen);
 }
 
-void ClientSrv::Subscribe(ClientSession* p,string &s)
+void ClientSrv::Subscribe(ClientSession* p,string &sub)
 {
 
 }

@@ -4,13 +4,14 @@
 uv_timer_t g_timer_client;
 uv_loop_t g_loop_client;
 ClientSrv g_srv_client;
+uint64_t m_uClientID = 0;
 
 void Client_cbTimer(uv_timer_t* handle)
 {
     BlockQueue<UProtocolBase*> qReq;
-	g_srv_client.GetRequest(qReq);
+    g_srv_client.GetRequest(qReq);
     g_srv_backtrade.PushRequest(qReq);
-    
+
     time_t tNow = time(NULL);
     g_srv_client.OnTimer(tNow);
 }

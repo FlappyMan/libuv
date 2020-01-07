@@ -7,7 +7,7 @@ class CRequestOperTrade : public CBaseRequestOper
 {
 public:
     CRequestOperTrade(CTradeModel model);
-    int requestOperation(uv_tcp_t *client);
+    UProtocolBase * requestOperation();
 private:
     CTradeModel m_mTradeModel;
 };

@@ -49,17 +49,29 @@ void BackTradeSrv::OnTimer(time_t tNow)
 
 void BackTradeSrv::_DispatchReq(UProtocolBase* pkg)
 { 
-    if (!pkg)return;
+    map<uint64_t, BackTradeSession*>::iterator it = m_mMarketID.begin();
     switch(pkg->m_uiType)
     {
         case UPUptrade::CMD :
-            //BackTrade_Write((uv_stream_t *)server, dynamic_cast<UPUptrade *>(pkg), SIZE_BUFFER_2k);
+            for (;it!=m_mMarketID.end();it++)
+            {
+                if (it->first == dynamic_cast<UPUptrade *>(pkg)->marketid())
+                {
+                    BackTrade_Write<UPUptrade>((uv_stream_t*)(it->second->m_tcp),dynamic_cast<UPUptrade *>(pkg),(uint32_t)SIZE_BUFFER_2k);
+                }               
+            }           
             break;
         case UPUptradebatch::CMD :
             /*code*/
             break;
         case UPCanceltrade::CMD :
-            //BackTrade_Write((uv_stream_t *)server, dynamic_cast<UPUptrade *>(pkg), SIZE_BUFFER_2k);
+            for (;it!=m_mMarketID.end();it++)
+            {
+                if (it->first == dynamic_cast<UPCanceltrade *>(pkg)->marketid())
+                {
+                    BackTrade_Write<UPCanceltrade>((uv_stream_t*)(it->second->m_tcp),dynamic_cast<UPCanceltrade *>(pkg),(uint32_t)SIZE_BUFFER_2k);
+                }               
+            }
             break;
         case UPCanceltradebatch::CMD :
             /*code*/
@@ -74,15 +86,18 @@ void BackTradeSrv::GetResponse(BlockQueue<UProtocolBase*> &res)
     while (m_qResponse.size() > 0)
     {
         res.put(m_qResponse.get());
-    }
-    
+    }  
 }
 
-void BackTradeSrv::PushRequest(BlockQueue<UProtocolBase*> &req)
+void BackTradeSrv::PushRequest(BlockQueue<UProtocolBase*> &p)
 {
-    while (req.size()>0)
+    while (m_qRequest.size() > 0)
     {
-        m_qRequest.put(req.get());
-    }
-    
+        m_qRequest.put(p.get()); 
+    }  
+}
+
+void BackTradeSrv::AddMarketID(uint64_t& MarketID, BackTradeSession* bt)
+{
+    m_mMarketID.insert(make_pair(MarketID,bt));
 }

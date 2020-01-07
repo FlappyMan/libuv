@@ -4,7 +4,6 @@
 #define _CLIENT_SESSION_HEADER_
 
 #include "global.h"
-#include "BlockQueue.h"
 
 class ClientSession
 {
@@ -16,14 +15,14 @@ class ClientSession
         void Destroy();
         bool IsTimeout(time_t tNow);
 
-        int Read(uv_tcp_t* client, char *pBuffer,int iDataLen,BlockQueue<UProtocolBase*> &m_qRequest,map<string,uv_tcp_t*> &m_mClientID);
+        int Read(uv_tcp_t* client, char *pBuffer,int iDataLen);
 
     public:
         uv_tcp_t * m_tcp;
         UBBuffer m_buffer;
         UBHttpParser m_http;
-
         time_t m_tLast;
+        uint64_t m_uSessionID;
 };
 
 #endif

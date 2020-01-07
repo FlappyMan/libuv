@@ -2540,7 +2540,6 @@ class DBOperation(object):
                                             KEY `userid` (`userid`) \
                                             ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT=\'文字聊天表\'")
                 cur.execute("use other;")
-                # cur.execute("drop table coin_config;")
                 cur.execute("CREATE TABLE `coin_config` (\
                                             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,\
                                             `footer_logo` varchar(200) NOT NULL COMMENT \' \',\
@@ -2652,7 +2651,7 @@ class DBOperation(object):
                                             `login_keep_time` int(11) DEFAULT \'1\' COMMENT \'用户保持登录时常（单位小时）\',\
                                             PRIMARY KEY (`id`)\
                                             ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT=\'系统配置表\'")
-                # cur.execute("drop table coin_config_other;")
+
                 cur.execute("CREATE TABLE `coin_config_other` (\
                                             `id` int(11) NOT NULL AUTO_INCREMENT,\
                                             `type` varchar(60) DEFAULT \'about_us\' COMMENT \'类型 \'\'about_us\'\' 关于我们\',\
@@ -2666,6 +2665,22 @@ class DBOperation(object):
                                             `is_edit` tinyint(3) NOT NULL DEFAULT \'0\' COMMENT \'是否后台编辑\',\
                                             PRIMARY KEY (`id`)\
                                             ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8")
+                cur.execute("CREATE TABLE `user_device` (\
+                                            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT \'id\',\
+                                            `device_id` varchar(200) NOT NULL COMMENT \'设备唯一识别码\',\
+                                            `uid` bigint(20) NOT NULL DEFAULT \'0\' COMMENT \'用户id\',\
+                                            `name` varchar(200) DEFAULT \'\' COMMENT \'设备名称\',\
+                                            `token` varchar(200) NOT NULL DEFAULT \'\' COMMENT \'token\',\
+                                            `token_time` int(11) NOT NULL DEFAULT \'0\' COMMENT \'token更新时间\',\
+                                            `public_key` varchar(200) DEFAULT \'\' COMMENT \'公钥\',\
+                                            `equipment` text COMMENT \'设备信息 数组序列化\',\
+                                            `comment` varchar(50) DEFAULT \'\' COMMENT \'设备备注\',\
+                                            `source_type` tinyint(1) DEFAULT \'0\' COMMENT \'0:未知 1:ukex 2:ukexpay\',\
+                                            `status` tinyint(1) DEFAULT \'0\' COMMENT \'-1:禁用 0:正常 1:主要\',\
+                                            `create_time` int(11) NOT NULL DEFAULT \'0\' COMMENT \'创建时间\',\
+                                            `update_time` int(11) NOT NULL DEFAULT \'0\' COMMENT \'更新时间\',\
+                                            PRIMARY KEY (`id`)\
+                                            ) ENGINE=InnoDB AUTO_INCREMENT=1646 DEFAULT CHARSET=utf8 COMMENT='用户设备信息';")
                 # cur.execute("drop table coin_global_indexs;")
                 cur.execute("CREATE TABLE `coin_global_indexs` (\
                                             `id` int(11) NOT NULL AUTO_INCREMENT,\
@@ -2918,6 +2933,13 @@ class DBOperation(object):
             return '0'
         for userInfo in mappingList:
             if str(userInfo['ukex_uid']) == str(ukexuid):
+                return str(userInfo['user_id'])
+        return '777777'
+    def getNewUserIdFromPay(self,ukexpayuid):
+        if str(ukexpayuid) == '0':
+            return '0'
+        for userInfo in mappingList:
+            if str(userInfo['ukexpay_uid']) == str(ukexpayuid):
                 return str(userInfo['user_id'])
         return '777777'
     def synchCoinID(self):
@@ -3190,6 +3212,34 @@ class DBOperation(object):
             traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
             traceback.print_exc()
 
+    def loadUserDeviceData(self,useDBCommand,colmun,tableName,colStr=''):
+        try:
+            con = None
+            if con is None:
+                dbConfid = Config()
+                con = pymysql.connect(host=dbConfid.UkexPay_dbAddress, user=dbConfid.UkexPay_userName,
+                                      passwd=dbConfid.UkexPay_password, charset='utf8')
+                if colStr == '':
+                    colStr = self.getColumns(colmun)
+                selectList = database.selectSQL(database.ukexpay_cursor,colStr,"cnuk_user_device")
+                cur = con.cursor()
+                cur.execute(useDBCommand)
+                colmun.append('source_type')
+                for Obj in selectList:
+                    Obj['source_type'] = '2'
+                    Obj['uid'] = dbOper.getNewUserIdFromPay(str(Obj['uid']))
+                    tableColumns = self.makeInsertPackage(Obj, colmun, tableName)
+                    # 最后添加transfer字段，表示新数据都没有被转换过
+                    baseSql = 'INSERT INTO '+tableColumns
+                    cur.execute(baseSql)
+                    con.commit()
+                cur.close()
+                con.close()
+        except:
+            import traceback
+            traceback.print_exc(file=open('traceback_INFO.txt', 'a+'))
+            traceback.print_exc()
+
     def loadCoinUserIdcard(self,useDBCommand,colmun,tableName,colStr=''):
         # 0，12，17
         try:
@@ -3224,7 +3274,7 @@ if __name__ == '__main__':
     sys.setdefaultencoding('utf-8')
 
     dbOper = DBOperation()
-    # dbOper.createBaseTables()
+    dbOper.createBaseTables()
 
     database = Database()
     # 创建数据库account中的表
@@ -3238,8 +3288,8 @@ if __name__ == '__main__':
                                   'user where user_account !="" and source_type = 1')
     ukexpayList = database.selectSQL(database.accountDB_cursor, 'id as user_id, user_account,create_time,update_time',
                                      'user where user_account !="" and source_type = 2')
-    # # 加载 user_account 表的数据
-    # dbOper.loadTableUserAccountData()
+    # 加载 user_account 表的数据
+    dbOper.loadTableUserAccountData()
 
     mappingList = database.selectSQL(database.accountDB_cursor, 'user_id, ukex_uid,ukexpay_uid,account',
                                      'user_account where account !=""')
@@ -3344,6 +3394,8 @@ if __name__ == '__main__':
                                        'index_html', 'trade_hangqing','trade_moshi', 'company_name', 'company_addr', 'app_version', 'app_version_code', 'login_verify_sms', 'login_limit_num',
                                        'login_limit_time', 'chart_config', 'login_keep_time'], 'coin_config')
     dbOper.loadStatusData('use other',['id', 'type', 'name', 'data_1', 'data_2', 'data_3', 'data', 'status', 'is_edit'], 'coin_config_other')
+
+    dbOper.loadUserDeviceData('use other',['id', 'device_id', 'uid', 'name', 'token', 'token_time', 'public_key', 'equipment', 'comment','status','create_time','update_time'], 'user_device')
     dbOper.loadStatusData('use other',['id', 'coin_name', 'full_name', 'img', 'app_img', 'status'], 'coin_global_indexs')
     dbOper.loadStatusData('use other',['id', 'name', 'sort', 'note', 'status'], 'coin_shard')
     dbOper.loadStatusData('use other',['id', 'shard_id', 'title', 'content', 'img', 'url', 'lang', 'sort', 'data_1', 'data_2'], 'coin_shard_data')
@@ -3428,3 +3480,4 @@ if __name__ == '__main__':
     # 创建数据库和表
     dbOper.createTradeLog()
     dbOper.loadTableTradeLogData()
+

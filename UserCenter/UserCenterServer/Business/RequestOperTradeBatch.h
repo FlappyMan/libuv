@@ -6,7 +6,7 @@ class CRequestOperTradeBatch : public CBaseRequestOper
 {
 public:
     CRequestOperTradeBatch(CTradeBatchModel model);
-    int requestOperation(uv_tcp_t *client);
+    UProtocolBase * requestOperation();
 
 public:
     CTradeBatchModel m_mTradeBatch;

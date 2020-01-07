@@ -20,13 +20,12 @@ class BackTradeSession
         ~BackTradeSession();
 
         void Init();
-
         int Read(char *pBuffer,int iDataLen, BlockQueue<UProtocolBase*> &m_qResponse);
         bool IsTimeout(time_t tNow);
+        void SendRequest(UProtocolBase *p);
     protected:
         bool LoginCheck(UPLogin *pLogin);
-
-    protected:
+    public:
         const uv_tcp_t* m_tcp;
         UBBuffer m_buffer;
 	    BackTradeSrv *m_pSrv;   

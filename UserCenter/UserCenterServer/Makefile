@@ -393,6 +393,33 @@ Manager/UBaseSession.cpp.s:
 	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Manager/UBaseSession.cpp.s
 .PHONY : Manager/UBaseSession.cpp.s
 
+ThreadDBOper.o: ThreadDBOper.cpp.o
+
+.PHONY : ThreadDBOper.o
+
+# target to build an object file
+ThreadDBOper.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/ThreadDBOper.cpp.o
+.PHONY : ThreadDBOper.cpp.o
+
+ThreadDBOper.i: ThreadDBOper.cpp.i
+
+.PHONY : ThreadDBOper.i
+
+# target to preprocess a source file
+ThreadDBOper.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/ThreadDBOper.cpp.i
+.PHONY : ThreadDBOper.cpp.i
+
+ThreadDBOper.s: ThreadDBOper.cpp.s
+
+.PHONY : ThreadDBOper.s
+
+# target to generate assembly for a file
+ThreadDBOper.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/ThreadDBOper.cpp.s
+.PHONY : ThreadDBOper.cpp.s
+
 ThreadHttpOper.o: ThreadHttpOper.cpp.o
 
 .PHONY : ThreadHttpOper.o
@@ -540,6 +567,9 @@ help:
 	@echo "... Manager/UBaseSession.o"
 	@echo "... Manager/UBaseSession.i"
 	@echo "... Manager/UBaseSession.s"
+	@echo "... ThreadDBOper.o"
+	@echo "... ThreadDBOper.i"
+	@echo "... ThreadDBOper.s"
 	@echo "... ThreadHttpOper.o"
 	@echo "... ThreadHttpOper.i"
 	@echo "... ThreadHttpOper.s"

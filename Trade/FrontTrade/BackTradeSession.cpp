@@ -1,10 +1,9 @@
 #include "BackTradeSession.h"
-#include "ThreadBackTrade.h"
 #include "ThreadClient.h"
 
 BackTradeSession::BackTradeSession(uv_tcp_t *tcp,BlockQueue<UProtocolBase*> &qReq):m_tcp(tcp),m_bLogined(false)
 {
-
+    tcp->data = this;
 }
 
 BackTradeSession::~BackTradeSession()
@@ -73,18 +72,24 @@ int BackTradeSession::Read(char *pBuffer,int iDataLen,BlockQueue<UProtocolBase*>
 
 bool BackTradeSession::LoginCheck(UPLogin *pLogin)
 {
-	Json::Value root;
-	if(pLogin->ServerCheck(root,m_pSrv->m_sPublicKey)<0)return false;
+    Json::Value root;
+    if(pLogin->ServerCheck(root,m_pSrv->m_sPublicKey)<0)return false;
+    // save market
+    // UPMarketAdd *pMarketAdd=new UPMarketAdd();
+    // pMarketAdd->m_sMarketID=root["market"].asString();
 
-	// save market
-	UPMarketAdd *pMarketAdd=new UPMarketAdd();
-	pMarketAdd->m_sMarketID=root["market"].asString();
+    // if(pMarketAdd->m_sMarketID.length()<=0)
+    // {
+    // 	delete pMarketAdd;
+    // 	return false;
+    // }
+    // m_pSrv->AddMarket(pMarketAdd);//市场信息
+    uint64_t marketID = root["market"].asInt64();
+    m_pSrv->AddMarketID(marketID,this);
+    return true;
+}
 
-	if(pMarketAdd->m_sMarketID.length()<=0)
-	{
-		delete pMarketAdd;
-		return false;
-	}
-	// m_pSrv->PushRequest(pMarketAdd);
-	return true;
+void BackTradeSession::SendRequest(UProtocolBase *p)
+{
+
 }

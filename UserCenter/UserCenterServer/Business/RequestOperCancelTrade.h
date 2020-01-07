@@ -6,7 +6,7 @@ class CRequestOperCancelTrade : public CBaseRequestOper
 {
 public:
     CRequestOperCancelTrade(CCancelTradeModel model);
-    int requestOperation(uv_tcp_t *client);
+    UProtocolBase* requestOperation();
 public:
     CCancelTradeModel m_mCancelTrade;
 };

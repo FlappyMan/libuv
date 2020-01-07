@@ -40,7 +40,6 @@ int CDispatchManager::DispatchHttpClient(uv_tcp_t *client, char *pBuffer, int iD
 
     if (itr != CDispatchManager::g_mapHttpMapping.end())
     {
-        assert(1);
         return itr->second->OnRecv(client, pBuffer, iDataLen);
     }
     else

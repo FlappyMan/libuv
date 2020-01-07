@@ -3,7 +3,8 @@ CRequestOperMatchData::CRequestOperMatchData(CMatchedDataModel model)
 {
     m_mMatchData = model;
 }
-int CRequestOperMatchData::requestOperation(uv_tcp_t *client)
+UProtocolBase * CRequestOperMatchData::requestOperation()
 {
-    
+    cout<<"[CRequestOperMatchData]"<<endl;
+    return NULL;
 }

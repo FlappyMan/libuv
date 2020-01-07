@@ -19,13 +19,19 @@ void ClientSrv::NewConnection(uv_tcp_t* tcp)
     m_mSession.insert(pair<uv_tcp_t*,ClientSession*>(tcp,p));
 }
 
+void ClientSrv::CloseConnection(uv_tcp_t *tcp)
+{
+    m_mSession.erase(tcp);
+}
+
+
 // return <0: 协议错误，=0:数据包长度不足，>0:已处理掉的数据长度
 int ClientSrv::Read(uv_tcp_t* tcp,char *pBuffer,int iDataLen)
 {
     map<uv_tcp_t*,ClientSession*>::iterator it=m_mSession.find(tcp);
     if(it==m_mSession.end())return false;
 
-    return it->second->Read(tcp, pBuffer, iDataLen,m_qRequest,m_mClientID);
+    return it->second->Read(tcp, pBuffer, iDataLen);
 }
 
 void ClientSrv::PushResponse(BlockQueue<UProtocolBase*> &res)
@@ -42,6 +48,11 @@ void ClientSrv::GetRequest(BlockQueue<UProtocolBase*> &req)
     {
         req.put(m_qRequest.get());
     }
+}
+
+void ClientSrv::AddRequest(UProtocolBase* pkg)
+{
+    m_qRequest.put(pkg);
 }
 
 void ClientSrv::OnTimer(time_t tNow)
@@ -66,14 +77,17 @@ void ClientSrv::OnTimer(time_t tNow)
 void ClientSrv::_DispatchPkg(UProtocolBase* pkg)
 {
     UPResponse *res = (UPResponse *)pkg;
-    map<string,uv_tcp_t*>::iterator it = m_mClientID.begin();
+    map<string,ClientSession*>::iterator it = m_mClientID.begin();
     for (; it!=m_mClientID.end(); it++)
     {
-        if (strcasecmp(it->first.c_str(),res->token().c_str()) == 0)
+        if (it->first.compare(res->token()) == 0)
         {
-            Client_Write((uv_stream_t*)it->second,res,200);
+            Client_Write((uv_stream_t*)it->second->m_tcp,res,200);
         }     
     }
-    
 }
 
+void ClientSrv::InsertClientID(string &token, ClientSession* p)
+{
+    m_mClientID.insert(make_pair(token,p));
+}

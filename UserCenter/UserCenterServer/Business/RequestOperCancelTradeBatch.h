@@ -6,7 +6,7 @@ class CRequestOperCancelTradeBatch : public CBaseRequestOper
 {
 public:
     CRequestOperCancelTradeBatch(CCancelTradeBatchModel model);
-    int requestOperation(uv_tcp_t *client);
+    UProtocolBase* requestOperation();
 public:
     CCancelTradeBatchModel m_mCancelTradeBatch;
 };
