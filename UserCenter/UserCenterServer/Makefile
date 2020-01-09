@@ -312,6 +312,60 @@ Business/RequestOperTradeBatch.cpp.s:
 	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Business/RequestOperTradeBatch.cpp.s
 .PHONY : Business/RequestOperTradeBatch.cpp.s
 
+Dto/LoginDto.o: Dto/LoginDto.cpp.o
+
+.PHONY : Dto/LoginDto.o
+
+# target to build an object file
+Dto/LoginDto.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Dto/LoginDto.cpp.o
+.PHONY : Dto/LoginDto.cpp.o
+
+Dto/LoginDto.i: Dto/LoginDto.cpp.i
+
+.PHONY : Dto/LoginDto.i
+
+# target to preprocess a source file
+Dto/LoginDto.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Dto/LoginDto.cpp.i
+.PHONY : Dto/LoginDto.cpp.i
+
+Dto/LoginDto.s: Dto/LoginDto.cpp.s
+
+.PHONY : Dto/LoginDto.s
+
+# target to generate assembly for a file
+Dto/LoginDto.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Dto/LoginDto.cpp.s
+.PHONY : Dto/LoginDto.cpp.s
+
+Dto/LoginRespDto.o: Dto/LoginRespDto.cpp.o
+
+.PHONY : Dto/LoginRespDto.o
+
+# target to build an object file
+Dto/LoginRespDto.cpp.o:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Dto/LoginRespDto.cpp.o
+.PHONY : Dto/LoginRespDto.cpp.o
+
+Dto/LoginRespDto.i: Dto/LoginRespDto.cpp.i
+
+.PHONY : Dto/LoginRespDto.i
+
+# target to preprocess a source file
+Dto/LoginRespDto.cpp.i:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Dto/LoginRespDto.cpp.i
+.PHONY : Dto/LoginRespDto.cpp.i
+
+Dto/LoginRespDto.s: Dto/LoginRespDto.cpp.s
+
+.PHONY : Dto/LoginRespDto.s
+
+# target to generate assembly for a file
+Dto/LoginRespDto.cpp.s:
+	$(MAKE) -f CMakeFiles/UserCenter.dir/build.make CMakeFiles/UserCenter.dir/Dto/LoginRespDto.cpp.s
+.PHONY : Dto/LoginRespDto.cpp.s
+
 Manager/DispatchManager.o: Manager/DispatchManager.cpp.o
 
 .PHONY : Manager/DispatchManager.o
@@ -558,6 +612,12 @@ help:
 	@echo "... Business/RequestOperTradeBatch.o"
 	@echo "... Business/RequestOperTradeBatch.i"
 	@echo "... Business/RequestOperTradeBatch.s"
+	@echo "... Dto/LoginDto.o"
+	@echo "... Dto/LoginDto.i"
+	@echo "... Dto/LoginDto.s"
+	@echo "... Dto/LoginRespDto.o"
+	@echo "... Dto/LoginRespDto.i"
+	@echo "... Dto/LoginRespDto.s"
 	@echo "... Manager/DispatchManager.o"
 	@echo "... Manager/DispatchManager.i"
 	@echo "... Manager/DispatchManager.s"

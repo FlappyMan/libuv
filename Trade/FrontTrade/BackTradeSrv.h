@@ -17,6 +17,8 @@ class BackTradeSrv
         void PushRequest(BlockQueue<UProtocolBase*> &p);
         void AddMarketID(uint64_t& MarketID, BackTradeSession* bt);
         void _DispatchReq(UProtocolBase* req);
+        void _DispatchReq_Uptrade(UPUptrade* pkg);
+        void _DispatchReq_CancelTrade(UPCanceltrade* pkg);
     public:
         map<uv_tcp_t*,BackTradeSession*> m_mSession;
         map<uint64_t,BackTradeSession*> m_mMarketID;

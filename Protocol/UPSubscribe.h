@@ -3,6 +3,13 @@
 #include "UBaseLib.h"
 #include "UProtocolBase.h"
 
+enum SUBSCRIBE_TYPE
+{
+    SUBSCRIBE_TYPE_DEPTH=1,
+    SUBSCRIBE_TYPE_TRADELOG,
+    SUBSCRIBE_TYPE_KLINE,
+};
+
 class UPSubscribe : public UProtocolBase
 {
     public:

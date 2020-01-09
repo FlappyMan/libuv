@@ -1,11 +1,15 @@
 #ifndef _JSON_OBJECTBASE_HEADER_
 #define _JSON_OBJECTBASE_HEADER_
+
 using std::string;
 using std::vector;
 #define strName(str) #str
 #define property(value) strName(value),typeid(value).name(),&value
 class CJsonObjectBase
 {
+public:
+	virtual CJsonObjectBase* requestOperation() = 0;
+	virtual void respDtoSerialize() = 0;
 public:
 	string Serialize()
 	{
@@ -71,5 +75,8 @@ protected:
 	vector<string> m_listName;
 	vector<void*>  m_listPropertyAddr;
 	vector<string> m_listType;
+public:
+	uint16_t m_usCMD;
+	uv_tcp_t *m_client;
 };
 #endif

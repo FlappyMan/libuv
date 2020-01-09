@@ -39,12 +39,14 @@ class DBOperation(object):
         self.kline_record = ['id','market_id','Kline_type','begin_time','open','high','low','close','trading_volume','create_time','update_time']
         self.financial_records = ['id','user_id','coin_id','gross_amount','gross_frozen','gross_sum','fee','fee_frozen','oper_type','oper_id','oper_desc','remaining_amount','remaining_frozen','remaining_sum','record_hash','status','create_time','update_time']
         self.wait_close = ['id', 'user_id', 'market_id', 'price', 'trading_volume', 'traded_volume', 'trading_amount','estimated_fee', 'actual_fee', 'oper_type', 'status', 'endtime','create_time', 'update_time']
+
     def getColValueType(self,list):
         retStr = ''
         arraySize = len(list)
         for iLoop in range(arraySize):
             retStr += '%s,'
         return retStr[:-1]
+
     def getColumns(self,list):
         retStr = ''
         for key in list:
@@ -53,6 +55,7 @@ class DBOperation(object):
             else:
                 retStr += key + ','
         return retStr[:-1]
+
     def getColValue(self,Obj,list):
         retStr = ''
         for key in list:
@@ -62,6 +65,7 @@ class DBOperation(object):
                 else:
                     retStr += '"' + MySQLdb.escape_string(str(Obj[key])) + '",'
         return retStr[:-1]
+        
     def makeInsertPackage(self,Obj,colList,tableName):
         columns = self.getColumns(colList)  # 获取需要处理的所有字段
         tableValues = self.getColValue(Obj,colList)

@@ -33,7 +33,7 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
 {
     int ret = m_http.Readed(pBuffer,iDataLen);
     if(ret<0) return -1;
-    if(ret>0) return 0;
+    if(ret==0) return 0;
 
     UProtocolBase *pkg=NULL;
     string token;

@@ -1,13 +1,49 @@
 #include "ThreadHttpOper.h"
 #include "./Manager/DispatchManager.h"
+#include "ThreadDBOper.h"
 uv_loop_t g_uvHttpLoop;
 uv_timer_t g_uvHttpTimer;
 
 void CThreadHttpOper::cbTimer(uv_timer_t *handle)
 {
-	// queue<UProtocolBase *> qReq;
-	// g_srv_backtrade.GetRequest(qReq);
-	// g_srv_client.PushRequest(qReq);
+	int iIndex = 0;
+	CJsonObjectBase *szArray[CDispatchManager::g_mapHttpMapping.size()];
+	for (mapHttpSession::iterator itr = CDispatchManager::g_mapHttpMapping.begin(); itr != CDispatchManager::g_mapHttpMapping.end();)
+	{
+		if (true == itr->second->isRecvFinish())
+		{
+			szArray[iIndex++] = itr->second->getObject();
+			CDispatchManager::g_mapHttpMapping.erase(itr++); // 把数据包从socket接收队列中移除
+		}
+		else
+		{
+			itr++;
+		}
+	}
+	if (0 != iIndex)
+	{
+#warning 待优化push方法可以批量push
+		for (int iLoop = 0; iLoop < iIndex; iLoop++)
+		{
+			CJsonObjectBase *pObj = szArray[iLoop];
+			CThreadDBOper::m_qDBJsonObjOper.put(pObj);
+		}
+	}
+	else
+	{
+		// 无数据处理
+	}
+
+	while (0 != CThreadDBOper::m_qDBResultJsonOper.size())
+	{
+		CJsonObjectBase *pResult = CThreadDBOper::m_qDBResultJsonOper.get();
+		CDispatchManager::DispatchHttpResponse(pResult->Serialize().c_str(), pResult->m_client);
+		if (NULL != pResult)
+		{
+			delete pResult;
+			pResult = NULL;
+		}
+	}
 }
 
 void CThreadHttpOper::cbReadBuff(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
@@ -38,7 +74,7 @@ void CThreadHttpOper::cbRead(uv_stream_t *client, ssize_t nread, const uv_buf_t 
 	cout << "[CThreadHttpOper->cbNewConnection->cbRead] Server begin read" << endl;
 	if (nread < 0)
 	{
-		cout << "[CThreadHttpOper->cbNewConnection->cbRead] nread < 0" << endl;
+		cout << "[CThreadHttpOper->cbNewConnection->cbRead] socket disconnect" << endl;
 		if (nread != UV_EOF)
 			cout << "[CThreadHttpOper->cbNewConnection->cbRead] Read error :" << uv_err_name(nread) << endl;
 		uv_close((uv_handle_t *)client, cbClosed);
@@ -49,8 +85,35 @@ void CThreadHttpOper::cbRead(uv_stream_t *client, ssize_t nread, const uv_buf_t 
 	}
 	else
 	{
-		CDispatchManager::DispatchHttpClient((uv_tcp_t *)client, buf->base, nread);
+		int iOperRet = CDispatchManager::DispatchHttpClient((uv_tcp_t *)client, buf->base, nread);
+		if (RET_SUCCESS == iOperRet)
+		{
+			mapHttpSession::iterator itr = CDispatchManager::g_mapHttpMapping.find((uv_tcp_t *)client);
+#ifdef DEBUG
+			assert(itr != CDispatchManager::g_mapHttpMapping.end());
+#else
+
+#endif
+			if (itr != CDispatchManager::g_mapHttpMapping.end())
+			{
+				cout << "[CDispatchManager::DispatchHttpClient] operation success delete CBaseSession" << endl;
+				delete itr->second;
+				itr->second = NULL;
+				CDispatchManager::g_mapHttpMapping.erase(itr);
+				cout << "CDispatchManager::g_mapHttpMapping size = " << CDispatchManager::g_mapHttpMapping.size() << endl;
+			}
+		}
+		else if (RET_FAILED == iOperRet)
+		{
+			cout << "[CDispatchManager::DispatchHttpClient] failed disconnect socket" << endl;
+			uv_close((uv_handle_t *)client, cbClosed);
+		}
+		else
+		{
+			cout << "[CDispatchManager::DispatchHttpClient] socket recv hold" << endl;
+		}
 	}
+	cout << "[CThreadHttpOper::cbRead] delete recv buffer" << endl;
 	delete[] buf->base;
 }
 

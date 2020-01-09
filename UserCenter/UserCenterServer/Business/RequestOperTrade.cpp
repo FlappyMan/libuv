@@ -27,6 +27,6 @@ UProtocolBase* CRequestOperTrade::requestOperation()
     up->set_type(4);
     up->set_main_coin(5);
     UProtocolBase* prot = (UProtocolBase*)up;
-    prot->m_uiType = UPUptrade::CMD;
+    prot->m_uiType = m_usCMD;
     return prot;
 }

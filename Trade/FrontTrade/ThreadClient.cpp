@@ -22,6 +22,7 @@ void Client_cbClosed(uv_handle_t* handle)
     it->second->Destroy();
     delete it->second;
     g_srv_client.m_mSession.erase(it);
+    delete (uv_tcp_t*)handle;
 }
 
 void Client_cbReadBuff(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf) 
@@ -62,11 +63,11 @@ void Client_cbRead(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf)
 
     //cout<<"[Server] readed :"<<buf->base<<endl;
     int ret = g_srv_client.Read((uv_tcp_t*)client, buf->base, nread);
-    if(ret < 0)
+    if(ret < 0 || ret == 0)
     {
         uv_close((uv_handle_t*) client, Client_cbClosed);
+        g_cache_read.Free(buf->base,buf->len);
     }
-    g_cache_read.Free(buf->base,buf->len);
 }
 
 

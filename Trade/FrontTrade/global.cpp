@@ -131,6 +131,10 @@ UVWriteReq* WriteReqCache::Get(int iBuffSize)
 
 void WriteReqCache::Free(UVWriteReq *p)
 {
+    if (p->buf.base)
+    {
+        delete[] p->buf.base;
+    }   
     p->len=0;
     if(p->pkg){delete p->pkg;p->pkg=NULL;}
 

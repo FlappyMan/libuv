@@ -19,6 +19,11 @@ server 收到第一个包必须是 UPLogin 包, 收到第一个包后先用 pb �
 
 */
 
+/*
+BackTrade -> FrontMarket 完整json: market{"id":"1",str:"btc_usdt"}
+BackTrade -> FrontTrade 完整json：market{"id":"1",str:"btc_usdt"}
+*/
+
 
 class UPLogin : public UProtocolBase, public ukex::login
 {

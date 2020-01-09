@@ -25,6 +25,9 @@ public:
 public:
     static BlockQueue<CBaseRequestOper*> m_qDBOper;
     static BlockQueue<CDBResult> m_qDBResult;
+
+    static BlockQueue<CJsonObjectBase*> m_qDBJsonObjOper;
+    static BlockQueue<CJsonObjectBase*> m_qDBResultJsonOper;
 };
 
 #endif

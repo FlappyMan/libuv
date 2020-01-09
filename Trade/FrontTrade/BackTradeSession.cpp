@@ -74,22 +74,7 @@ bool BackTradeSession::LoginCheck(UPLogin *pLogin)
 {
     Json::Value root;
     if(pLogin->ServerCheck(root,m_pSrv->m_sPublicKey)<0)return false;
-    // save market
-    // UPMarketAdd *pMarketAdd=new UPMarketAdd();
-    // pMarketAdd->m_sMarketID=root["market"].asString();
-
-    // if(pMarketAdd->m_sMarketID.length()<=0)
-    // {
-    // 	delete pMarketAdd;
-    // 	return false;
-    // }
-    // m_pSrv->AddMarket(pMarketAdd);//市场信息
     uint64_t marketID = root["market"].asInt64();
     m_pSrv->AddMarketID(marketID,this);
     return true;
-}
-
-void BackTradeSession::SendRequest(UProtocolBase *p)
-{
-
 }

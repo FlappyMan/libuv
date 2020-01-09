@@ -40,7 +40,6 @@ void CThreadTCPOper::cbTimer(uv_timer_t *handle)
 		CDBResult result = CThreadDBOper::m_qDBResult.get();
 		CDispatchManager::DispatchOnSend(result.m_cProt,result.m_cOper->m_client);
 	}
-	
 }
 
 void CThreadTCPOper::cbReadBuff(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)

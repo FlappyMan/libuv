@@ -33,7 +33,6 @@ CBaseRequestOper* CBaseSession::PraseOperation()
         CTradeModel model;
         model = (UPUptrade *)pkg;
         oper = new CRequestOperTrade(model);
-        // oper->requestOperation(m_client);
     }
     break;
     case UPUptradebatch::CMD:
@@ -44,7 +43,6 @@ CBaseRequestOper* CBaseSession::PraseOperation()
         CTradeBatchModel model;
         model = (UPUptradebatch *)pkg;
         oper = new CRequestOperTradeBatch(model);
-        // oper->requestOperation(m_client);
     }
     break;
     case UPCanceltrade::CMD:
@@ -55,7 +53,6 @@ CBaseRequestOper* CBaseSession::PraseOperation()
         CCancelTradeModel model;
         model = (UPCanceltrade *)pkg;
         oper = new CRequestOperCancelTrade(model);
-        // oper->requestOperation(m_client);
     }
 
     break;
@@ -67,7 +64,6 @@ CBaseRequestOper* CBaseSession::PraseOperation()
         CCancelTradeBatchModel model;
         model = (UPCanceltradebatch *)pkg;
         oper = new CRequestOperCancelTradeBatch(model);
-        // oper->requestOperation(m_client);
     }
     break;
     case UPMatchedData::CMD:
@@ -78,7 +74,6 @@ CBaseRequestOper* CBaseSession::PraseOperation()
         CMatchedDataModel model;
         model = (UPMatchedData *)pkg;
         oper = new CRequestOperMatchData(model);
-        // oper->requestOperation(m_client);
     }
     break;
     default:
