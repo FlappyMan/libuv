@@ -8,7 +8,9 @@ CLoginDto::CLoginDto()
 }
 CJsonObjectBase *CLoginDto::requestOperation()
 {
+#ifdef PRINT_LOG
     cout << "[CLoginDto][requestOperation]" << endl;
+#endif
     string sql = "select id from user where user_account = \"" + usercount + "\" and password = \"" + password + "\"";
     bool bHasValue = CDispatchManager::g_mysql.Select(sql);
 

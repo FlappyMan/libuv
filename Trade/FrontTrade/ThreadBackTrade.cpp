@@ -8,7 +8,7 @@ BackTradeSrv g_srv_backtrade;
 
 void BackTrade_cbTimer(uv_timer_t* handle)
 {
-    BlockQueue<UProtocolBase*> qRes;
+    UBBlockQueue<UProtocolBase> qRes;
     g_srv_backtrade.GetResponse(qRes);
     g_srv_client.PushResponse(qRes);
 

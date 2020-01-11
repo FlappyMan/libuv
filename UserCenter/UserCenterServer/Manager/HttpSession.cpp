@@ -4,11 +4,8 @@
 #include "LoginRespDto.h"
 CHttpSession::CHttpSession()
 {
-    m_buffer.Init(2048);
-    m_uiType = 0;
-    m_uiValueLen = 0;
     m_bRecvFinish = false;
-    m_http.Init(HTTP_REQUEST);
+    m_pObject = NULL;
 }
 CHttpSession::~CHttpSession()
 {
@@ -17,37 +14,43 @@ CHttpSession::~CHttpSession()
 int CHttpSession::OnRecv(uv_tcp_t *client, char *pBuffer, int iDataLen)
 {
     cout << "[CHttpSession OnRecv]" << endl;
-    int ret = m_http.Readed(pBuffer, iDataLen);
+    UBHttpParser httpParser;
+    httpParser.Init(HTTP_REQUEST);
+    int ret = httpParser.Readed(pBuffer, iDataLen);
     if (ret == RET_SUCCESS)
     {
         cout << "[CHttpSession OnRecv IsHeaderComplete]" << endl;
 #ifdef DEBUG
-        assert(true == m_http.IsHeaderComplete());
+        assert(true == httpParser.IsHeaderComplete());
 #else
-        if (true != m_http.IsHeaderComplete())
+        if (true != httpParser.IsHeaderComplete())
         {
             return RET_FAILED;
         }
 #endif
-        if (strcasecmp(m_http.m_sUrl.c_str(), "/api/UserCenter/Login") == 0)
+        if (strcasecmp(httpParser.m_sUrl.c_str(), "/api/UserCenter/Login") == 0)
         {
             cout << "[CHttpSession OnRecv HTTP API] = /api/UserCenter/Login" << endl;
-            cout << "[CHttpSession OnRecv Body] = " << m_http.m_sBody.c_str() << endl;
-            map<string, string>::iterator it = m_http.m_mFiled.find("token");
-            if (it != m_http.m_mFiled.end())
+            cout << "[CHttpSession OnRecv Body] = " << httpParser.m_sBody.c_str() << endl;
+            map<string, string>::iterator it = httpParser.m_mFiled.find("token");
+            if (it != httpParser.m_mFiled.end())
             {
                 CLoginDto *pLoginDto = new CLoginDto;
-                pLoginDto->DeSerialize(m_http.m_sBody.c_str());
-                m_http.Destroy();
+                pLoginDto->DeSerialize(httpParser.m_sBody.c_str());
+                httpParser.Destroy();
                 m_bRecvFinish = true;
+#ifdef DEBUG
+                assert(m_pObject == NULL);
+#endif
                 m_pObject = (CJsonObjectBase *)pLoginDto;
+                pLoginDto = NULL;
                 m_pObject->m_usCMD = 1;
                 m_pObject->m_client = client;
                 return RET_SUCCESS;
             }
             else
             {
-                m_http.Destroy();
+                httpParser.Destroy();
                 CDispatchManager::DispatchHttpResponse("", client, false);
                 return RET_FAILED;
             }
@@ -55,7 +58,7 @@ int CHttpSession::OnRecv(uv_tcp_t *client, char *pBuffer, int iDataLen)
         else
         {
             // 未知接口
-            m_http.Destroy();
+            httpParser.Destroy();
             CDispatchManager::DispatchHttpResponse("", client, false);
             return RET_FAILED;
         }
@@ -63,14 +66,14 @@ int CHttpSession::OnRecv(uv_tcp_t *client, char *pBuffer, int iDataLen)
     else if (ret > 0)
     {
         cout << "[CHttpSession RET_HOLD]" << endl;
-        m_http.Destroy();
+        httpParser.Destroy();
         pBuffer[iDataLen] = 0;
         return RET_HOLD;
     }
     else
     {
         cout << "[CHttpSession RET_FAILED]" << endl;
-        m_http.Destroy();
+        httpParser.Destroy();
         CDispatchManager::DispatchHttpResponse("", client, false);
         return RET_FAILED;
     }

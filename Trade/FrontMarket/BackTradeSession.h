@@ -44,7 +44,8 @@ protected:
 public:
 	bool m_bLogined;
 	bool m_bSyncFinished;           // 是否已经完成初始化工作（本地缓存k线数据）
-	string m_sMarkID;
+	string m_sMarketID;
+	uint64_t m_uiMarketID;
 protected:
 	time_t m_tLast;					// 最近一次操作时间 
 };

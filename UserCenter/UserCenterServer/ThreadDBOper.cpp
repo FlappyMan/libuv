@@ -3,10 +3,10 @@
 #include "BaseRequestOper.h"
 uv_loop_t g_uvDBLoop;
 uv_timer_t g_uvDBTimer;
-BlockQueue<CBaseRequestOper *> CThreadDBOper::m_qDBOper;
-BlockQueue<CDBResult> CThreadDBOper::m_qDBResult;
-BlockQueue<CJsonObjectBase *> CThreadDBOper::m_qDBJsonObjOper;
-BlockQueue<CJsonObjectBase *> CThreadDBOper::m_qDBResultJsonOper;
+UBBlockQueue<CBaseRequestOper> CThreadDBOper::m_qDBOper;
+UBBlockQueue<CDBResult> CThreadDBOper::m_qDBResult;
+UBBlockQueue<CJsonObjectBase> CThreadDBOper::m_qDBJsonObjOper;
+UBBlockQueue<CJsonObjectBase> CThreadDBOper::m_qDBResultJsonOper;
 
 void CThreadDBOper::cbTimer(uv_timer_t *handle)
 {
@@ -24,30 +24,65 @@ void CThreadDBOper::cbTimer(uv_timer_t *handle)
 		}
 #endif
 
-		CThreadDBOper::m_qDBResult.put(pResult);
+		CThreadDBOper::m_qDBResult.put(&pResult);
 	}
 
-	while (CThreadDBOper::m_qDBJsonObjOper.size() != 0)
+	int iResultSize = CThreadDBOper::m_qDBJsonObjOper.size();
+	if (0 != iResultSize)
 	{
-		CJsonObjectBase* pObj = CThreadDBOper::m_qDBJsonObjOper.get();
-		CJsonObjectBase* pResult = pObj->requestOperation();
-		cout<<"pObj->requestOperation();"<<endl;
-		if (NULL != pObj)
+#ifdef ARRAY
+		std::vector<CJsonObjectBase *> vecResp;
+		std::vector<CJsonObjectBase *> vecArray;
+		CThreadDBOper::m_qDBJsonObjOper.get(vecResp, iResultSize);
+		for (int i = 0; i < iResultSize; i++)
 		{
-			delete pObj;
-			pObj = NULL;
-		}
-		cout<<"pObj->requestOperation();aaaa"<<endl;
+			CJsonObjectBase *pObj = vecResp[i];
+			CJsonObjectBase *pResponse = pObj->requestOperation();
+			if (NULL != pObj)
+			{
+				delete pObj;
+				pObj = NULL;
+			}
 #ifdef DEBUG
-		assert(NULL != pResult);
+			assert(NULL != pResponse);
 #else
-		if (NULL == pResult)
-		{
-			continue;
-		}
+			if (NULL == pResponse)
+			{
+				continue;
+			}
 #endif
-		cout<<"CThreadDBOper::m_qDBResultJsonOper.put"<<endl;
-		CThreadDBOper::m_qDBResultJsonOper.put(pResult);
+			vecArray.push_back(pResponse);
+		}
+
+		int iVecSize = vecArray.size();
+		if (iVecSize != 0)
+		{
+			CThreadDBOper::m_qDBResultJsonOper.put(vecArray);
+		}
+#else
+		
+		for (int i = 0; i < iResultSize; i++)
+		{
+			CJsonObjectBase *pObj = CThreadDBOper::m_qDBJsonObjOper.get();
+			CJsonObjectBase *pResponse = pObj->requestOperation();
+			if (NULL != pObj)
+			{
+				delete pObj;
+				pObj = NULL;
+			}
+#ifdef DEBUG
+			assert(NULL != pResponse);
+#else
+			if (NULL == pResponse)
+			{
+				continue;
+			}
+#endif
+			
+			CThreadDBOper::m_qDBResultJsonOper.put(pResponse);
+		}
+			
+#endif
 	}
 }
 

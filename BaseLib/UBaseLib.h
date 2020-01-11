@@ -14,6 +14,7 @@
 #include "UBWsParser.h"
 #include "UBString.h"
 #include "UBCrypto.h"
+#include "UBBlockQueue.h"
 
 #include "uv.h"
 

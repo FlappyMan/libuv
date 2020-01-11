@@ -3,7 +3,7 @@
 #include "BackTradeSrv.h"
 
 BackTradeSession::BackTradeSession(uv_tcp_t *tcp,BackTradeSrv *pSrv):m_tcp(tcp),m_pSrv(pSrv),
-	m_bLogined(false),m_bSyncFinished(false)
+	m_bLogined(false),m_bSyncFinished(false),m_uiMarketID(0)
 {
 
 }
@@ -111,21 +111,21 @@ int BackTradeSession::Read(char *pBuffer,int iDataLen)
 		case UPKlinedata::CMD :
 			pkg=new UPKlinedata;
 			ProtoUnpack(*((UPKlinedata*)pkg),m_buffer.Data(),uiValueLen);
-			((UPKlinedata*)pkg)->m_sMarketID=m_sMarkID;
+			((UPKlinedata*)pkg)->m_sMarketID=m_sMarketID;
 			m_pSrv->AddRequest(pkg);
 			break;
 		
 		case UPDepthdata::CMD :
 			pkg=new UPDepthdata;
 			ProtoUnpack(*((UPDepthdata*)pkg),m_buffer.Data(),uiValueLen);
-			((UPDepthdata*)pkg)->m_sMarketID=m_sMarkID;
+			((UPDepthdata*)pkg)->m_sMarketID=m_sMarketID;
 			m_pSrv->AddRequest(pkg);
 			break;
 
 		case UPHistoricalTransactionData::CMD :
 			pkg=new UPHistoricalTransactionData;
 			ProtoUnpack(*((UPHistoricalTransactionData*)pkg),m_buffer.Data(),uiValueLen);
-			((UPHistoricalTransactionData*)pkg)->m_sMarketID=m_sMarkID;
+			((UPHistoricalTransactionData*)pkg)->m_sMarketID=m_sMarketID;
 			m_pSrv->AddRequest(pkg);
 			break;
 
@@ -133,7 +133,7 @@ int BackTradeSession::Read(char *pBuffer,int iDataLen)
 		case UPMatchedData::CMD :
 			pkg=new UPMatchedData;
 			ProtoUnpack(*((UPMatchedData*)pkg),m_buffer.Data(),uiValueLen);
-			((UPMatchedData*)pkg)->m_sMarketID=m_sMarkID;
+			((UPMatchedData*)pkg)->m_sMarketID=m_sMarketID;
 			m_pSrv->AddRequest(pkg);
 			break;
 
@@ -152,17 +152,21 @@ bool BackTradeSession::LoginCheck(UPLogin *pLogin)
 	Json::Value root;
 	if(pLogin->ServerCheck(root,m_pSrv->m_sPublicKey)<0)return false;
 
+	Json::Value &market=root["market"];
+
 	// save market
 	UPMarketAdd *pMarketAdd=new UPMarketAdd();
-	pMarketAdd->m_sMarketID=root["market"].asString();
+	pMarketAdd->m_sMarketID=market["str"].asString();
+	pMarketAdd->m_uiMarketID=market["id"].asUInt64();
 
-	if(pMarketAdd->m_sMarketID.length()<=0)
+	if(pMarketAdd->m_sMarketID.length()<=0 ||  pMarketAdd->m_uiMarketID==0)
 	{
 		delete pMarketAdd;
 		return false;
 	}
 	
-	m_sMarkID=pMarketAdd->m_sMarketID;
+	m_sMarketID=pMarketAdd->m_sMarketID;
+	m_uiMarketID=pMarketAdd->m_uiMarketID;
 
 	m_pSrv->AddRequest(pMarketAdd);
 	return true;
@@ -253,7 +257,7 @@ void BackTradeSession::SendNextSyncReq()
 
 void BackTradeSession::BuildLoginSyncReq()
 {
-	string sKLineDataDir=g_config.m_sKLineDataDir+m_sMarkID+"/";
+	string sKLineDataDir=g_config.m_sKLineDataDir+m_sMarketID+"/";
 
 	// 起始时间
 	enum{YEAR_BEGIN=2020};

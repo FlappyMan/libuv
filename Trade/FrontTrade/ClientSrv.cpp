@@ -34,7 +34,7 @@ int ClientSrv::Read(uv_tcp_t* tcp,char *pBuffer,int iDataLen)
     return it->second->Read(tcp, pBuffer, iDataLen);
 }
 
-void ClientSrv::PushResponse(BlockQueue<UProtocolBase*> &res)
+void ClientSrv::PushResponse(UBBlockQueue<UProtocolBase> &res)
 {
     while (res.size()>0)
     {
@@ -42,7 +42,7 @@ void ClientSrv::PushResponse(BlockQueue<UProtocolBase*> &res)
     }
 }
 
-void ClientSrv::GetRequest(BlockQueue<UProtocolBase*> &req)
+void ClientSrv::GetRequest(UBBlockQueue<UProtocolBase> &req)
 {
     while (req.size()>0)
     {

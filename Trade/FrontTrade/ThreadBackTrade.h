@@ -23,7 +23,7 @@ int32_t BackTrade_Write(uv_stream_t* client,T* pkg,uint32_t uiPkgMaxSize=SIZE_BU
         g_cache_write_req.Free(req);
         return ret;
     }
-
+    req->buf.len = ret;
     req->pkg=pkg;
     uv_write((uv_write_t *)req, client, &req->buf, 1, BackTrade_cbWrited);
 };

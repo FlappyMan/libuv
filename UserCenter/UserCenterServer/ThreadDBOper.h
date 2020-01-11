@@ -2,7 +2,6 @@
 #define _THREAD_DB_HEADER_
 
 #include "global.h"
-#include "./BaseConfig/BlockQueue.h"
 #include "./Business/BaseRequestOper.h"
 
 extern uv_loop_t g_uvDBLoop;
@@ -23,11 +22,11 @@ public:
     static void ThreadDBOper(void *arg);
     static void cbTimer(uv_timer_t *handle);
 public:
-    static BlockQueue<CBaseRequestOper*> m_qDBOper;
-    static BlockQueue<CDBResult> m_qDBResult;
+    static UBBlockQueue<CBaseRequestOper> m_qDBOper;
+    static UBBlockQueue<CDBResult> m_qDBResult;
 
-    static BlockQueue<CJsonObjectBase*> m_qDBJsonObjOper;
-    static BlockQueue<CJsonObjectBase*> m_qDBResultJsonOper;
+    static UBBlockQueue<CJsonObjectBase> m_qDBJsonObjOper;
+    static UBBlockQueue<CJsonObjectBase> m_qDBResultJsonOper;
 };
 
 #endif

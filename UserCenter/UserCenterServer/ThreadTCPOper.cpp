@@ -7,14 +7,16 @@ uv_timer_t g_uvTimer;
 
 void CThreadTCPOper::cbTimer(uv_timer_t *handle)
 {
-	int iIndex = 0;
-	CBaseRequestOper *szArray[CDispatchManager::g_mapMapping.size()];
 	for (mapBaseSession::iterator itr = CDispatchManager::g_mapMapping.begin(); itr != CDispatchManager::g_mapMapping.end();)
 	{
 		if (true == itr->second->isRecvFinish())
 		{
 			CBaseRequestOper *oper = itr->second->PraseOperation();
-			szArray[iIndex++] = oper;
+			CThreadDBOper::m_qDBOper.put(oper);
+
+			delete itr->second;
+			itr->second = NULL;
+			
 			CDispatchManager::g_mapMapping.erase(itr++); // 把数据包从socket接收队列中移除
 		}
 		else
@@ -22,29 +24,30 @@ void CThreadTCPOper::cbTimer(uv_timer_t *handle)
 			itr++;
 		}
 	}
-	if (0 != iIndex)
-	{
-#warning 待优化push方法可以批量push
-		for (int iLoop = 0; iLoop < iIndex; iLoop++)
-		{
-			CBaseRequestOper *oper = szArray[iLoop];
-			CThreadDBOper::m_qDBOper.put(oper);
-		}
-	}
-	else
-	{
-		// 无数据处理
-	}
+	
 	while (0 != CThreadDBOper::m_qDBResult.size())
 	{
-		CDBResult result = CThreadDBOper::m_qDBResult.get();
-		CDispatchManager::DispatchOnSend(result.m_cProt,result.m_cOper->m_client);
+		CDBResult *result = CThreadDBOper::m_qDBResult.get();
+		CDispatchManager::DispatchOnSend(result->m_cProt,result->m_cOper->m_client);
+		if (NULL != result->m_cProt)
+		{
+			delete result->m_cProt;
+			result->m_cProt = NULL;
+		}
+		if (NULL != result->m_cOper)
+		{
+			delete result->m_cOper;
+			result->m_cOper = NULL;
+		}
+		
 	}
 }
 
 void CThreadTCPOper::cbReadBuff(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
 {
+#ifdef PRINT_LOG
 	cout << "[CThreadTCPOper->cbNewConnection->cbReadBuff] New read buffer" << endl;
+#endif
 	buf->base = new char[suggested_size];
 	buf->len = suggested_size;
 }
@@ -58,7 +61,9 @@ void CThreadTCPOper::cbWrited(uv_write_t *req, int status)
 {
 	if (status < 0)
 	{
+#ifdef PRINT_LOG
 		cout << "[CThreadTCPOper->cbWrited] Write failed" << endl;
+#endif
 	}
 	g_cache_write_req.Free((UVWriteReq *)req);
 }
@@ -68,28 +73,67 @@ void CThreadTCPOper::cbRead(uv_stream_t *client, ssize_t nread, const uv_buf_t *
 	cout << "[CThreadTCPOper->cbNewConnection->cbRead] Server begin read" << endl;
 	if (nread < 0)
 	{
-		if (nread != UV_EOF)
-			cout << "[CThreadTCPOper->cbNewConnection->cbRead] Read error :" << uv_err_name(nread) << endl;
+#ifdef DEBUG
+		assert (nread != UV_EOF);
+#endif
+#ifdef PRINT_LOG
+		cout << "[CThreadTCPOper->cbNewConnection->cbRead] Read error :" << uv_err_name(nread) << endl;
+#endif
 		uv_close((uv_handle_t *)client, cbClosed);
 	}
 	else if (nread == 0)
 	{
+#ifdef PRINT_LOG
 		cout << "[CThreadTCPOper->cbNewConnection->cbRead] read noting" << endl;
+#endif
+		uv_close((uv_handle_t *)client, cbClosed);
 	}
 	else
 	{
+#ifdef PRINT_LOG
 		cout << "[CThreadTCPOper->cbNewConnection->cbRead] readed :" << buf->base << endl;
-		CDispatchManager::DispatchClient((uv_tcp_t *)client, buf->base, nread);
+#endif
+		int ret = CDispatchManager::DispatchClient((uv_tcp_t *)client, buf->base, nread);
+		if (RET_FAILED == ret)
+		{
+			mapBaseSession::iterator itr = CDispatchManager::g_mapMapping.find((uv_tcp_t *)client);
+			if (itr != CDispatchManager::g_mapMapping.end())
+			{
+				if (NULL != itr->second)
+				{
+					delete itr->second;
+					itr->second = NULL;
+				}
+				CDispatchManager::g_mapMapping.erase(itr);
+			}
+			uv_close((uv_handle_t *)client, cbClosed);
+		}
+		else if (RET_SUCCESS == ret)
+		{
+#ifdef PRINT_LOG
+			cout << "[CDispatchManager::DispatchClient] socket recv RET_SUCCESS" << endl;
+#endif
+		}
+		else
+		{
+#ifdef PRINT_LOG
+			cout << "[CDispatchManager::DispatchClient] socket recv RET_HOLD" << endl;
+#endif
+		}
 	}
 	delete[] buf->base;
 }
 
 void CThreadTCPOper::cbNewConnection(uv_stream_t *server, int status)
 {
+#ifdef PRINT_LOG
 	cout << "[CThreadTCPOper->cbNewConnection] Accept new connection" << endl;
+#endif
 	if (status < 0)
 	{
+#ifdef PRINT_LOG
 		cout << "[CThreadTCPOper->cbNewConnection] New connection error :" << uv_strerror(status) << endl;
+#endif
 	}
 	else
 	{
@@ -98,11 +142,15 @@ void CThreadTCPOper::cbNewConnection(uv_stream_t *server, int status)
 		if (uv_accept(server, (uv_stream_t *)client) == 0)
 		{
 			int ret = uv_read_start((uv_stream_t *)client, cbReadBuff, cbRead);
+#ifdef PRINT_LOG
 			cout << "[CThreadTCPOper->cbNewConnection] New connection begin read : " << ret << endl;
+#endif
 		}
 		else
 		{
+#ifdef PRINT_LOG
 			cout << "[CThreadTCPOper->cbNewConnection] New connection accept failed" << endl;
+#endif
 			uv_close((uv_handle_t *)client, cbClosed);
 		}
 	}

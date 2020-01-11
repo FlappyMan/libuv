@@ -15,7 +15,8 @@ void Client_cbTimer(uv_timer_t* handle)
 
 void Client_cbClosed(uv_handle_t* handle) 
 {
-   delete (uv_tcp_t*)handle;
+	g_srv_client.CloseConnection((uv_tcp_t*)handle);
+	delete (uv_tcp_t*)handle;
 }
 
 void Client_cbReadBuff(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf) 

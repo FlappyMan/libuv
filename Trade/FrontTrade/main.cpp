@@ -1,5 +1,4 @@
 #include "UProtocol.h"
-#include "BlockQueue.h"
 #include "ThreadClient.h"
 #include "ThreadBackTrade.h"
 #include "config.h"
@@ -39,7 +38,6 @@ int main(int argc, char *argv[])
         cout<<"Init failed"<<endl;
         return -1;
     }
-
     uv_thread_t tClient,tBackTrade;
     uv_thread_create(&tBackTrade, ThreadBacktrade, NULL);
     uv_thread_create(&tClient, ThreadClient, NULL);

@@ -4,7 +4,7 @@
 #define _BACKTRADE_SESSION_HEADER_
 
 #include "global.h"
-#include "BlockQueue.h"
+
 class BackTradeSrv;
 class BackTradeSyncFile
 {
@@ -16,11 +16,11 @@ class BackTradeSyncFile
 class BackTradeSession
 {
     public:
-        BackTradeSession(uv_tcp_t *tcp,BlockQueue<UProtocolBase*> &qRes);
+        BackTradeSession(uv_tcp_t *tcp,UBBlockQueue<UProtocolBase> &qRes);
         ~BackTradeSession();
 
         void Init();
-        int Read(char *pBuffer,int iDataLen, BlockQueue<UProtocolBase*> &m_qResponse);
+        int Read(char *pBuffer,int iDataLen, UBBlockQueue<UProtocolBase> &m_qResponse);
         bool IsTimeout(time_t tNow);
     protected:
         bool LoginCheck(UPLogin *pLogin);

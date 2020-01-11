@@ -1,41 +1,69 @@
 #include "ThreadHttpOper.h"
 #include "./Manager/DispatchManager.h"
 #include "ThreadDBOper.h"
+#include <vector>
 uv_loop_t g_uvHttpLoop;
 uv_timer_t g_uvHttpTimer;
 
 void CThreadHttpOper::cbTimer(uv_timer_t *handle)
 {
-	int iIndex = 0;
-	CJsonObjectBase *szArray[CDispatchManager::g_mapHttpMapping.size()];
+#ifdef ARRAY
+	std::vector<CJsonObjectBase *> vecArray;
+#endif
 	for (mapHttpSession::iterator itr = CDispatchManager::g_mapHttpMapping.begin(); itr != CDispatchManager::g_mapHttpMapping.end();)
 	{
+
 		if (true == itr->second->isRecvFinish())
 		{
-			szArray[iIndex++] = itr->second->getObject();
-			CDispatchManager::g_mapHttpMapping.erase(itr++); // 把数据包从socket接收队列中移除
+			CJsonObjectBase *pRespOper = itr->second->m_pObject;
+#ifdef ARRAY
+			vecArray.push_back(pRespOper);
+#else
+			CThreadDBOper::m_qDBJsonObjOper.put(pRespOper);
+#endif
+			itr->second->m_pObject = NULL;
+			if (NULL != itr->second)
+			{
+				delete itr->second;
+				itr->second = NULL;
+			}
+			CDispatchManager::g_mapHttpMapping.erase(itr++);
 		}
 		else
 		{
 			itr++;
 		}
 	}
-	if (0 != iIndex)
+#ifdef ARRAY
+	int iVecSize = vecArray.size();
+	if (iVecSize != 0)
 	{
-#warning 待优化push方法可以批量push
-		for (int iLoop = 0; iLoop < iIndex; iLoop++)
-		{
-			CJsonObjectBase *pObj = szArray[iLoop];
-			CThreadDBOper::m_qDBJsonObjOper.put(pObj);
-		}
+		CThreadDBOper::m_qDBJsonObjOper.put(vecArray);
 	}
-	else
-	{
-		// 无数据处理
-	}
+#endif
 
-	while (0 != CThreadDBOper::m_qDBResultJsonOper.size())
+	int iResultSize = CThreadDBOper::m_qDBResultJsonOper.size();
+	if (0 != iResultSize)
 	{
+#ifdef PRINT_LOG
+		cout << "[CThreadHttpOper::cbTimer] response iResultSize = " << iResultSize << endl;
+#endif
+
+#ifdef ARRAY
+		std::vector<CJsonObjectBase *> vecResp;
+		CThreadDBOper::m_qDBResultJsonOper.get(vecResp, iResultSize);
+		for (int i = 0; i < iResultSize; i++)
+		{
+			CJsonObjectBase *pResult = vecResp[i];
+			cout<<"CDispatchManager::DispatchHttpResponse"<<endl;
+			CDispatchManager::DispatchHttpResponse(pResult->Serialize().c_str(), pResult->m_client);
+			if (NULL != pResult)
+			{
+				delete pResult;
+				pResult = NULL;
+			}
+		}
+#else
 		CJsonObjectBase *pResult = CThreadDBOper::m_qDBResultJsonOper.get();
 		CDispatchManager::DispatchHttpResponse(pResult->Serialize().c_str(), pResult->m_client);
 		if (NULL != pResult)
@@ -43,12 +71,15 @@ void CThreadHttpOper::cbTimer(uv_timer_t *handle)
 			delete pResult;
 			pResult = NULL;
 		}
+#endif
 	}
 }
 
 void CThreadHttpOper::cbReadBuff(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
 {
-	cout << "[CThreadHttpOper->cbNewConnection->cbReadBuff] New read buffer" << endl;
+#ifdef PRINT_LOG
+	cout << "[CThreadHttpOper->cbNewConnection->cbReadBuff] Malloc Buffer" << endl;
+#endif
 	buf->base = new char[suggested_size];
 	buf->len = suggested_size;
 }
@@ -60,10 +91,14 @@ void CThreadHttpOper::cbClosed(uv_handle_t *handle)
 
 void CThreadHttpOper::cbWrited(uv_write_t *req, int status)
 {
+#ifdef PRINT_LOG
 	cout << "[CThreadHttpOper->cbWrited]" << endl;
+#endif
 	if (status < 0)
 	{
+#ifdef PRINT_LOG
 		cout << "[CThreadHttpOper->cbWrited] Write failed" << endl;
+#endif
 	}
 	uv_close((uv_handle_t *)req->handle, cbClosed);
 	g_cache_write_req.Free((UVWriteReq *)req);
@@ -71,58 +106,72 @@ void CThreadHttpOper::cbWrited(uv_write_t *req, int status)
 
 void CThreadHttpOper::cbRead(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf)
 {
+#ifdef PRINT_LOG
 	cout << "[CThreadHttpOper->cbNewConnection->cbRead] Server begin read" << endl;
+#endif
 	if (nread < 0)
 	{
+#ifdef PRINT_LOG
 		cout << "[CThreadHttpOper->cbNewConnection->cbRead] socket disconnect" << endl;
-		if (nread != UV_EOF)
-			cout << "[CThreadHttpOper->cbNewConnection->cbRead] Read error :" << uv_err_name(nread) << endl;
+#endif
 		uv_close((uv_handle_t *)client, cbClosed);
 	}
 	else if (nread == 0)
 	{
+#ifdef PRINT_LOG
 		cout << "[CThreadHttpOper->cbNewConnection->cbRead] read noting" << endl;
+#endif
+		uv_close((uv_handle_t *)client, cbClosed);
 	}
 	else
 	{
 		int iOperRet = CDispatchManager::DispatchHttpClient((uv_tcp_t *)client, buf->base, nread);
 		if (RET_SUCCESS == iOperRet)
 		{
-			mapHttpSession::iterator itr = CDispatchManager::g_mapHttpMapping.find((uv_tcp_t *)client);
-#ifdef DEBUG
-			assert(itr != CDispatchManager::g_mapHttpMapping.end());
-#else
-
+#ifdef PRINT_LOG
+			cout << "[CDispatchManager::DispatchHttpClient] socket recv RET_SUCCESS" << endl;
 #endif
-			if (itr != CDispatchManager::g_mapHttpMapping.end())
-			{
-				cout << "[CDispatchManager::DispatchHttpClient] operation success delete CBaseSession" << endl;
-				delete itr->second;
-				itr->second = NULL;
-				CDispatchManager::g_mapHttpMapping.erase(itr);
-				cout << "CDispatchManager::g_mapHttpMapping size = " << CDispatchManager::g_mapHttpMapping.size() << endl;
-			}
 		}
 		else if (RET_FAILED == iOperRet)
 		{
-			cout << "[CDispatchManager::DispatchHttpClient] failed disconnect socket" << endl;
+#ifdef PRINT_LOG
+			cout << "[CDispatchManager::DispatchHttpClient] socket recv RET_FAILED" << endl;
+#endif
+			mapHttpSession::iterator itr = CDispatchManager::g_mapHttpMapping.find((uv_tcp_t *)client);
+			if (itr != CDispatchManager::g_mapHttpMapping.end())
+			{
+				if (NULL != itr->second)
+				{
+					delete itr->second;
+					itr->second = NULL;
+				}
+				CDispatchManager::g_mapHttpMapping.erase(itr);
+			}
 			uv_close((uv_handle_t *)client, cbClosed);
 		}
 		else
 		{
-			cout << "[CDispatchManager::DispatchHttpClient] socket recv hold" << endl;
+#ifdef PRINT_LOG
+			cout << "[CDispatchManager::DispatchHttpClient] socket recv RET_HOLD" << endl;
+#endif
 		}
 	}
-	cout << "[CThreadHttpOper::cbRead] delete recv buffer" << endl;
+#ifdef PRINT_LOG
+	cout << "[CThreadHttpOper::cbRead] delete[] buf->base" << endl;
+#endif
 	delete[] buf->base;
 }
 
 void CThreadHttpOper::cbNewConnection(uv_stream_t *server, int status)
 {
+#ifdef PRINT_LOG
 	cout << "[CThreadHttpOper->cbNewConnection] Accept new connection" << endl;
+#endif
 	if (status < 0)
 	{
+#ifdef PRINT_LOG
 		cout << "[CThreadHttpOper->cbNewConnection] New connection error :" << uv_strerror(status) << endl;
+#endif
 	}
 	else
 	{
@@ -131,11 +180,15 @@ void CThreadHttpOper::cbNewConnection(uv_stream_t *server, int status)
 		if (uv_accept(server, (uv_stream_t *)client) == 0)
 		{
 			int ret = uv_read_start((uv_stream_t *)client, cbReadBuff, cbRead);
+#ifdef PRINT_LOG
 			cout << "[CThreadHttpOper->cbNewConnection] New connection begin read : " << ret << endl;
+#endif
 		}
 		else
 		{
+#ifdef PRINT_LOG
 			cout << "[CThreadHttpOper->cbNewConnection] New connection accept failed" << endl;
+#endif
 			uv_close((uv_handle_t *)client, cbClosed);
 		}
 	}
@@ -152,7 +205,7 @@ void CThreadHttpOper::ThreadHttpOper(void *arg)
 	uv_ip4_addr(Config::g_sHttpIP.c_str(), Config::g_uiHttpPort, &addr);
 
 	uv_tcp_bind(&server, (const struct sockaddr *)&addr, 0);
-	int ret = uv_listen((uv_stream_t *)&server, 1000, cbNewConnection);
+	int ret = uv_listen((uv_stream_t *)&server, 5000, cbNewConnection);
 	if (ret)
 	{
 		cout << "[CThreadHttpOper] Listen error :" << uv_strerror(ret) << endl;

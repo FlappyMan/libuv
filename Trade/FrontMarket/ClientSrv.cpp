@@ -11,19 +11,28 @@ ClientSrv::ClientSrv(int iBufferSize)
 
 ClientSrv::~ClientSrv()
 {
-
+	for(map<uv_tcp_t*,ClientSession*>::iterator it=m_mSession.begin();it!=m_mSession.end();it++)
+	{
+		delete it->second;
+	}
+	m_mSession.clear();
 }
 
 void ClientSrv::NewConnection(uv_tcp_t* tcp)
 {
 	ClientSession *p=new ClientSession(tcp,m_pBuffer,m_iBufferSize);
-
+	p->Init();
 	m_mSession.insert(make_pair(tcp,p));
 }
 
 void ClientSrv::CloseConnection(uv_tcp_t *tcp)
 {
-	m_mSession.erase(tcp);
+	map<uv_tcp_t*,ClientSession*>::iterator it=m_mSession.find(tcp);
+	if(it!=m_mSession.end())
+	{
+		delete it->second;
+		m_mSession.erase(it);
+	}
 }
 
 // return <0: 协议错误，=0:数据包长度不足，>0:已处理掉的数据长度
@@ -35,14 +44,43 @@ int ClientSrv::Read(uv_tcp_t* tcp,char *pBuffer,int iDataLen)
 	return it->second->Read(pBuffer,iDataLen);
 }
 
-void ClientSrv::Subscribe(ClientSession* p,string &sub)
+void ClientSrv::Subscribe(ClientSession* p,SUBSCRIBE_TYPE st, string &sub)
 {
+	Market *pMarket=g_market_mgr.Get(p->m_subs.m_uiMarketID);
+	if(pMarket==NULL)return;
+
+	if(st==SUBSCRIBE_TYPE_DEPTH)
+	{
+		pMarket->DepthAdd(p);
+	}
+	else if(st==SUBSCRIBE_TYPE_TRADELOG)
+	{
+		pMarket->TraceLogAdd(p);
+	}
+	else if(st==SUBSCRIBE_TYPE_KLINE)
+	{
+		pMarket->KlineAdd(p,(KLINE)KLineFromString(sub));
+	}
 
 }
 
-void ClientSrv::Unsubscribe(ClientSession* p,string &s)
+void ClientSrv::Unsubscribe(ClientSession* p,SUBSCRIBE_TYPE st,string &s)
 {
+	Market *pMarket=g_market_mgr.Get(p->m_subs.m_uiMarketID);
+	if(pMarket==NULL)return;
 
+	if(st==SUBSCRIBE_TYPE_DEPTH)
+	{
+		pMarket->DepthRemove(p);
+	}
+	else if(st==SUBSCRIBE_TYPE_TRADELOG)
+	{
+		pMarket->TraceLogRemove(p);
+	}
+	else if(st==SUBSCRIBE_TYPE_KLINE)
+	{
+		pMarket->KlineRemove(p,(KLINE)KLineFromString(s));
+	}
 }
 
 void ClientSrv::PushRequest(queue<UProtocolBase*> &q)
@@ -119,7 +157,7 @@ void ClientSrv::_DispatchPkg(UProtocolBase *pkg)
 
 void ClientSrv::_AddMarket(UPMarketAdd *pkg)
 {
-	g_market_mgr.AddMarket(pkg->m_sMarketID);
+	g_market_mgr.AddMarket(pkg);
 }
 
 

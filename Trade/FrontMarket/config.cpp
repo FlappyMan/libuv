@@ -2,7 +2,8 @@
 #include "config.h"
 
 Config::Config() : m_uiListenPort_BackTrade(6000),m_uiListenPort_Client(443),
-    m_uiWriteCahce2k(1000),m_uiWriteCahce8k(1000),m_uiWriteCahce16k(1000)
+    m_uiWriteCahce2k(1000),m_uiWriteCahce8k(1000),m_uiWriteCahce16k(1000),
+    m_uiReadCahce2k(1000),m_uiReadCahce8k(1000),m_uiReadCahce16k(1000)
 {
 
 }
@@ -49,9 +50,9 @@ bool Config::Load(string &sPath)
     m_uiWriteCahce16k=wc["16k"].asUInt();
 
     Json::Value &rc=root["ReadCache"];
-    m_uiWriteCahce2k=rc["2k"].asUInt();
-    m_uiWriteCahce8k=rc["8k"].asUInt();
-    m_uiWriteCahce16k=rc["16k"].asUInt();
+    m_uiReadCahce2k=rc["2k"].asUInt();
+    m_uiReadCahce8k=rc["8k"].asUInt();
+    m_uiReadCahce16k=rc["16k"].asUInt();
     return true;
 }
 

@@ -32,7 +32,7 @@ class UVWriteReq
     public:
         uv_write_t req;
         uv_buf_t buf;
-        uint32_t len;           // buf 中实际数据长度
+        uint32_t len;           // buf 中实际开辟空间长度
         UProtocolBase *pkg;
 };
 

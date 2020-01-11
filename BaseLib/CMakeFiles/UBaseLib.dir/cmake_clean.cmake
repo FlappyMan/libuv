@@ -1,9 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o"
+  "CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o"
   "CMakeFiles/UBaseLib.dir/UBDate.cpp.o"
   "CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o"
   "CMakeFiles/UBaseLib.dir/UBJson.cpp.o"
   "CMakeFiles/UBaseLib.dir/UBMysql.cpp.o"
+  "CMakeFiles/UBaseLib.dir/UBString.cpp.o"
+  "CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o"
   "libUBaseLib.pdb"
   "libUBaseLib.a"
 )

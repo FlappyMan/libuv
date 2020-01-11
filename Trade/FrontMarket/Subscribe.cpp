@@ -62,11 +62,12 @@ MarketMgr::~MarketMgr()
 
 void MarketMgr::Destroy()
 {
-	for(map<string,Market*>::iterator  it=m_mMarket.begin();it!=m_mMarket.end();it++)
+	for(map<uint64_t,Market*>::iterator  it=m_mMarket.begin();it!=m_mMarket.end();it++)
 	{
 		delete it->second;
 	}
 	m_mMarket.clear();
+	m_mStr2ID.clear();
 }
 
 void MarketMgr::Init()
@@ -74,21 +75,31 @@ void MarketMgr::Init()
 }
 
 
+
 Market* MarketMgr::Get(string &sMarketID)
 {
-	map<string,Market*>::iterator it=m_mMarket.find(sMarketID);
-	if(it!=m_mMarket.end())return NULL;
-	else return it->second;
+	map<string,uint64_t>::iterator it=m_mStr2ID.find(sMarketID);
+	if(it==m_mStr2ID.end())return NULL;
+
+	return Get(it->second);
 }
 
-void MarketMgr::AddMarket(string &sMarketID)
+Market* MarketMgr::Get(uint64_t uiMarketID)
 {
-	map<string,Market*>::iterator it=m_mMarket.find(sMarketID);
+	map<uint64_t,Market*>::iterator it2=m_mMarket.find(uiMarketID);
+	if(it2!=m_mMarket.end())return NULL;
+	else return it2->second;
+}
+
+
+void MarketMgr::AddMarket(UPMarketAdd *pMarket)
+{
+	map<uint64_t,Market*>::iterator it=m_mMarket.find(pMarket->m_uiMarketID);
 	if(it!=m_mMarket.end())return;
 
-	Market *pMarket=new Market();
-	pMarket->Init(sMarketID);
-	m_mMarket.insert(make_pair(sMarketID,pMarket));
+	Market *p=new Market(pMarket->m_uiMarketID,pMarket->m_sMarketID);
+	m_mMarket.insert(make_pair(p->m_id,p));
+	m_mStr2ID.insert(make_pair(p->m_sid,p->m_id));
 }
 
 

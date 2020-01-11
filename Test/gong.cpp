@@ -211,15 +211,18 @@ void TestKlinedata()
     UPKlinedata kline;
     kline.set_type("hello world");
     UPKlinedata::Data* pData = NULL;
-    for(uint32_t i = 0; i < 2; ++i)
+    for(uint32_t i = 0; i < 4; ++i)
     {
+        UPKlinedata::Data* pDataTest = new UPKlinedata::Data;
+        pDataTest->set_k0("000");
+        pDataTest->set_k1("111");
+        pDataTest->set_k2("222");
+        pDataTest->set_k3("333");
+        pDataTest->set_k4("444");
+        pDataTest->set_k5("555");  
+
         pData = kline.add_data();
-        pData->set_k0("111");
-        pData->set_k1("222");
-        pData->set_k2("333");
-        pData->set_k3("66");
-        pData->set_k4("777");
-        pData->set_k5("888");      
+        pData->Swap(pDataTest);      
     }
     const int BUFFSIZE=1024;
     char buffer[BUFFSIZE];
@@ -310,14 +313,14 @@ void TestCanceltradebatch()
 }
 int main()
 {
-    // TestUptrade();
+     TestUptrade();
     // TestUptradeBatch();
     // TestAllmarketinfo();
     // TestDepthdata();
     // TestHistoricalTransactionData();
-    // TestKlinedata();
+     TestKlinedata();
     // TestMatchedData();
-    TestCanceltradebatch();
+    // TestCanceltradebatch();
     return 0;
 }
 

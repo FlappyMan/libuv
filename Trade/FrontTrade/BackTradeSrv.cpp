@@ -47,7 +47,7 @@ void BackTradeSrv::OnTimer(time_t tNow)
     }   
 }
 
-void BackTradeSrv::GetResponse(BlockQueue<UProtocolBase*> &res)
+void BackTradeSrv::GetResponse(UBBlockQueue<UProtocolBase> &res)
 {
     while (m_qResponse.size() > 0)
     {
@@ -55,7 +55,7 @@ void BackTradeSrv::GetResponse(BlockQueue<UProtocolBase*> &res)
     }  
 }
 
-void BackTradeSrv::PushRequest(BlockQueue<UProtocolBase*> &p)
+void BackTradeSrv::PushRequest(UBBlockQueue<UProtocolBase> &p)
 {
     while (m_qRequest.size() > 0)
     {
@@ -63,7 +63,7 @@ void BackTradeSrv::PushRequest(BlockQueue<UProtocolBase*> &p)
     }  
 }
 
-void BackTradeSrv::AddMarketID(uint64_t& MarketID, BackTradeSession* bt)
+void BackTradeSrv::AddMarket(uint64_t& MarketID, BackTradeSession* bt)
 {
     m_mMarketID.insert(make_pair(MarketID,bt));
 }

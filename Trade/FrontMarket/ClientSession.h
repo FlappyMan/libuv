@@ -42,7 +42,8 @@ protected:
 	string m_sRequest;			
 	char *m_pBuffer;
 	int m_iBufferSize;
-protected:	
+
+public:
 	string m_sClientID;     // 鉴权后会保留用户的 client ids
 	
 	Subscribe m_subs;	

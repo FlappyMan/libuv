@@ -28,6 +28,7 @@ public:
     static mapBaseSession g_mapMapping;
     static mapHttpSession g_mapHttpMapping;
     static UBMysql g_mysql;
+    
 };
 
 #endif

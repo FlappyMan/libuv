@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+../BaseLib/UBBlockQueue.h
+uv.h
+../BaseLib/uv.h
+queue
+-
+
 ../BaseLib/UBBuffer.h
 UBHeader.h
 ../BaseLib/UBHeader.h
@@ -72,6 +78,8 @@ stdint.h
 arpa/inet.h
 -
 assert.h
+-
+time.h
 -
 iostream
 -
@@ -147,8 +155,14 @@ UBString.h
 ../BaseLib/UBString.h
 UBCrypto.h
 ../BaseLib/UBCrypto.h
+UBBlockQueue.h
+../BaseLib/UBBlockQueue.h
 uv.h
 ../BaseLib/uv.h
+
+../Protocol/UPCache.h
+UProtocolBase.h
+../Protocol/UProtocolBase.h
 
 ../Protocol/UPCancelsubscribe.h
 UBaseLib.h
@@ -329,6 +343,8 @@ UPOpt.h
 ../Protocol/UPOpt.h
 UPRequest.h
 ../Protocol/UPRequest.h
+UPCache.h
+../Protocol/UPCache.h
 UPDir.h
 ../Protocol/UPDir.h
 UPHeartbeat.h
@@ -911,6 +927,10 @@ google/protobuf/port_undef.inc
 -
 
 /home/gong/workspace/git/UkexServer/Test/grant.cpp
+stdlib.h
+-
+stdio.h
+-
 UProtocol.h
 /home/gong/workspace/git/UkexServer/Test/UProtocol.h
 

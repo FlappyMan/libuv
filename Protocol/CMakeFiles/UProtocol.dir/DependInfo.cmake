@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/gong/workspace/git/UkexServer/Protocol/UPCache.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPCache.cpp.o"
   "/home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o"
   "/home/gong/workspace/git/UkexServer/Protocol/UPDir.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPDir.cpp.o"
   "/home/gong/workspace/git/UkexServer/Protocol/UPOpt.cpp" "/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/UPOpt.cpp.o"

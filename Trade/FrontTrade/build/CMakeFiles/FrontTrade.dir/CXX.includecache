@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+../../../BaseLib/UBBlockQueue.h
+uv.h
+../../../BaseLib/uv.h
+queue
+-
+
 ../../../BaseLib/UBBuffer.h
 UBHeader.h
 ../../../BaseLib/UBHeader.h
@@ -149,8 +155,14 @@ UBString.h
 ../../../BaseLib/UBString.h
 UBCrypto.h
 ../../../BaseLib/UBCrypto.h
+UBBlockQueue.h
+../../../BaseLib/UBBlockQueue.h
 uv.h
 ../../../BaseLib/uv.h
+
+../../../Protocol/UPCache.h
+UProtocolBase.h
+../../../Protocol/UProtocolBase.h
 
 ../../../Protocol/UPCancelsubscribe.h
 UBaseLib.h
@@ -331,6 +343,8 @@ UPOpt.h
 ../../../Protocol/UPOpt.h
 UPRequest.h
 ../../../Protocol/UPRequest.h
+UPCache.h
+../../../Protocol/UPCache.h
 UPDir.h
 ../../../Protocol/UPDir.h
 UPHeartbeat.h
@@ -921,8 +935,6 @@ ThreadClient.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/BackTradeSession.h
 global.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/global.h
-BlockQueue.h
-/home/gong/workspace/git/UkexServer/Trade/FrontTrade/BlockQueue.h
 
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/BackTradeSrv.cpp
 BackTradeSrv.h
@@ -933,12 +945,6 @@ ThreadClient.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/BackTradeSrv.h
 BackTradeSession.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/BackTradeSession.h
-
-/home/gong/workspace/git/UkexServer/Trade/FrontTrade/BlockQueue.h
-UProtocol.h
-/home/gong/workspace/git/UkexServer/Trade/FrontTrade/UProtocol.h
-queue
--
 
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ClientSession.cpp
 ClientSession.h
@@ -959,8 +965,6 @@ ThreadClient.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ClientSrv.h
 ClientSession.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ClientSession.h
-BlockQueue.h
-/home/gong/workspace/git/UkexServer/Trade/FrontTrade/BlockQueue.h
 
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ThreadBackTrade.cpp
 ThreadBackTrade.h
@@ -1007,8 +1011,6 @@ config.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/main.cpp
 UProtocol.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/UProtocol.h
-BlockQueue.h
-/home/gong/workspace/git/UkexServer/Trade/FrontTrade/BlockQueue.h
 ThreadClient.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTrade/ThreadClient.h
 ThreadBackTrade.h

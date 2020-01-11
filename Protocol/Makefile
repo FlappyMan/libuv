@@ -123,6 +123,33 @@ UProtocol/fast:
 	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/build
 .PHONY : UProtocol/fast
 
+UPCache.o: UPCache.cpp.o
+
+.PHONY : UPCache.o
+
+# target to build an object file
+UPCache.cpp.o:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPCache.cpp.o
+.PHONY : UPCache.cpp.o
+
+UPCache.i: UPCache.cpp.i
+
+.PHONY : UPCache.i
+
+# target to preprocess a source file
+UPCache.cpp.i:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPCache.cpp.i
+.PHONY : UPCache.cpp.i
+
+UPCache.s: UPCache.cpp.s
+
+.PHONY : UPCache.s
+
+# target to generate assembly for a file
+UPCache.cpp.s:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPCache.cpp.s
+.PHONY : UPCache.cpp.s
+
 UPCancelsubscribe.o: UPCancelsubscribe.cpp.o
 
 .PHONY : UPCancelsubscribe.o
@@ -1023,6 +1050,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... UProtocol"
 	@echo "... edit_cache"
+	@echo "... UPCache.o"
+	@echo "... UPCache.i"
+	@echo "... UPCache.s"
 	@echo "... UPCancelsubscribe.o"
 	@echo "... UPCancelsubscribe.i"
 	@echo "... UPCancelsubscribe.s"

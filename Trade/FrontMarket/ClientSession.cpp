@@ -157,27 +157,27 @@ int ClientSession::_Subscribe(string &str)
 	if(v.size()<=0)return 0;
 	if(v.size()<1)return 0;
 
-	if(v[0].compare("markets")==0)
+	if(v[1].compare("markets")==0)
 	{
-		m_subs.m_currency=CurrencyFromString(v[1]);
+		m_subs.m_currency=CurrencyFromString(v[2]);
 	}
-	else if(v[0].compare("depth")==0)
+	else if(v[1].compare("depth")==0)
 	{
-		if(m_subs.m_depth.length()>0)g_srv_client.Unsubscribe(this,m_subs.m_depth);
-		m_subs.m_depth=MARKETFromString(v[1]);
-		g_srv_client.Subscribe(this,m_subs.m_depth);
+		if(m_subs.m_depth.length()>0)g_srv_client.Unsubscribe(this,SUBSCRIBE_TYPE_DEPTH,m_subs.m_depth);
+		m_subs.m_depth=v[2];
+		g_srv_client.Subscribe(this,SUBSCRIBE_TYPE_DEPTH,m_subs.m_depth);
 	}
-	else if(v[0].compare("tradelog")==0)
+	else if(v[1].compare("tradelog")==0)
 	{
-		if(m_subs.m_tradelog.length()>0)g_srv_client.Unsubscribe(this,m_subs.m_tradelog);
-		m_subs.m_tradelog=MARKETFromString(v[1]);
-		g_srv_client.Subscribe(this,m_subs.m_tradelog);
+		if(m_subs.m_tradelog.length()>0)g_srv_client.Unsubscribe(this,SUBSCRIBE_TYPE_TRADELOG,m_subs.m_tradelog);
+		m_subs.m_tradelog=v[2];
+		g_srv_client.Subscribe(this,SUBSCRIBE_TYPE_TRADELOG,m_subs.m_tradelog);
 	}
-	else if(v[0].compare("kline")==0)
+	else if(v[1].compare("kline")==0)
 	{
-		if(m_subs.m_kline.length()>0)g_srv_client.Unsubscribe(this,m_subs.m_kline);
-		m_subs.m_kline=KLineFromString(v[1]);
-		g_srv_client.Subscribe(this,m_subs.m_kline);
+		if(m_subs.m_kline.length()>0)g_srv_client.Unsubscribe(this,SUBSCRIBE_TYPE_KLINE,m_subs.m_kline);
+		m_subs.m_kline=v[2];
+		g_srv_client.Subscribe(this,SUBSCRIBE_TYPE_KLINE,m_subs.m_kline);
 	}
 	return 0;
 }
@@ -189,23 +189,23 @@ int ClientSession::_Unsubscribe(string &str)
 	if(v.size()<=0)return 0;
 	if(v.size()<1)return 0;
 
-	if(v[0].compare("markets")==0)
+	if(v[1].compare("markets")==0)
 	{
 		m_subs.m_currency=CURRENCY_UNKNOWN;
 	}
-	else if(v[0].compare("depth")==0)
+	else if(v[1].compare("depth")==0)
 	{
-		g_srv_client.Unsubscribe(this,m_subs.m_depth);
+		g_srv_client.Unsubscribe(this,SUBSCRIBE_TYPE_DEPTH,m_subs.m_depth);
 		m_subs.m_depth=MARKET_UNKNOWN;
 	}
-	else if(v[0].compare("tradelog")==0)
+	else if(v[1].compare("tradelog")==0)
 	{
-		g_srv_client.Unsubscribe(this,m_subs.m_tradelog);
+		g_srv_client.Unsubscribe(this,SUBSCRIBE_TYPE_TRADELOG,m_subs.m_tradelog);
 		m_subs.m_tradelog=MARKET_UNKNOWN;
 	}
-	else if(v[0].compare("kline")==0)
+	else if(v[1].compare("kline")==0)
 	{
-		g_srv_client.Unsubscribe(this,m_subs.m_kline);
+		g_srv_client.Unsubscribe(this,SUBSCRIBE_TYPE_KLINE,m_subs.m_kline);
 		m_subs.m_kline=KLINE_UNKNOWN;
 	}
 	return 0;
@@ -215,12 +215,104 @@ int ClientSession::_Requst(string &str)
 {
 	vector<string> v;
 	UBStringSplit(v,str,'.');
-	if(v.size()!=5)return 0;
+	if(v.size()!=5)return -1;
 
+	if(v[1].compare("kline")!=0)return -2;
 
+	//  发送指定的market kline 数据给客户端
+	string &sMarketID=v[2];
+	string &sKline=v[3];
+	string &sEndTime=v[4];
 
+	struct tm _tm;
+	time_t tNow=time(NULL);
+	localtime_r(&tNow,&_tm);
+
+	string sKlineFilename;				// 根据 backtrade 的文件生成逻辑
+	string sFullPath=g_config.m_sKLineDataDir+sKlineFilename;
+
+	time_t tEndTime=strtol(sEndTime.c_str(),NULL,10);
+	localtime_r(&tEndTime,&_tm);
+	_tm.tm_mon=1;
+	_tm.tm_mday=1;
+	_tm.tm_hour=0;
+	_tm.tm_min=0;
+	_tm.tm_sec=0;
+	time_t tBeginTime=mktime(&_tm);
+
+	enum
+	{
+		RECORD_LINE_LENGTH=200,			// 每条记录固定长度 200bytes，每年一个文件
+	};
+	uint64_t uiMaxSize=RECORD_LINE_LENGTH * 200;		// 200 条 
+
+	uint64_t offset=0;
+	if(sKline==KLINE_STR[KLINE_60S])
+	{
+		offset=RECORD_LINE_LENGTH * (tEndTime-tBeginTime)/60;
+	}
+	else if(sKline==KLINE_STR[KLINE_5M])
+	{
+		offset=RECORD_LINE_LENGTH * (tEndTime-tBeginTime)/(60*5);
+	}
+	else if(sKline==KLINE_STR[KLINE_15M])
+	{
+		offset=RECORD_LINE_LENGTH * (tEndTime-tBeginTime)/(60*15);
+	}
+	else if(sKline==KLINE_STR[KLINE_30M])
+	{
+		offset=RECORD_LINE_LENGTH * (tEndTime-tBeginTime)/(60*30);
+	}
+	else if(sKline==KLINE_STR[KLINE_1H])
+	{
+		offset=RECORD_LINE_LENGTH * (tEndTime-tBeginTime)/(60*60);
+	}
+	else if(sKline==KLINE_STR[KLINE_6H])
+	{
+		offset=RECORD_LINE_LENGTH * (tEndTime-tBeginTime)/(60*60*6);
+	}
+	else if(sKline==KLINE_STR[KLINE_1D])
+	{
+		offset=RECORD_LINE_LENGTH * (tEndTime-tBeginTime)/(60*60*24);
+	}
+	else if(sKline==KLINE_STR[KLINE_1W])
+	{
+		offset=RECORD_LINE_LENGTH * (tEndTime-tBeginTime)/(60*60*24*7);
+	}
+	else if(sKline==KLINE_STR[KLINE_1M])
+	{
+		offset=RECORD_LINE_LENGTH * (tEndTime-tBeginTime)/(60*60*24*30);
+	}
+
+	FILE *fp=fopen(sFullPath.c_str(),"r");
+	if(fp==NULL)return -3;
+
+	fseek(fp, 0L, SEEK_END);
+	uint64_t uiSize= ftell(fp);
+	fseek(fp,offset,SEEK_SET);
+
+	if(offset+uiMaxSize>uiSize)uiMaxSize=uiSize-offset;
+	uiMaxSize=uiMaxSize-(uiMaxSize%RECORD_LINE_LENGTH);
+	char *pBuffer=g_cache_read.Get(uiMaxSize);
+	fread(pBuffer,uiMaxSize,1,fp);
+	fclose(fp);
+	g_cache_read.Free(pBuffer,uiMaxSize);
+
+	char sTemp[RECORD_LINE_LENGTH];
+	UPKlinedata pkg,retPkg;
+	retPkg.set_type(sMarketID+"."+sKline);
+	UPKlinedata::Data* pData = NULL;	// UPKlinedata::Data =  ukex::klinedata_Data
+	for(uint32_t i=0;i<uiMaxSize;i+=RECORD_LINE_LENGTH)
+	{
+		if(JsonUnpack(&pkg,sTemp,RECORD_LINE_LENGTH)==false)break;
+		pData = pkg.add_data();
+		pData->Swap((UPKlinedata::Data*)&pkg.data(0));
+	}
+
+	Client_Write<UPKlinedata>(m_tcp,&pkg);
 	return 0;
 }
+
 
 int ClientSession::_Opt(Json::Value &root)
 {
@@ -233,7 +325,6 @@ int ClientSession::_Opt(Json::Value &root)
 	string timestamp=root["timestamp"].asString();
 
 	return 0;
-
 }
 
 

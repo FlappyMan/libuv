@@ -8,7 +8,7 @@ uint64_t m_uClientID = 0;
 
 void Client_cbTimer(uv_timer_t* handle)
 {
-    BlockQueue<UProtocolBase*> qReq;
+    UBBlockQueue<UProtocolBase> qReq;
     g_srv_client.GetRequest(qReq);
     g_srv_backtrade.PushRequest(qReq);
 
@@ -66,8 +66,8 @@ void Client_cbRead(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf)
     if(ret < 0 || ret == 0)
     {
         uv_close((uv_handle_t*) client, Client_cbClosed);
-        g_cache_read.Free(buf->base,buf->len);
     }
+    g_cache_read.Free(buf->base,buf->len);
 }
 
 

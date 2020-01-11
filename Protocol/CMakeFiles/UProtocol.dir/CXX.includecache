@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+../BaseLib/UBBlockQueue.h
+uv.h
+../BaseLib/uv.h
+queue
+-
+
 ../BaseLib/UBBuffer.h
 UBHeader.h
 ../BaseLib/UBHeader.h
@@ -149,8 +155,18 @@ UBString.h
 ../BaseLib/UBString.h
 UBCrypto.h
 ../BaseLib/UBCrypto.h
+UBBlockQueue.h
+../BaseLib/UBBlockQueue.h
 uv.h
 ../BaseLib/uv.h
+
+/home/gong/workspace/git/UkexServer/Protocol/UPCache.cpp
+UPCache.h
+/home/gong/workspace/git/UkexServer/Protocol/UPCache.h
+
+/home/gong/workspace/git/UkexServer/Protocol/UPCache.h
+UProtocolBase.h
+/home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.h
 
 /home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.cpp
 UPCancelsubscribe.h
@@ -399,6 +415,8 @@ UPOpt.h
 /home/gong/workspace/git/UkexServer/Protocol/UPOpt.h
 UPRequest.h
 /home/gong/workspace/git/UkexServer/Protocol/UPRequest.h
+UPCache.h
+/home/gong/workspace/git/UkexServer/Protocol/UPCache.h
 UPDir.h
 /home/gong/workspace/git/UkexServer/Protocol/UPDir.h
 UPHeartbeat.h

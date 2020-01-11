@@ -150,6 +150,33 @@ UBBuffer.cpp.s:
 	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBBuffer.cpp.s
 .PHONY : UBBuffer.cpp.s
 
+UBCrypto.o: UBCrypto.cpp.o
+
+.PHONY : UBCrypto.o
+
+# target to build an object file
+UBCrypto.cpp.o:
+	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o
+.PHONY : UBCrypto.cpp.o
+
+UBCrypto.i: UBCrypto.cpp.i
+
+.PHONY : UBCrypto.i
+
+# target to preprocess a source file
+UBCrypto.cpp.i:
+	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBCrypto.cpp.i
+.PHONY : UBCrypto.cpp.i
+
+UBCrypto.s: UBCrypto.cpp.s
+
+.PHONY : UBCrypto.s
+
+# target to generate assembly for a file
+UBCrypto.cpp.s:
+	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBCrypto.cpp.s
+.PHONY : UBCrypto.cpp.s
+
 UBDate.o: UBDate.cpp.o
 
 .PHONY : UBDate.o
@@ -258,6 +285,60 @@ UBMysql.cpp.s:
 	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBMysql.cpp.s
 .PHONY : UBMysql.cpp.s
 
+UBString.o: UBString.cpp.o
+
+.PHONY : UBString.o
+
+# target to build an object file
+UBString.cpp.o:
+	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBString.cpp.o
+.PHONY : UBString.cpp.o
+
+UBString.i: UBString.cpp.i
+
+.PHONY : UBString.i
+
+# target to preprocess a source file
+UBString.cpp.i:
+	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBString.cpp.i
+.PHONY : UBString.cpp.i
+
+UBString.s: UBString.cpp.s
+
+.PHONY : UBString.s
+
+# target to generate assembly for a file
+UBString.cpp.s:
+	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBString.cpp.s
+.PHONY : UBString.cpp.s
+
+UBWsParser.o: UBWsParser.cpp.o
+
+.PHONY : UBWsParser.o
+
+# target to build an object file
+UBWsParser.cpp.o:
+	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o
+.PHONY : UBWsParser.cpp.o
+
+UBWsParser.i: UBWsParser.cpp.i
+
+.PHONY : UBWsParser.i
+
+# target to preprocess a source file
+UBWsParser.cpp.i:
+	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBWsParser.cpp.i
+.PHONY : UBWsParser.cpp.i
+
+UBWsParser.s: UBWsParser.cpp.s
+
+.PHONY : UBWsParser.s
+
+# target to generate assembly for a file
+UBWsParser.cpp.s:
+	$(MAKE) -f CMakeFiles/UBaseLib.dir/build.make CMakeFiles/UBaseLib.dir/UBWsParser.cpp.s
+.PHONY : UBWsParser.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -270,6 +351,9 @@ help:
 	@echo "... UBBuffer.o"
 	@echo "... UBBuffer.i"
 	@echo "... UBBuffer.s"
+	@echo "... UBCrypto.o"
+	@echo "... UBCrypto.i"
+	@echo "... UBCrypto.s"
 	@echo "... UBDate.o"
 	@echo "... UBDate.i"
 	@echo "... UBDate.s"
@@ -282,6 +366,12 @@ help:
 	@echo "... UBMysql.o"
 	@echo "... UBMysql.i"
 	@echo "... UBMysql.s"
+	@echo "... UBString.o"
+	@echo "... UBString.i"
+	@echo "... UBString.s"
+	@echo "... UBWsParser.o"
+	@echo "... UBWsParser.i"
+	@echo "... UBWsParser.s"
 .PHONY : help
 
 

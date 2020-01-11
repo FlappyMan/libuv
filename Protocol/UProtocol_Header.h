@@ -21,7 +21,7 @@
 #include "UPCancelsubscribe.h"
 #include "UPOpt.h"
 #include "UPRequest.h"
-
+#include "UPCache.h"
 #include "UPDir.h"
 #include "UPHeartbeat.h"
 
