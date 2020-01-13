@@ -47,7 +47,6 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         JsonUnpack((UPUptrade *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());        
         g_srv_client.AddRequest(pkg);
         g_srv_client.InsertClientID(token,this);
-        cout<<"m_uSessionID_uptrade : "<<m_uSessionID<<endl;
     }else if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/upTradeBatch") == 0)
     {
         pkg = new UPUptradebatch;

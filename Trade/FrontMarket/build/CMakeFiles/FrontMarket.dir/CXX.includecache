@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+../../../BaseLib/UBBlockQueue.h
+uv.h
+../../../BaseLib/uv.h
+queue
+-
+
 ../../../BaseLib/UBBuffer.h
 UBHeader.h
 ../../../BaseLib/UBHeader.h
@@ -149,8 +155,14 @@ UBString.h
 ../../../BaseLib/UBString.h
 UBCrypto.h
 ../../../BaseLib/UBCrypto.h
+UBBlockQueue.h
+../../../BaseLib/UBBlockQueue.h
 uv.h
 ../../../BaseLib/uv.h
+
+../../../Protocol/UPCache.h
+UProtocolBase.h
+../../../Protocol/UProtocolBase.h
 
 ../../../Protocol/UPCancelsubscribe.h
 UBaseLib.h
@@ -331,6 +343,8 @@ UPOpt.h
 ../../../Protocol/UPOpt.h
 UPRequest.h
 ../../../Protocol/UPRequest.h
+UPCache.h
+../../../Protocol/UPCache.h
 UPDir.h
 ../../../Protocol/UPDir.h
 UPHeartbeat.h
@@ -961,6 +975,8 @@ Subscribe.h
 /home/gong/workspace/git/UkexServer/Trade/FrontMarket/Subscribe.h
 UProtocol.h
 /home/gong/workspace/git/UkexServer/Trade/FrontMarket/UProtocol.h
+global.h
+/home/gong/workspace/git/UkexServer/Trade/FrontMarket/global.h
 
 /home/gong/workspace/git/UkexServer/Trade/FrontMarket/ThreadBackTrade.cpp
 ThreadBackTrade.h
@@ -1016,12 +1032,6 @@ BaseTsd.h
 stdint.h
 -
 
-/usr/local/UkexServer/lib/jsoncpp/include/json/allocator.h
-cstring
--
-memory
--
-
 /usr/local/UkexServer/lib/jsoncpp/include/json/autolink.h
 config.h
 /usr/local/UkexServer/lib/jsoncpp/include/json/config.h
@@ -1029,30 +1039,6 @@ cpptl/cpptl_autolink.h
 -
 autolink.h
 /usr/local/UkexServer/lib/jsoncpp/include/json/autolink.h
-
-/usr/local/UkexServer/lib/jsoncpp/include/json/config.h
-cstddef
--
-cstdint
--
-istream
--
-memory
--
-ostream
--
-sstream
--
-string
--
-type_traits
--
-cpptl/config.h
--
-allocator.h
-/usr/local/UkexServer/lib/jsoncpp/include/json/allocator.h
-version.h
-/usr/local/UkexServer/lib/jsoncpp/include/json/version.h
 
 /usr/local/UkexServer/lib/jsoncpp/include/json/features.h
 forwards.h
@@ -1109,8 +1095,6 @@ cpptl/smallmap.h
 -
 cpptl/forwards.h
 -
-
-/usr/local/UkexServer/lib/jsoncpp/include/json/version.h
 
 /usr/local/UkexServer/lib/jsoncpp/include/json/writer.h
 value.h

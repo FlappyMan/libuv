@@ -30,7 +30,6 @@ CJsonObjectBase *CLoginDto::requestOperation()
 
             CDispatchManager::g_mysql.Value(0, userId);
             time_t nowTime = time(NULL);
-
             int64_t time = (int64_t)nowTime;
             int64_t deadLine = time + 604800;
             sTime << time;

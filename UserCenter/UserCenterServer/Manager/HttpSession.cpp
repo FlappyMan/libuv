@@ -13,13 +13,18 @@ CHttpSession::~CHttpSession()
 
 int CHttpSession::OnRecv(uv_tcp_t *client, char *pBuffer, int iDataLen)
 {
+#ifdef PRINT_LOG
     cout << "[CHttpSession OnRecv]" << endl;
+#endif
     UBHttpParser httpParser;
     httpParser.Init(HTTP_REQUEST);
     int ret = httpParser.Readed(pBuffer, iDataLen);
     if (ret == RET_SUCCESS)
     {
+#ifdef PRINT_LOG
         cout << "[CHttpSession OnRecv IsHeaderComplete]" << endl;
+#endif
+
 #ifdef DEBUG
         assert(true == httpParser.IsHeaderComplete());
 #else
@@ -30,8 +35,10 @@ int CHttpSession::OnRecv(uv_tcp_t *client, char *pBuffer, int iDataLen)
 #endif
         if (strcasecmp(httpParser.m_sUrl.c_str(), "/api/UserCenter/Login") == 0)
         {
+#ifdef PRINT_LOG
             cout << "[CHttpSession OnRecv HTTP API] = /api/UserCenter/Login" << endl;
             cout << "[CHttpSession OnRecv Body] = " << httpParser.m_sBody.c_str() << endl;
+#endif
             map<string, string>::iterator it = httpParser.m_mFiled.find("token");
             if (it != httpParser.m_mFiled.end())
             {

@@ -8,7 +8,7 @@
 #include "./BaseConfig/config.h"
 
 #define ARRAY
-#define PRINT_LOG
+// #define PRINT_LOG
 
 extern string g_dir_root;       // 程序当前路径
 extern Config g_config;

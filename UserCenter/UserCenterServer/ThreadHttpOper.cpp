@@ -35,8 +35,7 @@ void CThreadHttpOper::cbTimer(uv_timer_t *handle)
 		}
 	}
 #ifdef ARRAY
-	int iVecSize = vecArray.size();
-	if (iVecSize != 0)
+	if (vecArray.size() != 0)
 	{
 		CThreadDBOper::m_qDBJsonObjOper.put(vecArray);
 	}
@@ -55,7 +54,6 @@ void CThreadHttpOper::cbTimer(uv_timer_t *handle)
 		for (int i = 0; i < iResultSize; i++)
 		{
 			CJsonObjectBase *pResult = vecResp[i];
-			cout<<"CDispatchManager::DispatchHttpResponse"<<endl;
 			CDispatchManager::DispatchHttpResponse(pResult->Serialize().c_str(), pResult->m_client);
 			if (NULL != pResult)
 			{

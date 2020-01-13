@@ -313,7 +313,7 @@ void TestCanceltradebatch()
 }
 int main()
 {
-     TestUptrade();
+    // TestUptrade();
     // TestUptradeBatch();
     // TestAllmarketinfo();
     // TestDepthdata();

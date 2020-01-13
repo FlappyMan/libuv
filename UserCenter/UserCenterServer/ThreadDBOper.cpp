@@ -23,7 +23,6 @@ void CThreadDBOper::cbTimer(uv_timer_t *handle)
 			continue;
 		}
 #endif
-
 		CThreadDBOper::m_qDBResult.put(&pResult);
 	}
 
@@ -54,13 +53,11 @@ void CThreadDBOper::cbTimer(uv_timer_t *handle)
 			vecArray.push_back(pResponse);
 		}
 
-		int iVecSize = vecArray.size();
-		if (iVecSize != 0)
+		if (vecArray.size() != 0)
 		{
 			CThreadDBOper::m_qDBResultJsonOper.put(vecArray);
 		}
 #else
-		
 		for (int i = 0; i < iResultSize; i++)
 		{
 			CJsonObjectBase *pObj = CThreadDBOper::m_qDBJsonObjOper.get();
@@ -78,10 +75,8 @@ void CThreadDBOper::cbTimer(uv_timer_t *handle)
 				continue;
 			}
 #endif
-			
 			CThreadDBOper::m_qDBResultJsonOper.put(pResponse);
 		}
-			
 #endif
 	}
 }
