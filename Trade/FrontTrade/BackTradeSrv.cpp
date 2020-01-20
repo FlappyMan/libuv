@@ -28,19 +28,8 @@ int BackTradeSrv::Read(uv_tcp_t* tcp,char *pBuffer,int iDataLen)
     return it->second->Read(pBuffer,iDataLen,m_qResponse);
 }
 
-void BackTradeSrv::OnTimer(time_t tNow)
+void BackTradeSrv::OnTimer()
 {
-    map<uv_tcp_t*,BackTradeSession*>::iterator it;
-    UProtocolBase* pkg = NULL; 
-    for(it=m_mSession.begin();it!=m_mSession.end();it++)
-    {
-        if (it->second->IsTimeout(tNow))
-        {
-            delete it->second;
-            m_mSession.erase(it);
-            continue;
-        }
-    }
     while (m_qRequest.size()>0)
     {
         _DispatchReq(m_qRequest.get());
@@ -55,11 +44,11 @@ void BackTradeSrv::GetResponse(UBBlockQueue<UProtocolBase> &res)
     }  
 }
 
-void BackTradeSrv::PushRequest(UBBlockQueue<UProtocolBase> &p)
+void BackTradeSrv::PushRequest(UBBlockQueue<UProtocolBase> &req)
 {
-    while (m_qRequest.size() > 0)
+    while (req.size() > 0)
     {
-        m_qRequest.put(p.get()); 
+        m_qRequest.put(req.get()); 
     }  
 }
 

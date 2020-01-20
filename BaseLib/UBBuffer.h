@@ -10,7 +10,13 @@ class UBBuffer
 {
 public:
 	UBBuffer():m_pBuffer(NULL),m_uiBufferSize(0),m_uiDataLen(0),m_uiDataPos(0),m_bAutoFree(true){};
-	UBBuffer(char *p,int s,bool bAutoFree=false):m_pBuffer(p),m_uiBufferSize(s),m_uiDataLen(0),m_uiDataPos(0),m_bAutoFree(bAutoFree){};
+	UBBuffer(char *p,int s,bool bAutoFree=false):m_pBuffer(p),m_uiBufferSize(s),m_uiDataLen(s),m_uiDataPos(0),m_bAutoFree(bAutoFree)
+	{
+		m_pBuffer = new char[s];
+		memcpy(m_pBuffer,p,s);
+		m_uiDataLen = s;
+		m_uiBufferSize = s;
+	};
 	UBBuffer(int sz):m_pBuffer(NULL),m_uiBufferSize(0),m_uiDataLen(0),m_uiDataPos(0),m_bAutoFree(true)
 	{
 		m_pBuffer=new char[sz];

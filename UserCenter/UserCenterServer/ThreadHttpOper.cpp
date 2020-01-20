@@ -7,20 +7,13 @@ uv_timer_t g_uvHttpTimer;
 
 void CThreadHttpOper::cbTimer(uv_timer_t *handle)
 {
-#ifdef ARRAY
 	std::vector<CJsonObjectBase *> vecArray;
-#endif
 	for (mapHttpSession::iterator itr = CDispatchManager::g_mapHttpMapping.begin(); itr != CDispatchManager::g_mapHttpMapping.end();)
 	{
-
 		if (true == itr->second->isRecvFinish())
 		{
 			CJsonObjectBase *pRespOper = itr->second->m_pObject;
-#ifdef ARRAY
 			vecArray.push_back(pRespOper);
-#else
-			CThreadDBOper::m_qDBJsonObjOper.put(pRespOper);
-#endif
 			itr->second->m_pObject = NULL;
 			if (NULL != itr->second)
 			{
@@ -34,12 +27,10 @@ void CThreadHttpOper::cbTimer(uv_timer_t *handle)
 			itr++;
 		}
 	}
-#ifdef ARRAY
 	if (vecArray.size() != 0)
 	{
 		CThreadDBOper::m_qDBJsonObjOper.put(vecArray);
 	}
-#endif
 
 	int iResultSize = CThreadDBOper::m_qDBResultJsonOper.size();
 	if (0 != iResultSize)
@@ -47,8 +38,6 @@ void CThreadHttpOper::cbTimer(uv_timer_t *handle)
 #ifdef PRINT_LOG
 		cout << "[CThreadHttpOper::cbTimer] response iResultSize = " << iResultSize << endl;
 #endif
-
-#ifdef ARRAY
 		std::vector<CJsonObjectBase *> vecResp;
 		CThreadDBOper::m_qDBResultJsonOper.get(vecResp, iResultSize);
 		for (int i = 0; i < iResultSize; i++)
@@ -61,15 +50,6 @@ void CThreadHttpOper::cbTimer(uv_timer_t *handle)
 				pResult = NULL;
 			}
 		}
-#else
-		CJsonObjectBase *pResult = CThreadDBOper::m_qDBResultJsonOper.get();
-		CDispatchManager::DispatchHttpResponse(pResult->Serialize().c_str(), pResult->m_client);
-		if (NULL != pResult)
-		{
-			delete pResult;
-			pResult = NULL;
-		}
-#endif
 	}
 }
 

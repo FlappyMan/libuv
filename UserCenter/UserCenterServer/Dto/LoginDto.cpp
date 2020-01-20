@@ -6,6 +6,7 @@ CLoginDto::CLoginDto()
     SetProperty(property(usercount));
     SetProperty(property(password));
 }
+
 CJsonObjectBase *CLoginDto::requestOperation()
 {
 #ifdef PRINT_LOG

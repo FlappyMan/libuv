@@ -1,7 +1,6 @@
 #ifndef _HTTP_SESSION_HEADER_
 #define _HTTP_SESSION_HEADER_
 #include "../global.h"
-#include "../Protocol/UPJsonReflex.hpp"
 class CHttpSession
 {
 public:

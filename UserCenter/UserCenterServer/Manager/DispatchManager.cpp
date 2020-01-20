@@ -51,24 +51,6 @@ int CDispatchManager::DispatchHttpClient(uv_tcp_t *client, char *pBuffer, int iD
     }
 }
 
-void CDispatchManager::CloseHttpClient(uv_tcp_t *client)
-{
-    mapHttpSession::iterator itr = CDispatchManager::g_mapHttpMapping.find(client);
-    if (itr != CDispatchManager::g_mapHttpMapping.end())
-    {
-        CDispatchManager::g_mapHttpMapping.erase(itr);
-    }
-}
-
-void CDispatchManager::CloseClient(uv_tcp_t *client)
-{
-    mapBaseSession::iterator itr = CDispatchManager::g_mapMapping.find(client);
-    if (itr != CDispatchManager::g_mapMapping.end())
-    {
-        CDispatchManager::g_mapMapping.erase(itr);
-    }
-}
-
 int CDispatchManager::DispatchHttpResponse(string sResp, uv_tcp_t *client, bool success)
 {
 #ifdef PRINT_LOG

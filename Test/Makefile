@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named wuyoupeng
+
+# Build rule for target.
+wuyoupeng: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 wuyoupeng
+.PHONY : wuyoupeng
+
+# fast build rule for target.
+wuyoupeng/fast:
+	$(MAKE) -f CMakeFiles/wuyoupeng.dir/build.make CMakeFiles/wuyoupeng.dir/build
+.PHONY : wuyoupeng/fast
+
+#=============================================================================
 # Target rules for targets named gong
 
 # Build rule for target.
@@ -124,32 +137,6 @@ gong/fast:
 .PHONY : gong/fast
 
 #=============================================================================
-# Target rules for targets named grant
-
-# Build rule for target.
-grant: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 grant
-.PHONY : grant
-
-# fast build rule for target.
-grant/fast:
-	$(MAKE) -f CMakeFiles/grant.dir/build.make CMakeFiles/grant.dir/build
-.PHONY : grant/fast
-
-#=============================================================================
-# Target rules for targets named uv
-
-# Build rule for target.
-uv: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 uv
-.PHONY : uv
-
-# fast build rule for target.
-uv/fast:
-	$(MAKE) -f CMakeFiles/uv.dir/build.make CMakeFiles/uv.dir/build
-.PHONY : uv/fast
-
-#=============================================================================
 # Target rules for targets named http
 
 # Build rule for target.
@@ -161,19 +148,6 @@ http: cmake_check_build_system
 http/fast:
 	$(MAKE) -f CMakeFiles/http.dir/build.make CMakeFiles/http.dir/build
 .PHONY : http/fast
-
-#=============================================================================
-# Target rules for targets named ws
-
-# Build rule for target.
-ws: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ws
-.PHONY : ws
-
-# fast build rule for target.
-ws/fast:
-	$(MAKE) -f CMakeFiles/ws.dir/build.make CMakeFiles/ws.dir/build
-.PHONY : ws/fast
 
 gong.o: gong.cpp.o
 
@@ -202,33 +176,6 @@ gong.cpp.s:
 	$(MAKE) -f CMakeFiles/gong.dir/build.make CMakeFiles/gong.dir/gong.cpp.s
 .PHONY : gong.cpp.s
 
-grant.o: grant.cpp.o
-
-.PHONY : grant.o
-
-# target to build an object file
-grant.cpp.o:
-	$(MAKE) -f CMakeFiles/grant.dir/build.make CMakeFiles/grant.dir/grant.cpp.o
-.PHONY : grant.cpp.o
-
-grant.i: grant.cpp.i
-
-.PHONY : grant.i
-
-# target to preprocess a source file
-grant.cpp.i:
-	$(MAKE) -f CMakeFiles/grant.dir/build.make CMakeFiles/grant.dir/grant.cpp.i
-.PHONY : grant.cpp.i
-
-grant.s: grant.cpp.s
-
-.PHONY : grant.s
-
-# target to generate assembly for a file
-grant.cpp.s:
-	$(MAKE) -f CMakeFiles/grant.dir/build.make CMakeFiles/grant.dir/grant.cpp.s
-.PHONY : grant.cpp.s
-
 http.o: http.cpp.o
 
 .PHONY : http.o
@@ -256,59 +203,32 @@ http.cpp.s:
 	$(MAKE) -f CMakeFiles/http.dir/build.make CMakeFiles/http.dir/http.cpp.s
 .PHONY : http.cpp.s
 
-uv.o: uv.cpp.o
+wuyoupeng.o: wuyoupeng.cpp.o
 
-.PHONY : uv.o
-
-# target to build an object file
-uv.cpp.o:
-	$(MAKE) -f CMakeFiles/uv.dir/build.make CMakeFiles/uv.dir/uv.cpp.o
-.PHONY : uv.cpp.o
-
-uv.i: uv.cpp.i
-
-.PHONY : uv.i
-
-# target to preprocess a source file
-uv.cpp.i:
-	$(MAKE) -f CMakeFiles/uv.dir/build.make CMakeFiles/uv.dir/uv.cpp.i
-.PHONY : uv.cpp.i
-
-uv.s: uv.cpp.s
-
-.PHONY : uv.s
-
-# target to generate assembly for a file
-uv.cpp.s:
-	$(MAKE) -f CMakeFiles/uv.dir/build.make CMakeFiles/uv.dir/uv.cpp.s
-.PHONY : uv.cpp.s
-
-ws.o: ws.cpp.o
-
-.PHONY : ws.o
+.PHONY : wuyoupeng.o
 
 # target to build an object file
-ws.cpp.o:
-	$(MAKE) -f CMakeFiles/ws.dir/build.make CMakeFiles/ws.dir/ws.cpp.o
-.PHONY : ws.cpp.o
+wuyoupeng.cpp.o:
+	$(MAKE) -f CMakeFiles/wuyoupeng.dir/build.make CMakeFiles/wuyoupeng.dir/wuyoupeng.cpp.o
+.PHONY : wuyoupeng.cpp.o
 
-ws.i: ws.cpp.i
+wuyoupeng.i: wuyoupeng.cpp.i
 
-.PHONY : ws.i
+.PHONY : wuyoupeng.i
 
 # target to preprocess a source file
-ws.cpp.i:
-	$(MAKE) -f CMakeFiles/ws.dir/build.make CMakeFiles/ws.dir/ws.cpp.i
-.PHONY : ws.cpp.i
+wuyoupeng.cpp.i:
+	$(MAKE) -f CMakeFiles/wuyoupeng.dir/build.make CMakeFiles/wuyoupeng.dir/wuyoupeng.cpp.i
+.PHONY : wuyoupeng.cpp.i
 
-ws.s: ws.cpp.s
+wuyoupeng.s: wuyoupeng.cpp.s
 
-.PHONY : ws.s
+.PHONY : wuyoupeng.s
 
 # target to generate assembly for a file
-ws.cpp.s:
-	$(MAKE) -f CMakeFiles/ws.dir/build.make CMakeFiles/ws.dir/ws.cpp.s
-.PHONY : ws.cpp.s
+wuyoupeng.cpp.s:
+	$(MAKE) -f CMakeFiles/wuyoupeng.dir/build.make CMakeFiles/wuyoupeng.dir/wuyoupeng.cpp.s
+.PHONY : wuyoupeng.cpp.s
 
 # Help Target
 help:
@@ -317,27 +237,19 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... gong"
-	@echo "... grant"
-	@echo "... uv"
 	@echo "... edit_cache"
+	@echo "... wuyoupeng"
+	@echo "... gong"
 	@echo "... http"
-	@echo "... ws"
 	@echo "... gong.o"
 	@echo "... gong.i"
 	@echo "... gong.s"
-	@echo "... grant.o"
-	@echo "... grant.i"
-	@echo "... grant.s"
 	@echo "... http.o"
 	@echo "... http.i"
 	@echo "... http.s"
-	@echo "... uv.o"
-	@echo "... uv.i"
-	@echo "... uv.s"
-	@echo "... ws.o"
-	@echo "... ws.i"
-	@echo "... ws.s"
+	@echo "... wuyoupeng.o"
+	@echo "... wuyoupeng.i"
+	@echo "... wuyoupeng.s"
 .PHONY : help
 
 

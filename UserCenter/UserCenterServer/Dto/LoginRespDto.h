@@ -14,7 +14,6 @@ public:
         SetProperty(property(deadLine));
     }
     CJsonObjectBase * requestOperation(){};
-    void respDtoSerialize();
 public:
     string token;
     string status;

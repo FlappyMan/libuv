@@ -5,6 +5,7 @@
 uv_timer_t g_timer_backtrade;
 uv_loop_t g_loop_backtrade;
 BackTradeSrv g_srv_backtrade;
+int session_cnt = 0;
 
 void BackTrade_cbTimer(uv_timer_t* handle)
 {
@@ -12,8 +13,7 @@ void BackTrade_cbTimer(uv_timer_t* handle)
     g_srv_backtrade.GetResponse(qRes);
     g_srv_client.PushResponse(qRes);
 
-    time_t tNow = time(NULL);
-    g_srv_backtrade.OnTimer(tNow);
+    g_srv_backtrade.OnTimer();
 }
 
 
@@ -29,6 +29,12 @@ void BackTrade_cbReadBuff(uv_handle_t* handle, size_t suggested_size, uv_buf_t* 
 
 void BackTrade_cbClosed(uv_handle_t* handle) 
 {
+    map<uv_tcp_t*,BackTradeSession*>::iterator it=g_srv_backtrade.m_mSession.find((uv_tcp_t*)handle);
+    if (it != g_srv_backtrade.m_mSession.end())
+    {
+        delete it->second;
+        g_srv_backtrade.m_mSession.erase(it);
+    }
     delete (uv_tcp_t*)handle;
 }
 

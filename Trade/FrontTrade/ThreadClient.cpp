@@ -18,10 +18,7 @@ void Client_cbTimer(uv_timer_t* handle)
 
 void Client_cbClosed(uv_handle_t* handle)
 {
-    map<uv_tcp_t*,ClientSession*>::iterator it=g_srv_client.m_mSession.find((uv_tcp_t*)handle);
-    it->second->Destroy();
-    delete it->second;
-    g_srv_client.m_mSession.erase(it);
+	g_srv_client.CloseConnection((uv_tcp_t*)handle);
     delete (uv_tcp_t*)handle;
 }
 
@@ -39,7 +36,7 @@ void Client_cbWrited(uv_write_t* req, int status)
     {
         //cout<<"[Server] Write failed"<<endl;
     }
-    uv_close((uv_handle_t*)req->handle,Client_cbClosed);
+    uv_close((uv_handle_t*)req->handle, Client_cbClosed);
     g_cache_write_req.Free((UVWriteReq*)req);
 }
 
@@ -63,7 +60,7 @@ void Client_cbRead(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf)
 
     //cout<<"[Server] readed :"<<buf->base<<endl;
     int ret = g_srv_client.Read((uv_tcp_t*)client, buf->base, nread);
-    if(ret < 0 || ret == 0)
+    if(ret < 0)
     {
         uv_close((uv_handle_t*) client, Client_cbClosed);
     }
@@ -134,55 +131,3 @@ int GetGMTime(char* szGmtTime)
     strcpy(szGmtTime, szTemp); 
     return 0;
 }
-
-int32_t Client_Write(uv_stream_t* client,UPResponse* resPkg,int status) 
-{	
-    UVWriteReq* req= g_cache_write_req.Get(200);
-    if(req==NULL)return -1;
-    // UPResponse* resPkg = new UPResponse;//for test
-    // if(status == 200)
-    // {
-    // 	resPkg->set_status(1);
-    // 	resPkg->set_data("交易成功!");
-    // }else
-    // {
-    // 	resPkg->set_status(0);
-    // 	resPkg->set_data("交易失败!");
-    // }
-    string sHttpReq;
-    if(resPkg && status == 200)
-    {
-        char buf[50] = {0};
-        int ret = JsonPack<UPResponse>(resPkg,buf,50);
-        if(ret<=0)
-        {
-            g_cache_write_req.Free(req);
-            uv_close((uv_handle_t*) client, Client_cbClosed);
-            return ret;
-        }
-        string sBody=buf;
-        sHttpReq="HTTP/1.1 200 OK\r\n";
-        sHttpReq.append("Content-Type: text/html; charset=utf-8\r\n");
-        char contentLen[20] = {0};	
-        sprintf(contentLen,"Content-Length: %lu\r\n",sBody.length());
-        sHttpReq.append(contentLen);
-        sHttpReq.append("Content-Language: zh-CN\r\n");
-        sHttpReq.append("Connection: Close\r\n");	
-        sHttpReq.append("Server: UkexServer\r\n");	
-        sHttpReq.append("\r\n");
-        sHttpReq.append(sBody);
-        delete resPkg;
-    }else if(!resPkg && status == 404)
-    {
-        sHttpReq="HTTP/1.1 404 Not Found\r\n";
-        sHttpReq.append("Content-Length: 0\r\n");
-        sHttpReq.append("Connection: Close\r\n");	
-        sHttpReq.append("Server: UkexServer\r\n");	
-    }else
-    {
-        /*code*/
-    }
-    req->pkg = resPkg;
-    strncpy(req->buf.base,(const char *)sHttpReq.c_str(),sHttpReq.length());
-    uv_write((uv_write_t *)req, client, &req->buf, 1, Client_cbWrited);
-};

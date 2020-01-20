@@ -7,7 +7,7 @@
 class ClientSrv
 {
     public:
-        ClientSrv();
+        ClientSrv(int iBufferSize=1024*8);
         ~ClientSrv();
 
         void NewConnection(uv_tcp_t* tcp);
@@ -24,6 +24,9 @@ class ClientSrv
         map<uv_tcp_t*,ClientSession*> m_mSession;
         map<string,ClientSession*> m_mClientID;
         UBBlockQueue<UProtocolBase> m_qRequest,m_qResponse;
+    
+        char *m_pBuffer;
+	    int m_iBufferSize;
 };
 
 

@@ -1,0 +1,26 @@
+{
+    "accept_tcp_ip":"192.168.1.20",
+    "accept_tcp_port":9502,
+    "connect_key":"123456",
+
+    "accept_http_ip":"192.168.1.20",
+    "accept_http_port":9503,
+
+    "usercenter_ip":"192.168.1.20",
+    "usercenter_port":9500,
+
+    "host":"192.168.1.20",
+    "port":3306,
+    "user":"wuyoupeng",
+    "password":"123456",
+    "account":"account",
+    "admin":"admin",
+    "assets":"assets",
+    "base":"base",
+    "exassets":"exassets",
+    "kyc":"kyc",
+    "otc":"otc",
+    "other":"other",
+    "sa":"sa",
+    "trade":"trade"
+}

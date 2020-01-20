@@ -12,9 +12,9 @@ class BackTradeSrv
 
         void NewConnection(uv_tcp_t *tcp);
         int Read(uv_tcp_t *tcp,char *pBuffer,int iDataLen);
-        void OnTimer(time_t tNow);
+        void OnTimer();
         void GetResponse(UBBlockQueue<UProtocolBase> &res);
-        void PushRequest(UBBlockQueue<UProtocolBase> &p);
+        void PushRequest(UBBlockQueue<UProtocolBase> &req);
         void AddMarket(uint64_t& MarketID, BackTradeSession* bt);
         void _DispatchReq(UProtocolBase* req);
         void _DispatchReq_Uptrade(UPUptrade* pkg);

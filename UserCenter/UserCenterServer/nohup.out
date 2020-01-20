@@ -1,0 +1,33 @@
+[UserCenter running]
+[CThreadTCPOper Init]
+[CThreadDBOper Init]
+[CThreadHttpOper Init]
+[UserCenter running]
+[CThreadTCPOper Init]
+[CThreadDBOper Init][CThreadHttpOper Init]
+
+[UserCenter running]
+[CThreadTCPOper Init]
+[CThreadHttpOper Init][CThreadDBOper Init]
+
+[CThreadTCPOper->cbNewConnection] Accept new connection
+[CThreadTCPOper->cbNewConnection] New connection begin read : 0
+[CThreadTCPOper->cbNewConnection->cbReadBuff] New read buffer
+[CThreadTCPOper->cbNewConnection->cbRead] Server begin read
+[CThreadTCPOper->cbNewConnection->cbRead] readed :POST /api/UserCenter/Login HTTP/1.0
+Content-length: 101
+Content-type: {usercount:407339176@qq.com,password:123456}
+token:asldkfoiwefnasdlkfjqwe
+Host: 192.168.1.20:9500
+User-Agent: ApacheBench/2.3
+Accept: */*
+
+{"usercount":"13883977789","password":"$2y$10$4nCUlHvSE5luJOIbbqJaRuAN/TbH1k6m/oPn2Biyg1c.9bGfO0Ai"}
+
+[CBaseSession]:[OnRecv]
+[CBaseSession]:[RET_FAILED]
+[CThreadTCPOper->cbNewConnection] Accept new connection
+[CThreadTCPOper->cbNewConnection] New connection begin read : 0
+[CThreadTCPOper->cbNewConnection->cbReadBuff] New read buffer
+[CThreadTCPOper->cbNewConnection->cbRead] Server begin read
+UserCenter: /home/wuyoupeng/UkexServer/UserCenter/UserCenterServer/ThreadTCPOper.cpp:77: static void CThreadTCPOper::cbRead(uv_stream_t*, ssize_t, const uv_buf_t*): Assertion `nread != UV_EOF' failed.

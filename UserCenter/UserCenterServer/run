@@ -1,2 +1,2 @@
 make clean;make
-./UserCenter ./BaseConfig/config.json
+./UserCenter BaseConfig/config.json

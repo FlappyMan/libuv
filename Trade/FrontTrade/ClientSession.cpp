@@ -1,7 +1,8 @@
 #include "ClientSession.h"
 #include "ThreadClient.h"
 
-ClientSession::ClientSession(uv_tcp_t* tcp):m_tcp(tcp),m_uSessionID(0)
+ClientSession::ClientSession(uv_tcp_t* tcp,char *pBuffer,int iBufferSize):
+    m_tcp(tcp),m_uSessionID(0),m_pBuffer(pBuffer),m_iBufferSize(iBufferSize),m_tLast(0)
 {
     tcp->data = this;
 }
@@ -15,7 +16,7 @@ void ClientSession::Init()
 {
     m_tLast = time(NULL);
     m_http.Init(HTTP_REQUEST);
-    m_uSessionID = m_uClientID++;
+    m_uSessionID = ++m_uClientID;
 }
 
 void ClientSession::Destroy()
@@ -47,6 +48,7 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         JsonUnpack((UPUptrade *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());        
         g_srv_client.AddRequest(pkg);
         g_srv_client.InsertClientID(token,this);
+        cout<<"m_http.m_sBody = "<<m_http.m_sBody.c_str()<<endl;
     }else if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/upTradeBatch") == 0)
     {
         pkg = new UPUptradebatch;
@@ -56,6 +58,7 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         JsonUnpack((UPUptradebatch *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());   
         g_srv_client.AddRequest(pkg);
         g_srv_client.InsertClientID(token,this);
+        cout<<"m_http.m_sBody = "<<m_http.m_sBody.c_str()<<endl;
     }else if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/cancelTrade") == 0)
     {
         pkg = new UPCanceltrade;
@@ -65,6 +68,7 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         JsonUnpack((UPCanceltrade *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());   
         g_srv_client.AddRequest(pkg);
         g_srv_client.InsertClientID(token,this);
+        cout<<"m_http.m_sBody = "<<m_http.m_sBody.c_str()<<endl;
     }else if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/cancelTradeBatch") == 0)
     {
         pkg = new UPCanceltradebatch;
@@ -74,10 +78,11 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         JsonUnpack((UPCanceltradebatch *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());   
         g_srv_client.AddRequest(pkg);
         g_srv_client.InsertClientID(token,this);
+        cout<<"m_http.m_sBody = "<<m_http.m_sBody.c_str()<<endl;
     }else
     {    
-        Client_Write((uv_stream_t*)client,NULL,404);
+        return -1;
     }
-    return 0;
+    cout<<"m_uSessionID = "<<m_uSessionID<<endl;
+    return iDataLen;
 }
-

@@ -9,6 +9,13 @@ CHttpSession::CHttpSession()
 }
 CHttpSession::~CHttpSession()
 {
+    assert(m_pObject == NULL);
+    if (NULL != m_pObject)
+    {
+        delete m_pObject;
+        m_pObject = NULL;
+    }
+    
 }
 
 int CHttpSession::OnRecv(uv_tcp_t *client, char *pBuffer, int iDataLen)

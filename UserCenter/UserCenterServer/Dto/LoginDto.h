@@ -9,6 +9,7 @@ class CLoginDto : public CJsonObjectBase
 {
 public:
     CLoginDto();
+    virtual ~CLoginDto(){};
     CJsonObjectBase * requestOperation();
     void respDtoSerialize(){};
 public:

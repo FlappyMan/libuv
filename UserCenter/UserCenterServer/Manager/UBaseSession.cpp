@@ -18,6 +18,7 @@ CBaseSession::CBaseSession()
 }
 CBaseSession::~CBaseSession()
 {
+    m_buffer.RemoveData(m_uiValueLen);
 }
 CBaseRequestOper* CBaseSession::PraseOperation()
 {

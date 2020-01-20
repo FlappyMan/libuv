@@ -2,26 +2,36 @@
 #include "ClientSrv.h"
 #include "ThreadClient.h"
 
-ClientSrv::ClientSrv()
+ClientSrv::ClientSrv(int iBufferSize)
 {
-    // uv_mutex_init(&m_lock);
+	m_iBufferSize=iBufferSize;
+	m_pBuffer=new char[m_iBufferSize];
 }
 
 ClientSrv::~ClientSrv()
 {
-
+	for(map<uv_tcp_t*,ClientSession*>::iterator it=m_mSession.begin();it!=m_mSession.end();it++)
+	{
+		delete it->second;
+	}
+	m_mSession.clear();
 }
 
 void ClientSrv::NewConnection(uv_tcp_t* tcp)
 {
-    ClientSession *p=new ClientSession(tcp);
+    ClientSession *p=new ClientSession(tcp,m_pBuffer,m_iBufferSize);
     p->Init();
     m_mSession.insert(pair<uv_tcp_t*,ClientSession*>(tcp,p));
 }
 
 void ClientSrv::CloseConnection(uv_tcp_t *tcp)
 {
-    m_mSession.erase(tcp);
+	map<uv_tcp_t*,ClientSession*>::iterator it=m_mSession.find(tcp);
+	if(it!=m_mSession.end())
+	{
+		delete it->second;
+		m_mSession.erase(it);
+	}
 }
 
 
@@ -44,7 +54,7 @@ void ClientSrv::PushResponse(UBBlockQueue<UProtocolBase> &res)
 
 void ClientSrv::GetRequest(UBBlockQueue<UProtocolBase> &req)
 {
-    while (req.size()>0)
+    while (m_qRequest.size()>0)
     {
         req.put(m_qRequest.get());
     }
@@ -67,11 +77,23 @@ void ClientSrv::OnTimer(time_t tNow)
             m_mSession.erase(it);
             continue;
         }
-    }  
+    } 
+#if 0
     while(m_qResponse.size()>0)
     {
         _DispatchPkg(m_qResponse.get());
-    }   
+    }  
+#else
+    UPResponse* resPkg = NULL;
+    map<uv_tcp_t*,ClientSession*>::iterator iter = m_mSession.begin();
+    for (;iter!=m_mSession.end();iter++)
+    {
+        resPkg = new UPResponse;
+        resPkg->set_status(1);
+        resPkg->set_data("交易成功!");
+        Client_Write<UPResponse>(iter->first,resPkg,200);
+    }
+#endif
 }
 
 void ClientSrv::_DispatchPkg(UProtocolBase* pkg)
@@ -82,9 +104,9 @@ void ClientSrv::_DispatchPkg(UProtocolBase* pkg)
     {
         if (it->first.compare(res->token()) == 0)
         {
-            Client_Write((uv_stream_t*)it->second->m_tcp,res,200);
-        }     
-    }
+            Client_Write<UPResponse>(it->second->m_tcp,res,200);
+        }  
+    }  
 }
 
 void ClientSrv::InsertClientID(string &token, ClientSession* p)

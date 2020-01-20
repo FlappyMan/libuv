@@ -167,7 +167,7 @@ void CThreadTCPOper::ThreadTCPOper(void *arg)
 	uv_ip4_addr(Config::g_sListenIP.c_str(), Config::g_uiListenPort, &addr);
 
 	uv_tcp_bind(&server, (const struct sockaddr *)&addr, 0);
-	int ret = uv_listen((uv_stream_t *)&server, 1000, cbNewConnection);
+	int ret = uv_listen((uv_stream_t *)&server, 5000, cbNewConnection);
 	if (ret)
 	{
 		cout << "[CThreadTCPOper Client Listen error]:" << uv_strerror(ret) << endl;

@@ -40,17 +40,17 @@ link_directories(
 
 aux_source_directory(. SRC_LIST)
 
-add_executable(grant grant.cpp)
-target_link_libraries(grant UProtocol UBaseLib uv_a jsoncpp crypto pthread mysqlclient protobuf)
+# add_executable(wuyoupeng wuyoupeng.cpp)
+# target_link_libraries(grant UProtocol UBaseLib uv_a jsoncpp crypto pthread mysqlclient protobuf)
 
 add_executable(gong gong.cpp)
 target_link_libraries(gong UProtocol UBaseLib uv_a jsoncpp crypto pthread mysqlclient protobuf)
 
-add_executable(uv uv.cpp)
-target_link_libraries(uv UProtocol UBaseLib uv_a jsoncpp crypto pthread mysqlclient protobuf http_parser)
+# add_executable(uv uv.cpp)
+# target_link_libraries(uv UProtocol UBaseLib uv_a jsoncpp crypto pthread mysqlclient protobuf http_parser)
 
 add_executable(http http.cpp)
 target_link_libraries(http UProtocol UBaseLib uv_a jsoncpp crypto pthread mysqlclient protobuf http_parser)
 
-add_executable(ws ws.cpp)
-target_link_libraries(ws UProtocol UBaseLib uv_a jsoncpp crypto pthread mysqlclient protobuf http_parser)
+add_executable(wuyoupeng wuyoupeng.cpp)
+target_link_libraries(wuyoupeng UProtocol UBaseLib uv_a jsoncpp crypto pthread mysqlclient protobuf http_parser)

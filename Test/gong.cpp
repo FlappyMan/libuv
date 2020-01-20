@@ -1,4 +1,3 @@
-
 #include "UProtocol.h"
 
 void TestUptrade()
@@ -311,6 +310,79 @@ void TestCanceltradebatch()
         cout<<"ids ["<<i<<"] : "<<cancel2.ids(i)<<endl;
     }
 }
+void AesAPITest()
+{
+    unsigned char *date = new unsigned char[AES_BLOCK_SIZE*3];
+    unsigned char *encrypt = new unsigned char[AES_BLOCK_SIZE*4 + 4];
+    unsigned char *plain = new unsigned char[AES_BLOCK_SIZE*3];
+    memset((void*)date, 'p', AES_BLOCK_SIZE*3);
+    memset((void*)encrypt, 0, AES_BLOCK_SIZE*4+4);
+    memset((void*)plain, 0, AES_BLOCK_SIZE*3);
+    AesEncrypt(encrypt, date, AES_BLOCK_SIZE*4 + 4, AES_BLOCK_SIZE*3);
+    AesDecrypt(plain, encrypt, AES_BLOCK_SIZE*3, AES_BLOCK_SIZE*4 + 4);
+    printf("encrypt: ");
+    for(int i = 0; i < AES_BLOCK_SIZE*4 + 4; i++){
+        printf("%.2x", encrypt[i]);
+        if((i+1) % 32 == 0){
+            printf("\n");    
+        }
+    }
+    printf("\n"); 
+}
+void AesDemo()
+{
+    char userkey[AES_BLOCK_SIZE];
+    unsigned char *date = (unsigned char *)malloc(AES_BLOCK_SIZE*3);
+    unsigned char *encrypt = (unsigned char *)malloc(AES_BLOCK_SIZE*4 + 4);
+    unsigned char *plain = (unsigned char *)malloc(AES_BLOCK_SIZE*3);
+    AES_KEY key;
+
+    memset((void*)userkey, 'k', AES_BLOCK_SIZE);
+    memset((void*)date, 'p', AES_BLOCK_SIZE*3);
+    memset((void*)encrypt, 0, AES_BLOCK_SIZE*4+4);
+    memset((void*)plain, 0, AES_BLOCK_SIZE*3);
+
+    /*设置加密key及密钥长度*/
+    AES_set_encrypt_key((const unsigned char *)userkey, AES_BLOCK_SIZE*8, &key);
+
+    unsigned char* in_mem_need = new unsigned char[AES_BLOCK_SIZE*4];
+    memset((void*)in_mem_need,0,AES_BLOCK_SIZE*4);
+    strncpy((char*)in_mem_need,(const char*)date,AES_BLOCK_SIZE*3);
+
+    int len = 0;
+    /*循环加密，每次只能加密AES_BLOCK_SIZE长度的数据*/
+    while(len < AES_BLOCK_SIZE*4) {
+        AES_encrypt(in_mem_need+len, encrypt+len, &key);    
+        len += AES_BLOCK_SIZE;
+    }
+    /*设置解密key及密钥长度*/    
+    AES_set_decrypt_key((const unsigned char *)userkey, AES_BLOCK_SIZE*8, &key);
+
+    len = 0;
+    /*循环解密*/
+    while(len < AES_BLOCK_SIZE*4) {
+        AES_decrypt(encrypt+len, plain+len, &key);    
+        len += AES_BLOCK_SIZE;
+    }
+    /*解密后与原数据是否一致*/
+    if(!memcmp(plain, date, AES_BLOCK_SIZE*3)){
+        printf("test success\n");    
+    }else{
+        printf("test failed\n");    
+    }
+
+    printf("encrypt: ");
+    int i = 0;
+    for(i = 0; i < AES_BLOCK_SIZE*4 + 4; i++){
+        printf("%.2x", encrypt[i]);
+        if((i+1) % 32 == 0){
+            printf("\n");    
+        }
+    }
+    printf("\n");    
+    delete in_mem_need;
+    in_mem_need = NULL;
+}
 int main()
 {
     // TestUptrade();
@@ -318,9 +390,10 @@ int main()
     // TestAllmarketinfo();
     // TestDepthdata();
     // TestHistoricalTransactionData();
-     TestKlinedata();
+    TestKlinedata();
     // TestMatchedData();
     // TestCanceltradebatch();
+    AesAPITest();
     return 0;
 }
 

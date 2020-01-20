@@ -29,7 +29,6 @@ void CThreadDBOper::cbTimer(uv_timer_t *handle)
 	int iResultSize = CThreadDBOper::m_qDBJsonObjOper.size();
 	if (0 != iResultSize)
 	{
-#ifdef ARRAY
 		std::vector<CJsonObjectBase *> vecResp;
 		std::vector<CJsonObjectBase *> vecArray;
 		CThreadDBOper::m_qDBJsonObjOper.get(vecResp, iResultSize);
@@ -57,27 +56,6 @@ void CThreadDBOper::cbTimer(uv_timer_t *handle)
 		{
 			CThreadDBOper::m_qDBResultJsonOper.put(vecArray);
 		}
-#else
-		for (int i = 0; i < iResultSize; i++)
-		{
-			CJsonObjectBase *pObj = CThreadDBOper::m_qDBJsonObjOper.get();
-			CJsonObjectBase *pResponse = pObj->requestOperation();
-			if (NULL != pObj)
-			{
-				delete pObj;
-				pObj = NULL;
-			}
-#ifdef DEBUG
-			assert(NULL != pResponse);
-#else
-			if (NULL == pResponse)
-			{
-				continue;
-			}
-#endif
-			CThreadDBOper::m_qDBResultJsonOper.put(pResponse);
-		}
-#endif
 	}
 }
 
