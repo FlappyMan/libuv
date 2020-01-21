@@ -1017,8 +1017,6 @@ UProtocol.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/UProtocol.h
 ThreadClient.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ThreadClient.h
-ThreadBackTrade.h
-/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ThreadBackTrade.h
 config.h
 /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/config.h
 global.h

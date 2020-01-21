@@ -78,7 +78,7 @@ void ClientSrv::OnTimer(time_t tNow)
             continue;
         }
     } 
-#if 0
+#if 1
     while(m_qResponse.size()>0)
     {
         _DispatchPkg(m_qResponse.get());

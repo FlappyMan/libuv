@@ -68,7 +68,7 @@ void ClientSrv::OnTimer(time_t tNow)
             continue;
         }
     } 
-#if 0
+#if 1
     while(m_qResponse.size()>0)
     {
         _DispatchPkg(m_qResponse.get());
@@ -81,7 +81,7 @@ void ClientSrv::OnTimer(time_t tNow)
         resPkg = new UPResponse;
         resPkg->set_status(1);
         resPkg->set_data("交易成功!");
-        Client_Write((uv_stream_t*)(iter->first),resPkg,200);
+        Client_Write<UPResponse>((uv_stream_t*)(iter->first),resPkg,200);
     }
 #endif
 }
@@ -94,7 +94,7 @@ void ClientSrv::_DispatchPkg(UProtocolBase* pkg)
     {
         if (it->first.compare(res->token()) == 0)
         {
-            Client_Write((uv_stream_t*)it->second->m_tcp,res,200);
+            Client_Write<UPResponse>((uv_tcp_t*)it->second->m_tcp,res,200);
         }  
     }  
 }

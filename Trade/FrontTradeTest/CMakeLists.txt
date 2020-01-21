@@ -1,7 +1,7 @@
 cmake_minimum_required( VERSION 3.10.2 )
 
 PROJECT(Test)
-set(APP_NAME FrontTrade)
+set(APP_NAME FrontTradeTest)
 
 #find_package(OpenSSL REQUIRED)
 #find_package(Threads REQUIRED)

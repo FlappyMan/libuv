@@ -25,7 +25,7 @@ void Client_cbClosed(uv_handle_t* handle)
         delete it->second;
         g_srv_client.m_mSession.erase(it);
     }
-    delete (uv_tcp_t*)handle;
+    //delete (uv_tcp_t*)handle;
 }
 
 void Client_cbReadBuff(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf) 
@@ -98,6 +98,33 @@ void Client_cbNewConnection(uv_stream_t *server, int status)
     }
 }
 
+void on_connect(uv_connect_t* req,int status)
+{
+    //{"main_coin":5,"marketid":1,"num":3,"paypassword":"456","price":2,"token":"123","type":4}
+#if 0
+    UPResponse* resPkg = NULL;
+    resPkg = new UPResponse;
+    resPkg->set_status(1);
+    resPkg->set_data("交易成功!");
+    cout<<"connect suc"<<endl;
+    Client_Write<UPResponse>((uv_tcp_t*)req->handle,resPkg,200);
+#else
+    UPUptrade* res = NULL;
+    for (size_t i = 0; i < count; i++)
+    {
+        res = new UPUptrade;
+        res->set_main_coin(5);
+        res->set_marketid(1);
+        res->set_num(66);
+        res->set_paypassword("123456");
+        res->set_price(123);
+        res->set_token("999999");
+        res->set_type(555);
+        Client_Write<UPUptrade>((uv_tcp_t*)req->handle,res,200);
+    }
+#endif
+}
+
 void ThreadClient(void *arg)
 {
     uv_loop_init(&g_loop_client);
@@ -105,16 +132,12 @@ void ThreadClient(void *arg)
     uv_tcp_t server;
     uv_tcp_init(&g_loop_client, &server);
 
+    uv_connect_t connect;
+
     struct sockaddr_in addr;
     uv_ip4_addr(g_config.m_sListenIP_Client.c_str(), g_config.m_uiListenPort_Client, &addr);
 
-    uv_tcp_bind(&server, (const struct sockaddr*)&addr, 0);
-    int ret = uv_listen((uv_stream_t*) &server, 1000, Client_cbNewConnection);
-    if (ret) 
-    {
-        //cout<<"[Client] Listen error :"<<uv_strerror(ret)<<endl;
-        return;
-    }
+    uv_tcp_connect(&connect,&server,(const struct sockaddr*)&addr,on_connect);
 
     uv_timer_init(&g_loop_client, &g_timer_client);
     uv_timer_start(&g_timer_client, Client_cbTimer, 10, 1); 
@@ -137,47 +160,3 @@ int GetGMTime(char* szGmtTime)
     strcpy(szGmtTime, szTemp); 
     return 0;
 }
-
-int32_t Client_Write(uv_stream_t* client,UPResponse* resPkg,int status) 
-{	
-    UVWriteReq* req= g_cache_write_req.Get(200);
-    if(req==NULL)return -1;
-
-    string sHttpReq;
-    if(resPkg && status == 200)
-    {
-        char buf[50] = {0};
-        int ret = JsonPack<UPResponse>(resPkg,buf,50);
-        if(ret<=0)
-        {
-            g_cache_write_req.Free(req);
-            return ret;
-        }
-        string sBody=buf;
-        sHttpReq="HTTP/1.1 200 OK\r\n";
-        sHttpReq.append("Content-Type: text/html; charset=utf-8\r\n");
-        char contentLen[20] = {0};	
-        sprintf(contentLen,"Content-Length: %lu\r\n",sBody.length());
-        sHttpReq.append(contentLen);
-        sHttpReq.append("Content-Language: zh-CN\r\n");
-        sHttpReq.append("Connection: Close\r\n");	
-        sHttpReq.append("Server: UkexServer\r\n");	
-        sHttpReq.append("\r\n");
-        sHttpReq.append(sBody);
-    }
-    // else if(!resPkg && status == 404)
-    // {
-    //     sHttpReq="HTTP/1.1 404 Not Found\r\n";
-    //     sHttpReq.append("Content-Length: 0\r\n");
-    //     sHttpReq.append("Connection: Close\r\n");	
-    //     sHttpReq.append("Server: UkexServer\r\n");	
-    // }
-    else
-    {
-        /*code*/
-    }
-    req->pkg = resPkg;
-    req->buf.len = sHttpReq.length();
-    strncpy(req->buf.base,(const char *)sHttpReq.c_str(),sHttpReq.length());
-    uv_write((uv_write_t *)req, client, &req->buf, 1, Client_cbWrited);
-};

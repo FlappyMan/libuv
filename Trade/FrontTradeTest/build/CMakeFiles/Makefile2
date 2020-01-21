@@ -60,39 +60,39 @@ CMAKE_SOURCE_DIR = /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest
 CMAKE_BINARY_DIR = /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/FrontTrade.dir
+# Target rules for target CMakeFiles/FrontTradeTest.dir
 
 # All Build rule for target.
-CMakeFiles/FrontTrade.dir/all:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/depend
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target FrontTrade"
-.PHONY : CMakeFiles/FrontTrade.dir/all
+CMakeFiles/FrontTradeTest.dir/all:
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/depend
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target FrontTradeTest"
+.PHONY : CMakeFiles/FrontTradeTest.dir/all
 
 # Include target in all.
-all: CMakeFiles/FrontTrade.dir/all
+all: CMakeFiles/FrontTradeTest.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/FrontTrade.dir/rule: cmake_check_build_system
+CMakeFiles/FrontTradeTest.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles 10
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/FrontTrade.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/FrontTradeTest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles 0
-.PHONY : CMakeFiles/FrontTrade.dir/rule
+.PHONY : CMakeFiles/FrontTradeTest.dir/rule
 
 # Convenience name for target.
-FrontTrade: CMakeFiles/FrontTrade.dir/rule
+FrontTradeTest: CMakeFiles/FrontTradeTest.dir/rule
 
-.PHONY : FrontTrade
-
-# clean rule for target.
-CMakeFiles/FrontTrade.dir/clean:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/clean
-.PHONY : CMakeFiles/FrontTrade.dir/clean
+.PHONY : FrontTradeTest
 
 # clean rule for target.
-clean: CMakeFiles/FrontTrade.dir/clean
+CMakeFiles/FrontTradeTest.dir/clean:
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/clean
+.PHONY : CMakeFiles/FrontTradeTest.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/FrontTradeTest.dir/clean
 
 .PHONY : clean
 

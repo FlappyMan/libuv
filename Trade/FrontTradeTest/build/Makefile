@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named FrontTrade
+# Target rules for targets named FrontTradeTest
 
 # Build rule for target.
-FrontTrade: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 FrontTrade
-.PHONY : FrontTrade
+FrontTradeTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FrontTradeTest
+.PHONY : FrontTradeTest
 
 # fast build rule for target.
-FrontTrade/fast:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/build
-.PHONY : FrontTrade/fast
+FrontTradeTest/fast:
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/build
+.PHONY : FrontTradeTest/fast
 
 BackTradeSession.o: BackTradeSession.cpp.o
 
@@ -129,7 +129,7 @@ BackTradeSession.o: BackTradeSession.cpp.o
 
 # target to build an object file
 BackTradeSession.cpp.o:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/BackTradeSession.cpp.o
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o
 .PHONY : BackTradeSession.cpp.o
 
 BackTradeSession.i: BackTradeSession.cpp.i
@@ -138,7 +138,7 @@ BackTradeSession.i: BackTradeSession.cpp.i
 
 # target to preprocess a source file
 BackTradeSession.cpp.i:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/BackTradeSession.cpp.i
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.i
 .PHONY : BackTradeSession.cpp.i
 
 BackTradeSession.s: BackTradeSession.cpp.s
@@ -147,7 +147,7 @@ BackTradeSession.s: BackTradeSession.cpp.s
 
 # target to generate assembly for a file
 BackTradeSession.cpp.s:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/BackTradeSession.cpp.s
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.s
 .PHONY : BackTradeSession.cpp.s
 
 BackTradeSrv.o: BackTradeSrv.cpp.o
@@ -156,7 +156,7 @@ BackTradeSrv.o: BackTradeSrv.cpp.o
 
 # target to build an object file
 BackTradeSrv.cpp.o:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/BackTradeSrv.cpp.o
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o
 .PHONY : BackTradeSrv.cpp.o
 
 BackTradeSrv.i: BackTradeSrv.cpp.i
@@ -165,7 +165,7 @@ BackTradeSrv.i: BackTradeSrv.cpp.i
 
 # target to preprocess a source file
 BackTradeSrv.cpp.i:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/BackTradeSrv.cpp.i
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.i
 .PHONY : BackTradeSrv.cpp.i
 
 BackTradeSrv.s: BackTradeSrv.cpp.s
@@ -174,7 +174,7 @@ BackTradeSrv.s: BackTradeSrv.cpp.s
 
 # target to generate assembly for a file
 BackTradeSrv.cpp.s:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/BackTradeSrv.cpp.s
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.s
 .PHONY : BackTradeSrv.cpp.s
 
 ClientSession.o: ClientSession.cpp.o
@@ -183,7 +183,7 @@ ClientSession.o: ClientSession.cpp.o
 
 # target to build an object file
 ClientSession.cpp.o:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ClientSession.cpp.o
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o
 .PHONY : ClientSession.cpp.o
 
 ClientSession.i: ClientSession.cpp.i
@@ -192,7 +192,7 @@ ClientSession.i: ClientSession.cpp.i
 
 # target to preprocess a source file
 ClientSession.cpp.i:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ClientSession.cpp.i
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.i
 .PHONY : ClientSession.cpp.i
 
 ClientSession.s: ClientSession.cpp.s
@@ -201,7 +201,7 @@ ClientSession.s: ClientSession.cpp.s
 
 # target to generate assembly for a file
 ClientSession.cpp.s:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ClientSession.cpp.s
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.s
 .PHONY : ClientSession.cpp.s
 
 ClientSrv.o: ClientSrv.cpp.o
@@ -210,7 +210,7 @@ ClientSrv.o: ClientSrv.cpp.o
 
 # target to build an object file
 ClientSrv.cpp.o:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ClientSrv.cpp.o
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o
 .PHONY : ClientSrv.cpp.o
 
 ClientSrv.i: ClientSrv.cpp.i
@@ -219,7 +219,7 @@ ClientSrv.i: ClientSrv.cpp.i
 
 # target to preprocess a source file
 ClientSrv.cpp.i:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ClientSrv.cpp.i
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.i
 .PHONY : ClientSrv.cpp.i
 
 ClientSrv.s: ClientSrv.cpp.s
@@ -228,7 +228,7 @@ ClientSrv.s: ClientSrv.cpp.s
 
 # target to generate assembly for a file
 ClientSrv.cpp.s:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ClientSrv.cpp.s
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.s
 .PHONY : ClientSrv.cpp.s
 
 ThreadBackTrade.o: ThreadBackTrade.cpp.o
@@ -237,7 +237,7 @@ ThreadBackTrade.o: ThreadBackTrade.cpp.o
 
 # target to build an object file
 ThreadBackTrade.cpp.o:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ThreadBackTrade.cpp.o
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o
 .PHONY : ThreadBackTrade.cpp.o
 
 ThreadBackTrade.i: ThreadBackTrade.cpp.i
@@ -246,7 +246,7 @@ ThreadBackTrade.i: ThreadBackTrade.cpp.i
 
 # target to preprocess a source file
 ThreadBackTrade.cpp.i:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ThreadBackTrade.cpp.i
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.i
 .PHONY : ThreadBackTrade.cpp.i
 
 ThreadBackTrade.s: ThreadBackTrade.cpp.s
@@ -255,7 +255,7 @@ ThreadBackTrade.s: ThreadBackTrade.cpp.s
 
 # target to generate assembly for a file
 ThreadBackTrade.cpp.s:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ThreadBackTrade.cpp.s
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.s
 .PHONY : ThreadBackTrade.cpp.s
 
 ThreadClient.o: ThreadClient.cpp.o
@@ -264,7 +264,7 @@ ThreadClient.o: ThreadClient.cpp.o
 
 # target to build an object file
 ThreadClient.cpp.o:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ThreadClient.cpp.o
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o
 .PHONY : ThreadClient.cpp.o
 
 ThreadClient.i: ThreadClient.cpp.i
@@ -273,7 +273,7 @@ ThreadClient.i: ThreadClient.cpp.i
 
 # target to preprocess a source file
 ThreadClient.cpp.i:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ThreadClient.cpp.i
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.i
 .PHONY : ThreadClient.cpp.i
 
 ThreadClient.s: ThreadClient.cpp.s
@@ -282,7 +282,7 @@ ThreadClient.s: ThreadClient.cpp.s
 
 # target to generate assembly for a file
 ThreadClient.cpp.s:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/ThreadClient.cpp.s
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.s
 .PHONY : ThreadClient.cpp.s
 
 config.o: config.cpp.o
@@ -291,7 +291,7 @@ config.o: config.cpp.o
 
 # target to build an object file
 config.cpp.o:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/config.cpp.o
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/config.cpp.o
 .PHONY : config.cpp.o
 
 config.i: config.cpp.i
@@ -300,7 +300,7 @@ config.i: config.cpp.i
 
 # target to preprocess a source file
 config.cpp.i:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/config.cpp.i
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/config.cpp.i
 .PHONY : config.cpp.i
 
 config.s: config.cpp.s
@@ -309,7 +309,7 @@ config.s: config.cpp.s
 
 # target to generate assembly for a file
 config.cpp.s:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/config.cpp.s
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/config.cpp.s
 .PHONY : config.cpp.s
 
 global.o: global.cpp.o
@@ -318,7 +318,7 @@ global.o: global.cpp.o
 
 # target to build an object file
 global.cpp.o:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/global.cpp.o
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/global.cpp.o
 .PHONY : global.cpp.o
 
 global.i: global.cpp.i
@@ -327,7 +327,7 @@ global.i: global.cpp.i
 
 # target to preprocess a source file
 global.cpp.i:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/global.cpp.i
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/global.cpp.i
 .PHONY : global.cpp.i
 
 global.s: global.cpp.s
@@ -336,7 +336,7 @@ global.s: global.cpp.s
 
 # target to generate assembly for a file
 global.cpp.s:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/global.cpp.s
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/global.cpp.s
 .PHONY : global.cpp.s
 
 main.o: main.cpp.o
@@ -345,7 +345,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -354,7 +354,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -363,7 +363,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/FrontTrade.dir/build.make CMakeFiles/FrontTrade.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/FrontTradeTest.dir/build.make CMakeFiles/FrontTradeTest.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -373,7 +373,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... FrontTrade"
+	@echo "... FrontTradeTest"
 	@echo "... edit_cache"
 	@echo "... BackTradeSession.o"
 	@echo "... BackTradeSession.i"
