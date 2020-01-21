@@ -42,10 +42,16 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
     if (strcasecmp(m_http.m_sUrl.c_str(),"/api/private/upTrade") == 0)
     {
         pkg = new UPUptrade;
+        Json::Value root;
         m_http.GetFiled(token,"token");
         token.append(to_string(m_uSessionID));  
         dynamic_cast<UPUptrade *>(pkg)->set_token(token); 
-        JsonUnpack((UPUptrade *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());        
+        JsonUnpack((UPUptrade *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());
+
+        string str;
+        if(dynamic_cast<UPUptrade *>(pkg)->SerializeToString(&str)==false)return iDataLen;
+        ProtoUnpack_(*(UPUptrade *)pkg,(char *)str.c_str(),str.length());
+
         g_srv_client.AddRequest(pkg);
         g_srv_client.InsertClientID(token,this);
         cout<<"m_http.m_sBody = "<<m_http.m_sBody.c_str()<<endl;
@@ -55,7 +61,12 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         m_http.GetFiled(token,"token");  
         token.append(to_string(m_uSessionID));
         dynamic_cast<UPUptradebatch *>(pkg)->set_token(token); 
-        JsonUnpack((UPUptradebatch *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());   
+        JsonUnpack((UPUptradebatch *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());
+
+        string str;
+        if(dynamic_cast<UPUptradebatch *>(pkg)->SerializeToString(&str)==false)return iDataLen;
+        ProtoUnpack_(*(UPUptradebatch *)pkg,(char *)str.c_str(),str.length());  
+
         g_srv_client.AddRequest(pkg);
         g_srv_client.InsertClientID(token,this);
         cout<<"m_http.m_sBody = "<<m_http.m_sBody.c_str()<<endl;
@@ -66,6 +77,11 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         token.append(to_string(m_uSessionID));
         dynamic_cast<UPCanceltrade *>(pkg)->set_token(token); 
         JsonUnpack((UPCanceltrade *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());   
+
+        string str;
+        if(dynamic_cast<UPCanceltrade *>(pkg)->SerializeToString(&str)==false)return iDataLen;
+        ProtoUnpack_(*(UPCanceltrade *)pkg,(char *)str.c_str(),str.length());
+
         g_srv_client.AddRequest(pkg);
         g_srv_client.InsertClientID(token,this);
         cout<<"m_http.m_sBody = "<<m_http.m_sBody.c_str()<<endl;
@@ -75,7 +91,12 @@ int ClientSession::Read(uv_tcp_t* client, char *pBuffer,int iDataLen)
         m_http.GetFiled(token,"token");
         token.append(to_string(m_uSessionID));
         dynamic_cast<UPCanceltradebatch *>(pkg)->set_token(token); 
-        JsonUnpack((UPCanceltradebatch *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length());   
+        JsonUnpack((UPCanceltradebatch *)pkg, (char *)m_http.m_sBody.c_str(), (uint32_t)m_http.m_sBody.length()); 
+
+        string str;
+        if(dynamic_cast<UPCanceltradebatch *>(pkg)->SerializeToString(&str)==false)return iDataLen;
+        ProtoUnpack_(*(UPCanceltradebatch *)pkg,(char *)str.c_str(),str.length());
+
         g_srv_client.AddRequest(pkg);
         g_srv_client.InsertClientID(token,this);
         cout<<"m_http.m_sBody = "<<m_http.m_sBody.c_str()<<endl;

@@ -21,7 +21,8 @@ int32_t Client_Write(uv_tcp_t* client,T* resPkg,int status)
 {	
     UVWriteReq* req= g_cache_write_req.Get(SIZE_BUFFER_2k);
     if(req==NULL)return -1;
-
+    char s_time[60] = {0};
+    GetGMTime(s_time);
     string sHttpReq;
     if(resPkg && status == 200)
     {
@@ -35,6 +36,9 @@ int32_t Client_Write(uv_tcp_t* client,T* resPkg,int status)
         string sBody=buf;
         sHttpReq="HTTP/1.1 200 OK\r\n";
         sHttpReq.append("Content-Type: text/html; charset=utf-8\r\n");
+        char date[80] = {0};
+        sprintf(date,"Date: %s\r\n",s_time);
+        sHttpReq.append(date);
         char contentLen[20] = {0};	
         sprintf(contentLen,"Content-Length: %lu\r\n",sBody.length());
         sHttpReq.append(contentLen);

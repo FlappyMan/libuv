@@ -27,5 +27,5 @@ message matcheddata
         required    uint64  xnbd = 5;
     }
     required	SellUser  selluser = 5;
-    required    string	token = 6; 
+    optional    string	token = 6; 
 }

@@ -6,7 +6,7 @@ message canceltradebatch
     {
         CMD = 103;
     }
-    required    string	token = 1; 
+    optional    string	token = 1; 
     repeated    uint64	ids = 2;
     required    uint64	marketid = 3;
 }

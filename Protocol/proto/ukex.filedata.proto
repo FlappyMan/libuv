@@ -13,5 +13,5 @@ message filedata
     required    uint64  offset = 4;
     required    uint32  length = 5;
     required    bytes  data = 6;
-    required    string	token = 7; 
+    optional    string	token = 7; 
 }

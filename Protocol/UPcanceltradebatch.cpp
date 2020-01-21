@@ -9,6 +9,7 @@ void UPCanceltradebatch::JsonPack(Json::Value &root)
         data = ids(i);
         array.append(data);
     }
+    root["marketid"] = marketid();
 }
 
 bool UPCanceltradebatch::JsonUnpack(Json::Value &root)
@@ -19,6 +20,6 @@ bool UPCanceltradebatch::JsonUnpack(Json::Value &root)
     {
         add_ids(root["ids"][i].asUInt64());
     }
+    set_marketid(root["marketid"].asUInt64());
     return true;
-
 }

@@ -32,5 +32,5 @@ message allmarketinfo
         required    string  eth = 2;
     }
     required    Exchange exchange = 4;
-    required    string	token = 5; 
+    optional    string	token = 5; 
 }

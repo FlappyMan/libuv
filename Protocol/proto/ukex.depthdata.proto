@@ -28,5 +28,5 @@ message depthdata
         required	Depth	depth = 1;
     }
     required	Data	data = 2;
-    required    string	token = 3; 
+    optional    string	token = 3; 
 }

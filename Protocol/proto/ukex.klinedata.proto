@@ -17,5 +17,5 @@ message klinedata
         required	string	k5 = 6;
     }
     repeated	Data	data = 2;
-    required    string	token = 3; 
+    optional    string	token = 3; 
 }

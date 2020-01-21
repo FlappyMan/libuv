@@ -64,7 +64,22 @@ bool ProtoUnpack(UProtocol &up,char *pBuff,uint32_t uiLen)
 		uint32_t *pLen=(uint32_t*)(pBuff+sizeof(uint16_t));
 		up.m_uiPkgLength=ntohl(*pLen);
 		return true;
+	}
+	return false;		
+};
 
+// pBuff: 不包含包头6个字节
+template<class UProtocol>
+bool ProtoUnpack_(UProtocol &up,char *pBuff,uint32_t uiLen)
+{
+	char *pos=pBuff;
+	string str(pos,uiLen);
+	stringstream ss(str) ;
+	if(up.ParseFromString(str))
+	{
+		up.m_uiType=up.CMD;
+		up.m_uiPkgLength=uiLen;
+		return true;
 	}
 	return false;		
 };
