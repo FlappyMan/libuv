@@ -6,31 +6,31 @@
 
 #IncludeRegexTransform: 
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBBuffer.cpp
+/home/gong/git/libuv/BaseLib/UBBuffer.cpp
 UBBuffer.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBBuffer.h
+/home/gong/git/libuv/BaseLib/UBBuffer.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBBuffer.h
+/home/gong/git/libuv/BaseLib/UBBuffer.h
 UBHeader.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBHeader.h
+/home/gong/git/libuv/BaseLib/UBHeader.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBCrypto.cpp
+/home/gong/git/libuv/BaseLib/UBCrypto.cpp
 UBCrypto.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBCrypto.h
+/home/gong/git/libuv/BaseLib/UBCrypto.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBCrypto.h
+/home/gong/git/libuv/BaseLib/UBCrypto.h
 UBHeader.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBHeader.h
+/home/gong/git/libuv/BaseLib/UBHeader.h
 openssl/evp.h
-/home/gong/workspace/git/UkexServer/BaseLib/openssl/evp.h
+/home/gong/git/libuv/BaseLib/openssl/evp.h
 openssl/bio.h
-/home/gong/workspace/git/UkexServer/BaseLib/openssl/bio.h
+/home/gong/git/libuv/BaseLib/openssl/bio.h
 openssl/buffer.h
-/home/gong/workspace/git/UkexServer/BaseLib/openssl/buffer.h
+/home/gong/git/libuv/BaseLib/openssl/buffer.h
 openssl/sha.h
-/home/gong/workspace/git/UkexServer/BaseLib/openssl/sha.h
+/home/gong/git/libuv/BaseLib/openssl/sha.h
 openssl/rsa.h
-/home/gong/workspace/git/UkexServer/BaseLib/openssl/rsa.h
+/home/gong/git/libuv/BaseLib/openssl/rsa.h
 openssl/pem.h
 -
 openssl/bn.h
@@ -40,17 +40,17 @@ openssl/blowfish.h
 openssl/aes.h
 -
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBDate.cpp
+/home/gong/git/libuv/BaseLib/UBDate.cpp
 UBDate.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBDate.h
+/home/gong/git/libuv/BaseLib/UBDate.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBDate.h
+/home/gong/git/libuv/BaseLib/UBDate.h
 UBHeader.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBHeader.h
+/home/gong/git/libuv/BaseLib/UBHeader.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBDefine.h
+/home/gong/git/libuv/BaseLib/UBDefine.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBHeader.h
+/home/gong/git/libuv/BaseLib/UBHeader.h
 stdio.h
 -
 unistd.h
@@ -112,55 +112,55 @@ vector
 set
 -
 mysql.h
-/home/gong/workspace/git/UkexServer/BaseLib/mysql.h
+/home/gong/git/libuv/BaseLib/mysql.h
 UBDefine.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBDefine.h
+/home/gong/git/libuv/BaseLib/UBDefine.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBHttpParser.cpp
+/home/gong/git/libuv/BaseLib/UBHttpParser.cpp
 UBHttpParser.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBHttpParser.h
+/home/gong/git/libuv/BaseLib/UBHttpParser.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBHttpParser.h
+/home/gong/git/libuv/BaseLib/UBHttpParser.h
 UBHeader.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBHeader.h
+/home/gong/git/libuv/BaseLib/UBHeader.h
 http_parser.h
-/home/gong/workspace/git/UkexServer/BaseLib/http_parser.h
+/home/gong/git/libuv/BaseLib/http_parser.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBJson.cpp
+/home/gong/git/libuv/BaseLib/UBJson.cpp
 UBJson.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBJson.h
+/home/gong/git/libuv/BaseLib/UBJson.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBJson.h
+/home/gong/git/libuv/BaseLib/UBJson.h
 UBHeader.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBHeader.h
+/home/gong/git/libuv/BaseLib/UBHeader.h
 json/json.h
-/home/gong/workspace/git/UkexServer/BaseLib/json/json.h
+/home/gong/git/libuv/BaseLib/json/json.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBMysql.cpp
+/home/gong/git/libuv/BaseLib/UBMysql.cpp
 UBMysql.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBMysql.h
+/home/gong/git/libuv/BaseLib/UBMysql.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBMysql.h
+/home/gong/git/libuv/BaseLib/UBMysql.h
 UBHeader.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBHeader.h
+/home/gong/git/libuv/BaseLib/UBHeader.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBString.cpp
+/home/gong/git/libuv/BaseLib/UBString.cpp
 UBString.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBString.h
+/home/gong/git/libuv/BaseLib/UBString.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBString.h
+/home/gong/git/libuv/BaseLib/UBString.h
 UBHeader.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBHeader.h
+/home/gong/git/libuv/BaseLib/UBHeader.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBWsParser.cpp
+/home/gong/git/libuv/BaseLib/UBWsParser.cpp
 UBWsParser.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBWsParser.h
+/home/gong/git/libuv/BaseLib/UBWsParser.h
 UBCrypto.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBCrypto.h
+/home/gong/git/libuv/BaseLib/UBCrypto.h
 
-/home/gong/workspace/git/UkexServer/BaseLib/UBWsParser.h
+/home/gong/git/libuv/BaseLib/UBWsParser.h
 UBHttpParser.h
-/home/gong/workspace/git/UkexServer/BaseLib/UBHttpParser.h
+/home/gong/git/libuv/BaseLib/UBHttpParser.h
 
 /usr/local/UkexServer/lib/http-parser/http_parser.h
 stddef.h
@@ -275,70 +275,6 @@ string
 -
 vector
 -
-
-/usr/local/UkexServer/lib/mysqlinc/binary_log_types.h
-
-/usr/local/UkexServer/lib/mysqlinc/my_alloc.h
-mysql/psi/psi_memory.h
-/usr/local/UkexServer/lib/mysqlinc/mysql/psi/psi_memory.h
-
-/usr/local/UkexServer/lib/mysqlinc/my_command.h
-
-/usr/local/UkexServer/lib/mysqlinc/my_list.h
-
-/usr/local/UkexServer/lib/mysqlinc/mysql.h
-sys/types.h
--
-windows.h
--
-winsock2.h
--
-mysql_version.h
-/usr/local/UkexServer/lib/mysqlinc/mysql_version.h
-mysql_com.h
-/usr/local/UkexServer/lib/mysqlinc/mysql_com.h
-mysql_time.h
-/usr/local/UkexServer/lib/mysqlinc/mysql_time.h
-my_list.h
-/usr/local/UkexServer/lib/mysqlinc/my_list.h
-mysql/client_plugin.h
-/usr/local/UkexServer/lib/mysqlinc/mysql/client_plugin.h
-typelib.h
-/usr/local/UkexServer/lib/mysqlinc/typelib.h
-my_alloc.h
-/usr/local/UkexServer/lib/mysqlinc/my_alloc.h
-
-/usr/local/UkexServer/lib/mysqlinc/mysql/client_plugin.h
-stdarg.h
--
-stdlib.h
--
-plugin_auth_common.h
-/usr/local/UkexServer/lib/mysqlinc/mysql/plugin_auth_common.h
-
-/usr/local/UkexServer/lib/mysqlinc/mysql/plugin_auth_common.h
-windows.h
--
-
-/usr/local/UkexServer/lib/mysqlinc/mysql/psi/psi_base.h
-
-/usr/local/UkexServer/lib/mysqlinc/mysql/psi/psi_memory.h
-psi_base.h
-/usr/local/UkexServer/lib/mysqlinc/mysql/psi/psi_base.h
-
-/usr/local/UkexServer/lib/mysqlinc/mysql_com.h
-binary_log_types.h
-/usr/local/UkexServer/lib/mysqlinc/binary_log_types.h
-my_command.h
-/usr/local/UkexServer/lib/mysqlinc/my_command.h
-
-/usr/local/UkexServer/lib/mysqlinc/mysql_time.h
-
-/usr/local/UkexServer/lib/mysqlinc/mysql_version.h
-
-/usr/local/UkexServer/lib/mysqlinc/typelib.h
-my_alloc.h
-/usr/local/UkexServer/lib/mysqlinc/my_alloc.h
 
 /usr/local/UkexServer/lib/openssl/include/openssl/aes.h
 openssl/opensslconf.h

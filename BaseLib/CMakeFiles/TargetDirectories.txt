@@ -1,3 +1,3 @@
-/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/rebuild_cache.dir
-/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/UBaseLib.dir
-/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/edit_cache.dir
+/home/gong/git/libuv/BaseLib/CMakeFiles/rebuild_cache.dir
+/home/gong/git/libuv/BaseLib/CMakeFiles/UBaseLib.dir
+/home/gong/git/libuv/BaseLib/CMakeFiles/edit_cache.dir

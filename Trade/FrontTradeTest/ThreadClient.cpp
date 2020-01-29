@@ -110,18 +110,15 @@ void on_connect(uv_connect_t* req,int status)
     Client_Write<UPResponse>((uv_tcp_t*)req->handle,resPkg,200);
 #else
     UPUptrade* res = NULL;
-    for (size_t i = 0; i < count; i++)
-    {
-        res = new UPUptrade;
-        res->set_main_coin(5);
-        res->set_marketid(1);
-        res->set_num(66);
-        res->set_paypassword("123456");
-        res->set_price(123);
-        res->set_token("999999");
-        res->set_type(555);
-        Client_Write<UPUptrade>((uv_tcp_t*)req->handle,res,200);
-    }
+    res = new UPUptrade;
+    res->set_main_coin(5);
+    res->set_marketid(1);
+    res->set_num(66);
+    res->set_paypassword("123456");
+    res->set_price(123);
+    res->set_token("999999");
+    res->set_type(555);
+    Client_Write<UPUptrade>((uv_tcp_t*)req->handle,res,200);
 #endif
 }
 

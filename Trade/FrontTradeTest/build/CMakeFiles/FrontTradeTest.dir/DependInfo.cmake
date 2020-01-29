@@ -4,15 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/BackTradeSession.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o"
-  "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/BackTradeSrv.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o"
-  "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ClientSession.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o"
-  "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ClientSrv.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o"
-  "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ThreadBackTrade.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o"
-  "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ThreadClient.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o"
-  "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/config.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/config.cpp.o"
-  "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/global.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/global.cpp.o"
-  "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/main.cpp" "/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/main.cpp.o"
+  "/home/gong/git/libuv/Trade/FrontTradeTest/BackTradeSession.cpp" "/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o"
+  "/home/gong/git/libuv/Trade/FrontTradeTest/BackTradeSrv.cpp" "/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o"
+  "/home/gong/git/libuv/Trade/FrontTradeTest/ClientSession.cpp" "/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o"
+  "/home/gong/git/libuv/Trade/FrontTradeTest/ClientSrv.cpp" "/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o"
+  "/home/gong/git/libuv/Trade/FrontTradeTest/ThreadBackTrade.cpp" "/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o"
+  "/home/gong/git/libuv/Trade/FrontTradeTest/ThreadClient.cpp" "/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o"
+  "/home/gong/git/libuv/Trade/FrontTradeTest/config.cpp" "/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/config.cpp.o"
+  "/home/gong/git/libuv/Trade/FrontTradeTest/global.cpp" "/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/global.cpp.o"
+  "/home/gong/git/libuv/Trade/FrontTradeTest/main.cpp" "/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

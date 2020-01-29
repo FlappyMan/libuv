@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/UProtocol.dir/UPAuth.cpp.o"
   "CMakeFiles/UProtocol.dir/UPCache.cpp.o"
   "CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o"
   "CMakeFiles/UProtocol.dir/UPDir.cpp.o"

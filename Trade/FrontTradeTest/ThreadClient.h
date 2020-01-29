@@ -27,32 +27,26 @@ int32_t Client_Write(uv_tcp_t* client,T* resPkg,int status)
     if(resPkg && status == 200)
     {
         char buf[SIZE_BUFFER_2k] = {0};
-        int ret = JsonPack<T>(resPkg,buf,50);
+        int ret = JsonPack<T>(resPkg,buf,SIZE_BUFFER_2k);
         if(ret<=0)
         {
             g_cache_write_req.Free(req);
             return ret;
         }
         string sBody=buf;
-        sHttpReq="HTTP/1.1 200 OK\r\n";
-        sHttpReq.append("Content-Type: text/html; charset=utf-8\r\n");
-        char date[80] = {0};
-        sprintf(date,"Date: %s\r\n",s_time);
-        sHttpReq.append(date);
+        sHttpReq="POST /api/private/upTrade HTTP/1.1\r\n";
+        sHttpReq.append("Host: http://192.168.2.143:9000\r\n");
+        sHttpReq.append("Content-Type: application/json;charset=utf-8\r\n");
         char contentLen[20] = {0};	
         sprintf(contentLen,"Content-Length: %lu\r\n",sBody.length());
         sHttpReq.append(contentLen);
-        sHttpReq.append("Content-Language: zh-CN\r\n");
-        sHttpReq.append("Connection: Close\r\n");	
-        sHttpReq.append("Server: UkexServer\r\n");	
+        sHttpReq.append("Connection: Keep-Alive\r\n");		
         sHttpReq.append("\r\n");
         sHttpReq.append(sBody);
     }else
     {
         sHttpReq="HTTP/1.1 404 Not Found\r\n";
-        sHttpReq.append("Content-Length: 0\r\n");
-        sHttpReq.append("Connection: Close\r\n");	
-        sHttpReq.append("Server: UkexServer\r\n");	
+        sHttpReq.append("Content-Length: 0\r\n");	
     }
     req->pkg = resPkg;
     req->buf.len = sHttpReq.length();

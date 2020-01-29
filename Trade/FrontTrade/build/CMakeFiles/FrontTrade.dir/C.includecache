@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/gong/workspace/git/UkexServer/Trade/FrontTrade/http_parser.c
+/home/gong/git/libuv/Trade/FrontTrade/http_parser.c
 http_parser.h
-/home/gong/workspace/git/UkexServer/Trade/FrontTrade/http_parser.h
+/home/gong/git/libuv/Trade/FrontTrade/http_parser.h
 assert.h
 -
 stddef.h
@@ -20,7 +20,7 @@ string.h
 limits.h
 -
 
-/home/gong/workspace/git/UkexServer/Trade/FrontTrade/http_parser.h
+/home/gong/git/libuv/Trade/FrontTrade/http_parser.h
 stddef.h
 -
 BaseTsd.h

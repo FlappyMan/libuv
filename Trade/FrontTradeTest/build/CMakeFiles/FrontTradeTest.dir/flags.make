@@ -6,5 +6,5 @@ CXX_FLAGS = -g -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local/UkexServer/lib/jsoncpp/include -I/usr/local/UkexServer/lib/openssl/include -I/usr/local/UkexServer/lib/mysqlinc -I/usr/local/UkexServer/lib/spdlog/include -I/usr/local/UkexServer/lib/libuv/include -I/usr/local/UkexServer/lib/http-parser -I/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/../../BaseLib -I/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/../../Protocol 
+CXX_INCLUDES = -I/usr/local/UkexServer/lib/jsoncpp/include -I/usr/local/UkexServer/lib/openssl/include -I/usr/local/UkexServer/lib/mysqlinc -I/usr/local/UkexServer/lib/spdlog/include -I/usr/local/UkexServer/lib/libuv/include -I/usr/local/UkexServer/lib/http-parser -I/home/gong/git/libuv/Trade/FrontTradeTest/../../BaseLib -I/home/gong/git/libuv/Trade/FrontTradeTest/../../Protocol 
 

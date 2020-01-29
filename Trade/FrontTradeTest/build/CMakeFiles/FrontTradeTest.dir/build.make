@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest
+CMAKE_SOURCE_DIR = /home/gong/git/libuv/Trade/FrontTradeTest
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build
+CMAKE_BINARY_DIR = /home/gong/git/libuv/Trade/FrontTradeTest/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/FrontTradeTest.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/FrontTradeTest.dir/flags.make
 
 CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o: CMakeFiles/FrontTradeTest.dir/flags.make
 CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o: ../BackTradeSession.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/BackTradeSession.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o -c /home/gong/git/libuv/Trade/FrontTradeTest/BackTradeSession.cpp
 
 CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/BackTradeSession.cpp > CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Trade/FrontTradeTest/BackTradeSession.cpp > CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.i
 
 CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/BackTradeSession.cpp -o CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Trade/FrontTradeTest/BackTradeSession.cpp -o CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.s
 
 CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/FrontTradeTest.dir/BackTradeSession.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o: CMakeFiles/FrontTradeTest.dir/flags.make
 CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o: ../BackTradeSrv.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/BackTradeSrv.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o -c /home/gong/git/libuv/Trade/FrontTradeTest/BackTradeSrv.cpp
 
 CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/BackTradeSrv.cpp > CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Trade/FrontTradeTest/BackTradeSrv.cpp > CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.i
 
 CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/BackTradeSrv.cpp -o CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Trade/FrontTradeTest/BackTradeSrv.cpp -o CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.s
 
 CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/FrontTradeTest.dir/BackTradeSrv.cpp.o.provides.build: CMakeFiles/Fron
 
 CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o: CMakeFiles/FrontTradeTest.dir/flags.make
 CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o: ../ClientSession.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ClientSession.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o -c /home/gong/git/libuv/Trade/FrontTradeTest/ClientSession.cpp
 
 CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ClientSession.cpp > CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Trade/FrontTradeTest/ClientSession.cpp > CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.i
 
 CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ClientSession.cpp -o CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Trade/FrontTradeTest/ClientSession.cpp -o CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.s
 
 CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/FrontTradeTest.dir/ClientSession.cpp.o.provides.build: CMakeFiles/Fro
 
 CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o: CMakeFiles/FrontTradeTest.dir/flags.make
 CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o: ../ClientSrv.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ClientSrv.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o -c /home/gong/git/libuv/Trade/FrontTradeTest/ClientSrv.cpp
 
 CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ClientSrv.cpp > CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Trade/FrontTradeTest/ClientSrv.cpp > CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.i
 
 CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ClientSrv.cpp -o CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Trade/FrontTradeTest/ClientSrv.cpp -o CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.s
 
 CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/FrontTradeTest.dir/ClientSrv.cpp.o.provides.build: CMakeFiles/FrontTr
 
 CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o: CMakeFiles/FrontTradeTest.dir/flags.make
 CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o: ../ThreadBackTrade.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ThreadBackTrade.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o -c /home/gong/git/libuv/Trade/FrontTradeTest/ThreadBackTrade.cpp
 
 CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ThreadBackTrade.cpp > CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Trade/FrontTradeTest/ThreadBackTrade.cpp > CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.i
 
 CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ThreadBackTrade.cpp -o CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Trade/FrontTradeTest/ThreadBackTrade.cpp -o CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.s
 
 CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/FrontTradeTest.dir/ThreadBackTrade.cpp.o.provides.build: CMakeFiles/F
 
 CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o: CMakeFiles/FrontTradeTest.dir/flags.make
 CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o: ../ThreadClient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ThreadClient.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o -c /home/gong/git/libuv/Trade/FrontTradeTest/ThreadClient.cpp
 
 CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ThreadClient.cpp > CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Trade/FrontTradeTest/ThreadClient.cpp > CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.i
 
 CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/ThreadClient.cpp -o CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Trade/FrontTradeTest/ThreadClient.cpp -o CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.s
 
 CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/FrontTradeTest.dir/ThreadClient.cpp.o.provides.build: CMakeFiles/Fron
 
 CMakeFiles/FrontTradeTest.dir/config.cpp.o: CMakeFiles/FrontTradeTest.dir/flags.make
 CMakeFiles/FrontTradeTest.dir/config.cpp.o: ../config.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/FrontTradeTest.dir/config.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/config.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/config.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/FrontTradeTest.dir/config.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/config.cpp.o -c /home/gong/git/libuv/Trade/FrontTradeTest/config.cpp
 
 CMakeFiles/FrontTradeTest.dir/config.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FrontTradeTest.dir/config.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/config.cpp > CMakeFiles/FrontTradeTest.dir/config.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Trade/FrontTradeTest/config.cpp > CMakeFiles/FrontTradeTest.dir/config.cpp.i
 
 CMakeFiles/FrontTradeTest.dir/config.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FrontTradeTest.dir/config.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/config.cpp -o CMakeFiles/FrontTradeTest.dir/config.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Trade/FrontTradeTest/config.cpp -o CMakeFiles/FrontTradeTest.dir/config.cpp.s
 
 CMakeFiles/FrontTradeTest.dir/config.cpp.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/FrontTradeTest.dir/config.cpp.o.provides.build: CMakeFiles/FrontTrade
 
 CMakeFiles/FrontTradeTest.dir/global.cpp.o: CMakeFiles/FrontTradeTest.dir/flags.make
 CMakeFiles/FrontTradeTest.dir/global.cpp.o: ../global.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/FrontTradeTest.dir/global.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/global.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/global.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/FrontTradeTest.dir/global.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/global.cpp.o -c /home/gong/git/libuv/Trade/FrontTradeTest/global.cpp
 
 CMakeFiles/FrontTradeTest.dir/global.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FrontTradeTest.dir/global.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/global.cpp > CMakeFiles/FrontTradeTest.dir/global.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Trade/FrontTradeTest/global.cpp > CMakeFiles/FrontTradeTest.dir/global.cpp.i
 
 CMakeFiles/FrontTradeTest.dir/global.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FrontTradeTest.dir/global.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/global.cpp -o CMakeFiles/FrontTradeTest.dir/global.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Trade/FrontTradeTest/global.cpp -o CMakeFiles/FrontTradeTest.dir/global.cpp.s
 
 CMakeFiles/FrontTradeTest.dir/global.cpp.o.requires:
 
@@ -251,16 +251,16 @@ CMakeFiles/FrontTradeTest.dir/global.cpp.o.provides.build: CMakeFiles/FrontTrade
 
 CMakeFiles/FrontTradeTest.dir/main.cpp.o: CMakeFiles/FrontTradeTest.dir/flags.make
 CMakeFiles/FrontTradeTest.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/FrontTradeTest.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/main.cpp.o -c /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/FrontTradeTest.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FrontTradeTest.dir/main.cpp.o -c /home/gong/git/libuv/Trade/FrontTradeTest/main.cpp
 
 CMakeFiles/FrontTradeTest.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FrontTradeTest.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/main.cpp > CMakeFiles/FrontTradeTest.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Trade/FrontTradeTest/main.cpp > CMakeFiles/FrontTradeTest.dir/main.cpp.i
 
 CMakeFiles/FrontTradeTest.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FrontTradeTest.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/main.cpp -o CMakeFiles/FrontTradeTest.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Trade/FrontTradeTest/main.cpp -o CMakeFiles/FrontTradeTest.dir/main.cpp.s
 
 CMakeFiles/FrontTradeTest.dir/main.cpp.o.requires:
 
@@ -299,7 +299,7 @@ FrontTradeTest: CMakeFiles/FrontTradeTest.dir/global.cpp.o
 FrontTradeTest: CMakeFiles/FrontTradeTest.dir/main.cpp.o
 FrontTradeTest: CMakeFiles/FrontTradeTest.dir/build.make
 FrontTradeTest: CMakeFiles/FrontTradeTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable FrontTradeTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable FrontTradeTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FrontTradeTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -324,6 +324,6 @@ CMakeFiles/FrontTradeTest.dir/clean:
 .PHONY : CMakeFiles/FrontTradeTest.dir/clean
 
 CMakeFiles/FrontTradeTest.dir/depend:
-	cd /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build /home/gong/workspace/git/UkexServer/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/gong/git/libuv/Trade/FrontTradeTest/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gong/git/libuv/Trade/FrontTradeTest /home/gong/git/libuv/Trade/FrontTradeTest /home/gong/git/libuv/Trade/FrontTradeTest/build /home/gong/git/libuv/Trade/FrontTradeTest/build /home/gong/git/libuv/Trade/FrontTradeTest/build/CMakeFiles/FrontTradeTest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/FrontTradeTest.dir/depend
 

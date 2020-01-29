@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gong/workspace/git/UkexServer/Protocol
+CMAKE_SOURCE_DIR = /home/gong/git/libuv/Protocol
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gong/workspace/git/UkexServer/Protocol
+CMAKE_BINARY_DIR = /home/gong/git/libuv/Protocol
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/gong/workspace/git/UkexServer/Protocol
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/workspace/git/UkexServer/Protocol/CMakeFiles /home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/git/libuv/Protocol/CMakeFiles /home/gong/git/libuv/Protocol/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/workspace/git/UkexServer/Protocol/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/git/libuv/Protocol/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,6 +122,33 @@ UProtocol: cmake_check_build_system
 UProtocol/fast:
 	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/build
 .PHONY : UProtocol/fast
+
+UPAuth.o: UPAuth.cpp.o
+
+.PHONY : UPAuth.o
+
+# target to build an object file
+UPAuth.cpp.o:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.o
+.PHONY : UPAuth.cpp.o
+
+UPAuth.i: UPAuth.cpp.i
+
+.PHONY : UPAuth.i
+
+# target to preprocess a source file
+UPAuth.cpp.i:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.i
+.PHONY : UPAuth.cpp.i
+
+UPAuth.s: UPAuth.cpp.s
+
+.PHONY : UPAuth.s
+
+# target to generate assembly for a file
+UPAuth.cpp.s:
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.s
+.PHONY : UPAuth.cpp.s
 
 UPCache.o: UPCache.cpp.o
 
@@ -1050,6 +1077,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... UProtocol"
 	@echo "... edit_cache"
+	@echo "... UPAuth.o"
+	@echo "... UPAuth.i"
+	@echo "... UPAuth.s"
 	@echo "... UPCache.o"
 	@echo "... UPCache.i"
 	@echo "... UPCache.s"

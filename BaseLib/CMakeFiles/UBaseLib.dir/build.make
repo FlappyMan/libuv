@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gong/workspace/git/UkexServer/BaseLib
+CMAKE_SOURCE_DIR = /home/gong/git/libuv/BaseLib
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gong/workspace/git/UkexServer/BaseLib
+CMAKE_BINARY_DIR = /home/gong/git/libuv/BaseLib
 
 # Include any dependencies generated for this target.
 include CMakeFiles/UBaseLib.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/UBaseLib.dir/flags.make
 
 CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o: CMakeFiles/UBaseLib.dir/flags.make
 CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o: UBBuffer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o -c /home/gong/workspace/git/UkexServer/BaseLib/UBBuffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o -c /home/gong/git/libuv/BaseLib/UBBuffer.cpp
 
 CMakeFiles/UBaseLib.dir/UBBuffer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UBaseLib.dir/UBBuffer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/BaseLib/UBBuffer.cpp > CMakeFiles/UBaseLib.dir/UBBuffer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/BaseLib/UBBuffer.cpp > CMakeFiles/UBaseLib.dir/UBBuffer.cpp.i
 
 CMakeFiles/UBaseLib.dir/UBBuffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UBaseLib.dir/UBBuffer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/BaseLib/UBBuffer.cpp -o CMakeFiles/UBaseLib.dir/UBBuffer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/BaseLib/UBBuffer.cpp -o CMakeFiles/UBaseLib.dir/UBBuffer.cpp.s
 
 CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o.provides.build: CMakeFiles/UBaseLib.dir/U
 
 CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o: CMakeFiles/UBaseLib.dir/flags.make
 CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o: UBCrypto.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o -c /home/gong/workspace/git/UkexServer/BaseLib/UBCrypto.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o -c /home/gong/git/libuv/BaseLib/UBCrypto.cpp
 
 CMakeFiles/UBaseLib.dir/UBCrypto.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UBaseLib.dir/UBCrypto.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/BaseLib/UBCrypto.cpp > CMakeFiles/UBaseLib.dir/UBCrypto.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/BaseLib/UBCrypto.cpp > CMakeFiles/UBaseLib.dir/UBCrypto.cpp.i
 
 CMakeFiles/UBaseLib.dir/UBCrypto.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UBaseLib.dir/UBCrypto.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/BaseLib/UBCrypto.cpp -o CMakeFiles/UBaseLib.dir/UBCrypto.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/BaseLib/UBCrypto.cpp -o CMakeFiles/UBaseLib.dir/UBCrypto.cpp.s
 
 CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o.provides.build: CMakeFiles/UBaseLib.dir/U
 
 CMakeFiles/UBaseLib.dir/UBDate.cpp.o: CMakeFiles/UBaseLib.dir/flags.make
 CMakeFiles/UBaseLib.dir/UBDate.cpp.o: UBDate.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/UBaseLib.dir/UBDate.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBDate.cpp.o -c /home/gong/workspace/git/UkexServer/BaseLib/UBDate.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/UBaseLib.dir/UBDate.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBDate.cpp.o -c /home/gong/git/libuv/BaseLib/UBDate.cpp
 
 CMakeFiles/UBaseLib.dir/UBDate.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UBaseLib.dir/UBDate.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/BaseLib/UBDate.cpp > CMakeFiles/UBaseLib.dir/UBDate.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/BaseLib/UBDate.cpp > CMakeFiles/UBaseLib.dir/UBDate.cpp.i
 
 CMakeFiles/UBaseLib.dir/UBDate.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UBaseLib.dir/UBDate.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/BaseLib/UBDate.cpp -o CMakeFiles/UBaseLib.dir/UBDate.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/BaseLib/UBDate.cpp -o CMakeFiles/UBaseLib.dir/UBDate.cpp.s
 
 CMakeFiles/UBaseLib.dir/UBDate.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/UBaseLib.dir/UBDate.cpp.o.provides.build: CMakeFiles/UBaseLib.dir/UBD
 
 CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o: CMakeFiles/UBaseLib.dir/flags.make
 CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o: UBHttpParser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o -c /home/gong/workspace/git/UkexServer/BaseLib/UBHttpParser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o -c /home/gong/git/libuv/BaseLib/UBHttpParser.cpp
 
 CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/BaseLib/UBHttpParser.cpp > CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/BaseLib/UBHttpParser.cpp > CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.i
 
 CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/BaseLib/UBHttpParser.cpp -o CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/BaseLib/UBHttpParser.cpp -o CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.s
 
 CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o.provides.build: CMakeFiles/UBaseLib.d
 
 CMakeFiles/UBaseLib.dir/UBJson.cpp.o: CMakeFiles/UBaseLib.dir/flags.make
 CMakeFiles/UBaseLib.dir/UBJson.cpp.o: UBJson.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/UBaseLib.dir/UBJson.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBJson.cpp.o -c /home/gong/workspace/git/UkexServer/BaseLib/UBJson.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/UBaseLib.dir/UBJson.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBJson.cpp.o -c /home/gong/git/libuv/BaseLib/UBJson.cpp
 
 CMakeFiles/UBaseLib.dir/UBJson.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UBaseLib.dir/UBJson.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/BaseLib/UBJson.cpp > CMakeFiles/UBaseLib.dir/UBJson.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/BaseLib/UBJson.cpp > CMakeFiles/UBaseLib.dir/UBJson.cpp.i
 
 CMakeFiles/UBaseLib.dir/UBJson.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UBaseLib.dir/UBJson.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/BaseLib/UBJson.cpp -o CMakeFiles/UBaseLib.dir/UBJson.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/BaseLib/UBJson.cpp -o CMakeFiles/UBaseLib.dir/UBJson.cpp.s
 
 CMakeFiles/UBaseLib.dir/UBJson.cpp.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/UBaseLib.dir/UBJson.cpp.o.provides.build: CMakeFiles/UBaseLib.dir/UBJ
 
 CMakeFiles/UBaseLib.dir/UBMysql.cpp.o: CMakeFiles/UBaseLib.dir/flags.make
 CMakeFiles/UBaseLib.dir/UBMysql.cpp.o: UBMysql.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/UBaseLib.dir/UBMysql.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBMysql.cpp.o -c /home/gong/workspace/git/UkexServer/BaseLib/UBMysql.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/UBaseLib.dir/UBMysql.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBMysql.cpp.o -c /home/gong/git/libuv/BaseLib/UBMysql.cpp
 
 CMakeFiles/UBaseLib.dir/UBMysql.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UBaseLib.dir/UBMysql.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/BaseLib/UBMysql.cpp > CMakeFiles/UBaseLib.dir/UBMysql.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/BaseLib/UBMysql.cpp > CMakeFiles/UBaseLib.dir/UBMysql.cpp.i
 
 CMakeFiles/UBaseLib.dir/UBMysql.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UBaseLib.dir/UBMysql.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/BaseLib/UBMysql.cpp -o CMakeFiles/UBaseLib.dir/UBMysql.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/BaseLib/UBMysql.cpp -o CMakeFiles/UBaseLib.dir/UBMysql.cpp.s
 
 CMakeFiles/UBaseLib.dir/UBMysql.cpp.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/UBaseLib.dir/UBMysql.cpp.o.provides.build: CMakeFiles/UBaseLib.dir/UB
 
 CMakeFiles/UBaseLib.dir/UBString.cpp.o: CMakeFiles/UBaseLib.dir/flags.make
 CMakeFiles/UBaseLib.dir/UBString.cpp.o: UBString.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/UBaseLib.dir/UBString.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBString.cpp.o -c /home/gong/workspace/git/UkexServer/BaseLib/UBString.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/UBaseLib.dir/UBString.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBString.cpp.o -c /home/gong/git/libuv/BaseLib/UBString.cpp
 
 CMakeFiles/UBaseLib.dir/UBString.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UBaseLib.dir/UBString.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/BaseLib/UBString.cpp > CMakeFiles/UBaseLib.dir/UBString.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/BaseLib/UBString.cpp > CMakeFiles/UBaseLib.dir/UBString.cpp.i
 
 CMakeFiles/UBaseLib.dir/UBString.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UBaseLib.dir/UBString.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/BaseLib/UBString.cpp -o CMakeFiles/UBaseLib.dir/UBString.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/BaseLib/UBString.cpp -o CMakeFiles/UBaseLib.dir/UBString.cpp.s
 
 CMakeFiles/UBaseLib.dir/UBString.cpp.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/UBaseLib.dir/UBString.cpp.o.provides.build: CMakeFiles/UBaseLib.dir/U
 
 CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o: CMakeFiles/UBaseLib.dir/flags.make
 CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o: UBWsParser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o -c /home/gong/workspace/git/UkexServer/BaseLib/UBWsParser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o -c /home/gong/git/libuv/BaseLib/UBWsParser.cpp
 
 CMakeFiles/UBaseLib.dir/UBWsParser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UBaseLib.dir/UBWsParser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/BaseLib/UBWsParser.cpp > CMakeFiles/UBaseLib.dir/UBWsParser.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/BaseLib/UBWsParser.cpp > CMakeFiles/UBaseLib.dir/UBWsParser.cpp.i
 
 CMakeFiles/UBaseLib.dir/UBWsParser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UBaseLib.dir/UBWsParser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/BaseLib/UBWsParser.cpp -o CMakeFiles/UBaseLib.dir/UBWsParser.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/BaseLib/UBWsParser.cpp -o CMakeFiles/UBaseLib.dir/UBWsParser.cpp.s
 
 CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o.requires:
 
@@ -273,7 +273,7 @@ libUBaseLib.a: CMakeFiles/UBaseLib.dir/UBString.cpp.o
 libUBaseLib.a: CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o
 libUBaseLib.a: CMakeFiles/UBaseLib.dir/build.make
 libUBaseLib.a: CMakeFiles/UBaseLib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library libUBaseLib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/git/libuv/BaseLib/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library libUBaseLib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/UBaseLib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/UBaseLib.dir/link.txt --verbose=$(VERBOSE)
 
@@ -298,6 +298,6 @@ CMakeFiles/UBaseLib.dir/clean:
 .PHONY : CMakeFiles/UBaseLib.dir/clean
 
 CMakeFiles/UBaseLib.dir/depend:
-	cd /home/gong/workspace/git/UkexServer/BaseLib && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gong/workspace/git/UkexServer/BaseLib /home/gong/workspace/git/UkexServer/BaseLib /home/gong/workspace/git/UkexServer/BaseLib /home/gong/workspace/git/UkexServer/BaseLib /home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/UBaseLib.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/gong/git/libuv/BaseLib && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gong/git/libuv/BaseLib /home/gong/git/libuv/BaseLib /home/gong/git/libuv/BaseLib /home/gong/git/libuv/BaseLib /home/gong/git/libuv/BaseLib/CMakeFiles/UBaseLib.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/UBaseLib.dir/depend
 

@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/gong/workspace/git/UkexServer/BaseLib/UBBuffer.cpp" "/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o"
-  "/home/gong/workspace/git/UkexServer/BaseLib/UBCrypto.cpp" "/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o"
-  "/home/gong/workspace/git/UkexServer/BaseLib/UBDate.cpp" "/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/UBaseLib.dir/UBDate.cpp.o"
-  "/home/gong/workspace/git/UkexServer/BaseLib/UBHttpParser.cpp" "/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o"
-  "/home/gong/workspace/git/UkexServer/BaseLib/UBJson.cpp" "/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/UBaseLib.dir/UBJson.cpp.o"
-  "/home/gong/workspace/git/UkexServer/BaseLib/UBMysql.cpp" "/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/UBaseLib.dir/UBMysql.cpp.o"
-  "/home/gong/workspace/git/UkexServer/BaseLib/UBString.cpp" "/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/UBaseLib.dir/UBString.cpp.o"
-  "/home/gong/workspace/git/UkexServer/BaseLib/UBWsParser.cpp" "/home/gong/workspace/git/UkexServer/BaseLib/CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o"
+  "/home/gong/git/libuv/BaseLib/UBBuffer.cpp" "/home/gong/git/libuv/BaseLib/CMakeFiles/UBaseLib.dir/UBBuffer.cpp.o"
+  "/home/gong/git/libuv/BaseLib/UBCrypto.cpp" "/home/gong/git/libuv/BaseLib/CMakeFiles/UBaseLib.dir/UBCrypto.cpp.o"
+  "/home/gong/git/libuv/BaseLib/UBDate.cpp" "/home/gong/git/libuv/BaseLib/CMakeFiles/UBaseLib.dir/UBDate.cpp.o"
+  "/home/gong/git/libuv/BaseLib/UBHttpParser.cpp" "/home/gong/git/libuv/BaseLib/CMakeFiles/UBaseLib.dir/UBHttpParser.cpp.o"
+  "/home/gong/git/libuv/BaseLib/UBJson.cpp" "/home/gong/git/libuv/BaseLib/CMakeFiles/UBaseLib.dir/UBJson.cpp.o"
+  "/home/gong/git/libuv/BaseLib/UBMysql.cpp" "/home/gong/git/libuv/BaseLib/CMakeFiles/UBaseLib.dir/UBMysql.cpp.o"
+  "/home/gong/git/libuv/BaseLib/UBString.cpp" "/home/gong/git/libuv/BaseLib/CMakeFiles/UBaseLib.dir/UBString.cpp.o"
+  "/home/gong/git/libuv/BaseLib/UBWsParser.cpp" "/home/gong/git/libuv/BaseLib/CMakeFiles/UBaseLib.dir/UBWsParser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

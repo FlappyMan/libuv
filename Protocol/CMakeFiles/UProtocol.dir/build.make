@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gong/workspace/git/UkexServer/Protocol
+CMAKE_SOURCE_DIR = /home/gong/git/libuv/Protocol
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gong/workspace/git/UkexServer/Protocol
+CMAKE_BINARY_DIR = /home/gong/git/libuv/Protocol
 
 # Include any dependencies generated for this target.
 include CMakeFiles/UProtocol.dir/depend.make
@@ -57,18 +57,42 @@ include CMakeFiles/UProtocol.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/UProtocol.dir/flags.make
 
+CMakeFiles/UProtocol.dir/UPAuth.cpp.o: CMakeFiles/UProtocol.dir/flags.make
+CMakeFiles/UProtocol.dir/UPAuth.cpp.o: UPAuth.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/UProtocol.dir/UPAuth.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPAuth.cpp.o -c /home/gong/git/libuv/Protocol/UPAuth.cpp
+
+CMakeFiles/UProtocol.dir/UPAuth.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPAuth.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPAuth.cpp > CMakeFiles/UProtocol.dir/UPAuth.cpp.i
+
+CMakeFiles/UProtocol.dir/UPAuth.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPAuth.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPAuth.cpp -o CMakeFiles/UProtocol.dir/UPAuth.cpp.s
+
+CMakeFiles/UProtocol.dir/UPAuth.cpp.o.requires:
+
+.PHONY : CMakeFiles/UProtocol.dir/UPAuth.cpp.o.requires
+
+CMakeFiles/UProtocol.dir/UPAuth.cpp.o.provides: CMakeFiles/UProtocol.dir/UPAuth.cpp.o.requires
+	$(MAKE) -f CMakeFiles/UProtocol.dir/build.make CMakeFiles/UProtocol.dir/UPAuth.cpp.o.provides.build
+.PHONY : CMakeFiles/UProtocol.dir/UPAuth.cpp.o.provides
+
+CMakeFiles/UProtocol.dir/UPAuth.cpp.o.provides.build: CMakeFiles/UProtocol.dir/UPAuth.cpp.o
+
+
 CMakeFiles/UProtocol.dir/UPCache.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPCache.cpp.o: UPCache.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/UProtocol.dir/UPCache.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPCache.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPCache.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/UProtocol.dir/UPCache.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPCache.cpp.o -c /home/gong/git/libuv/Protocol/UPCache.cpp
 
 CMakeFiles/UProtocol.dir/UPCache.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPCache.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPCache.cpp > CMakeFiles/UProtocol.dir/UPCache.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPCache.cpp > CMakeFiles/UProtocol.dir/UPCache.cpp.i
 
 CMakeFiles/UProtocol.dir/UPCache.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPCache.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPCache.cpp -o CMakeFiles/UProtocol.dir/UPCache.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPCache.cpp -o CMakeFiles/UProtocol.dir/UPCache.cpp.s
 
 CMakeFiles/UProtocol.dir/UPCache.cpp.o.requires:
 
@@ -83,16 +107,16 @@ CMakeFiles/UProtocol.dir/UPCache.cpp.o.provides.build: CMakeFiles/UProtocol.dir/
 
 CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o: UPCancelsubscribe.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o -c /home/gong/git/libuv/Protocol/UPCancelsubscribe.cpp
 
 CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.cpp > CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPCancelsubscribe.cpp > CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.i
 
 CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPCancelsubscribe.cpp -o CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPCancelsubscribe.cpp -o CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.s
 
 CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o.requires:
 
@@ -107,16 +131,16 @@ CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o.provides.build: CMakeFiles/UPro
 
 CMakeFiles/UProtocol.dir/UPDir.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPDir.cpp.o: UPDir.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/UProtocol.dir/UPDir.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPDir.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPDir.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/UProtocol.dir/UPDir.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPDir.cpp.o -c /home/gong/git/libuv/Protocol/UPDir.cpp
 
 CMakeFiles/UProtocol.dir/UPDir.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPDir.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPDir.cpp > CMakeFiles/UProtocol.dir/UPDir.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPDir.cpp > CMakeFiles/UProtocol.dir/UPDir.cpp.i
 
 CMakeFiles/UProtocol.dir/UPDir.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPDir.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPDir.cpp -o CMakeFiles/UProtocol.dir/UPDir.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPDir.cpp -o CMakeFiles/UProtocol.dir/UPDir.cpp.s
 
 CMakeFiles/UProtocol.dir/UPDir.cpp.o.requires:
 
@@ -131,16 +155,16 @@ CMakeFiles/UProtocol.dir/UPDir.cpp.o.provides.build: CMakeFiles/UProtocol.dir/UP
 
 CMakeFiles/UProtocol.dir/UPOpt.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPOpt.cpp.o: UPOpt.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/UProtocol.dir/UPOpt.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPOpt.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPOpt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/UProtocol.dir/UPOpt.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPOpt.cpp.o -c /home/gong/git/libuv/Protocol/UPOpt.cpp
 
 CMakeFiles/UProtocol.dir/UPOpt.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPOpt.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPOpt.cpp > CMakeFiles/UProtocol.dir/UPOpt.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPOpt.cpp > CMakeFiles/UProtocol.dir/UPOpt.cpp.i
 
 CMakeFiles/UProtocol.dir/UPOpt.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPOpt.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPOpt.cpp -o CMakeFiles/UProtocol.dir/UPOpt.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPOpt.cpp -o CMakeFiles/UProtocol.dir/UPOpt.cpp.s
 
 CMakeFiles/UProtocol.dir/UPOpt.cpp.o.requires:
 
@@ -155,16 +179,16 @@ CMakeFiles/UProtocol.dir/UPOpt.cpp.o.provides.build: CMakeFiles/UProtocol.dir/UP
 
 CMakeFiles/UProtocol.dir/UPRequest.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPRequest.cpp.o: UPRequest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/UProtocol.dir/UPRequest.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPRequest.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPRequest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/UProtocol.dir/UPRequest.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPRequest.cpp.o -c /home/gong/git/libuv/Protocol/UPRequest.cpp
 
 CMakeFiles/UProtocol.dir/UPRequest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPRequest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPRequest.cpp > CMakeFiles/UProtocol.dir/UPRequest.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPRequest.cpp > CMakeFiles/UProtocol.dir/UPRequest.cpp.i
 
 CMakeFiles/UProtocol.dir/UPRequest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPRequest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPRequest.cpp -o CMakeFiles/UProtocol.dir/UPRequest.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPRequest.cpp -o CMakeFiles/UProtocol.dir/UPRequest.cpp.s
 
 CMakeFiles/UProtocol.dir/UPRequest.cpp.o.requires:
 
@@ -179,16 +203,16 @@ CMakeFiles/UProtocol.dir/UPRequest.cpp.o.provides.build: CMakeFiles/UProtocol.di
 
 CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o: UPSubscribe.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPSubscribe.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o -c /home/gong/git/libuv/Protocol/UPSubscribe.cpp
 
 CMakeFiles/UProtocol.dir/UPSubscribe.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPSubscribe.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPSubscribe.cpp > CMakeFiles/UProtocol.dir/UPSubscribe.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPSubscribe.cpp > CMakeFiles/UProtocol.dir/UPSubscribe.cpp.i
 
 CMakeFiles/UProtocol.dir/UPSubscribe.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPSubscribe.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPSubscribe.cpp -o CMakeFiles/UProtocol.dir/UPSubscribe.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPSubscribe.cpp -o CMakeFiles/UProtocol.dir/UPSubscribe.cpp.s
 
 CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o.requires:
 
@@ -203,16 +227,16 @@ CMakeFiles/UProtocol.dir/UPSubscribe.cpp.o.provides.build: CMakeFiles/UProtocol.
 
 CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o: UPallmarketinfo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPallmarketinfo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o -c /home/gong/git/libuv/Protocol/UPallmarketinfo.cpp
 
 CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPallmarketinfo.cpp > CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPallmarketinfo.cpp > CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.i
 
 CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPallmarketinfo.cpp -o CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPallmarketinfo.cpp -o CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.s
 
 CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o.requires:
 
@@ -227,16 +251,16 @@ CMakeFiles/UProtocol.dir/UPallmarketinfo.cpp.o.provides.build: CMakeFiles/UProto
 
 CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o: UPcanceltrade.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPcanceltrade.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o -c /home/gong/git/libuv/Protocol/UPcanceltrade.cpp
 
 CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPcanceltrade.cpp > CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPcanceltrade.cpp > CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.i
 
 CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPcanceltrade.cpp -o CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPcanceltrade.cpp -o CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.s
 
 CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o.requires:
 
@@ -251,16 +275,16 @@ CMakeFiles/UProtocol.dir/UPcanceltrade.cpp.o.provides.build: CMakeFiles/UProtoco
 
 CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o: UPcanceltradebatch.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPcanceltradebatch.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o -c /home/gong/git/libuv/Protocol/UPcanceltradebatch.cpp
 
 CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPcanceltradebatch.cpp > CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPcanceltradebatch.cpp > CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.i
 
 CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPcanceltradebatch.cpp -o CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPcanceltradebatch.cpp -o CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.s
 
 CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o.requires:
 
@@ -275,16 +299,16 @@ CMakeFiles/UProtocol.dir/UPcanceltradebatch.cpp.o.provides.build: CMakeFiles/UPr
 
 CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o: UPdepthdata.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPdepthdata.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o -c /home/gong/git/libuv/Protocol/UPdepthdata.cpp
 
 CMakeFiles/UProtocol.dir/UPdepthdata.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPdepthdata.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPdepthdata.cpp > CMakeFiles/UProtocol.dir/UPdepthdata.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPdepthdata.cpp > CMakeFiles/UProtocol.dir/UPdepthdata.cpp.i
 
 CMakeFiles/UProtocol.dir/UPdepthdata.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPdepthdata.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPdepthdata.cpp -o CMakeFiles/UProtocol.dir/UPdepthdata.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPdepthdata.cpp -o CMakeFiles/UProtocol.dir/UPdepthdata.cpp.s
 
 CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o.requires:
 
@@ -299,16 +323,16 @@ CMakeFiles/UProtocol.dir/UPdepthdata.cpp.o.provides.build: CMakeFiles/UProtocol.
 
 CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o: UPhistoricaltransactiondata.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPhistoricaltransactiondata.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o -c /home/gong/git/libuv/Protocol/UPhistoricaltransactiondata.cpp
 
 CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPhistoricaltransactiondata.cpp > CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPhistoricaltransactiondata.cpp > CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.i
 
 CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPhistoricaltransactiondata.cpp -o CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPhistoricaltransactiondata.cpp -o CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.s
 
 CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o.requires:
 
@@ -323,16 +347,16 @@ CMakeFiles/UProtocol.dir/UPhistoricaltransactiondata.cpp.o.provides.build: CMake
 
 CMakeFiles/UProtocol.dir/UPklinedata.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPklinedata.cpp.o: UPklinedata.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/UProtocol.dir/UPklinedata.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPklinedata.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPklinedata.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/UProtocol.dir/UPklinedata.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPklinedata.cpp.o -c /home/gong/git/libuv/Protocol/UPklinedata.cpp
 
 CMakeFiles/UProtocol.dir/UPklinedata.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPklinedata.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPklinedata.cpp > CMakeFiles/UProtocol.dir/UPklinedata.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPklinedata.cpp > CMakeFiles/UProtocol.dir/UPklinedata.cpp.i
 
 CMakeFiles/UProtocol.dir/UPklinedata.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPklinedata.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPklinedata.cpp -o CMakeFiles/UProtocol.dir/UPklinedata.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPklinedata.cpp -o CMakeFiles/UProtocol.dir/UPklinedata.cpp.s
 
 CMakeFiles/UProtocol.dir/UPklinedata.cpp.o.requires:
 
@@ -347,16 +371,16 @@ CMakeFiles/UProtocol.dir/UPklinedata.cpp.o.provides.build: CMakeFiles/UProtocol.
 
 CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o: UPklinehistoricaldata.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPklinehistoricaldata.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o -c /home/gong/git/libuv/Protocol/UPklinehistoricaldata.cpp
 
 CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPklinehistoricaldata.cpp > CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPklinehistoricaldata.cpp > CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.i
 
 CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPklinehistoricaldata.cpp -o CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPklinehistoricaldata.cpp -o CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.s
 
 CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o.requires:
 
@@ -371,16 +395,16 @@ CMakeFiles/UProtocol.dir/UPklinehistoricaldata.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/UProtocol.dir/UPlogin.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPlogin.cpp.o: UPlogin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/UProtocol.dir/UPlogin.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPlogin.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPlogin.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/UProtocol.dir/UPlogin.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPlogin.cpp.o -c /home/gong/git/libuv/Protocol/UPlogin.cpp
 
 CMakeFiles/UProtocol.dir/UPlogin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPlogin.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPlogin.cpp > CMakeFiles/UProtocol.dir/UPlogin.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPlogin.cpp > CMakeFiles/UProtocol.dir/UPlogin.cpp.i
 
 CMakeFiles/UProtocol.dir/UPlogin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPlogin.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPlogin.cpp -o CMakeFiles/UProtocol.dir/UPlogin.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPlogin.cpp -o CMakeFiles/UProtocol.dir/UPlogin.cpp.s
 
 CMakeFiles/UProtocol.dir/UPlogin.cpp.o.requires:
 
@@ -395,16 +419,16 @@ CMakeFiles/UProtocol.dir/UPlogin.cpp.o.provides.build: CMakeFiles/UProtocol.dir/
 
 CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o: UPmatcheddata.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPmatcheddata.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o -c /home/gong/git/libuv/Protocol/UPmatcheddata.cpp
 
 CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPmatcheddata.cpp > CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPmatcheddata.cpp > CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.i
 
 CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPmatcheddata.cpp -o CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPmatcheddata.cpp -o CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.s
 
 CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o.requires:
 
@@ -419,16 +443,16 @@ CMakeFiles/UProtocol.dir/UPmatcheddata.cpp.o.provides.build: CMakeFiles/UProtoco
 
 CMakeFiles/UProtocol.dir/UPresponse.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPresponse.cpp.o: UPresponse.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/UProtocol.dir/UPresponse.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPresponse.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPresponse.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/UProtocol.dir/UPresponse.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPresponse.cpp.o -c /home/gong/git/libuv/Protocol/UPresponse.cpp
 
 CMakeFiles/UProtocol.dir/UPresponse.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPresponse.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPresponse.cpp > CMakeFiles/UProtocol.dir/UPresponse.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPresponse.cpp > CMakeFiles/UProtocol.dir/UPresponse.cpp.i
 
 CMakeFiles/UProtocol.dir/UPresponse.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPresponse.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPresponse.cpp -o CMakeFiles/UProtocol.dir/UPresponse.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPresponse.cpp -o CMakeFiles/UProtocol.dir/UPresponse.cpp.s
 
 CMakeFiles/UProtocol.dir/UPresponse.cpp.o.requires:
 
@@ -443,16 +467,16 @@ CMakeFiles/UProtocol.dir/UPresponse.cpp.o.provides.build: CMakeFiles/UProtocol.d
 
 CMakeFiles/UProtocol.dir/UProtocol.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UProtocol.cpp.o: UProtocol.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/UProtocol.dir/UProtocol.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UProtocol.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UProtocol.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/UProtocol.dir/UProtocol.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UProtocol.cpp.o -c /home/gong/git/libuv/Protocol/UProtocol.cpp
 
 CMakeFiles/UProtocol.dir/UProtocol.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UProtocol.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UProtocol.cpp > CMakeFiles/UProtocol.dir/UProtocol.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UProtocol.cpp > CMakeFiles/UProtocol.dir/UProtocol.cpp.i
 
 CMakeFiles/UProtocol.dir/UProtocol.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UProtocol.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UProtocol.cpp -o CMakeFiles/UProtocol.dir/UProtocol.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UProtocol.cpp -o CMakeFiles/UProtocol.dir/UProtocol.cpp.s
 
 CMakeFiles/UProtocol.dir/UProtocol.cpp.o.requires:
 
@@ -467,16 +491,16 @@ CMakeFiles/UProtocol.dir/UProtocol.cpp.o.provides.build: CMakeFiles/UProtocol.di
 
 CMakeFiles/UProtocol.dir/UProtocolBase.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UProtocolBase.cpp.o: UProtocolBase.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/UProtocol.dir/UProtocolBase.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UProtocolBase.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/UProtocol.dir/UProtocolBase.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UProtocolBase.cpp.o -c /home/gong/git/libuv/Protocol/UProtocolBase.cpp
 
 CMakeFiles/UProtocol.dir/UProtocolBase.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UProtocolBase.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.cpp > CMakeFiles/UProtocol.dir/UProtocolBase.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UProtocolBase.cpp > CMakeFiles/UProtocol.dir/UProtocolBase.cpp.i
 
 CMakeFiles/UProtocol.dir/UProtocolBase.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UProtocolBase.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UProtocolBase.cpp -o CMakeFiles/UProtocol.dir/UProtocolBase.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UProtocolBase.cpp -o CMakeFiles/UProtocol.dir/UProtocolBase.cpp.s
 
 CMakeFiles/UProtocol.dir/UProtocolBase.cpp.o.requires:
 
@@ -491,16 +515,16 @@ CMakeFiles/UProtocol.dir/UProtocolBase.cpp.o.provides.build: CMakeFiles/UProtoco
 
 CMakeFiles/UProtocol.dir/UPuptrade.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPuptrade.cpp.o: UPuptrade.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/UProtocol.dir/UPuptrade.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPuptrade.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPuptrade.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/UProtocol.dir/UPuptrade.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPuptrade.cpp.o -c /home/gong/git/libuv/Protocol/UPuptrade.cpp
 
 CMakeFiles/UProtocol.dir/UPuptrade.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPuptrade.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPuptrade.cpp > CMakeFiles/UProtocol.dir/UPuptrade.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPuptrade.cpp > CMakeFiles/UProtocol.dir/UPuptrade.cpp.i
 
 CMakeFiles/UProtocol.dir/UPuptrade.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPuptrade.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPuptrade.cpp -o CMakeFiles/UProtocol.dir/UPuptrade.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPuptrade.cpp -o CMakeFiles/UProtocol.dir/UPuptrade.cpp.s
 
 CMakeFiles/UProtocol.dir/UPuptrade.cpp.o.requires:
 
@@ -515,16 +539,16 @@ CMakeFiles/UProtocol.dir/UPuptrade.cpp.o.provides.build: CMakeFiles/UProtocol.di
 
 CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.o: UPuptradebatch.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.o -c /home/gong/workspace/git/UkexServer/Protocol/UPuptradebatch.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.o -c /home/gong/git/libuv/Protocol/UPuptradebatch.cpp
 
 CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/UPuptradebatch.cpp > CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/UPuptradebatch.cpp > CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.i
 
 CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/UPuptradebatch.cpp -o CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/UPuptradebatch.cpp -o CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.s
 
 CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.o.requires:
 
@@ -539,16 +563,16 @@ CMakeFiles/UProtocol.dir/UPuptradebatch.cpp.o.provides.build: CMakeFiles/UProtoc
 
 CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.o: proto/ukex.allmarketinfo.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.allmarketinfo.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.allmarketinfo.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.allmarketinfo.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.allmarketinfo.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.allmarketinfo.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.allmarketinfo.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.o.requires:
 
@@ -563,16 +587,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.allmarketinfo.pb.cc.o.provides.build: CMakeF
 
 CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.o: proto/ukex.canceltrade.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.canceltrade.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.canceltrade.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.canceltrade.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.canceltrade.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.canceltrade.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.canceltrade.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.o.requires:
 
@@ -587,16 +611,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.canceltrade.pb.cc.o.provides.build: CMakeFil
 
 CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.o: proto/ukex.canceltradebatch.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.canceltradebatch.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.canceltradebatch.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.canceltradebatch.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.canceltradebatch.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.canceltradebatch.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.canceltradebatch.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.o.requires:
 
@@ -611,16 +635,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.canceltradebatch.pb.cc.o.provides.build: CMa
 
 CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.o: proto/ukex.depthdata.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.depthdata.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.depthdata.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.depthdata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.depthdata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.depthdata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.depthdata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.o.requires:
 
@@ -635,16 +659,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.depthdata.pb.cc.o.provides.build: CMakeFiles
 
 CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.o: proto/ukex.filedata.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.filedata.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.filedata.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.filedata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.filedata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.filedata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.filedata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.o.requires:
 
@@ -659,16 +683,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.filedata.pb.cc.o.provides.build: CMakeFiles/
 
 CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.o: proto/ukex.filerequest.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.filerequest.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.filerequest.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.filerequest.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.filerequest.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.filerequest.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.filerequest.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.o.requires:
 
@@ -683,16 +707,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.filerequest.pb.cc.o.provides.build: CMakeFil
 
 CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.o: proto/ukex.historicaltransactiondata.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.historicaltransactiondata.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.historicaltransactiondata.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.historicaltransactiondata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.historicaltransactiondata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.historicaltransactiondata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.historicaltransactiondata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.o.requires:
 
@@ -707,16 +731,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.historicaltransactiondata.pb.cc.o.provides.b
 
 CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.o: proto/ukex.klinedata.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.klinedata.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.klinedata.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.klinedata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.klinedata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.klinedata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.klinedata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.o.requires:
 
@@ -731,16 +755,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.klinedata.pb.cc.o.provides.build: CMakeFiles
 
 CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.o: proto/ukex.klinehistoricaldata.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.klinehistoricaldata.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.klinehistoricaldata.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.klinehistoricaldata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.klinehistoricaldata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.klinehistoricaldata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.klinehistoricaldata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.o.requires:
 
@@ -755,16 +779,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.klinehistoricaldata.pb.cc.o.provides.build: 
 
 CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.o: proto/ukex.login.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.login.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.login.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.login.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.login.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.login.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.login.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.o.requires:
 
@@ -779,16 +803,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.login.pb.cc.o.provides.build: CMakeFiles/UPr
 
 CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.o: proto/ukex.matcheddata.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.matcheddata.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.matcheddata.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.matcheddata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.matcheddata.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.matcheddata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.matcheddata.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.o.requires:
 
@@ -803,16 +827,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.matcheddata.pb.cc.o.provides.build: CMakeFil
 
 CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.o: proto/ukex.response.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.response.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.response.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.response.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.response.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.response.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.response.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.o.requires:
 
@@ -827,16 +851,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.response.pb.cc.o.provides.build: CMakeFiles/
 
 CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.o: proto/ukex.uptrade.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.uptrade.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.uptrade.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.uptrade.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.uptrade.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.uptrade.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.uptrade.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.o.requires:
 
@@ -851,16 +875,16 @@ CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.o.provides.build: CMakeFiles/U
 
 CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.o: CMakeFiles/UProtocol.dir/flags.make
 CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.o: proto/ukex.uptradebatch.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.o -c /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.uptradebatch.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.o -c /home/gong/git/libuv/Protocol/proto/ukex.uptradebatch.pb.cc
 
 CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.uptradebatch.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/git/libuv/Protocol/proto/ukex.uptradebatch.pb.cc > CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.i
 
 CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/workspace/git/UkexServer/Protocol/proto/ukex.uptradebatch.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/git/libuv/Protocol/proto/ukex.uptradebatch.pb.cc -o CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.s
 
 CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.o.requires:
 
@@ -875,6 +899,7 @@ CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.o.provides.build: CMakeFi
 
 # Object files for target UProtocol
 UProtocol_OBJECTS = \
+"CMakeFiles/UProtocol.dir/UPAuth.cpp.o" \
 "CMakeFiles/UProtocol.dir/UPCache.cpp.o" \
 "CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o" \
 "CMakeFiles/UProtocol.dir/UPDir.cpp.o" \
@@ -913,6 +938,7 @@ UProtocol_OBJECTS = \
 # External object files for target UProtocol
 UProtocol_EXTERNAL_OBJECTS =
 
+libUProtocol.a: CMakeFiles/UProtocol.dir/UPAuth.cpp.o
 libUProtocol.a: CMakeFiles/UProtocol.dir/UPCache.cpp.o
 libUProtocol.a: CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o
 libUProtocol.a: CMakeFiles/UProtocol.dir/UPDir.cpp.o
@@ -949,7 +975,7 @@ libUProtocol.a: CMakeFiles/UProtocol.dir/proto/ukex.uptrade.pb.cc.o
 libUProtocol.a: CMakeFiles/UProtocol.dir/proto/ukex.uptradebatch.pb.cc.o
 libUProtocol.a: CMakeFiles/UProtocol.dir/build.make
 libUProtocol.a: CMakeFiles/UProtocol.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/workspace/git/UkexServer/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Linking CXX static library libUProtocol.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/git/libuv/Protocol/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Linking CXX static library libUProtocol.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/UProtocol.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/UProtocol.dir/link.txt --verbose=$(VERBOSE)
 
@@ -958,6 +984,7 @@ CMakeFiles/UProtocol.dir/build: libUProtocol.a
 
 .PHONY : CMakeFiles/UProtocol.dir/build
 
+CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPAuth.cpp.o.requires
 CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPCache.cpp.o.requires
 CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPCancelsubscribe.cpp.o.requires
 CMakeFiles/UProtocol.dir/requires: CMakeFiles/UProtocol.dir/UPDir.cpp.o.requires
@@ -1000,6 +1027,6 @@ CMakeFiles/UProtocol.dir/clean:
 .PHONY : CMakeFiles/UProtocol.dir/clean
 
 CMakeFiles/UProtocol.dir/depend:
-	cd /home/gong/workspace/git/UkexServer/Protocol && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gong/workspace/git/UkexServer/Protocol /home/gong/workspace/git/UkexServer/Protocol /home/gong/workspace/git/UkexServer/Protocol /home/gong/workspace/git/UkexServer/Protocol /home/gong/workspace/git/UkexServer/Protocol/CMakeFiles/UProtocol.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/gong/git/libuv/Protocol && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gong/git/libuv/Protocol /home/gong/git/libuv/Protocol /home/gong/git/libuv/Protocol /home/gong/git/libuv/Protocol /home/gong/git/libuv/Protocol/CMakeFiles/UProtocol.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/UProtocol.dir/depend
 
